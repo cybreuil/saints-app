@@ -1,0 +1,157 @@
+.saint-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 2rem;
+}
+
+.back-button:hover {
+  border-color: #646cff;
+  color: #646cff;
+}
+
+.saint-profile {
+  background-color: rgba(100, 108, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.saint-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(100, 108, 255, 0.2);
+}
+
+.saint-header h1 {
+  margin: 0 0 1rem;
+  font-size: 3rem;
+  color: #646cff;
+}
+
+.saint-titles {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #888;
+  margin: 0;
+}
+
+.saint-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.info-card.wide {
+  grid-column: 1 / -1;
+}
+
+.info-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.saint-biography {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(100, 108, 255, 0.2);
+}
+
+.saint-biography h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #646cff;
+}
+
+.biography-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.biography-content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.additional-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.additional-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #646cff;
+}
+
+.additional-info p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .saint-header h1 {
+    font-size: 2rem;
+  }
+
+  .saint-titles {
+    font-size: 1rem;
+  }
+
+  .saint-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card.wide {
+    grid-column: 1;
+  }
+
+  .biography-content {
+    font-size: 1rem;
+  }
+
+  .biography-content p {
+    text-align: left;
+  }
+}

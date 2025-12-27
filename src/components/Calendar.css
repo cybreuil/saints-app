@@ -1,0 +1,251 @@
+.calendar-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.back-button:hover {
+  border-color: #646cff;
+  color: #646cff;
+}
+
+.calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.current-month {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.current-month h2 {
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+}
+
+.month-nav-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  background-color: transparent;
+  color: #646cff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.month-nav-button:hover {
+  background-color: #646cff;
+  color: white;
+}
+
+.today-button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.today-button:hover {
+  border-color: #646cff;
+  color: #646cff;
+}
+
+.calendar-container {
+  background-color: rgba(100, 108, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: #646cff;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.calendar-day.valid {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.calendar-day.valid:hover {
+  background-color: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+  transform: scale(1.05);
+}
+
+.calendar-day.today {
+  background-color: rgba(100, 108, 255, 0.3);
+  font-weight: bold;
+}
+
+.calendar-day.selected {
+  background-color: #646cff;
+  color: white;
+  border-color: #646cff;
+}
+
+.calendar-day.empty {
+  visibility: hidden;
+}
+
+.saints-for-day {
+  background-color: rgba(100, 108, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.saints-for-day h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #646cff;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.no-saints-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+  padding: 2rem;
+}
+
+.saints-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.saint-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.saint-card:hover {
+  background-color: rgba(100, 108, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.saint-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  color: #646cff;
+}
+
+.saint-titles-small {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.saint-description-small {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.view-details-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #646cff;
+  background-color: transparent;
+  color: #646cff;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.view-details-button:hover {
+  background-color: #646cff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .calendar-navigation {
+    flex-direction: column;
+  }
+
+  .month-nav-button {
+    width: 100%;
+  }
+
+  .calendar-grid {
+    gap: 0.25rem;
+  }
+
+  .calendar-day {
+    font-size: 0.9rem;
+  }
+
+  .saints-list {
+    grid-template-columns: 1fr;
+  }
+}
