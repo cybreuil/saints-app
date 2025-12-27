@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getSaintOfDay } from '../services/api';
-import { formatDisplayDate } from '../utils/dateUtils';
+import { formatDisplayDate, formatDate } from '../utils/dateUtils';
 import './Home.css';
 
 function Home() {
@@ -28,13 +28,6 @@ function Home() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
   };
 
   const navigateDate = (days) => {
