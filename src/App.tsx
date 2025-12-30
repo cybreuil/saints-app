@@ -1,4 +1,5 @@
 import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 					src="/saints-pic/Laurent.jpg"
 					alt="Saint Laurent"
 				/>
+				<Link to="/saint-of-the-day">Saint Du Jour</Link>
 			</div>
 		</>
 	);
