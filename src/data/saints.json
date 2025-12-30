@@ -1,0 +1,72 @@
+{
+	"calendars": {
+		"tridentine_1960": {
+			"name": "Roman Calendar 1960 (John XXIII)",
+			"description": "Roman Missal according to the 1960 rubrics (John XXIII).",
+			"saints": {
+				"01-01": [
+					{
+						"id": "circumcision_lord",
+						"name": "Circumcision of the Lord",
+						"description": "Feast of the Circumcision of Jesus.",
+						"bio": "The Circumcision of the Lord was celebrated on January 1st in the traditional calendar.",
+						"extra": {
+							"rank": "Double Major",
+							"icon": "circumcision.png"
+						}
+					}
+				],
+				"01-02": [
+					{
+						"id": "saint_basil",
+						"name": "Saint Basil the Great",
+						"description": "Bishop and Doctor of the Church.",
+						"bio": "Saint Basil (329-379), Bishop of Caesarea, great theologian and Father of the Eastern Church.",
+						"extra": {
+							"rank": "Confessor and Doctor",
+							"icon": "basil.png"
+						}
+					}
+				]
+				// ... other days
+			}
+		},
+		"roman_1970": {
+			"name": "Roman Calendar 1970 (Paul VI)",
+			"description": "Roman Missal according to the post-Vatican II reform (Paul VI).",
+			"saints": {
+				"01-01": [
+					{
+						"id": "mary_mother_of_god",
+						"name": "Mary, Mother of God",
+						"description": "Solemnity of Mary, Mother of God.",
+						"bio": "Mary, mother of Jesus, venerated as Mother of God in the Catholic tradition.",
+						"extra": {
+							"rank": "Solemnity",
+							"icon": "mary.png"
+						}
+					}
+				]
+				// ... other days
+			}
+		},
+		"bonus": {
+			"name": "Bonus Saints",
+			"description": "Additional or local saints.",
+			"saints": {
+				"02-29": [
+					{
+						"id": "saint_leap",
+						"name": "Saint Leap",
+						"description": "Fictitious saint for February 29th.",
+						"bio": "A saint for leap years.",
+						"extra": {
+							"icon": "leap.png"
+						}
+					}
+				]
+				// ... other bonus
+			}
+		}
+	}
+}
