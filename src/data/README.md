@@ -37,7 +37,7 @@ The database is organized with the following structure:
 The traditional Roman calendar according to the 1960 rubrics, before the Second Vatican Council reforms. This calendar represents the "Tridentine" or traditional Latin Mass calendar.
 
 **Key characteristics:**
-- Includes the Circumcision of the Lord (January 1)
+- Includes the Feast of the Circumcision of Our Lord (January 1) - commemorating the circumcision of Jesus eight days after His birth
 - Traditional feast rankings (Double Major, etc.)
 - Pre-Vatican II saint commemorations
 
@@ -45,7 +45,7 @@ The traditional Roman calendar according to the 1960 rubrics, before the Second 
 The reformed Roman calendar according to the post-Vatican II liturgical reforms implemented by Pope Paul VI.
 
 **Key characteristics:**
-- Mary, Mother of God replaces Circumcision (January 1)
+- Solemnity of Mary, Mother of God replaces the Feast of the Circumcision (January 1) after Vatican II reforms
 - Simplified rankings (Solemnity, Feast, Memorial)
 - Some feast days moved or combined
 - Focus on universal Church celebrations
@@ -127,13 +127,12 @@ console.log('Attributes:', saint.attributes.join(', '));
 
 ## Major Feast Days Include
 
-- **Christmas** (December 25)
-- **Epiphany** (January 6)
+- **Christmas** (December 25) - Nativity of Our Lord
+- **Epiphany** (January 6, Western) / **Theophany** (January 6, Orthodox) - Manifestation of Christ to the Gentiles (Western) / Baptism of the Lord (Orthodox emphasis)
 - **Easter** (moveable, not date-specific)
 - **Assumption** (August 15)
 - **All Saints** (November 1)
 - **Immaculate Conception** (December 8)
-- **Theophany/Baptism of the Lord** (January 6, Orthodox)
 - And many more...
 
 ## Notable Saints Included
