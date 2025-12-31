@@ -1,63 +1,70 @@
-import React from "react";
+import React, { useMemo } from "react";
+import saintsData from "../../data/saints.json";
+import "./SaintOfTheDay.css";
 
-// Exemple de données statiques (à remplacer par une récupération dynamique si besoin)
-const saintOfTheDay = {
-	name: "Saint Antoine de Padoue",
-	date: new Date().toLocaleDateString("fr-FR", {
-		weekday: "long",
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	}),
-	description:
-		"Saint Antoine de Padoue, prêtre franciscain et docteur de l'Église, est le saint patron des objets perdus. Il est célébré pour sa prédication et sa profonde connaissance des Écritures.",
-	image: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Saint_Antoine_de_Padoue.jpg", // Remplace par une image locale si besoin
+const getTodayKey = () => {
+	const today = new Date();
+	const day = String(today.getDate()).padStart(2, "0");
+	const month = String(today.getMonth() + 1).padStart(2, "0");
+	return `${month}-${day}`;
 };
 
 const SaintOfTheDay: React.FC = () => {
-	return (
-		<div
-			style={{
-				maxWidth: 500,
-				margin: "2rem auto",
-				padding: "2rem",
-				borderRadius: "1rem",
-				background: "#f9f9f9",
-				boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-			}}
-		>
-			<h1 style={{ textAlign: "center", color: "#2d5c3b" }}>
-				Saint du jour
-			</h1>
-			<h2 style={{ textAlign: "center" }}>{saintOfTheDay.name}</h2>
-			<p
-				style={{
-					textAlign: "center",
-					fontStyle: "italic",
-					color: "#666",
-				}}
-			>
-				{saintOfTheDay.date}
-			</p>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-				}}
-			>
-				<img
-					src={saintOfTheDay.image}
-					alt={saintOfTheDay.name}
-					style={{
-						width: 180,
-						borderRadius: "0.5rem",
-						margin: "1rem 0",
-					}}
-				/>
-				<p style={{ textAlign: "justify" }}>
-					{saintOfTheDay.description}
+	const saint = useMemo(() => {
+		const todayKey = getTodayKey();
+		const saints =
+			saintsData.calendars.tridentine_1960.saints[todayKey] || [];
+		return saints.length > 0 ? saints[0] : null;
+	}, []);
+
+	if (!saint) {
+		return (
+			<div className="saint-of-the-day-container">
+				<p className="no-saint-message">
+					Aucun saint trouvé pour aujourd'hui.
 				</p>
+			</div>
+		);
+	}
+
+	return (
+		<div className="saint-of-the-day-container">
+			<h2>Saint du jour</h2>
+			<h1>{saint.name}</h1>
+			<p className="feast-day">{saint.feastDay}</p>
+			<div className="saint-details">
+				{saint.image && <img src={saint.image} alt={saint.name} />}
+				<p>{saint.description}</p>
+				{saint.biography && saint.biography.length > 0 && (
+					<div>
+						<h3>Biography</h3>
+						<ul>
+							{saint.biography.map((line, idx) => (
+								<li key={idx}>{line}</li>
+							))}
+						</ul>
+					</div>
+				)}
+				{saint.attributes && saint.attributes.length > 0 && (
+					<div className="attributes-section">
+						<h3>Attributes</h3>
+						<ul>
+							{saint.attributes.map((attr, idx) => (
+								<li key={idx}>{attr}</li>
+							))}
+						</ul>
+					</div>
+				)}
+				{saint.patronage && saint.patronage.length > 0 && (
+					<div className="patronage-section">
+						<h3>Patronage</h3>
+						<ul>
+							{saint.patronage.map((pat, idx) => (
+								<li key={idx}>{pat}</li>
+							))}
+						</ul>
+					</div>
+				)}
 			</div>
 		</div>
 	);
