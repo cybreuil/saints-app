@@ -1,0 +1,40 @@
+:root {
+	/* Primary Colors - Catholic liturgical colors */
+	--color-primary: #8b4513; /* Saddle brown - traditional Catholic */
+	--color-primary-light: #a0522d; /* Sienna */
+	--color-primary-dark: #654321; /* Dark brown */
+	--color-primary-hover: #704214;
+
+	/* Secondary Colors - Gold/Yellow for divinity */
+	--color-secondary: #daa520; /* Goldenrod */
+	--color-secondary-light: #f0e68c; /* Khaki */
+	--color-secondary-dark: #b8860b; /* Dark goldenrod */
+
+	/* Accent Colors */
+	--color-accent: #2d5c3b; /* Deep green - life and hope */
+	--color-accent-light: #4a7856;
+	--color-accent-dark: #1e3d28;
+
+	/* Semantic Colors */
+	--color-success: #4caf50;
+	--color-info: #2196f3;
+	--color-warning: #ff9800;
+	--color-error: #f44336;
+
+	/* Background Colors */
+	--color-bg-primary: #ffffff;
+	--color-bg-secondary: #f9f6f0; /* Warm off-white */
+	--color-bg-tertiary: #f5f1e8;
+	--color-bg-dark: #2c2416;
+
+	/* Text Colors */
+	--color-text-primary: #212121;
+	--color-text-secondary: #616161;
+	--color-text-tertiary: #9e9e9e;
+	--color-text-inverse: #ffffff;
+
+	/* Border Colors */
+	--color-border-light: #e0e0e0;
+	--color-border-medium: #bdbdbd;
+	--color-border-dark: #757575;
+}
