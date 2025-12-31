@@ -1,15 +1,11 @@
-const Logo = ({ color = "#333" }) => {
+import type { LogoProps } from "../../types/Logo";
+
+const Logo: React.FC<LogoProps> = ({ color = "#333" }) => {
 	return (
 		<svg
-			version="1.1"
-			id="Layer_4"
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
-			x="0px"
-			y="0px"
 			viewBox="0 0 450 450"
-			enableBackground="new 0 0 450 450"
-			xmlSpace="preserve"
 		>
 			{/*Background*/}
 			{/*<rect style={{ fill: "#FFFFFF" }} width="450" height="450" />*/}
