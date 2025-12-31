@@ -13,6 +13,12 @@ interface Saint {
 	};
 }
 
+interface Calendar {
+	name: string;
+	description: string;
+	saints: Record<string, Saint[]>;
+}
+
 function SaintOfTheDay() {
 	// Get today's date in MM-DD format
 	const today = new Date();
@@ -22,12 +28,12 @@ function SaintOfTheDay() {
 
 	// Get saints for today from all calendars
 	const todaysSaints: Saint[] = [];
-	const calendars = saintsData.calendars;
+	const calendars = saintsData.calendars as Record<string, Calendar>;
 
 	Object.values(calendars).forEach((calendar) => {
-		const saintsForDate = calendar.saints[dateKey as keyof typeof calendar.saints];
+		const saintsForDate = calendar.saints[dateKey];
 		if (saintsForDate) {
-			todaysSaints.push(...(saintsForDate as Saint[]));
+			todaysSaints.push(...saintsForDate);
 		}
 	});
 
