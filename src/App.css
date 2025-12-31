@@ -16,3 +16,9 @@
 	aspect-ratio: auto;
 	border-radius: 8px;
 }
+
+.link-today {
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+}

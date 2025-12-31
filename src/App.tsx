@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function App() {
 	return (
@@ -8,12 +8,9 @@ function App() {
 				<img src="/logo.svg" />
 				<h1>Saints-App</h1>
 				<p>React App for catholic saints information.</p>
-				<img
-					className="logo"
-					src="/saints-pic/Laurent.jpg"
-					alt="Saint Laurent"
-				/>
-				<Link to="/saint-of-the-day">Saint Du Jour</Link>
+				<Link className="link-today" to="/saint-of-the-day">
+					Saint Du Jour
+				</Link>
 			</div>
 		</>
 	);
