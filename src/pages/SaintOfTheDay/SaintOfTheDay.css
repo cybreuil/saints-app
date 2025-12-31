@@ -1,0 +1,68 @@
+.saint-of-the-day {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.date {
+	font-size: 1.2em;
+	color: #888;
+	margin-bottom: 1rem;
+}
+
+.saints-list {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	width: 100%;
+}
+
+.saint-card {
+	background-color: #1a1a1a;
+	border-radius: 8px;
+	padding: 2rem;
+	text-align: left;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.saint-card h2 {
+	margin-top: 0;
+	color: #646cff;
+}
+
+.saint-card .description {
+	font-style: italic;
+	color: #999;
+	margin: 0.5rem 0;
+}
+
+.saint-card .bio {
+	line-height: 1.6;
+	margin: 1rem 0;
+}
+
+.saint-card .rank {
+	color: #888;
+	font-size: 0.9em;
+	margin-top: 1rem;
+}
+
+.back-link {
+	margin-top: 2rem;
+	font-size: 1.1em;
+}
+
+@media (prefers-color-scheme: light) {
+	.saint-card {
+		background-color: #f9f9f9;
+		border: 1px solid #e0e0e0;
+	}
+
+	.date {
+		color: #666;
+	}
+}

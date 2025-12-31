@@ -27,8 +27,19 @@
 							"icon": "basil.png"
 						}
 					}
+				],
+				"12-31": [
+					{
+						"id": "saint_sylvester",
+						"name": "Saint Sylvester I",
+						"description": "Pope and Confessor.",
+						"bio": "Saint Sylvester I was Pope from 314 to 335, during the reign of Constantine the Great. He is commemorated on the last day of the year.",
+						"extra": {
+							"rank": "Double",
+							"icon": "sylvester.png"
+						}
+					}
 				]
-				// ... other days
 			}
 		},
 		"roman_1970": {
@@ -46,8 +57,19 @@
 							"icon": "mary.png"
 						}
 					}
+				],
+				"12-31": [
+					{
+						"id": "saint_sylvester_modern",
+						"name": "Saint Sylvester I",
+						"description": "Pope.",
+						"bio": "Saint Sylvester I served as Pope from 314 to 335 AD during a pivotal time in Church history.",
+						"extra": {
+							"rank": "Optional Memorial",
+							"icon": "sylvester.png"
+						}
+					}
 				]
-				// ... other days
 			}
 		},
 		"bonus": {
@@ -65,7 +87,6 @@
 						}
 					}
 				]
-				// ... other bonus
 			}
 		}
 	}
