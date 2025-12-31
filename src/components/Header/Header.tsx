@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
 	return (
 		<header>
-			<Logo />
+			<Logo maxWidth={100} />
 			<h1>Saints App</h1>
 		</header>
 	);
