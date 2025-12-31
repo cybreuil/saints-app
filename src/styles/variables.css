@@ -37,4 +37,7 @@
 	--color-border-light: #e0e0e0;
 	--color-border-medium: #bdbdbd;
 	--color-border-dark: #757575;
+
+	/* Interface */
+	--header-height: 60px;
 }
