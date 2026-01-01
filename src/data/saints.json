@@ -722,209 +722,311 @@
         ],
         "02-01": [
           {
-            "id": "saint_02_01",
-            "name": "Saint of February 01",
+            "id": "saint_ignatius_antioch_transfer",
+            "name": "Saint Ignatius of Antioch",
             "feastDay": "February 01",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop and martyr, Father of the Church.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Ignatius was Bishop of Antioch, where Saint Peter had founded the church. He became the third bishop of that see around 69 AD.",
+              "He was arrested during the persecution of Emperor Trajan and sent to Rome to be martyred around 107 AD.",
+              "During his journey to Rome, he wrote seven letters to various churches, which are among the earliest Christian writings outside the New Testament. He was thrown to wild beasts in the Colosseum."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Lions",
+              "Chains",
+              "Heart with IHS"
+            ],
+            "patronage": [
+              "Against throat diseases",
+              "Church in North Africa and Eastern Mediterranean"
+            ],
             "image": ""
           }
         ],
         "02-02": [
           {
-            "id": "saint_02_02",
-            "name": "Saint of February 02",
+            "id": "purification_mary",
+            "name": "Purification of the Blessed Virgin Mary (Candlemas)",
             "feastDay": "February 02",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Feast commemorating Mary's purification and Jesus' presentation in the Temple.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Forty days after the birth of Jesus, Mary and Joseph brought Him to the Temple in Jerusalem to present Him to the Lord, according to Jewish law.",
+              "There they encountered Simeon, who recognized Jesus as the Messiah, and Anna the prophetess.",
+              "This feast is also known as Candlemas because candles are blessed on this day, symbolizing Christ as the Light of the World."
             ],
-            "attributes": [],
+            "attributes": [
+              "Candles",
+              "Mary holding infant Jesus",
+              "Simeon",
+              "Temple"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-03": [
           {
-            "id": "saint_02_03",
-            "name": "Saint of February 03",
+            "id": "saint_blaise",
+            "name": "Saint Blaise",
             "feastDay": "February 03",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop and martyr, patron of throat ailments.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Blaise was Bishop of Sebastea in Armenia during the early 4th century.",
+              "According to tradition, while imprisoned for his faith, he miraculously cured a boy who was choking on a fishbone.",
+              "He was martyred around 316 AD during the persecution of Emperor Licinius. The blessing of throats on his feast day is a popular devotion."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Two crossed candles",
+              "Bishop's vestments",
+              "Crosier",
+              "Iron combs"
+            ],
+            "patronage": [
+              "Throat diseases",
+              "Animals",
+              "Wool combers",
+              "Against choking"
+            ],
             "image": ""
           }
         ],
         "02-04": [
           {
-            "id": "saint_02_04",
-            "name": "Saint of February 04",
+            "id": "saint_andrew_corsini",
+            "name": "Saint Andrew Corsini",
             "feastDay": "February 04",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Carmelite bishop known for peace-making.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Andrew Corsini was born in Florence in 1302 to a noble family. After a worldly youth, he converted and joined the Carmelites.",
+              "He became Bishop of Fiesole in 1349 and was known for his holiness, charity to the poor, and successful diplomatic missions to restore peace.",
+              "He died in 1373 and was canonized in 1629."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Carmelite habit",
+              "Bishop's vestments",
+              "Crucifix",
+              "Lily"
+            ],
+            "patronage": [
+              "Against civil strife",
+              "Diplomats"
+            ],
             "image": ""
           }
         ],
         "02-05": [
           {
-            "id": "saint_02_05",
-            "name": "Saint of February 05",
+            "id": "saint_agatha",
+            "name": "Saint Agatha",
             "feastDay": "February 05",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Virgin and martyr from Sicily.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Agatha was a beautiful Christian virgin from a noble family in Sicily, living in the 3rd century.",
+              "She rejected the advances of the Roman prefect Quintianus, who had her arrested and tortured.",
+              "Her tortures included having her breasts cut off. She died in prison around 251 AD. She is invoked against fire and earthquakes."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Breasts on a plate",
+              "Pincers",
+              "Veil",
+              "Palm of martyrdom"
+            ],
+            "patronage": [
+              "Breast cancer",
+              "Nurses",
+              "Bell-founders",
+              "Against fire",
+              "Against earthquakes"
+            ],
             "image": ""
           }
         ],
         "02-06": [
           {
-            "id": "saint_02_06",
-            "name": "Saint of February 06",
+            "id": "saint_titus",
+            "name": "Saint Titus",
             "feastDay": "February 06",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Crete, companion of Saint Paul.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Titus was a Greek convert who became a trusted companion and co-worker of Saint Paul.",
+              "Paul left him in Crete to organize the Church there and ordained him as the first Bishop of Crete.",
+              "The Epistle to Titus in the New Testament was written by Paul to give him instructions for Church governance. He is believed to have died around 96 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Book (Epistle)",
+              "Crosier"
+            ],
+            "patronage": [
+              "Crete"
+            ],
             "image": ""
           }
         ],
         "02-07": [
           {
-            "id": "saint_02_07",
-            "name": "Saint of February 07",
+            "id": "saint_romuald",
+            "name": "Saint Romuald",
             "feastDay": "February 07",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of the Camaldolese Order.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Romuald was born in Ravenna, Italy, around 951. After witnessing his father kill a relative in a duel, he entered a Benedictine monastery in penance.",
+              "Seeking a more austere life, he became a hermit and eventually founded the Camaldolese Order, which combines eremitical and cenobitic monasticism.",
+              "He established numerous hermitages and monasteries throughout Italy. He died in 1027."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "White Camaldolese habit",
+              "Ladder to heaven",
+              "Skull",
+              "Book"
+            ],
+            "patronage": [
+              "Camaldolese Order"
+            ],
             "image": ""
           }
         ],
         "02-08": [
           {
-            "id": "saint_02_08",
-            "name": "Saint of February 08",
+            "id": "saint_john_matha",
+            "name": "Saint John of Matha",
             "feastDay": "February 08",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of the Trinitarian Order for ransoming captives.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John of Matha was born in Provence, France, in 1160. He studied theology in Paris and was ordained a priest.",
+              "During his first Mass, he had a vision that inspired him to found the Order of the Most Holy Trinity (Trinitarians) in 1198, dedicated to ransoming Christian captives from Muslims.",
+              "He personally traveled to North Africa to redeem captives and died in Rome in 1213."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Trinitarian habit with red and blue cross",
+              "Chains",
+              "Captives"
+            ],
+            "patronage": [
+              "Prisoners",
+              "Captives"
+            ],
             "image": ""
           }
         ],
         "02-09": [
           {
-            "id": "saint_02_09",
-            "name": "Saint of February 09",
+            "id": "saint_cyril_alexandria",
+            "name": "Saint Cyril of Alexandria",
             "feastDay": "February 09",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop, Doctor of the Church, defender of Mary as Mother of God.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Cyril became Patriarch of Alexandria in 412 AD and was a brilliant theologian and fierce defender of orthodox Christianity.",
+              "He is best known for his role in the Council of Ephesus (431 AD), where he successfully defended the title 'Theotokos' (Mother of God) for Mary against Nestorius.",
+              "He wrote extensively against heresies and in defense of the unity of Christ's divine and human natures. He died in 444 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Archbishop's vestments",
+              "Book",
+              "Pen",
+              "Mary and Child"
+            ],
+            "patronage": [
+              "Against eye diseases"
+            ],
             "image": ""
           }
         ],
         "02-10": [
           {
-            "id": "saint_02_10",
-            "name": "Saint of February 10",
+            "id": "saint_scholastica",
+            "name": "Saint Scholastica",
             "feastDay": "February 10",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Sister of Saint Benedict, patroness of Benedictine nuns.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Scholastica was the twin sister of Saint Benedict of Nursia, born around 480 in Nursia, Italy.",
+              "She consecrated her life to God from an early age and founded a monastery near Monte Cassino, where Benedict had his famous monastery.",
+              "She and Benedict met once a year to discuss spiritual matters. At their last meeting, she prayed for a storm to keep him longer. She died three days later around 543 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Benedictine habit",
+              "Dove",
+              "Book",
+              "Lily",
+              "Crucifix"
+            ],
+            "patronage": [
+              "Benedictine nuns",
+              "Against storms",
+              "Against convulsions"
+            ],
             "image": ""
           }
         ],
         "02-11": [
           {
-            "id": "saint_02_11",
-            "name": "Saint of February 11",
+            "id": "our_lady_lourdes",
+            "name": "Our Lady of Lourdes",
             "feastDay": "February 11",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Apparition of the Blessed Virgin Mary to Saint Bernadette.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "On February 11, 1858, the Blessed Virgin Mary appeared to Bernadette Soubirous, a 14-year-old peasant girl, in Lourdes, France.",
+              "Over the course of 18 apparitions, Mary identified herself as the 'Immaculate Conception' and revealed a spring whose waters have been associated with numerous miraculous healings.",
+              "Lourdes has become one of the most important pilgrimage sites in the Catholic world, particularly for the sick and disabled."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Mary in white with blue sash",
+              "Grotto",
+              "Spring",
+              "Rosary"
+            ],
+            "patronage": [
+              "Sick people",
+              "Invalids",
+              "Against bodily ills"
+            ],
             "image": ""
           }
         ],
         "02-12": [
           {
-            "id": "saint_02_12",
-            "name": "Saint of February 12",
+            "id": "seven_founders_servites",
+            "name": "Seven Holy Founders of the Servite Order",
             "feastDay": "February 12",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Seven Florentine merchants who founded the Servite Order. (Principal feast - also commemorated Feb 17, 19 in 1960 calendar)",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "In 1233, seven wealthy merchants in Florence left their businesses to dedicate themselves to prayer and penance, forming a community devoted to the Blessed Virgin Mary.",
+              "They founded the Order of Servants of Mary (Servites), emphasizing contemplation and service to the poor.",
+              "The seven founders were: Bonfilius, Alexis, Manettus, Amideus, Hugh, Sosteneus, and Buonagiunta. They died between 1262 and 1310 and were canonized together in 1887."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Servite habit",
+              "Seven founders together",
+              "Mary crowned"
+            ],
+            "patronage": [
+              "Servite Order"
+            ],
             "image": ""
           }
         ],
         "02-13": [
           {
-            "id": "saint_02_13",
-            "name": "Saint of February 13",
+            "id": "saint_catherine_ricci",
+            "name": "Saint Catherine de' Ricci",
             "feastDay": "February 13",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican mystic known for ecstasies and visions of the Passion.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Catherine was born in Florence in 1522 and entered the Dominican convent in Prato at age 13.",
+              "She became prioress and was known for her mystical experiences, particularly weekly ecstasies reliving Christ's Passion from Thursday to Friday.",
+              "She bore the stigmata and corresponded with important religious figures including Saint Philip Neri and Saint Charles Borromeo. She died in 1590."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Ring",
+              "Crucifix",
+              "Stigmata"
+            ],
+            "patronage": [
+              "Against illness",
+              "Sick people"
+            ],
             "image": ""
           }
         ],
@@ -956,496 +1058,705 @@
         ],
         "02-15": [
           {
-            "id": "saint_02_15",
-            "name": "Saint of February 15",
+            "id": "saints_faustinus_jovita",
+            "name": "Saints Faustinus and Jovita",
             "feastDay": "February 15",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Brothers and martyrs from Brescia.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Faustinus and Jovita were brothers from a noble family in Brescia, Italy, during the 2nd century.",
+              "They were converted to Christianity and became priests, preaching the Gospel with great zeal.",
+              "During the persecution of Emperor Hadrian around 120 AD, they were arrested and subjected to various tortures, but remained faithful and were eventually beheaded."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Palm of martyrdom",
+              "Swords",
+              "Brothers together"
+            ],
+            "patronage": [
+              "Brescia",
+              "Against storms"
+            ],
             "image": ""
           }
         ],
         "02-16": [
           {
-            "id": "saint_02_16",
-            "name": "Saint of February 16",
+            "id": "saints_elias_companions",
+            "name": "Saints Elias, Jeremiah, Isaias, Samuel and Daniel",
             "feastDay": "February 16",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Egyptian martyrs during Diocletian persecution.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "These five Egyptian Christians went to Caesarea in Palestine to comfort Christian prisoners during the persecution of Emperor Diocletian around 309 AD.",
+              "They were arrested for visiting the prisoners and brought before the governor Firmilian.",
+              "After refusing to sacrifice to pagan gods, they were tortured and beheaded. Their bodies were thrown to wild beasts but were recovered and buried by Christians."
             ],
-            "attributes": [],
+            "attributes": [
+              "Palm of martyrdom",
+              "Five martyrs together"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-17": [
           {
-            "id": "saint_02_17",
-            "name": "Saint of February 17",
+            "id": "seven_servite_founders_transfer",
+            "name": "The Seven Servite Founders",
             "feastDay": "February 17",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Commemoration of the Seven Holy Founders of the Servite Order.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "This date commemorates the Seven Holy Founders of the Servite Order who were originally venerated on this date before the feast was moved.",
+              "These seven Florentine merchants abandoned their worldly pursuits in 1233 to form a religious community dedicated to Mary.",
+              "They lived as hermits on Monte Senario and later founded the Order of Servants of Mary (Servites)."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Servite habit",
+              "Seven founders",
+              "Monte Senario"
+            ],
+            "patronage": [
+              "Servite Order"
+            ],
             "image": ""
           }
         ],
         "02-18": [
           {
-            "id": "saint_02_18",
-            "name": "Saint of February 18",
+            "id": "saint_simeon_jerusalem",
+            "name": "Saint Simeon of Jerusalem",
             "feastDay": "February 18",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Jerusalem, cousin of Jesus, martyr.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Simeon was the son of Clopas (brother of Saint Joseph) and Mary, making him a cousin of Jesus.",
+              "He became the second Bishop of Jerusalem after Saint James the Less around 62 AD and led the Jerusalem church for many years.",
+              "He was martyred during the persecution of Emperor Trajan around 107 AD at the age of 120, being crucified like his divine cousin."
             ],
-            "attributes": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Cross",
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-19": [
           {
-            "id": "saint_02_19",
-            "name": "Saint of February 19",
+            "id": "seven_servite_founders_commemoration",
+            "name": "Seven Holy Founders of the Servite Order",
             "feastDay": "February 19",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Commemoration of the founders of the Servites.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "The Seven Holy Founders (Bonfilius, Alexis, Manettus, Amideus, Hugh, Sosteneus, and Buonagiunta) were wealthy Florentine merchants.",
+              "On the feast of the Assumption in 1233, they experienced a vision of the Blessed Virgin Mary calling them to a life of penance.",
+              "They withdrew to Monte Senario and founded the Order of Servants of Mary, dedicated to contemplating Mary's sorrows and serving the poor."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Servite habit",
+              "Seven founders together",
+              "Our Lady of Sorrows"
+            ],
+            "patronage": [
+              "Servite Order"
+            ],
             "image": ""
           }
         ],
         "02-20": [
           {
-            "id": "saint_02_20",
-            "name": "Saint of February 20",
+            "id": "saint_eucherius_orleans",
+            "name": "Saint Eucherius of Orleans",
             "feastDay": "February 20",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Orleans, monk.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Eucherius was born into a noble Frankish family around 687. Despite family pressure, he became a monk at Jumièges Abbey.",
+              "He was appointed Bishop of Orleans around 721 but continued to live a monastic life of prayer and poverty.",
+              "He was briefly exiled by Charles Martel for opposing his secularization of Church property but was later restored. He died around 743."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Book",
+              "Crosier"
+            ],
+            "patronage": [
+              "Orleans"
+            ],
             "image": ""
           }
         ],
         "02-21": [
           {
-            "id": "saint_02_21",
-            "name": "Saint of February 21",
+            "id": "saint_severian",
+            "name": "Saint Severian",
             "feastDay": "February 21",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop and martyr in Armenia.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Severian was Bishop of Sebaste in Armenia during the early 4th century.",
+              "He worked to spread Christianity in Armenia and strengthen the faith of converts during a time of persecution.",
+              "He was martyred around 320 AD during the persecution under Emperor Licinius, along with forty other Christians."
             ],
-            "attributes": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-22": [
           {
-            "id": "saint_02_22",
-            "name": "Saint of February 22",
+            "id": "chair_peter",
+            "name": "Chair of Saint Peter",
             "feastDay": "February 22",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Feast celebrating the authority of Saint Peter and his successors.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "This ancient feast celebrates the teaching authority (magisterium) given by Christ to Saint Peter and his successors, the popes.",
+              "The 'chair' symbolizes the office of bishop and teacher. Peter's chair represents the unique authority Christ gave him as rock of the Church.",
+              "This feast was celebrated in Rome since at least the 4th century, honoring both Peter's Roman episcopate and his universal pastoral role."
             ],
-            "attributes": [],
+            "attributes": [
+              "Chair/throne",
+              "Keys of the Kingdom",
+              "Papal insignia"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-23": [
           {
-            "id": "saint_02_23",
-            "name": "Saint of February 23",
+            "id": "saint_peter_damian",
+            "name": "Saint Peter Damian",
             "feastDay": "February 23",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop, Doctor of the Church, reformer.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Peter Damian was born in Ravenna, Italy, in 1007. Orphaned young and initially mistreated by his brother, he was later educated by another brother.",
+              "He became a Benedictine hermit at Fonte Avellana and was renowned for his learning and holiness. He was made Cardinal-Bishop of Ostia in 1057.",
+              "He worked tirelessly for Church reform, combating simony and clerical immorality. He was also a great spiritual writer. He died in 1072."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Cardinal's robes",
+              "Discipline/scourge",
+              "Book",
+              "Crucifix"
+            ],
+            "patronage": [
+              "Against headaches",
+              "Fever"
+            ],
             "image": ""
           }
         ],
         "02-24": [
           {
-            "id": "saint_02_24",
-            "name": "Saint of February 24",
+            "id": "saint_matthias",
+            "name": "Saint Matthias the Apostle",
             "feastDay": "February 24",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Apostle chosen to replace Judas Iscariot.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Matthias was one of the seventy-two disciples of Jesus and a faithful follower from the beginning of His ministry.",
+              "After Judas's betrayal and death, the eleven remaining apostles cast lots to choose his replacement, and Matthias was selected (Acts 1:15-26).",
+              "According to tradition, he preached in Judea and was martyred either by stoning and beheading or by crucifixion."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Axe or halberd",
+              "Stones",
+              "Book",
+              "Cross"
+            ],
+            "patronage": [
+              "Alcoholics",
+              "Against smallpox",
+              "Carpenters",
+              "Tailors"
+            ],
             "image": ""
           }
         ],
         "02-25": [
           {
-            "id": "saint_02_25",
-            "name": "Saint of February 25",
+            "id": "saint_tarasius",
+            "name": "Saint Tarasius",
             "feastDay": "February 25",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Patriarch of Constantinople, defender of sacred images.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Tarasius was a high-ranking civil servant in Constantinople when he was chosen to become Patriarch in 784, despite being a layman.",
+              "He was quickly ordained and became Patriarch, presiding over the Second Council of Nicaea (787) which condemned iconoclasm and affirmed the veneration of sacred images.",
+              "He faced opposition from iconoclasts but remained firm in defense of orthodox teaching. He died in 806."
             ],
-            "attributes": [],
+            "attributes": [
+              "Patriarch's vestments",
+              "Icon",
+              "Book"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-26": [
           {
-            "id": "saint_02_26",
-            "name": "Saint of February 26",
+            "id": "saint_alexander_patriarch",
+            "name": "Saint Alexander of Alexandria",
             "feastDay": "February 26",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Patriarch of Alexandria, opponent of Arianism.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Alexander became Patriarch of Alexandria around 313 and played a crucial role in the early Church's fight against Arianism.",
+              "He excommunicated Arius for denying the divinity of Christ and worked to unite the Church against this heresy.",
+              "He attended the Council of Nicaea (325) which condemned Arianism. His deacon and successor was Saint Athanasius. He died in 328."
             ],
-            "attributes": [],
+            "attributes": [
+              "Patriarch's vestments",
+              "Book",
+              "Against Arianism"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "02-27": [
           {
-            "id": "saint_02_27",
-            "name": "Saint of February 27",
+            "id": "saint_gabriel_possenti",
+            "name": "Saint Gabriel of Our Lady of Sorrows",
             "feastDay": "February 27",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Passionist religious, patron of youth.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Gabriel was born Francesco Possenti in Assisi in 1838. As a young man, he was worldly and vain but experienced a conversion.",
+              "He joined the Passionist Congregation in 1856, taking the name Gabriel of Our Lady of Sorrows.",
+              "Despite suffering from tuberculosis, he lived his religious life with great joy and devotion to Mary. He died in 1862 at age 24 and was canonized in 1920."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Passionist habit",
+              "Crucifix",
+              "Image of Mary",
+              "Lily"
+            ],
+            "patronage": [
+              "Youth",
+              "Students",
+              "Seminarians"
+            ],
             "image": ""
           }
         ],
         "02-28": [
           {
-            "id": "saint_02_28",
-            "name": "Saint of February 28",
+            "id": "saint_romanus_condat",
+            "name": "Saint Romanus of Condat",
             "feastDay": "February 28",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of monasteries in the Jura Mountains.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Romanus was born in Burgundy around 390. Seeking solitude, he became a hermit in the Jura Mountains.",
+              "He was later joined by his brother Lupicinus and others, and together they founded the monasteries of Condat and Leuconne.",
+              "These monasteries followed a strict rule and became important centers of monasticism in Gaul. Romanus died around 460."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Monastic habit",
+              "Hermit's cave",
+              "Book"
+            ],
+            "patronage": [
+              "Against drowning",
+              "Against insanity"
+            ],
             "image": ""
           }
         ],
         "02-29": [
           {
-            "id": "saint_02_29",
-            "name": "Saint of February 29",
+            "id": "saint_augustus",
+            "name": "Saint Augustus Chapdelaine",
             "feastDay": "February 29",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "French missionary and martyr in China.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Augustus Chapdelaine was born in France in 1814 and became a priest of the Paris Foreign Missions Society.",
+              "He volunteered for the missions in China and worked there evangelizing despite the dangers of persecution.",
+              "In 1856, he was arrested, tortured, and martyred during an anti-Christian persecution. He was canonized in 2000 as one of the Martyrs of China."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Priest's vestments",
+              "Chains",
+              "Palm of martyrdom"
+            ],
+            "patronage": [
+              "China missions"
+            ],
             "image": ""
           }
         ],
         "03-01": [
           {
-            "id": "saint_03_01",
-            "name": "Saint of March 01",
+            "id": "saint_albinus_angers",
+            "name": "Saint Albinus of Angers",
             "feastDay": "March 01",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Angers, monastic founder.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Albinus (also known as Aubin) was born around 469 in Brittany, France.",
+              "He became a monk and later abbot of Tincillacum monastery, where he was known for his holiness and learning.",
+              "He was chosen as Bishop of Angers around 529 and served with great pastoral care until his death around 554."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Crosier",
+              "Book"
+            ],
+            "patronage": [
+              "Against pirate attacks",
+              "Against epilepsy"
+            ],
             "image": ""
           }
         ],
         "03-02": [
           {
-            "id": "saint_03_02",
-            "name": "Saint of March 02",
+            "id": "saint_chad",
+            "name": "Saint Chad (Ceadda)",
             "feastDay": "March 02",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Lichfield, missionary to Anglo-Saxons.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Chad was one of four saintly brothers from Northumbria, educated at Lindisfarne under Saint Aidan.",
+              "He became abbot of Lastingham and later Bishop of York, though he humbly accepted being replaced by Saint Wilfrid.",
+              "He was then made Bishop of Lichfield in 669 by Saint Theodore of Canterbury and evangelized Mercia until his death in 672."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Crosier",
+              "Church"
+            ],
+            "patronage": [
+              "Lichfield"
+            ],
             "image": ""
           }
         ],
         "03-03": [
           {
-            "id": "saint_03_03",
-            "name": "Saint of March 03",
+            "id": "saints_marinus_asterius",
+            "name": "Saints Marinus and Asterius",
             "feastDay": "March 03",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman soldier martyrs.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Marinus was a Roman soldier in Caesarea, Palestine, around 260 AD who was denounced as a Christian.",
+              "When offered the choice between his military position and his faith, he chose Christ and was beheaded.",
+              "Asterius, a Roman senator, claimed Marinus's body and buried it with honor, for which he was also martyred."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Soldier's armor",
+              "Palm of martyrdom",
+              "Sword"
+            ],
+            "patronage": [
+              "Soldiers"
+            ],
             "image": ""
           }
         ],
         "03-04": [
           {
-            "id": "saint_03_04",
-            "name": "Saint of March 04",
+            "id": "saint_casimir",
+            "name": "Saint Casimir",
             "feastDay": "March 04",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Polish prince, patron of Poland and Lithuania.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Casimir was born in 1458, son of King Casimir IV of Poland. From youth, he was devoted to prayer and penance.",
+              "Despite pressure to marry, he remained celibate, dedicating his life to God and works of charity.",
+              "He died of tuberculosis in 1484 at age 25. He is patron saint of Poland and Lithuania."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Crown",
+              "Lily",
+              "Crucifix",
+              "Royal robes"
+            ],
+            "patronage": [
+              "Poland",
+              "Lithuania",
+              "Youth",
+              "Against plague"
+            ],
             "image": ""
           }
         ],
         "03-05": [
           {
-            "id": "saint_03_05",
-            "name": "Saint of March 05",
+            "id": "saint_john_joseph_cross",
+            "name": "Saint John Joseph of the Cross",
             "feastDay": "March 05",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Italian Franciscan priest and mystic.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John Joseph was born on the island of Ischia, Italy, in 1654. He joined the Franciscan Alcantarines at age 16.",
+              "He lived a life of extreme penance and contemplation, experiencing mystical gifts including levitation and visions.",
+              "He served as superior of various convents and was known for his wisdom and holiness. He died in Naples in 1734."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Franciscan habit",
+              "Crucifix",
+              "Book"
+            ],
+            "patronage": [
+              "Ischia"
+            ],
             "image": ""
           }
         ],
         "03-06": [
           {
-            "id": "saint_03_06",
-            "name": "Saint of March 06",
+            "id": "saints_perpetua_felicity",
+            "name": "Saints Perpetua and Felicity",
             "feastDay": "March 06",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Martyrs of Carthage, patron saints of mothers and expectant parents.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Perpetua was a 22-year-old noblewoman and Felicity was her slave, both nursing mothers arrested in Carthage around 203 AD.",
+              "Despite family pressure, they refused to renounce their faith. Perpetua's diary, written in prison, is one of the earliest Christian writings by a woman.",
+              "They were thrown to wild beasts in the arena and then killed by sword. Their martyrdom is recounted in the famous 'Passion of Saints Perpetua and Felicity.'"
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Wild beasts",
+              "Palm of martyrdom",
+              "Infants"
+            ],
+            "patronage": [
+              "Mothers",
+              "Expectant mothers",
+              "Cattle",
+              "Against fever"
+            ],
             "image": ""
           }
         ],
         "03-07": [
           {
-            "id": "saint_03_07",
-            "name": "Saint of March 07",
+            "id": "saint_thomas_aquinas",
+            "name": "Saint Thomas Aquinas",
             "feastDay": "March 07",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican priest, Doctor of the Church, the 'Angelic Doctor.'",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Thomas was born near Aquino, Italy, around 1225. Despite family opposition, he joined the Dominicans at age 19.",
+              "He became the greatest theologian of the Middle Ages, writing the monumental 'Summa Theologica' and numerous other works that synthesized Christian theology with Aristotelian philosophy.",
+              "He taught at Paris and other universities. He died in 1274 on his way to the Council of Lyon and was declared a Doctor of the Church in 1567."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Sun on chest",
+              "Book",
+              "Pen",
+              "Church"
+            ],
+            "patronage": [
+              "Students",
+              "Schools",
+              "Theologians",
+              "Academics",
+              "Against storms"
+            ],
             "image": ""
           }
         ],
         "03-08": [
           {
-            "id": "saint_03_08",
-            "name": "Saint of March 08",
+            "id": "saint_john_god",
+            "name": "Saint John of God",
             "feastDay": "March 08",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of the Hospitaller Order, patron of hospitals and the sick.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John was born in Portugal in 1495. After a dissolute youth as a soldier and shepherd, he experienced a dramatic conversion around age 40.",
+              "He dedicated himself to caring for the sick and poor in Granada, Spain, founding a hospital and the Brothers Hospitallers.",
+              "His revolutionary approach to treating the mentally ill with compassion rather than chains transformed hospital care. He died in 1550."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Crown of thorns",
+              "Pomegranate",
+              "Heart",
+              "Sick people"
+            ],
+            "patronage": [
+              "Hospitals",
+              "Nurses",
+              "Sick people",
+              "Heart patients",
+              "Booksellers"
+            ],
             "image": ""
           }
         ],
         "03-09": [
           {
-            "id": "saint_03_09",
-            "name": "Saint of March 09",
+            "id": "saint_frances_rome",
+            "name": "Saint Frances of Rome",
             "feastDay": "March 09",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Wife, mother, mystic, and founder of the Oblates of Mary.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Frances was born in Rome in 1384 to a noble family. At age 12, she was married to Lorenzo Ponziani, a wealthy nobleman.",
+              "She balanced family duties with intense prayer and service to the poor. After raising her children, she founded the Oblates of Mary.",
+              "She experienced mystical visions and was often accompanied by her guardian angel, whom she could see. She died in 1440."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Oblate's habit",
+              "Guardian angel",
+              "Basket of bread",
+              "Book"
+            ],
+            "patronage": [
+              "Motorists",
+              "Widows",
+              "Oblates",
+              "Against plague"
+            ],
             "image": ""
           }
         ],
         "03-10": [
           {
-            "id": "saint_03_10",
-            "name": "Saint of March 10",
+            "id": "forty_martyrs_sebaste",
+            "name": "Forty Martyrs of Sebaste",
             "feastDay": "March 10",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman soldiers martyred in Armenia.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "These forty Roman soldiers of the Thundering Legion were stationed in Sebaste, Armenia, around 320 AD.",
+              "When they refused to offer sacrifice to pagan gods, they were sentenced to stand naked on a frozen pond overnight.",
+              "To tempt them, warm baths were prepared nearby. All but one persevered; when one soldier weakened and left, a guard was converted and took his place, keeping the number at forty."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Forty soldiers",
+              "Frozen pond",
+              "Palm of martyrdom"
+            ],
+            "patronage": [
+              "Against frostbite",
+              "Soldiers"
+            ],
             "image": ""
           }
         ],
         "03-11": [
           {
-            "id": "saint_03_11",
-            "name": "Saint of March 11",
+            "id": "saint_constantine",
+            "name": "Saint Constantine",
             "feastDay": "March 11",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "King of Cornwall, monk and martyr.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Constantine was a 6th-century king in Cornwall who, after the death of his wife, abdicated and became a monk.",
+              "He studied in Ireland under Saint Columba and then returned to evangelize Scotland.",
+              "According to tradition, he was martyred by pirates while preaching in Scotland around 576."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Crown",
+              "Monastic habit",
+              "Sword",
+              "Palm of martyrdom"
+            ],
+            "patronage": [
+              "Cornwall"
+            ],
             "image": ""
           }
         ],
         "03-12": [
           {
-            "id": "saint_03_12",
-            "name": "Saint of March 12",
+            "id": "saint_gregory_great",
+            "name": "Saint Gregory the Great",
             "feastDay": "March 12",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Pope, Doctor of the Church, reformer of liturgy.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Gregory was born in Rome around 540 to a noble family. He served as Prefect of Rome but left to become a Benedictine monk.",
+              "Elected Pope in 590, he reformed Church administration, liturgy (Gregorian chant), and sent Saint Augustine to evangelize England.",
+              "He wrote extensively including the 'Pastoral Rule,' 'Dialogues,' and commentaries on Scripture. He died in 604."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Papal vestments",
+              "Dove (Holy Spirit)",
+              "Book",
+              "Tiara"
+            ],
+            "patronage": [
+              "Musicians",
+              "Singers",
+              "Students",
+              "Teachers",
+              "Against plague"
+            ],
             "image": ""
           }
         ],
         "03-13": [
           {
-            "id": "saint_03_13",
-            "name": "Saint of March 13",
+            "id": "saint_euphrasia",
+            "name": "Saint Euphrasia",
             "feastDay": "March 13",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Virgin and nun in Egypt.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Euphrasia was born around 380 to a noble family related to Emperor Theodosius. After her father's death, she and her mother went to Egypt.",
+              "At age seven, she entered a convent and embraced a life of extreme asceticism and obedience.",
+              "She performed the most menial tasks with joy and lived in constant prayer. She died around 410 at age 30."
             ],
-            "attributes": [],
+            "attributes": [
+              "Nun's habit",
+              "Lily",
+              "Book"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "03-14": [
           {
-            "id": "saint_03_14",
-            "name": "Saint of March 14",
+            "id": "saint_mathilde",
+            "name": "Saint Matilda",
             "feastDay": "March 14",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Queen of Germany, known for charity and founding monasteries.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Matilda was born around 895 and married Henry the Fowler, who became King of Germany in 919.",
+              "She was known for her piety, charity to the poor, and for founding numerous churches and monasteries.",
+              "After Henry's death, she faced persecution from her sons but bore it with patience. She died around 968."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Crown",
+              "Church",
+              "Bag of coins for the poor"
+            ],
+            "patronage": [
+              "Large families",
+              "Disappointed children"
+            ],
             "image": ""
           }
         ],
         "03-15": [
           {
-            "id": "saint_03_15",
-            "name": "Saint of March 15",
+            "id": "saint_clement_hofbauer",
+            "name": "Saint Clement Mary Hofbauer",
             "feastDay": "March 15",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Redemptorist priest, apostle of Vienna.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Clement was born in Moravia in 1751. After working as a baker and hermit, he was ordained a priest and joined the Redemptorists.",
+              "He established the Redemptorist order north of the Alps, founding communities in Poland and working among the poor.",
+              "Expelled from Poland, he worked in Vienna, becoming a renowned preacher and confessor. He died in 1820."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Redemptorist habit",
+              "Crucifix",
+              "Book"
+            ],
+            "patronage": [
+              "Vienna",
+              "Poland"
+            ],
             "image": ""
           }
         ],
         "03-16": [
           {
-            "id": "saint_03_16",
-            "name": "Saint of March 16",
+            "id": "saints_hilary_tatian",
+            "name": "Saints Hilary and Tatian",
             "feastDay": "March 16",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Martyrs in the early Church.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Hilary and Tatian were early Christian martyrs, though historical details about them are limited.",
+              "They gave their lives for the faith during one of the early persecutions of the Church.",
+              "They are commemorated in the traditional Roman Martyrology for their witness to Christ."
             ],
-            "attributes": [],
+            "attributes": [
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
@@ -1479,17 +1790,23 @@
         ],
         "03-18": [
           {
-            "id": "saint_03_18",
-            "name": "Saint of March 18",
+            "id": "saint_cyril_jerusalem",
+            "name": "Saint Cyril of Jerusalem",
             "feastDay": "March 18",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop, Doctor of the Church, catechist.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Cyril was born in Jerusalem around 315 and became Bishop of Jerusalem around 350.",
+              "He is best known for his 'Catechetical Lectures,' a series of instructions for those preparing for baptism, which are masterpieces of early Christian teaching.",
+              "He suffered three exiles for defending orthodox Christianity against Arianism. He attended the Council of Constantinople in 381 and died around 386."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Book",
+              "Church of the Holy Sepulchre"
+            ],
+            "patronage": [
+              "Catechists"
+            ],
             "image": ""
           }
         ],
@@ -1522,544 +1839,758 @@
         ],
         "03-20": [
           {
-            "id": "saint_03_20",
-            "name": "Saint of March 20",
+            "id": "saint_wulfram",
+            "name": "Saint Wulfram",
             "feastDay": "March 20",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Archbishop, missionary to the Frisians.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Wulfram was a Benedictine monk who became Archbishop of Sens, France, around 682.",
+              "He resigned his see to become a missionary to the Frisians (in what is now the Netherlands).",
+              "He preached against paganism and worked many miracles. He died around 720."
             ],
-            "attributes": [],
+            "attributes": [
+              "Archbishop's vestments",
+              "Crosier",
+              "Font"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "03-21": [
           {
-            "id": "saint_03_21",
-            "name": "Saint of March 21",
+            "id": "saint_benedict",
+            "name": "Saint Benedict of Nursia",
             "feastDay": "March 21",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Abbot, founder of Western monasticism, patron of Europe.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Benedict was born in Nursia, Italy, around 480. Disgusted by the immorality of Rome, he became a hermit in a cave at Subiaco.",
+              "Disciples gathered around him, and he founded twelve monasteries. He later established the great monastery of Monte Cassino around 529.",
+              "He wrote the Rule of Saint Benedict, which became the foundation of Western monasticism, emphasizing prayer, work, and community life. He died around 547."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Benedictine habit",
+              "Broken cup (poison)",
+              "Raven",
+              "Crosier",
+              "Book of his Rule"
+            ],
+            "patronage": [
+              "Europe",
+              "Monks",
+              "Engineers",
+              "Against poison",
+              "Dying people"
+            ],
             "image": ""
           }
         ],
         "03-22": [
           {
-            "id": "saint_03_22",
-            "name": "Saint of March 22",
+            "id": "saint_lea",
+            "name": "Saint Lea",
             "feastDay": "March 22",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman widow and religious.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Lea was a Roman widow of noble birth who lived in the 4th century.",
+              "After her husband's death, she joined a community of consecrated virgins and widows in Rome.",
+              "Saint Jerome, who knew her, praised her humility and devotion. She died around 384."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Widow's veil",
+              "Book"
+            ],
+            "patronage": [
+              "Widows"
+            ],
             "image": ""
           }
         ],
         "03-23": [
           {
-            "id": "saint_03_23",
-            "name": "Saint of March 23",
+            "id": "saint_turibius_mogrovejo",
+            "name": "Saint Turibius of Mogrovejo",
             "feastDay": "March 23",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Archbishop of Lima, reformer of the Church in South America.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Turibius was born in Spain in 1538. Though a layman and law professor, he was chosen to be Archbishop of Lima, Peru.",
+              "He was ordained and went to Peru, where he worked tirelessly to reform abuses, defend the rights of indigenous peoples, and evangelize.",
+              "He traveled extensively throughout his vast archdiocese, confirming over half a million people. He died in 1606."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Archbishop's vestments",
+              "Indigenous people",
+              "Cross"
+            ],
+            "patronage": [
+              "Latin American bishops",
+              "Native rights"
+            ],
             "image": ""
           }
         ],
         "03-24": [
           {
-            "id": "saint_03_24",
-            "name": "Saint of March 24",
+            "id": "saint_gabriel_archangel",
+            "name": "Saint Gabriel the Archangel",
             "feastDay": "March 24",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Archangel, messenger of God.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Gabriel is one of the three archangels mentioned by name in Scripture (with Michael and Raphael).",
+              "He announced the birth of John the Baptist to Zechariah and, most importantly, the Incarnation to the Virgin Mary (the Annunciation).",
+              "His name means 'God is my strength.' He is the patron of messengers and communication workers."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Wings",
+              "Lily",
+              "Scroll or trumpet",
+              "Announcing to Mary"
+            ],
+            "patronage": [
+              "Messengers",
+              "Postal workers",
+              "Telecommunications",
+              "Diplomats"
+            ],
             "image": ""
           }
         ],
         "03-25": [
           {
-            "id": "saint_03_25",
-            "name": "Saint of March 25",
+            "id": "annunciation",
+            "name": "Annunciation of the Blessed Virgin Mary",
             "feastDay": "March 25",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "The angel Gabriel announces to Mary that she will bear the Son of God.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "The Annunciation marks the moment when the Archangel Gabriel appeared to the Virgin Mary in Nazareth and announced that she would conceive and bear Jesus, the Son of God.",
+              "Mary's 'yes' to God's plan—her 'fiat'—made possible the Incarnation of the Word.",
+              "This feast is celebrated exactly nine months before Christmas and is one of the most important feasts in the Church."
             ],
-            "attributes": [],
+            "attributes": [
+              "Angel Gabriel",
+              "Mary",
+              "Lily",
+              "Book",
+              "Dove"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "03-26": [
           {
-            "id": "saint_03_26",
-            "name": "Saint of March 26",
+            "id": "saint_ludger",
+            "name": "Saint Ludger",
             "feastDay": "March 26",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop, missionary to Saxons and Frisians.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Ludger was born in Frisia (Netherlands) around 744 and was educated at Utrecht under Saint Gregory.",
+              "He was ordained and worked as a missionary in Frisia and Saxony, rebuilding churches destroyed by pagans.",
+              "Charlemagne appointed him first Bishop of Münster in 804. He continued missionary work until his death in 809."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Church",
+              "Crosier"
+            ],
+            "patronage": [
+              "Münster"
+            ],
             "image": ""
           }
         ],
         "03-27": [
           {
-            "id": "saint_03_27",
-            "name": "Saint of March 27",
+            "id": "saint_john_damascene",
+            "name": "Saint John Damascene (John of Damascus)",
             "feastDay": "March 27",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Priest, Doctor of the Church, defender of sacred images.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John was born in Damascus around 676 into a Christian family serving the Muslim caliph.",
+              "He became a monk at Mar Saba monastery near Jerusalem and wrote extensively in defense of Christianity, especially against iconoclasm.",
+              "His works include 'The Fount of Knowledge' and beautiful hymns still used in Eastern liturgy. He died around 749."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Monastic habit",
+              "Icon",
+              "Book",
+              "Pen"
+            ],
+            "patronage": [
+              "Pharmacists",
+              "Icon painters"
+            ],
             "image": ""
           }
         ],
         "03-28": [
           {
-            "id": "saint_03_28",
-            "name": "Saint of March 28",
+            "id": "saint_john_capistran",
+            "name": "Saint John of Capistrano",
             "feastDay": "March 28",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Franciscan priest, preacher, defender of Europe.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John was born in Capistrano, Italy, in 1386. He studied law and was a governor but became a Franciscan at age 30 after imprisonment.",
+              "He became a great preacher, traveling throughout Europe. At age 70, he led a crusade that helped defeat the Ottoman Turks at Belgrade in 1456.",
+              "He died shortly after this victory and was canonized in 1690."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Franciscan habit",
+              "Banner with IHS",
+              "Trumpet",
+              "Book"
+            ],
+            "patronage": [
+              "Military chaplains",
+              "Jurists"
+            ],
             "image": ""
           }
         ],
         "03-29": [
           {
-            "id": "saint_03_29",
-            "name": "Saint of March 29",
+            "id": "saints_jonas_barachisius",
+            "name": "Saints Jonas and Barachisius",
             "feastDay": "March 29",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Persian martyrs.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Jonas and Barachisius were brothers who lived in Persia during the persecution of King Shapur II in the 4th century.",
+              "They were arrested for visiting and encouraging Christians in prison.",
+              "They were subjected to horrific tortures but refused to renounce their faith, dying as martyrs around 327 AD."
             ],
-            "attributes": [],
+            "attributes": [
+              "Palm of martyrdom",
+              "Persian dress"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "03-30": [
           {
-            "id": "saint_03_30",
-            "name": "Saint of March 30",
+            "id": "saint_john_climacus",
+            "name": "Saint John Climacus",
             "feastDay": "March 30",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Monk and abbot, author of 'The Ladder of Divine Ascent.'",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "John was born around 579 and became a monk at Saint Catherine's Monastery on Mount Sinai at age 16.",
+              "He lived as a hermit for 40 years before being made abbot. He wrote 'The Ladder of Divine Ascent,' a spiritual classic describing 30 steps to holiness.",
+              "The work has been immensely influential in Eastern monasticism. He died around 649."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Monastic habit",
+              "Ladder",
+              "Book"
+            ],
+            "patronage": [
+              "Spiritual progress"
+            ],
             "image": ""
           }
         ],
         "03-31": [
           {
-            "id": "saint_03_31",
-            "name": "Saint of March 31",
+            "id": "saint_benjamin_deacon",
+            "name": "Saint Benjamin",
             "feastDay": "March 31",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Deacon and martyr in Persia.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Benjamin was a deacon in Persia during the persecution of King Yazdegerd I in the early 5th century.",
+              "After a period of peace, he was arrested for refusing to stop preaching about Christ.",
+              "He was subjected to terrible tortures including sharp reeds driven under his nails, but remained faithful and died as a martyr around 424 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Deacon's vestments",
+              "Palm of martyrdom",
+              "Reeds"
+            ],
+            "patronage": [
+              "Against torture"
+            ],
             "image": ""
           }
         ],
         "04-01": [
           {
-            "id": "saint_04_01",
-            "name": "Saint of April 01",
+            "id": "saint_hugh_grenoble",
+            "name": "Saint Hugh of Grenoble",
             "feastDay": "April 01",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Grenoble, supporter of Saint Bruno and the Carthusians.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Hugh was born in Dauphiné, France, around 1053 into a noble family. He studied under Saint Hugh of Die.",
+              "Despite his youth and reluctance, he was made Bishop of Grenoble at age 27 and worked tirelessly to reform his diocese.",
+              "He gave Saint Bruno land to found the Grande Chartreuse monastery. He served as bishop for 52 years, dying in 1132."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Crosier",
+              "Carthusian monastery"
+            ],
+            "patronage": [
+              "Grenoble"
+            ],
             "image": ""
           }
         ],
         "04-02": [
           {
-            "id": "saint_04_02",
-            "name": "Saint of April 02",
+            "id": "saint_francis_paula",
+            "name": "Saint Francis of Paola",
             "feastDay": "April 02",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of the Order of Minims, wonderworker.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Francis was born in Paola, Calabria, in 1416 to parents who had prayed to Saint Francis for a child.",
+              "At age 14, he became a hermit living in a cave. Disciples joined him and he founded the Order of Minims ('the least'), known for humility and perpetual Lent.",
+              "He performed many miracles and was called to France by King Louis XI. He died in France in 1507, aged 91."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Minim habit",
+              "Staff",
+              "CHARITAS",
+              "Walking on water"
+            ],
+            "patronage": [
+              "Mariners",
+              "Naval officers",
+              "Against sterility"
+            ],
             "image": ""
           }
         ],
         "04-03": [
           {
-            "id": "saint_04_03",
-            "name": "Saint of April 03",
+            "id": "saint_richard_chichester",
+            "name": "Saint Richard of Chichester",
             "feastDay": "April 03",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Chichester, known for poverty and charity.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Richard de Wych was born in Worcestershire around 1197. He studied at Oxford, Paris, and Bologna.",
+              "He became Chancellor of Oxford and later of Canterbury under Saint Edmund of Abingdon.",
+              "Elected Bishop of Chichester in 1245, he lived in great simplicity and defended Church rights. He died in 1253."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Chalice",
+              "Crosier"
+            ],
+            "patronage": [
+              "Chichester",
+              "Against temptations"
+            ],
             "image": ""
           }
         ],
         "04-04": [
           {
-            "id": "saint_04_04",
-            "name": "Saint of April 04",
+            "id": "saint_isidore_seville",
+            "name": "Saint Isidore of Seville",
             "feastDay": "April 04",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Archbishop, Doctor of the Church, last of the Latin Fathers.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Isidore was born around 560 in Cartagena, Spain, to a family that produced four saints.",
+              "He succeeded his brother Saint Leander as Archbishop of Seville and worked to convert the Visigoths from Arianism.",
+              "He wrote the 'Etymologies,' an encyclopedia that preserved classical knowledge for the Middle Ages. He died in 636."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Book",
+              "Pen",
+              "Bees (for eloquence)"
+            ],
+            "patronage": [
+              "Internet",
+              "Computer users",
+              "Computer technicians",
+              "Students"
+            ],
             "image": ""
           }
         ],
         "04-05": [
           {
-            "id": "saint_04_05",
-            "name": "Saint of April 05",
+            "id": "saint_vincent_ferrer",
+            "name": "Saint Vincent Ferrer",
             "feastDay": "April 05",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican priest, great preacher of penance.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Vincent was born in Valencia, Spain, in 1350. He joined the Dominicans and became a renowned preacher.",
+              "He traveled throughout Europe preaching penance and announcing the Last Judgment, reportedly working countless miracles.",
+              "He helped end the Western Schism and converted thousands, including many Jews and Muslims. He died in Brittany in 1419."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Wings",
+              "Trumpet",
+              "Fire from head"
+            ],
+            "patronage": [
+              "Builders",
+              "Construction workers",
+              "Plumbers"
+            ],
             "image": ""
           }
         ],
         "04-06": [
           {
-            "id": "saint_04_06",
-            "name": "Saint of April 06",
+            "id": "saint_william_eskill",
+            "name": "Saint William of Eskill",
             "feastDay": "April 06",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Abbot and reformer in Denmark.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "William was born in France and became a Cistercian monk and later abbot of Eskill in Denmark.",
+              "He worked to reform Danish monastic life according to strict Cistercian observance.",
+              "He died around 1203 and was greatly venerated in Scandinavia."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Cistercian habit",
+              "Crosier",
+              "Book"
+            ],
+            "patronage": [
+              "Denmark"
+            ],
             "image": ""
           }
         ],
         "04-07": [
           {
-            "id": "saint_04_07",
-            "name": "Saint of April 07",
+            "id": "saint_herman_joseph",
+            "name": "Saint Herman Joseph",
             "feastDay": "April 07",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Premonstratensian priest, mystic devoted to Mary.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Herman was born in Cologne around 1150. From youth, he had great devotion to the Blessed Virgin Mary.",
+              "He joined the Premonstratensians and experienced mystical visions of Mary and the Christ Child.",
+              "He lived a life of prayer and simplicity, dying around 1241-1252."
             ],
-            "attributes": [],
+            "attributes": [
+              "Premonstratensian habit",
+              "Lily",
+              "Mary and Child"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-08": [
           {
-            "id": "saint_04_08",
-            "name": "Saint of April 08",
+            "id": "saint_dionysius_corinth",
+            "name": "Saint Dionysius of Corinth",
             "feastDay": "April 08",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Corinth in the 2nd century.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Dionysius was Bishop of Corinth in Greece during the late 2nd century.",
+              "He wrote many letters to various churches addressing doctrinal and disciplinary issues.",
+              "His writings were highly regarded in the early Church though most are now lost."
             ],
-            "attributes": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Book",
+              "Pen"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-09": [
           {
-            "id": "saint_04_09",
-            "name": "Saint of April 09",
+            "id": "saint_mary_cleophas",
+            "name": "Saint Mary of Cleophas",
             "feastDay": "April 09",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "One of the holy women at the Cross and tomb of Jesus.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Mary of Cleophas was one of the women who stood by Jesus at His crucifixion.",
+              "She was present at Christ's tomb on Easter morning and was among the first to learn of His resurrection.",
+              "Tradition identifies her as the mother of the Apostles James the Less and Jude."
             ],
-            "attributes": [],
+            "attributes": [
+              "Jar of ointments",
+              "Cross"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-10": [
           {
-            "id": "saint_04_10",
-            "name": "Saint of April 10",
+            "id": "saint_michael_sanctis",
+            "name": "Saint Michael de Sanctis",
             "feastDay": "April 10",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Trinitarian priest, mystic.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Michael Argemir was born in Catalonia, Spain, in 1591. He joined the Trinitarians at a young age.",
+              "He experienced mystical ecstasies, especially during Mass, and was known for his deep prayer life.",
+              "He died at age 35 in 1625 in Valladolid."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Trinitarian habit",
+              "Crucifix",
+              "Chalice"
+            ],
+            "patronage": [
+              "Against fever"
+            ],
             "image": ""
           }
         ],
         "04-11": [
           {
-            "id": "saint_04_11",
-            "name": "Saint of April 11",
+            "id": "saint_leo_great",
+            "name": "Saint Leo the Great",
             "feastDay": "April 11",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Pope, Doctor of the Church, defender of orthodox Christology.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Leo became Pope in 440 and proved to be one of the greatest pontiffs in Church history.",
+              "At the Council of Chalcedon (451), his 'Tome' defined the two natures of Christ and was acclaimed as orthodox teaching.",
+              "He saved Rome from Attila the Hun through persuasion. He died in 461."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Papal vestments",
+              "Book (Tome)",
+              "Church"
+            ],
+            "patronage": [
+              "Musicians",
+              "Singers"
+            ],
             "image": ""
           }
         ],
         "04-12": [
           {
-            "id": "saint_04_12",
-            "name": "Saint of April 12",
+            "id": "saint_julius_pope",
+            "name": "Saint Julius I",
             "feastDay": "April 12",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Pope, defender of Saint Athanasius and Nicene faith.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Julius was elected Pope in 337 during the Arian controversy.",
+              "He staunchly defended Saint Athanasius and other bishops exiled by Arian emperors.",
+              "He worked to uphold the Nicene Creed and papal authority. He died in 352."
             ],
-            "attributes": [],
+            "attributes": [
+              "Papal vestments",
+              "Book"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-13": [
           {
-            "id": "saint_04_13",
-            "name": "Saint of April 13",
+            "id": "saint_hermenegild",
+            "name": "Saint Hermenegild",
             "feastDay": "April 13",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Visigothic prince, martyr for Catholic faith.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Hermenegild was the son of King Leovigild of Spain, who was an Arian.",
+              "Through the influence of his wife and Saint Leander, Hermenegild converted to Catholicism.",
+              "His father demanded he return to Arianism. When he refused, he was imprisoned and killed in 586."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Crown",
+              "Palm of martyrdom",
+              "Sword"
+            ],
+            "patronage": [
+              "Converts",
+              "Princes"
+            ],
             "image": ""
           }
         ],
         "04-14": [
           {
-            "id": "saint_04_14",
-            "name": "Saint of April 14",
+            "id": "saints_tiburtius_valerian_maximus",
+            "name": "Saints Tiburtius, Valerian, and Maximus",
             "feastDay": "April 14",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman martyrs, related to Saint Cecilia.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Valerian was the husband of Saint Cecilia who converted through her influence.",
+              "His brother Tiburtius also converted, and both buried martyred Christians.",
+              "They were arrested along with Maximus, an official who converted after witnessing their faith. All three were martyred around 230 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Palm of martyrdom",
+              "Spades"
+            ],
+            "patronage": [
+              "Torture victims"
+            ],
             "image": ""
           }
         ],
         "04-15": [
           {
-            "id": "saint_04_15",
-            "name": "Saint of April 15",
+            "id": "saint_paternus_avranches",
+            "name": "Saint Paternus of Avranches",
             "feastDay": "April 15",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Bishop of Avranches, hermit.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Paternus was born in Brittany around 482. He lived as a hermit before being made Bishop of Avranches.",
+              "He evangelized the region and established monasteries.",
+              "He resigned his see to return to solitude and died around 565."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Bishop's vestments",
+              "Hermit's cave"
+            ],
+            "patronage": [
+              "Against eye diseases"
+            ],
             "image": ""
           }
         ],
         "04-16": [
           {
-            "id": "saint_04_16",
-            "name": "Saint of April 16",
+            "id": "saint_benedict_joseph_labre",
+            "name": "Saint Benedict Joseph Labre",
             "feastDay": "April 16",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Beggar, pilgrim saint, patron of homeless.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Benedict Joseph was born in France in 1748. After being refused by several religious orders, he became a perpetual pilgrim.",
+              "He lived in complete poverty, making pilgrimages to major shrines across Europe.",
+              "He spent his last years in Rome, sleeping in the Colosseum and spending hours in prayer before the Blessed Sacrament. He died in 1783."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Pilgrim's staff",
+              "Rosary",
+              "Beggar's clothes"
+            ],
+            "patronage": [
+              "Homeless",
+              "Beggars",
+              "Pilgrims"
+            ],
             "image": ""
           }
         ],
         "04-17": [
           {
-            "id": "saint_04_17",
-            "name": "Saint of April 17",
+            "id": "saint_anicetus",
+            "name": "Saint Anicetus",
             "feastDay": "April 17",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Pope and martyr in the 2nd century.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Anicetus was a Syrian who became Pope around 155 AD.",
+              "He received Saint Polycarp in Rome and discussed the Easter controversy charitably.",
+              "He opposed Gnosticism and tradition holds he was martyred around 166 AD."
             ],
-            "attributes": [],
+            "attributes": [
+              "Papal vestments",
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-18": [
           {
-            "id": "saint_04_18",
-            "name": "Saint of April 18",
+            "id": "saint_apollonius_apologist",
+            "name": "Saint Apollonius the Apologist",
             "feastDay": "April 18",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman senator, apologist, and martyr.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Apollonius was a learned Roman senator who lived in the 2nd century.",
+              "He was denounced as a Christian and brought before the Senate, where he delivered a brilliant defense of Christianity.",
+              "Despite his eloquent apology, he was condemned and beheaded around 185 AD."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Roman toga",
+              "Book",
+              "Palm of martyrdom"
+            ],
+            "patronage": [
+              "Apologists"
+            ],
             "image": ""
           }
         ],
         "04-19": [
           {
-            "id": "saint_04_19",
-            "name": "Saint of April 19",
+            "id": "saint_expeditus",
+            "name": "Saint Expeditus",
             "feastDay": "April 19",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Roman soldier and martyr.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Expeditus was a Roman centurion in Armenia who converted to Christianity.",
+              "When a crow cried 'Cras! Cras!' (Tomorrow! Tomorrow!), tempting him to delay his conversion, he killed it saying 'Hodie!' (Today!).",
+              "He was martyred for his faith around 303 AD during Diocletian's persecution."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Roman armor",
+              "Cross",
+              "Crow",
+              "Palm"
+            ],
+            "patronage": [
+              "Urgent causes",
+              "Against procrastination",
+              "Computer programmers"
+            ],
             "image": ""
           }
         ],
         "04-20": [
           {
-            "id": "saint_04_20",
-            "name": "Saint of April 20",
+            "id": "saint_agnes_montepulciano",
+            "name": "Saint Agnes of Montepulciano",
             "feastDay": "April 20",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican nun, mystic, miracle worker.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Agnes was born near Montepulciano, Italy, in 1268. At age 9, she entered a convent.",
+              "She became abbess at age 15 and later founded a Dominican monastery.",
+              "She experienced mystical visions and worked miracles. She died in 1317 aged 49."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Lily",
+              "Lamb",
+              "Crucifix"
+            ],
+            "patronage": [
+              "Against sexual temptation"
+            ],
             "image": ""
           }
         ],
         "04-21": [
           {
-            "id": "saint_04_21",
-            "name": "Saint of April 21",
+            "id": "saint_anselm",
+            "name": "Saint Anselm of Canterbury",
             "feastDay": "April 21",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Archbishop, Doctor of the Church, Father of Scholasticism.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Anselm was born in Aosta, Italy, in 1033. He became a Benedictine monk at Bec in Normandy.",
+              "As Archbishop of Canterbury (from 1093), he defended Church rights and suffered exile twice.",
+              "A brilliant theologian, he wrote the 'Proslogion' with its ontological argument for God. He died in 1109."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Archbishop's vestments",
+              "Book",
+              "Church"
+            ],
+            "patronage": [
+              "Theologians"
+            ],
             "image": ""
           }
         ],
         "04-22": [
           {
-            "id": "saint_04_22",
-            "name": "Saint of April 22",
+            "id": "saints_soter_caius",
+            "name": "Saints Soter and Caius",
             "feastDay": "April 22",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Popes and martyrs.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Soter was Pope from 166-175 AD, known for charity to persecuted Christians.",
+              "Caius was Pope from 283-296 AD during Diocletian's persecution.",
+              "Both are honored as martyrs for the faith."
             ],
-            "attributes": [],
+            "attributes": [
+              "Papal vestments",
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
@@ -2093,17 +2624,23 @@
         ],
         "04-24": [
           {
-            "id": "saint_04_24",
-            "name": "Saint of April 24",
+            "id": "saint_fidelis_sigmaringen",
+            "name": "Saint Fidelis of Sigmaringen",
             "feastDay": "April 24",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Capuchin priest, martyr, lawyer.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Fidelis (born Mark Roy) was born in Germany in 1578. He practiced law before joining the Capuchins.",
+              "He was sent to preach to Protestants in Switzerland during the Thirty Years' War.",
+              "In 1622, he was killed by a mob while preaching, becoming a Counter-Reformation martyr."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Capuchin habit",
+              "Crucifix",
+              "Club"
+            ],
+            "patronage": [
+              "Lawyers"
+            ],
             "image": ""
           }
         ],
@@ -2134,81 +2671,113 @@
         ],
         "04-26": [
           {
-            "id": "saint_04_26",
-            "name": "Saint of April 26",
+            "id": "saints_cletus_marcellinus",
+            "name": "Saints Cletus and Marcellinus",
             "feastDay": "April 26",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Early popes and martyrs.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Cletus (Anacletus) was Pope from 76-88 AD, third successor of Peter.",
+              "Marcellinus was Pope from 296-304 AD during Diocletian's persecution.",
+              "Both are venerated as martyrs for the faith."
             ],
-            "attributes": [],
+            "attributes": [
+              "Papal vestments",
+              "Palm of martyrdom"
+            ],
             "patronage": [],
             "image": ""
           }
         ],
         "04-27": [
           {
-            "id": "saint_04_27",
-            "name": "Saint of April 27",
+            "id": "saint_peter_canisius",
+            "name": "Saint Peter Canisius",
             "feastDay": "April 27",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Jesuit priest, Doctor of the Church, Second Apostle of Germany.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Peter was born in the Netherlands in 1521 and joined the Jesuits in 1543.",
+              "He worked in Germany during the Counter-Reformation, founding colleges and writing influential catechisms.",
+              "His catechisms had over 400 editions. He died in Switzerland in 1597."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Jesuit habit",
+              "Book (catechism)",
+              "IHS"
+            ],
+            "patronage": [
+              "Germany",
+              "Catholic press"
+            ],
             "image": ""
           }
         ],
         "04-28": [
           {
-            "id": "saint_04_28",
-            "name": "Saint of April 28",
+            "id": "saint_paul_cross",
+            "name": "Saint Paul of the Cross",
             "feastDay": "April 28",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Founder of Passionist Congregation.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Paul Danei was born in Italy in 1694. After a mystical experience, he founded the Passionists in 1720.",
+              "The order focuses on Christ's Passion and promoting devotion to His sufferings.",
+              "He preached throughout Italy and died in Rome in 1775."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Passionist habit with heart and cross",
+              "Crucifix"
+            ],
+            "patronage": [
+              "Passionist Congregation"
+            ],
             "image": ""
           }
         ],
         "04-29": [
           {
-            "id": "saint_04_29",
-            "name": "Saint of April 29",
+            "id": "saint_peter_verona",
+            "name": "Saint Peter of Verona (Peter Martyr)",
             "feastDay": "April 29",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican priest, inquisitor, martyr.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Peter was born to Cathar parents in Verona in 1205 but converted to Catholicism.",
+              "He joined the Dominicans and became a famous preacher and inquisitor against heretics.",
+              "In 1252, he was assassinated by Cathars. His last words, written in blood, were 'Credo.'"
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Sword in head",
+              "Dagger"
+            ],
+            "patronage": [
+              "Inquisitors",
+              "Against headaches"
+            ],
             "image": ""
           }
         ],
         "04-30": [
           {
-            "id": "saint_04_30",
-            "name": "Saint of April 30",
+            "id": "saint_catherine_siena",
+            "name": "Saint Catherine of Siena",
             "feastDay": "April 30",
-            "description": "Various saints and martyrs commemorated on this day.",
+            "description": "Dominican tertiary, Doctor of the Church, mystic, reformer.",
             "biography": [
-              "On this day, the Church commemorates various saints and martyrs who gave witness to their faith.",
-              "Many local and lesser-known saints are celebrated on this day in different regions and traditions.",
-              "The communion of saints reminds us of the countless holy men and women throughout history."
+              "Catherine was born in Siena in 1347, 24th of 25 children. She became a Dominican tertiary at 16.",
+              "She experienced visions and received the stigmata. She convinced Pope Gregory XI to return from Avignon to Rome.",
+              "Her 'Dialogue' and letters are spiritual classics. She died in 1380 aged 33 and was made Doctor of the Church in 1970."
             ],
-            "attributes": [],
-            "patronage": [],
+            "attributes": [
+              "Dominican habit",
+              "Crown of thorns",
+              "Lily",
+              "Stigmata"
+            ],
+            "patronage": [
+              "Italy",
+              "Europe",
+              "Nurses",
+              "Against fire"
+            ],
             "image": ""
           }
         ],
