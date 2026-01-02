@@ -1,12 +1,16 @@
 import type { LogoProps } from "../../types/Logo";
 
-const Logo: React.FC<LogoProps> = ({ color = "#333", maxWidth }) => {
+const Logo: React.FC<LogoProps> = ({
+	color = "#333",
+	maxWidth,
+	height = "100%",
+}) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 			viewBox="0 0 450 450"
-			style={{ maxWidth }}
+			style={{ maxWidth, height }}
 		>
 			{/*Background*/}
 			{/*<rect style={{ fill: "#FFFFFF" }} width="450" height="450" />*/}

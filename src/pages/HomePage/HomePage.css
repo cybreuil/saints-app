@@ -7,9 +7,3 @@
 	align-items: center;
 	gap: 2rem;
 }
-.presentation .link-today {
-	position: fixed;
-	top: 2rem;
-	right: 2rem;
-	font-size: 2rem;
-}

@@ -1,0 +1,12 @@
+.calendar-selector {
+	position: fixed;
+	top: calc(var(--header-height) + 1rem);
+	right: 1rem;
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 16px;
+	background-color: #f9f9f9;
+}
