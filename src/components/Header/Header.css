@@ -1,7 +1,10 @@
-header {
-	display: flex;
-	flex-direction: row;
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 	align-items: center;
-	justify-content: center;
 	height: var(--header-height);
+	background-color: var(--color-primary-light);
 }

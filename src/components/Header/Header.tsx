@@ -3,8 +3,8 @@ import "./Header.css";
 
 const Header = () => {
 	return (
-		<header>
-			<Logo maxWidth={100} />
+		<header className="header">
+			<Logo maxWidth={50} />
 			<h1>Saints App</h1>
 		</header>
 	);
