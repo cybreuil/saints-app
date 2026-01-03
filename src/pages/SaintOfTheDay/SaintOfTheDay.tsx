@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import saintsData from "../../data/saints.json";
 import "./SaintOfTheDay.css";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
+import { useCalendar } from "../../hooks/useCalendar";
 
 const getTodayKey = () => {
 	const today = new Date();
@@ -11,12 +12,13 @@ const getTodayKey = () => {
 };
 
 const SaintOfTheDay: React.FC = () => {
+	const { calendar } = useCalendar();
+
 	const saint = useMemo(() => {
 		const todayKey = getTodayKey();
-		const saints =
-			saintsData.calendars.tridentine_1960.saints[todayKey] || [];
+		const saints = saintsData.calendars[calendar]?.saints[todayKey] || [];
 		return saints.length > 0 ? saints[0] : null;
-	}, []);
+	}, [calendar]);
 
 	if (!saint) {
 		return (

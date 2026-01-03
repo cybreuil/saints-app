@@ -1,10 +1,8 @@
 import "./CalendarSelector.css";
-import { useState } from "react";
+import { useCalendar } from "../../hooks/useCalendar";
 
 const CalendarSelector = () => {
-	const [calendar, setCalendar] = useState<
-		"tridentine_1960" | "roman_1970" | "orthodox" | "bonus"
-	>("tridentine_1960");
+	const { calendar, setCalendar } = useCalendar();
 
 	return (
 		<div className="calendar-selector">
