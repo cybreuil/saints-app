@@ -1,5 +1,4 @@
 import { Logo } from "../../components/Logo/Logo";
-import { Link } from "react-router-dom";
 import "./HomePage.css";
 
 const HomePage = () => {
