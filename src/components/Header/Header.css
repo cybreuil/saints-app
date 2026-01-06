@@ -10,7 +10,6 @@
 	background-color: var(--color-primary-light);
 }
 .header .header-title {
-	/*We disable being able to select the title text*/
 	user-select: none;
 }
 
