@@ -1,4 +1,13 @@
+@font-face {
+	font-family: "Source Serif";
+	src: url("/fonts/SourceSerif4Variable-Roman.ttf.woff2")
+		format("woff2-variations");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
 body {
+	font-family: "Source Serif", serif;
 	background: var(--color-background-primary);
 	color: var(--color-text-primary);
 }
