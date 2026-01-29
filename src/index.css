@@ -8,6 +8,9 @@
 }
 body {
 	font-family: "Source Serif", serif;
+	line-height: 1.4;
+	font-size: 1rem;
+	font-weight: 400;
 	background: var(--color-background-primary);
 	color: var(--color-text-primary);
 }
@@ -40,10 +43,12 @@ a:hover {
 
 h1 {
 	font-size: 2.5rem;
+	font-weight: 600;
 }
 
 h2 {
 	font-size: 2rem;
+	font-weight: 500;
 }
 h3 {
 	font-size: 1.5rem;
