@@ -1,12 +1,12 @@
 .presentation {
-	min-height: calc(100vh - var(--header-height));
+	min-height: calc(100vh - var(--header-height) - var(--footer-height));
 	max-width: 1200px;
-	margin: 0 auto;
+	align-self: center;
+	padding: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	gap: 2rem;
 }
 
 .home-nav {
