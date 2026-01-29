@@ -8,6 +8,13 @@
 	align-items: center;
 	justify-content: space-around;
 }
+.presentation p {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	text-align: center;
+	max-width: 800px;
+	color: var(--color-text-secondary);
+}
 
 .home-nav {
 	display: flex;
