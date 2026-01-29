@@ -1,10 +1,13 @@
 .saint-of-the-day-container {
+	flex: 1;
+	margin: 2rem;
 	max-width: 600px;
-	margin: 2rem auto;
+	align-self: center;
 	padding: 2rem;
 	border-radius: 1rem;
 	background: #f9f9f9;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	/*Inside content */
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

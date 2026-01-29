@@ -1,7 +1,11 @@
 body {
-	min-height: 100vh;
 	background: var(--color-background-primary);
 	color: var(--color-text-primary);
+}
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 a {
