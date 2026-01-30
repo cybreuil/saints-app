@@ -21,7 +21,7 @@ body {
 	line-height: 1.4;
 	font-size: 1rem;
 	font-weight: 400;
-	background: var(--color-background-primary);
+	background: var(--color-bg-primary);
 	color: var(--color-text-primary);
 }
 #root {

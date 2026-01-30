@@ -1,13 +1,9 @@
 .calendar-selector {
-	position: fixed;
-	top: calc(var(--header-height) + 1rem);
-	right: 1rem;
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
-	width: 300px;
-	border: 1px solid #ccc;
-	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
 	padding: 1rem;
 	background-color: #f9f9f9;
 }
