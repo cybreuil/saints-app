@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import saintsData from "../../data/saints.json";
 import "./SaintOfTheDay.css";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
+import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
 import { useCalendar } from "../../hooks/useCalendar";
 
 const getTodayKey = () => {
@@ -33,6 +34,7 @@ const SaintOfTheDay: React.FC = () => {
 	return (
 		<div className="saint-of-the-day-container">
 			<CalendarSelector />
+			<RegionalSaint />
 			<h2>Saint du jour</h2>
 			<h1>{saint.name}</h1>
 			<p className="feast-day">{saint.feastDay}</p>
