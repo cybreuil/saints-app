@@ -1,6 +1,4 @@
 .presentation {
-	/*min-height: calc(100vh - var(--header-height) - var(--footer-height));*/
-	/*On gere avec flex 1*/
 	flex: 1;
 	max-width: 1200px;
 	align-self: center;
