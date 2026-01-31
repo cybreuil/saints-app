@@ -4,6 +4,8 @@ import "./SaintOfTheDay.css";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
 import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
 import { useCalendar } from "../../hooks/useCalendar";
+import { motion } from "framer-motion";
+import { TRANSITIONS } from "../../styles/theme";
 
 const getTodayKey = () => {
 	const today = new Date();
@@ -35,7 +37,12 @@ const SaintOfTheDay: React.FC = () => {
 		<div className="saint-of-the-day-layout">
 			<div className="sidebar-left" />
 
-			<div className="saint-of-the-day-card">
+			<motion.div
+				className="saint-of-the-day-card"
+				animate={{ opacity: 1 }}
+				initial={{ opacity: 0 }}
+				transition={TRANSITIONS.normal}
+			>
 				<h2>Saint du jour</h2>
 				<h1>{saint.name}</h1>
 				<p className="feast-day">{saint.feastDay}</p>
@@ -73,12 +80,28 @@ const SaintOfTheDay: React.FC = () => {
 						</div>
 					)}
 				</div>
-			</div>
+			</motion.div>
 
 			<div className="sidebar-right">
 				<div className="sidebar-right-sticky">
-					<CalendarSelector />
-					<RegionalSaint />
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
+						<CalendarSelector />
+					</motion.div>
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{
+							duration: 0.7,
+							delay: 0.4,
+							type: "spring",
+						}}
+					>
+						<RegionalSaint />
+					</motion.div>
 				</div>
 			</div>
 		</div>
