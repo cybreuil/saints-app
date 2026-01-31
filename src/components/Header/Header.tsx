@@ -17,6 +17,7 @@ const Header = () => {
 			<nav className="header-nav">
 				<Link to="/">Home</Link>
 				<Link to="/saint-of-the-day">Saint of the Day</Link>
+				<Link to="/about">About</Link>
 			</nav>
 		</motion.header>
 	);

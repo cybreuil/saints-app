@@ -23,7 +23,18 @@ body {
 	font-weight: 400;
 	background: var(--color-bg-primary);
 	color: var(--color-text-primary);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
+/*Body color variations for different pages*/
+body.saintoftheday {
+	background-color: var(--color-bg-quaternary);
+}
+body.about {
+	background-color: var(--color-bg-tertiary);
+}
+
 #root {
 	min-height: 100vh;
 	display: flex;

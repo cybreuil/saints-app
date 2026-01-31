@@ -1,9 +1,5 @@
-.saint-of-the-day-container {
-	background-color: var(--color-bg-quaternary);
-}
-
 .saint-of-the-day-layout {
-	min-height: calc(100vh - var(--header-height) - var(--footer-height));
+	flex: 1;
 	padding: 2rem;
 	display: grid;
 	grid-template-columns: minmax(0, 300px) minmax(auto, 800px) minmax(0, 300px);
