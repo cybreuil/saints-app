@@ -1,14 +1,15 @@
 import { Logo } from "../../components/Logo/Logo";
 import { Link } from "react-router-dom";
-import "./HomePage.css";
 import { motion } from "framer-motion";
+import { TRANSITIONS } from "../../styles/theme";
+import "./HomePage.css";
 
 const HomePage = () => {
 	return (
 		<motion.div
 			animate={{ opacity: 1 }}
 			initial={{ opacity: 0 }}
-			transition={{ duration: 0.3 }}
+			transition={TRANSITIONS.fadeIn}
 			className="presentation"
 		>
 			<Logo color="var(--color-primary)" maxWidth={300} />
