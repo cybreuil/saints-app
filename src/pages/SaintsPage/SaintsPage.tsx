@@ -1,5 +1,7 @@
 import saintsData from "../../data/saints.json";
 import { useState } from "react";
+import "./SaintsPage.css";
+
 // MOCK DE SAINTS POUR TESTER
 const saints = [
 	{
@@ -49,8 +51,11 @@ export function SaintsPage() {
 	);
 
 	return (
-		<div>
-			<div className="saints-grid">
+		<div className="saints-page">
+			<h1>Liste des Saints</h1>
+			{/* Filtres et options de tri ici */}
+
+			<div className="saints-page__grid">
 				{paginatedSaints.map((saint) => (
 					<div className="saint-card" key={saint.id}>
 						<img
