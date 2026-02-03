@@ -1,4 +1,4 @@
-.search-page-container {
+.search-page {
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 2rem 1rem;
@@ -11,7 +11,7 @@ h1 {
 	font-weight: 700;
 }
 
-.search-input {
+.search-page .search-input {
 	display: block;
 	margin: 0 auto 2rem auto;
 	padding: 0.75rem 1rem;
@@ -23,18 +23,18 @@ h1 {
 	box-sizing: border-box;
 	transition: border-color 0.2s;
 }
-.search-input:focus {
+.search-page .search-input:focus {
 	border-color: #888;
 	outline: none;
 }
 
-.saints-grid {
+.search-page .saints-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 	gap: 1.5rem;
 }
 
-.saint-card {
+.search-page .saints-grid .saint-card {
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
@@ -45,12 +45,12 @@ h1 {
 		box-shadow 0.15s;
 	cursor: pointer;
 }
-.saint-card:hover {
+.search-page .saints-grid .saint-card:hover {
 	transform: translateY(-4px) scale(1.03);
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
-.saint-card img {
+.search-page .saints-grid .saint-card img {
 	width: 70px;
 	height: 70px;
 	object-fit: cover;
@@ -59,13 +59,13 @@ h1 {
 	background: #f5f5f5;
 }
 
-.saint-card h3 {
+.search-page .saints-grid .saint-card h3 {
 	margin: 0.5rem 0 0.2rem 0;
 	font-size: 1.1rem;
 	font-weight: 600;
 }
 
-.saint-card p {
+.search-page .saints-grid .saint-card p {
 	margin: 0;
 	color: #666;
 	font-size: 0.95rem;

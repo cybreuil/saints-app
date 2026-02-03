@@ -1,6 +1,7 @@
 .saints-page {
 	flex: 1;
 	padding: 2rem;
+	text-align: center;
 }
 .saints-page__grid {
 	display: grid;

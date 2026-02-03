@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import saintsData from "../../data/saints.json";
 import "./SearchPage.css";
+import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall";
 
 type Saint = {
 	id: string;
@@ -35,7 +36,7 @@ export const SearchPage: React.FC = () => {
 	}, [allSaints, query]);
 
 	return (
-		<div className="search-page-container">
+		<div className="search-page">
 			<h1>Recherche de saints</h1>
 			<input
 				type="text"
@@ -46,14 +47,7 @@ export const SearchPage: React.FC = () => {
 			/>
 			<div className="saints-grid">
 				{filteredSaints.map((saint) => (
-					<div className="saint-card" key={saint.id}>
-						<img
-							src={saint.image || "/default.png"}
-							alt={saint.name}
-						/>
-						<h3>{saint.name}</h3>
-						<p>{saint.feastDay}</p>
-					</div>
+					<SaintCardSmall key={saint.id} saint={saint} />
 				))}
 			</div>
 		</div>
