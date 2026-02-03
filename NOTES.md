@@ -33,3 +33,7 @@ Aujourd’hui, on célèbre :
 - L’Assomption de la Vierge Marie (Solennité)
 - ou
 - Sainte Jeanne d’Arc (Mémoire)
+
+---
+On va implementer tres concretement une difference saint du jour et fete, comme ca je garde une page ou je peux lister tous les saints par exemple.
+avec a l'interieur de la fete du jour le saint si il y'en a un.
