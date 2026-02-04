@@ -42,7 +42,7 @@ export const mockSaints = [
 		feastDay: "28 août",
 		description:
 			"Évêque, docteur de l'Église, grand théologien et philosophe chrétien.",
-		// Test sans image
+		image: "/saints-pic/Saint_Augustine-_-Philippe_de_Champaigne.jpg",
 	},
 	// etc...
 ];
