@@ -5,6 +5,7 @@ const routeToClass = {
 	"/": "page-home",
 	"/saint-of-the-day": "saintoftheday",
 	"/about": "aboutpage",
+	"/saints": "saintslist",
 	// Routes a ajouter ici
 };
 

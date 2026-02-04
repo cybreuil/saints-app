@@ -31,6 +31,9 @@ body {
 body.saintoftheday {
 	background-color: var(--color-bg-quaternary);
 }
+body.saintslist {
+	background-color: var(--color-bg-secondary);
+}
 body.about {
 	background-color: var(--color-bg-tertiary);
 }
