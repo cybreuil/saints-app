@@ -7,9 +7,15 @@ const SaintCardSmall = ({
 }) => {
 	return (
 		<div className="saint-card-small" key={saint.id}>
-			<img src={saint.image || "/logoOptimized.svg"} alt={saint.name} />
-			<h3>{saint.name}</h3>
-			<p>{saint.feastDay}</p>
+			<img
+				src={saint.image || "/logoOptimized.svg"}
+				alt={saint.name}
+				loading="lazy"
+			/>
+			<div className="saint-card-small__overlay">
+				<h3>{saint.name}</h3>
+				<p>{saint.feastDay}</p>
+			</div>
 		</div>
 	);
 };
