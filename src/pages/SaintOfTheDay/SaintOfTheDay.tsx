@@ -55,7 +55,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div>
 							<h3>Biography</h3>
 							<ul>
-								{saint.biography.map((line: string, idx: number) => (
+								{saint.biography.map((line, idx) => (
 									<li key={idx}>{line}</li>
 								))}
 							</ul>
@@ -65,7 +65,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div className="attributes-section">
 							<h3>Attributes</h3>
 							<ul>
-								{saint.attributes.map((attr: string, idx: number) => (
+								{saint.attributes.map((attr, idx) => (
 									<li key={idx}>{attr}</li>
 								))}
 							</ul>
@@ -75,7 +75,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div className="patronage-section">
 							<h3>Patronage</h3>
 							<ul>
-								{saint.patronage.map((pat: string, idx: number) => (
+								{saint.patronage.map((pat, idx) => (
 									<li key={idx}>{pat}</li>
 								))}
 							</ul>
