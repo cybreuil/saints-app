@@ -4,7 +4,12 @@ export type CalendarType =
 	| "tridentine_1960"
 	| "roman_1970"
 	| "orthodox"
-	| "bonus";
+	| "bonus"
+	| "france"
+	| "italy"
+	| "spain"
+	| "poland"
+	| "ireland";
 
 type CalendarContextType = {
 	calendar: CalendarType;
