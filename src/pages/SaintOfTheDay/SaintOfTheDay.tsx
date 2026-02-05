@@ -19,7 +19,9 @@ const SaintOfTheDay: React.FC = () => {
 
 	const saint = useMemo(() => {
 		const todayKey = getTodayKey();
-		const saints = saintsData.calendars[calendar]?.saints[todayKey] || [];
+		const calendarData = saintsData.calendars[calendar as keyof typeof saintsData.calendars];
+		if (!calendarData || !calendarData.saints) return null;
+		const saints = calendarData.saints[todayKey as keyof typeof calendarData.saints] || [];
 		return saints.length > 0 ? saints[0] : null;
 	}, [calendar]);
 
@@ -53,7 +55,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div>
 							<h3>Biography</h3>
 							<ul>
-								{saint.biography.map((line, idx) => (
+								{saint.biography.map((line: string, idx: number) => (
 									<li key={idx}>{line}</li>
 								))}
 							</ul>
@@ -63,7 +65,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div className="attributes-section">
 							<h3>Attributes</h3>
 							<ul>
-								{saint.attributes.map((attr, idx) => (
+								{saint.attributes.map((attr: string, idx: number) => (
 									<li key={idx}>{attr}</li>
 								))}
 							</ul>
@@ -73,7 +75,7 @@ const SaintOfTheDay: React.FC = () => {
 						<div className="patronage-section">
 							<h3>Patronage</h3>
 							<ul>
-								{saint.patronage.map((pat, idx) => (
+								{saint.patronage.map((pat: string, idx: number) => (
 									<li key={idx}>{pat}</li>
 								))}
 							</ul>
