@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import "./SaintModal.css";
 
 export function SaintModal({
@@ -14,14 +15,34 @@ export function SaintModal({
 	};
 	onClose: () => void;
 }) {
+	// Close with Escape key
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.key === "Escape") {
+				onClose();
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [onClose]);
+
+	// No scroll when modal is open
+	useEffect(() => {
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, []);
+
 	return (
 		<>
 			<motion.div
 				className="saint-modal__backdrop"
 				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
+				animate={{ opacity: 0.8 }}
 				exit={{ opacity: 0 }}
-				transition={{ duration: 0.2 }}
 				onClick={onClose}
 			/>
 			<motion.div
