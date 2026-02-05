@@ -26,7 +26,7 @@ export const mockSaints = [
 		feastDay: "4 octobre",
 		description: "Fondateur des franciscains, ami des pauvres.",
 
-		image: "/saints-pic/St_Francis_of_Assisi_at_Prayer_-_Esteban_Murillo.JPG",
+		image: "/saints-pic/St_Francis_of_Assisi_at_Prayer_-_Esteban_Murillo.jpg",
 	},
 	{
 		id: "sainte_jeanne",

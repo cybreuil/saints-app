@@ -1,22 +1,38 @@
+.saint-modal__backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 9;
+}
+
 .saint-modal {
 	position: fixed;
-	inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+	inset: 0;
 	margin: auto;
 	width: 90vw;
-	max-width: 500px;
-	height: fit-content;
+	max-width: 800px;
+	min-height: 500px;
+	height: min-content;
 	background: #fff;
 	border-radius: 16px;
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 	padding: 2rem;
-	z-index: 1000;
-	text-align: center;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.saint-modal__content {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin: auto;
 }
 
 .saint-modal img {
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
+	max-width: 300px;
+	height: 100%;
+	border-radius: 2px;
 	object-fit: cover;
-	margin-bottom: 1rem;
 }
