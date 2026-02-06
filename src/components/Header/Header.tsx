@@ -21,12 +21,17 @@ const Header = () => {
 	return (
 		<motion.header
 			className="header"
-			initial={{ y: -50, opacity: 0 }}
+			initial={{
+				y: -50,
+				opacity: 0,
+				width: "90%",
+				borderRadius: "1rem",
+				top: "1rem",
+			}}
 			animate={{
 				y: 0,
 				opacity: 1,
 				width: isScrolled ? "100%" : "90%",
-				marginTop: isScrolled ? 0 : "1rem",
 				borderRadius: isScrolled ? 0 : "1rem",
 				top: isScrolled ? 0 : "1rem",
 			}}
