@@ -41,7 +41,7 @@ export function SaintModal({
 			<motion.div
 				className="saint-modal__backdrop"
 				initial={{ opacity: 0 }}
-				animate={{ opacity: 0.8 }}
+				animate={{ opacity: 0.6 }}
 				exit={{ opacity: 0 }}
 				onClick={onClose}
 			/>
