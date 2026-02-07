@@ -1,25 +1,31 @@
 .burger-icon {
-	width: 30px;
-	height: 20px;
+	justify-self: end;
+	width: 28px;
+	height: 24px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	cursor: pointer;
-	justify-self: flex-end;
-}
-.burger-icon.open span:nth-child(1) {
-	transform: rotate(45deg) translate(5px, 5px);
-}
-.burger-icon.open span:nth-child(2) {
-	opacity: 0;
-}
-.burger-icon.open span:nth-child(3) {
-	transform: rotate(-45deg) translate(5px, -5px);
+	align-items: center;
 }
 
 .burger-icon span {
+	width: 28px;
 	height: 4px;
 	background-color: var(--color-text-primary);
 	border-radius: 2px;
-	transition: all 0.3s ease;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	transform-origin: left center;
+}
+
+.burger-icon.open span:nth-child(1) {
+	transform: rotate(45deg);
+}
+
+.burger-icon.open span:nth-child(2) {
+	opacity: 0;
+}
+
+.burger-icon.open span:nth-child(3) {
+	transform: rotate(-45deg);
 }
