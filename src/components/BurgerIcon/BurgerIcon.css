@@ -37,34 +37,3 @@
 	/* On translate la barre du bas vers le centre, puis on la fait pivoter */
 	transform: translateY(-10px) rotate(-45deg);
 }
-/*.burger-icon span::before,
-.burger-icon span::after {
-	content: "";
-	width: 100%;
-	background-color: black;
-	display: block;
-	transition: all 0.5s ease-in-out;
-	border-radius: 12px;
-	height: 4px;
-}
-
-.burger-icon span::before {
-	transform: translateY(-10px);
-}
-
-.burger-icon span::after {
-	transform: translateY(10px);
-	margin-top: -4px;
-}
-
-.burger-icon.open span {
-	background-color: transparent;
-}
-
-.burger-icon.open span::before {
-	transform: rotateZ(45deg);
-}
-
-.burger-icon.open span::after {
-	transform: rotateZ(-45deg);
-}*/

@@ -21,9 +21,9 @@ const BurgerIcon = ({
 				}
 			}}
 		>
-			<span className="bar1" />
-			<span className="bar2" />
-			<span className="bar3" />
+			<span />
+			<span />
+			<span />
 		</div>
 	);
 };
