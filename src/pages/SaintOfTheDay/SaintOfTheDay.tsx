@@ -19,7 +19,9 @@ const SaintOfTheDay: React.FC = () => {
 
 	const saint = useMemo(() => {
 		const todayKey = getTodayKey();
-		const saints = saintsData.calendars[calendar]?.saints[todayKey] || [];
+		const calendarData = saintsData.calendars[calendar as keyof typeof saintsData.calendars];
+		if (!calendarData || !calendarData.saints) return null;
+		const saints = calendarData.saints[todayKey as keyof typeof calendarData.saints] || [];
 		return saints.length > 0 ? saints[0] : null;
 	}, [calendar]);
 
