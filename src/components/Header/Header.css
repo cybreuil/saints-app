@@ -1,3 +1,35 @@
+.header-gap-mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 1rem; /* même que le margin-top du header */
+	background: rgba(
+		255,
+		255,
+		255,
+		0
+	); /* couleur de ton header, opaque au repos */
+	z-index: 6; /* entre le contenu (0) et le header (8) */
+	pointer-events: none;
+	transition:
+		backdrop-filter 0.3s,
+		background 0.3s,
+		opacity 0.3s;
+	backdrop-filter: none;
+	opacity: 1;
+}
+
+.header-gap-mask.hscrolled {
+	backdrop-filter: blur(8px);
+	background: rgba(
+		255,
+		255,
+		255,
+		0.7
+	); /* un peu transparent pour accentuer le blur */
+}
+
 .header {
 	position: sticky;
 	top: 1rem;
