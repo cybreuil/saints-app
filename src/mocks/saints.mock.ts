@@ -35,7 +35,6 @@ export const mockSaints = [
 		description: "Héroïne nationale, martyre.",
 		image: "/saints-pic/Jeanne_d'arc_écoutant_les_voix-_-Benouville.jpg",
 	},
-
 	{
 		id: "saint_augustin",
 		name: "Saint Augustin d'Hippone",
@@ -43,6 +42,46 @@ export const mockSaints = [
 		description:
 			"Évêque, docteur de l'Église, grand théologien et philosophe chrétien.",
 		image: "/saints-pic/Saint_Augustine-_-Philippe_de_Champaigne.jpg",
+	},
+	{
+		id: "sainte_catherine",
+		name: "Sainte Catherine de Sienne",
+		feastDay: "29 avril",
+		description:
+			"Docteur de l'Église, mystique, grande figure de la spiritualité médiévale.",
+		image: "/saints-pic/Sainte_Catherine_-_Giovanni_Battista_Tiepolo.jpg",
+	},
+	{
+		id: "saint_francois_de_sales",
+		name: "Saint François de Sales",
+		feastDay: "24 janvier",
+		description:
+			"Évêque, docteur de l'Église, connu pour sa douceur et sa pédagogie spirituelle.",
+		image: "/saints-pic/St. Francis de Sales.jpg",
+	},
+	{
+		id: "sainte_rita",
+		name: "Sainte Rita de Cascia",
+		feastDay: "22 mai",
+		description:
+			"Patronne des causes désespérées, connue pour sa vie de prière et de sacrifice.",
+		image: "/saints-pic/SANTA-RITA.jpg",
+	},
+	{
+		id: "saint_laurent",
+		name: "Saint Laurent",
+		feastDay: "10 août",
+		description:
+			"Diacre et martyr, célèbre pour sa charité envers les pauvres et les persécutés.",
+		image: "/saints-pic/Laurent.jpg",
+	},
+	{
+		id: "sainte_bernadette",
+		name: "Sainte Bernadette Soubirous",
+		feastDay: "16 avril",
+		description:
+			"Visionnaire de Lourdes, connue pour ses apparitions mariales et sa vie humble.",
+		image: "/saints-pic/st-bernadette-soubirous-cc-Manolo-Guallart.jpg",
 	},
 	// etc...
 ];
