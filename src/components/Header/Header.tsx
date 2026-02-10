@@ -36,14 +36,16 @@ const Header = () => {
 				width: "90%",
 				borderRadius: "1rem",
 				top: "1rem",
+				marginTop: "1rem",
 			}}
 			animate={{
 				y: 0,
 				opacity: 1,
 				width: isScrolled ? "100%" : "90%",
 				borderRadius: isScrolled ? 0 : "1rem",
-				top: isScrolled ? 0 : "1rem",
 				height: isMenuOpen ? "300px" : "",
+				top: isScrolled ? 0 : "1rem",
+				marginTop: isScrolled ? 0 : "1rem",
 			}}
 			transition={TRANSITIONS.normal}
 		>
