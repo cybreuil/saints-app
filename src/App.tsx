@@ -7,10 +7,12 @@ import { SaintsPage } from "./pages/SaintsPage/SaintsPage";
 import { AboutPage } from "./pages/AboutPage/AboutPage";
 import { BodyClassController } from "./components/BodyClassController/BodyClassController";
 import { SearchPage } from "./pages/SearchPage/SearchPage";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
 	return (
 		<>
+			<ScrollToTop />
 			<Header />
 			<BodyClassController />
 			<Routes>
