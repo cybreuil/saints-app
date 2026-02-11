@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import "./ScrollToTop.css";
 
 const ScrollToTop = () => {
@@ -28,21 +28,23 @@ const ScrollToTop = () => {
 	}, []);
 
 	return (
-		<motion.div
-			className={`scroll-to-top`}
+		<motion.button
+			className="scroll-button"
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-			transition={{ duration: 0.3 }}
+			transition={{
+				opacity: { duration: 0.3 },
+				y: { duration: 0.3 },
+				scale: { duration: 0.1 },
+			}}
+			whileHover={{ scale: 1.1 }}
+			whileTap={{ scale: 0.9 }}
 			style={{ pointerEvents: isVisible ? "auto" : "none" }}
+			onClick={scrollToTop}
+			aria-label="Retour en haut de page"
 		>
-			<button
-				className="scroll-button"
-				onClick={scrollToTop}
-				aria-label="Retour en haut de page"
-			>
-				<div className="chevron-up"></div>
-			</button>
-		</motion.div>
+			<div className="chevron-up"></div>
+		</motion.button>
 	);
 };
 

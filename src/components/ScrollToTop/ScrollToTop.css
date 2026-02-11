@@ -1,26 +1,20 @@
-.scroll-to-top {
+.scroll-button {
 	position: fixed;
 	bottom: 40px;
 	right: 40px;
 	z-index: 4;
-}
-
-/* Même style que le burger button */
-.scroll-button {
-	position: relative;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	background: gray;
+	background: var(--color-primary-light);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: var(--color-border-light) 1px solid;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 	overflow: hidden;
 }
 
@@ -31,7 +25,7 @@
 	height: 16px;
 	border-style: solid;
 	border-width: 3px 3px 0 0;
-	border-color: white;
+	border-color: var(--color-text-primary);
 	transform: rotate(-45deg) translateZ(0);
 	margin-top: 5px; /* Ajustement pour centrer visuellement */
 	border-radius: 2px;
