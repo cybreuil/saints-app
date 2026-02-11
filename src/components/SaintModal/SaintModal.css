@@ -36,3 +36,10 @@
 	border-radius: 8px;
 	object-fit: cover;
 }
+
+.saint-modal__close {
+	cursor: pointer;
+	margin: auto;
+	padding: 0.5rem 1rem;
+	overflow: hidden;
+}
