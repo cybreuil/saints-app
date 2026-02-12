@@ -43,7 +43,8 @@
 	gap: 1rem;
 }
 .header .header-nav__burger {
-	height: 200px;
+	height: calc(300px - var(--header-height) - 1rem);
+	/* 1rem = gap between bottom limit 300px	and header */
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: stretch;

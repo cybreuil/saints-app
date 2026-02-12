@@ -5,10 +5,12 @@ import { TRANSITIONS } from "../../styles/theme";
 import { useState, useEffect } from "react";
 import "./Header.css";
 import { BurgerIcon } from "../BurgerIcon/BurgerIcon";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const windowWidth = useWindowWidth();
 
 	// On ecoute le scroll pour ajouter une classe "scrolled" au header lorsque l'utilisateur a scrollé de plus de 50px
 	useEffect(() => {
@@ -45,7 +47,11 @@ const Header = () => {
 				animate={{
 					y: 0,
 					opacity: 1,
-					width: isScrolled ? "100%" : "90%",
+					width: isScrolled
+						? "100vw"
+						: windowWidth > 1600
+							? "1440px"
+							: "90%",
 					borderRadius: isScrolled ? 0 : "1rem",
 					height: isMenuOpen ? "300px" : "",
 					top: isScrolled ? 0 : "1rem",
@@ -83,6 +89,7 @@ const Header = () => {
 				>
 					<motion.div
 						className="header-nav__burger-column"
+						initial={{ x: -50, scale: 0.8 }}
 						animate={{
 							x: isMenuOpen ? 0 : -50,
 							scale: isMenuOpen ? 1 : 0.8,
@@ -101,6 +108,7 @@ const Header = () => {
 					</motion.div>
 					<motion.div
 						className="header-nav__burger-column"
+						initial={{ x: 50, scale: 0.8 }}
 						animate={{
 							scale: isMenuOpen ? 1 : 0.8,
 						}}
@@ -136,6 +144,7 @@ const Header = () => {
 					</motion.div>
 					<motion.div
 						className="header-nav__burger-column"
+						initial={{ x: 50, scale: 0.8 }}
 						animate={{
 							x: isMenuOpen ? 0 : 50,
 							scale: isMenuOpen ? 1 : 0.8,
