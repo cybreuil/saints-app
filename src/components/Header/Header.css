@@ -10,10 +10,10 @@
 	backdrop-filter: blur(8px);
 }
 
-.header-gap-mask.scrolled {
+/*Plus besoin au scroll, mais finalement je le garde a tout le temps*/
+/*.header-gap-mask.scrolled {
 	backdrop-filter: none;
-	/*Plus besoin au scroll*/
-}
+}*/
 
 .header {
 	position: sticky;

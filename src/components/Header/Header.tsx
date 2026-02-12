@@ -73,6 +73,7 @@ const Header = () => {
 				</div>
 				<motion.nav
 					className="header-nav__burger"
+					initial={{ height: 0, opacity: 0, pointerEvents: "none" }}
 					animate={{
 						opacity: isMenuOpen ? 1 : 0,
 						pointerEvents: isMenuOpen ? "" : "none",
