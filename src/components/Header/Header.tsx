@@ -31,8 +31,15 @@ const Header = () => {
 
 	return (
 		<>
-			<div
-				className={`header-gap-mask ${isScrolled ? "scrolled" : ""}`}
+			<motion.div
+				className={`header-gap-mask`}
+				initial={{ height: "var(--initial-blur-height)" }}
+				animate={{
+					height: isScrolled
+						? "var(--header-height)"
+						: "var(--initial-blur-height)",
+				}}
+				transition={TRANSITIONS.normal}
 			/>
 			<motion.header
 				className="header"

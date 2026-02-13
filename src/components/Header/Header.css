@@ -1,12 +1,8 @@
 .header-gap-mask {
 	position: fixed;
-	left: 0;
-	top: 0;
 	width: 100vw;
-	height: 1rem; /* même que le margin-top du header */
 	z-index: 6; /* between header and content*/
 	pointer-events: none;
-	transition: 3s ease-out;
 	backdrop-filter: blur(8px);
 }
 

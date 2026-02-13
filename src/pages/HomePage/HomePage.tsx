@@ -9,7 +9,7 @@ const HomePage = () => {
 		<motion.div
 			animate={{ opacity: 1 }}
 			initial={{ opacity: 0 }}
-			transition={TRANSITIONS.fadeIn}
+			transition={TRANSITIONS.slower}
 			className="presentation"
 		>
 			<Logo color="var(--color-primary)" maxWidth={300} />

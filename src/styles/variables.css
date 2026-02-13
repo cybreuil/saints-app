@@ -42,4 +42,6 @@
 	/* Interface */
 	--header-height: 80px;
 	--footer-height: 80px;
+
+	--initial-blur-height: calc(var(--header-height) + 1rem);
 }

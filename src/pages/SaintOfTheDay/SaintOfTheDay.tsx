@@ -19,9 +19,12 @@ const SaintOfTheDay: React.FC = () => {
 
 	const saint = useMemo(() => {
 		const todayKey = getTodayKey();
-		const calendarData = saintsData.calendars[calendar as keyof typeof saintsData.calendars];
+		const calendarData =
+			saintsData.calendars[calendar as keyof typeof saintsData.calendars];
 		if (!calendarData || !calendarData.saints) return null;
-		const saints = calendarData.saints[todayKey as keyof typeof calendarData.saints] || [];
+		const saints =
+			calendarData.saints[todayKey as keyof typeof calendarData.saints] ||
+			[];
 		return saints.length > 0 ? saints[0] : null;
 	}, [calendar]);
 
@@ -41,9 +44,9 @@ const SaintOfTheDay: React.FC = () => {
 
 			<motion.div
 				className="saint-of-the-day-card"
-				animate={{ opacity: 1 }}
 				initial={{ opacity: 0 }}
-				transition={TRANSITIONS.normal}
+				animate={{ opacity: 1 }}
+				transition={TRANSITIONS.slower}
 			>
 				<h2>Saint du jour</h2>
 				<h1>{saint.name}</h1>
