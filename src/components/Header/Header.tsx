@@ -117,21 +117,32 @@ const Header = () => {
 						}}
 						transition={TRANSITIONS.normal}
 					>
-						<Link to="/" onClick={() => setIsMenuOpen(false)}>
-							Home
-						</Link>
-						<Link
-							to="/saint-of-the-day"
-							onClick={() => setIsMenuOpen(false)}
-						>
-							Feast of the Day
-						</Link>
+						<h3>Main</h3>
+						<ul>
+							<li>
+								<Link
+									to="/"
+									onClick={() => setIsMenuOpen(false)}
+								>
+									Home
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/saint-of-the-day"
+									onClick={() => setIsMenuOpen(false)}
+								>
+									Feast of the Day
+								</Link>
+							</li>
+						</ul>
 					</motion.div>
 					<motion.div
 						className="header-nav__burger-column"
 						initial={{ x: 50, scale: 0.8 }}
 						animate={{
 							scale: isMenuOpen ? 1 : 0.8,
+							x: isMenuOpen ? 0 : 50,
 						}}
 						transition={TRANSITIONS.normal}
 					>
