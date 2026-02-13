@@ -59,7 +59,12 @@ const Header = () => {
 				}}
 				transition={TRANSITIONS.normal}
 			>
-				<div className="header__main" transition={TRANSITIONS.normal}>
+				<motion.div
+					className="header__main"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={TRANSITIONS.slower}
+				>
 					<Logo />
 					<h1 className="header-title">Saints-App</h1>
 					{isScrolled ? (
@@ -76,7 +81,7 @@ const Header = () => {
 							onClick={() => setIsMenuOpen((prev) => !prev)}
 						/>
 					)}
-				</div>
+				</motion.div>
 				<motion.nav
 					className="header-nav__burger"
 					initial={{ height: 0, opacity: 0, pointerEvents: "none" }}

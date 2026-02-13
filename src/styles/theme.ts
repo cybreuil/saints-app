@@ -15,6 +15,7 @@ export const TRANSITIONS = {
 	fast: { duration: 0.15, ease: EASINGS.standard },
 	normal: { duration: 0.3, ease: EASINGS.standard },
 	slow: { duration: 0.5, ease: EASINGS.standard },
+	slower: { duration: 0.8, ease: EASINGS.standard },
 	fadeIn: { duration: 0.4, ease: EASINGS.in },
 	fadeOut: { duration: 0.4, ease: EASINGS.out },
 	bounce: { duration: 0.6, ease: EASINGS.backOut },
