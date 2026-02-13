@@ -19,7 +19,8 @@
 	position: sticky;
 	top: 1rem;
 	z-index: 8;
-	background-color: var(--color-primary-light);
+	/*On utilise le motion*/
+	/*background-color: var(--color-primary-light);*/
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -48,6 +49,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: stretch;
+	padding: 0 1rem;
 }
 .header .header-nav__burger-column {
 	padding: 0 2rem;

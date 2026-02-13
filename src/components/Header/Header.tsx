@@ -56,6 +56,11 @@ const Header = () => {
 					height: isMenuOpen ? "300px" : "",
 					top: isScrolled ? 0 : "1rem",
 					marginTop: isScrolled ? 0 : "1rem",
+					backgroundColor: isScrolled
+						? "var(--color-primary-light)"
+						: isMenuOpen
+							? "var(--color-primary-light)"
+							: "rgba(34, 42, 63, 0)",
 				}}
 				transition={TRANSITIONS.normal}
 			>
@@ -84,7 +89,11 @@ const Header = () => {
 				</motion.div>
 				<motion.nav
 					className="header-nav__burger"
-					initial={{ height: 0, opacity: 0, pointerEvents: "none" }}
+					initial={{
+						height: 0,
+						opacity: 0,
+						pointerEvents: "none",
+					}}
 					animate={{
 						opacity: isMenuOpen ? 1 : 0,
 						pointerEvents: isMenuOpen ? "" : "none",
