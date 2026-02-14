@@ -43,5 +43,13 @@
 	--header-height: 80px;
 	--footer-height: 80px;
 
+	/*Header Tricks*/
 	--initial-blur-height: calc(var(--header-height) + 1rem);
+	--header-gradient-start: #a0522d;
+	--header-gradient-end: #8b4513;
+	--header-gradient: linear-gradient(
+		135deg,
+		var(--header-gradient-start),
+		var(--header-gradient-end)
+	);
 }

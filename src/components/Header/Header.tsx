@@ -102,107 +102,109 @@ const Header = () => {
 						pointerEvents: "none",
 					}}
 					animate={{
+						height: isMenuOpen ? "" : 0,
 						opacity: isMenuOpen ? 1 : 0,
 						pointerEvents: isMenuOpen ? "" : "none",
-						height: isMenuOpen ? "" : 0,
 					}}
 					transition={TRANSITIONS.normal}
 				>
-					<motion.div
-						className="header-nav__burger-column"
-						initial={{ x: -50, scale: 0.8 }}
-						animate={{
-							x: isMenuOpen ? 0 : -50,
-							scale: isMenuOpen ? 1 : 0.8,
-						}}
-						transition={TRANSITIONS.normal}
-					>
-						<h3>Main</h3>
-						<ul>
-							<li>
-								<Link
-									to="/"
-									onClick={() => setIsMenuOpen(false)}
-								>
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/saint-of-the-day"
-									onClick={() => setIsMenuOpen(false)}
-								>
-									Feast of the Day
-								</Link>
-							</li>
-						</ul>
-					</motion.div>
-					<motion.div
-						className="header-nav__burger-column"
-						initial={{ x: 50, scale: 0.8 }}
-						animate={{
-							scale: isMenuOpen ? 1 : 0.8,
-							x: isMenuOpen ? 0 : 50,
-						}}
-						transition={TRANSITIONS.normal}
-					>
-						<h3>Saints</h3>
-						<ul>
-							<li>
-								<Link
-									to="/saints"
-									onClick={() => setIsMenuOpen(false)}
-								>
-									Saints List
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/search"
-									onClick={() => setIsMenuOpen(false)}
-								>
-									Search
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/about"
-									onClick={() => setIsMenuOpen(false)}
-								>
-									About
-								</Link>
-							</li>
-						</ul>
-					</motion.div>
-					<motion.div
-						className="header-nav__burger-column"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: isMenuOpen ? 1 : 0 }}
-						transition={TRANSITIONS.slower}
-					>
-						<h3>Contact</h3>
-						{/*Mail / github */}
-						<ul>
-							<li>
-								<Link
-									to="https://github.com/cybreuil"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Github
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="mailto:cybreuil@gmail.com"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Contact
-								</Link>
-							</li>
-						</ul>
-					</motion.div>
+					<div className="header-nav__burger-inner">
+						<motion.div
+							className="header-nav__burger-column"
+							initial={{ x: -50, scale: 0.8 }}
+							animate={{
+								x: isMenuOpen ? 0 : -50,
+								scale: isMenuOpen ? 1 : 0.8,
+							}}
+							transition={TRANSITIONS.normal}
+						>
+							<h3>Main</h3>
+							<ul>
+								<li>
+									<Link
+										to="/"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										Home
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/saint-of-the-day"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										Feast of the Day
+									</Link>
+								</li>
+							</ul>
+						</motion.div>
+						<motion.div
+							className="header-nav__burger-column"
+							initial={{ x: 50, scale: 0.8 }}
+							animate={{
+								scale: isMenuOpen ? 1 : 0.8,
+								x: isMenuOpen ? 0 : 50,
+							}}
+							transition={TRANSITIONS.normal}
+						>
+							<h3>Saints</h3>
+							<ul>
+								<li>
+									<Link
+										to="/saints"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										Saints List
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/search"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										Search
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/about"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										About
+									</Link>
+								</li>
+							</ul>
+						</motion.div>
+						<motion.div
+							className="header-nav__burger-column"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: isMenuOpen ? 1 : 0 }}
+							transition={TRANSITIONS.slower}
+						>
+							<h3>Contact</h3>
+							{/*Mail / github */}
+							<ul>
+								<li>
+									<Link
+										to="https://github.com/cybreuil"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Github
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="mailto:cybreuil@gmail.com"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Contact
+									</Link>
+								</li>
+							</ul>
+						</motion.div>
+					</div>
 				</motion.nav>
 			</motion.header>
 		</>
