@@ -29,6 +29,20 @@ const Header = () => {
 		}
 	}, [isScrolled]);
 
+	// Variants pour les colonnes du menu burger
+	const columnVariants = {
+		closed: { opacity: 0, y: 10 },
+		open: (i: number) => ({
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.26,
+				delay: i * 0.05,
+				ease: [0.22, 1, 0.36, 1],
+			},
+		}),
+	};
+
 	return (
 		<>
 			<motion.div
@@ -42,7 +56,7 @@ const Header = () => {
 				transition={TRANSITIONS.normal}
 			/>
 			<motion.header
-				className="header"
+				className={`header ${isMenuOpen ? "open" : ""}`}
 				initial={{
 					y: -50,
 					opacity: 0,
@@ -64,7 +78,9 @@ const Header = () => {
 					top: isScrolled ? 0 : "1rem",
 					marginTop: isScrolled ? 0 : "1rem",
 					backgroundColor: isScrolled
-						? "var(--color-primary-light)"
+						? //Couleur mise au pif mais j'aime bien : a retenir !!
+							// "rgba(34, 42, 63, 0.6)"
+							"var(--color-primary-light)"
 						: isMenuOpen
 							? "var(--color-primary-light)"
 							: "rgba(34, 42, 63, 0)",
@@ -95,7 +111,7 @@ const Header = () => {
 					)}
 				</motion.div>
 				<motion.nav
-					className="header-nav__burger"
+					className={`header-nav__burger`}
 					initial={{
 						height: 0,
 						opacity: 0,
@@ -111,12 +127,12 @@ const Header = () => {
 					<div className="header-nav__burger-inner">
 						<motion.div
 							className="header-nav__burger-column"
-							initial={{ x: -50, scale: 0.8 }}
+							initial={{ y: -50, opacity: 0 }}
 							animate={{
-								x: isMenuOpen ? 0 : -50,
-								scale: isMenuOpen ? 1 : 0.8,
+								y: isMenuOpen ? 0 : -50,
+								opacity: isMenuOpen ? 1 : 0,
 							}}
-							transition={TRANSITIONS.normal}
+							transition={TRANSITIONS.slower}
 						>
 							<h3>Main</h3>
 							<ul>
@@ -140,12 +156,12 @@ const Header = () => {
 						</motion.div>
 						<motion.div
 							className="header-nav__burger-column"
-							initial={{ x: 50, scale: 0.8 }}
+							initial={{ y: -50, opacity: 0 }}
 							animate={{
-								scale: isMenuOpen ? 1 : 0.8,
-								x: isMenuOpen ? 0 : 50,
+								opacity: isMenuOpen ? 1 : 0,
+								y: isMenuOpen ? 0 : -50,
 							}}
-							transition={TRANSITIONS.normal}
+							transition={{ ...TRANSITIONS.slower, delay: 0.1 }}
 						>
 							<h3>Saints</h3>
 							<ul>
@@ -177,9 +193,12 @@ const Header = () => {
 						</motion.div>
 						<motion.div
 							className="header-nav__burger-column"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: isMenuOpen ? 1 : 0 }}
-							transition={TRANSITIONS.slower}
+							initial={{ opacity: 0, y: -50 }}
+							animate={{
+								opacity: isMenuOpen ? 1 : 0,
+								y: isMenuOpen ? 0 : -50,
+							}}
+							transition={{ ...TRANSITIONS.slower, delay: 0.2 }}
 						>
 							<h3>Contact</h3>
 							{/*Mail / github */}
