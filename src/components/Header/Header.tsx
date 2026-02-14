@@ -176,12 +176,9 @@ const Header = () => {
 					</motion.div>
 					<motion.div
 						className="header-nav__burger-column"
-						initial={{ x: 50, scale: 0.8 }}
-						animate={{
-							x: isMenuOpen ? 0 : 50,
-							scale: isMenuOpen ? 1 : 0.8,
-						}}
-						transition={TRANSITIONS.normal}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: isMenuOpen ? 1 : 0 }}
+						transition={TRANSITIONS.slower}
 					>
 						<h3>Contact</h3>
 						{/*Mail / github */}

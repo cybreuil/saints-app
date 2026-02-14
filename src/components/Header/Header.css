@@ -40,14 +40,26 @@
 	gap: 1rem;
 }
 .header .header-nav__burger {
+	position: relative;
 	height: calc(300px - var(--header-height) - 1rem);
 	/* 1rem = gap between bottom limit 300px	and header */
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	align-items: stretch;
 	padding: 0 1rem;
-	border-top: 1px solid var(--color-border-dark);
+	/*border-top: 1px solid var(--color-border-dark);*/
 }
+.header .header-nav__burger::before {
+	content: "";
+	position: absolute;
+	left: 2rem;
+	right: 2rem;
+	top: 0;
+	height: 1px;
+	background: var(--color-border-dark);
+	opacity: 0.6;
+}
+
 .header .header-nav__burger-column {
 	position: relative;
 	display: flex;
