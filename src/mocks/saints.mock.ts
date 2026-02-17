@@ -84,11 +84,11 @@ export const mockSaints = [
 		image: "/saints-pic/st-bernadette-soubirous-cc-Manolo-Guallart.jpg",
 	},
 	{
-		id: "saint_cyrille",
-		name: "Saint Cyrille d'Alexandrie",
-		feastDay: "27 juin",
+		id: "saint_cyrille_de_jerusalem",
+		name: "Saint Cyrille de Jérusalem",
+		feastDay: "18 mars",
 		description:
-			"Évêque d'Alexandrie, docteur de l'Église, défenseur de la foi contre les hérésies.",
+			"Évêque et docteur de l'Église, connu pour ses catéchèses sur les sacrements et la liturgie.",
 		image: "/saints-pic/Bartolozzi_St_Cyril_of_Jerusalem.jpg",
 	},
 	{
