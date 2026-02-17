@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS attribute_translations CASCADE;
 DROP TABLE IF EXISTS attributes CASCADE;
 DROP TABLE IF EXISTS saints CASCADE;
 DROP TABLE IF EXISTS feasts CASCADE;
+DROP TABLE IF EXISTS liturgical_color_translations CASCADE;
+DROP TABLE IF EXISTS liturgical_colors CASCADE;
 DROP TABLE IF EXISTS liturgical_ranks CASCADE;
 DROP TABLE IF EXISTS calendars CASCADE;
 DROP TABLE IF EXISTS locales CASCADE;
@@ -28,15 +30,18 @@ DROP TABLE IF EXISTS locales CASCADE;
 -- Langues disponibles
 CREATE TABLE locales (
     code VARCHAR(10) PRIMARY KEY,                 -- ex: fr, en, la
-    name VARCHAR(50) NOT NULL                     -- ex: Français, English, Latin
+    name VARCHAR(50) NOT NULL
 );
 
--- Calendriers liturgiques
+-- Calendriers liturgiques (avec héritage hiérarchique)
 CREATE TABLE calendars (
     id SERIAL PRIMARY KEY,
-    code VARCHAR(50) UNIQUE NOT NULL,             -- ex: ROMAN_GENERAL_1969, TRIDENTINE_1962
+    code VARCHAR(50) UNIQUE NOT NULL,             -- ex: ROMAN_GENERAL_1969, ROMAN_FRANCE
     name VARCHAR(150) NOT NULL,
     description TEXT,
+    parent_id INTEGER REFERENCES calendars(id) ON DELETE SET NULL,
+    date_system VARCHAR(20) NOT NULL DEFAULT 'gregorian',   -- gregorian, julian
+    easter_computation VARCHAR(20) NOT NULL DEFAULT 'western', -- western, eastern
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -50,6 +55,21 @@ CREATE TABLE liturgical_ranks (
     precedence SMALLINT NOT NULL CHECK (precedence > 0),
     UNIQUE (calendar_id, code),
     UNIQUE (calendar_id, precedence)
+);
+
+-- Couleurs liturgiques
+CREATE TABLE liturgical_colors (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(20) UNIQUE NOT NULL,             -- ex: WHITE, RED, GREEN
+    hex_color VARCHAR(7) NOT NULL                 -- ex: #FFFFFF, #FF0000
+);
+
+-- Traductions des couleurs liturgiques
+CREATE TABLE liturgical_color_translations (
+    color_id INTEGER NOT NULL REFERENCES liturgical_colors(id) ON DELETE CASCADE,
+    locale_code VARCHAR(10) NOT NULL REFERENCES locales(code) ON DELETE CASCADE,
+    label VARCHAR(50) NOT NULL,
+    PRIMARY KEY (color_id, locale_code)
 );
 
 -- =========================================================
@@ -80,14 +100,12 @@ CREATE TABLE saint_translations (
 -- 3) Attributs (normalisés + traduits)
 -- =========================================================
 
--- Concepts d'attributs
 CREATE TABLE attributes (
     id SERIAL PRIMARY KEY,
     code VARCHAR(120) UNIQUE NOT NULL,            -- ex: LILY, SWORD, SKULL, BOOK
     category VARCHAR(50)                          -- ex: symbol, title, order
 );
 
--- Traductions des attributs
 CREATE TABLE attribute_translations (
     attribute_id INTEGER NOT NULL REFERENCES attributes(id) ON DELETE CASCADE,
     locale_code VARCHAR(10) NOT NULL REFERENCES locales(code) ON DELETE CASCADE,
@@ -96,7 +114,6 @@ CREATE TABLE attribute_translations (
     PRIMARY KEY (attribute_id, locale_code)
 );
 
--- Liaison saints <-> attributs
 CREATE TABLE saint_attributes (
     saint_id INTEGER NOT NULL REFERENCES saints(id) ON DELETE CASCADE,
     attribute_id INTEGER NOT NULL REFERENCES attributes(id) ON DELETE CASCADE,
@@ -107,13 +124,11 @@ CREATE TABLE saint_attributes (
 -- 4) Patronages (normalisés + traduits)
 -- =========================================================
 
--- Concepts de patronages
 CREATE TABLE patronages (
     id SERIAL PRIMARY KEY,
     code VARCHAR(120) UNIQUE NOT NULL             -- ex: WORKERS, FRANCE, STUDENTS
 );
 
--- Traductions des patronages
 CREATE TABLE patronage_translations (
     patronage_id INTEGER NOT NULL REFERENCES patronages(id) ON DELETE CASCADE,
     locale_code VARCHAR(10) NOT NULL REFERENCES locales(code) ON DELETE CASCADE,
@@ -122,7 +137,6 @@ CREATE TABLE patronage_translations (
     PRIMARY KEY (patronage_id, locale_code)
 );
 
--- Liaison saints <-> patronages
 CREATE TABLE saint_patronages (
     saint_id INTEGER NOT NULL REFERENCES saints(id) ON DELETE CASCADE,
     patronage_id INTEGER NOT NULL REFERENCES patronages(id) ON DELETE CASCADE,
@@ -152,6 +166,7 @@ CREATE TABLE feast_translations (
 -- =========================================================
 -- 6) Dates des fêtes (règles calendaires)
 -- =========================================================
+-- La date peut varier selon le calendrier (héritage pris en compte côté app)
 
 CREATE TABLE feast_dates (
     id SERIAL PRIMARY KEY,
@@ -164,7 +179,7 @@ CREATE TABLE feast_dates (
     month SMALLINT CHECK (month BETWEEN 1 AND 12),
     day SMALLINT CHECK (day BETWEEN 1 AND 31),
 
-    -- Pour movable
+    -- Pour movable (interprété selon calendar.easter_computation)
     movable_base VARCHAR(30),                     -- ex: EASTER, CHRISTMAS
     movable_offset_days INTEGER,
 
@@ -182,24 +197,24 @@ CREATE TABLE feast_dates (
 );
 
 -- =========================================================
--- 7) Célébrations (fête + calendrier + rang)
+-- 7) Célébrations (fête + calendrier + rang + couleur)
 -- =========================================================
+-- Une célébration locale surcharge la célébration parente (résolu côté app)
 
 CREATE TABLE celebrations (
     id SERIAL PRIMARY KEY,
     feast_id INTEGER NOT NULL REFERENCES feasts(id) ON DELETE CASCADE,
     calendar_id INTEGER NOT NULL REFERENCES calendars(id) ON DELETE CASCADE,
     rank_id INTEGER NOT NULL REFERENCES liturgical_ranks(id) ON DELETE RESTRICT,
+    color_id INTEGER REFERENCES liturgical_colors(id) ON DELETE RESTRICT,  -- nullable (certaines traditions)
 
-    liturgical_color VARCHAR(30),                 -- blanc, rouge, vert, violet, noir, rose
     is_optional BOOLEAN NOT NULL DEFAULT FALSE,
-    region VARCHAR(100),                          -- ex: FR, IT, Rome, diocèse X
     notes TEXT,
 
     valid_from DATE,
     valid_to DATE,
 
-    UNIQUE (feast_id, calendar_id, region)
+    UNIQUE (feast_id, calendar_id)
 );
 
 -- Liaison célébrations <-> saints
@@ -214,6 +229,7 @@ CREATE TABLE celebration_saints (
 -- 8) Index
 -- =========================================================
 
+CREATE INDEX idx_calendars_parent ON calendars(parent_id);
 CREATE INDEX idx_saints_slug ON saints(slug);
 CREATE INDEX idx_feasts_slug ON feasts(slug);
 
@@ -226,13 +242,15 @@ CREATE INDEX idx_feast_dates_movable
     WHERE date_kind = 'movable';
 
 CREATE INDEX idx_celebrations_calendar ON celebrations(calendar_id);
+CREATE INDEX idx_celebrations_feast ON celebrations(feast_id);
 CREATE INDEX idx_celebrations_rank ON celebrations(rank_id);
-CREATE INDEX idx_celebrations_region ON celebrations(region);
+CREATE INDEX idx_celebrations_color ON celebrations(color_id);
 
 CREATE INDEX idx_saint_translations_locale ON saint_translations(locale_code);
 CREATE INDEX idx_feast_translations_locale ON feast_translations(locale_code);
 CREATE INDEX idx_patronage_translations_locale ON patronage_translations(locale_code);
 CREATE INDEX idx_attribute_translations_locale ON attribute_translations(locale_code);
+CREATE INDEX idx_liturgical_color_translations_locale ON liturgical_color_translations(locale_code);
 
 -- =========================================================
 -- 9) Seeds minimaux
@@ -244,10 +262,24 @@ INSERT INTO locales (code, name) VALUES
 ('en', 'English'),
 ('la', 'Latin');
 
--- Calendriers
-INSERT INTO calendars (code, name, description) VALUES
-('ROMAN_GENERAL_1969', 'Calendrier romain général (1969+)', 'Forme ordinaire post-Vatican II'),
-('TRIDENTINE_1962', 'Calendrier traditionnel (1962)', 'Missel de 1962, forme extraordinaire');
+-- Calendriers (avec héritage)
+INSERT INTO calendars (code, name, description, parent_id, date_system, easter_computation) VALUES
+('ROMAN_GENERAL_1969', 'Calendrier romain général (1969+)', 'Forme ordinaire post-Vatican II', NULL, 'gregorian', 'western'),
+('TRIDENTINE_1962', 'Calendrier traditionnel (1962)', 'Missel de 1962, forme extraordinaire', NULL, 'gregorian', 'western');
+
+-- Calendriers régionaux (héritage)
+INSERT INTO calendars (code, name, description, parent_id, date_system, easter_computation)
+SELECT 'ROMAN_FRANCE', 'Calendrier romain - France', 'Propre de France', id, 'gregorian', 'western'
+FROM calendars WHERE code = 'ROMAN_GENERAL_1969';
+
+INSERT INTO calendars (code, name, description, parent_id, date_system, easter_computation)
+SELECT 'ROMAN_ITALY', 'Calendrier romain - Italie', 'Propre d''Italie', id, 'gregorian', 'western'
+FROM calendars WHERE code = 'ROMAN_GENERAL_1969';
+
+-- Exemple orthodoxe
+INSERT INTO calendars (code, name, description, parent_id, date_system, easter_computation) VALUES
+('ORTHODOX_RUSSIAN', 'Calendrier orthodoxe russe', 'Patriarcat de Moscou', NULL, 'julian', 'eastern'),
+('ORTHODOX_GREEK', 'Calendrier orthodoxe grec', 'Nouveau calendrier', NULL, 'gregorian', 'eastern');
 
 -- Rangs pour calendrier romain actuel
 INSERT INTO liturgical_ranks (calendar_id, code, label_fr, precedence)
@@ -273,3 +305,58 @@ CROSS JOIN (VALUES
     ('CLASS_IV',   'IVe classe / férie',    4)
 ) AS x(code, label_fr, precedence)
 WHERE c.code = 'TRIDENTINE_1962';
+
+-- Couleurs liturgiques
+INSERT INTO liturgical_colors (code, hex_color) VALUES
+('WHITE',  '#FFFFFF'),
+('RED',    '#FF0000'),
+('GREEN',  '#008000'),
+('PURPLE', '#800080'),
+('ROSE',   '#FF007F'),
+('BLACK',  '#000000'),
+('GOLD',   '#FFD700');
+
+-- Traductions des couleurs (FR)
+INSERT INTO liturgical_color_translations (color_id, locale_code, label)
+SELECT lc.id, 'fr', x.label
+FROM liturgical_colors lc
+JOIN (VALUES
+    ('WHITE',  'Blanc'),
+    ('RED',    'Rouge'),
+    ('GREEN',  'Vert'),
+    ('PURPLE', 'Violet'),
+    ('ROSE',   'Rose'),
+    ('BLACK',  'Noir'),
+    ('GOLD',   'Or')
+) AS x(code, label)
+ON lc.code = x.code;
+
+-- Traductions des couleurs (EN)
+INSERT INTO liturgical_color_translations (color_id, locale_code, label)
+SELECT lc.id, 'en', x.label
+FROM liturgical_colors lc
+JOIN (VALUES
+    ('WHITE',  'White'),
+    ('RED',    'Red'),
+    ('GREEN',  'Green'),
+    ('PURPLE', 'Purple'),
+    ('ROSE',   'Rose'),
+    ('BLACK',  'Black'),
+    ('GOLD',   'Gold')
+) AS x(code, label)
+ON lc.code = x.code;
+
+-- Traductions des couleurs (LA)
+INSERT INTO liturgical_color_translations (color_id, locale_code, label)
+SELECT lc.id, 'la', x.label
+FROM liturgical_colors lc
+JOIN (VALUES
+    ('WHITE',  'Album'),
+    ('RED',    'Rubrum'),
+    ('GREEN',  'Viride'),
+    ('PURPLE', 'Violaceum'),
+    ('ROSE',   'Rosaceum'),
+    ('BLACK',  'Nigrum'),
+    ('GOLD',   'Aureum')
+) AS x(code, label)
+ON lc.code = x.code;
