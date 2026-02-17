@@ -83,5 +83,21 @@ export const mockSaints = [
 			"Visionnaire de Lourdes, connue pour ses apparitions mariales et sa vie humble.",
 		image: "/saints-pic/st-bernadette-soubirous-cc-Manolo-Guallart.jpg",
 	},
+	{
+		id: "saint_cyrille",
+		name: "Saint Cyrille d'Alexandrie",
+		feastDay: "27 juin",
+		description:
+			"Évêque d'Alexandrie, docteur de l'Église, défenseur de la foi contre les hérésies.",
+		image: "/saints-pic/Bartolozzi_St_Cyril_of_Jerusalem.jpg",
+	},
+	{
+		id: "sainte_marie_madeleine",
+		name: "Sainte Marie-Madeleine",
+		feastDay: "22 juillet",
+		description:
+			"Disciple de Jésus, témoin de sa résurrection, souvent appelée « l'apôtre des apôtres ».",
+		image: "/saints-pic/Maria_Magdalene_by_Caravaggio.jpg",
+	},
 	// etc...
 ];
