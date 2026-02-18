@@ -4,6 +4,7 @@ import { SaintOfTheDay } from "../../pages/SaintOfTheDay/SaintOfTheDay";
 import { SaintsPage } from "../../pages/SaintsPage/SaintsPage";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
 import { AboutPage } from "../../pages/AboutPage/AboutPage";
+import { NotFoundPage } from "../../pages/NotFoundPage/NotFoundPage";
 
 const AppRoutes = () => {
 	return (
@@ -14,7 +15,7 @@ const AppRoutes = () => {
 			<Route path="/saints" element={<SaintsPage />} />
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/about" element={<AboutPage />} />
-			<Route path="*" element={<HomePage />} />
+			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
 	);
 };
