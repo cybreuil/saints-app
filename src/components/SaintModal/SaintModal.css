@@ -36,7 +36,13 @@
 	border-radius: 8px;
 	object-fit: cover;
 }
-
+.saint-modal__content__date {
+	align-self: flex-end;
+	font-style: italic;
+}
+.saint-modal__content__description {
+	text-align: justify;
+}
 .saint-modal__close {
 	cursor: pointer;
 	margin: auto;

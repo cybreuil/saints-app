@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./SaintCardSmall.css";
 
 const SaintCardSmall = ({
@@ -7,13 +8,17 @@ const SaintCardSmall = ({
 }) => {
 	return (
 		<div className="saint-card-small" key={saint.id}>
-			<img
+			<motion.img
+				// Super useful for animation between list and modal / need to remember
+				layoutId={`saint-img-${saint.id}`}
 				src={saint.image || "/logoOptimized.svg"}
 				alt={saint.name}
 				loading="lazy"
 			/>
 			<div className="saint-card-small__overlay">
-				<h3>{saint.name}</h3>
+				<motion.	h3 layoutId={`saint-name-${saint.id}`}>
+					{saint.name}
+				</motion.h3>
 				<p>{saint.feastDay}</p>
 			</div>
 		</div>

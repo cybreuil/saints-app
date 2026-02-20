@@ -53,15 +53,24 @@ export function SaintModal({
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
 			>
-				<img
+				<motion.img
+					layoutId={`saint-img-${saint.id}`}
 					src={saint.image || "/logoOptimized.svg"}
 					alt={saint.name}
 					className="saint-modal__img"
 				/>
 				<div className="saint-modal__content">
-					<h2>{saint.name}</h2>
-					<p>{saint.feastDay}</p>
-					{saint.description && <p>{saint.description}</p>}
+					<motion.h2 layoutId={`saint-name-${saint.id}`}>
+						{saint.name}
+					</motion.h2>
+					<p className="saint-modal__content__date">
+						{saint.feastDay}
+					</p>
+					{saint.description && (
+						<p className="saint-modal__content__description">
+							{saint.description}
+						</p>
+					)}
 					<button className="saint-modal__close" onClick={onClose}>
 						Fermer
 					</button>
