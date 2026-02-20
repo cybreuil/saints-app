@@ -29,20 +29,6 @@ const Header = () => {
 		}
 	}, [isScrolled]);
 
-	// Variants pour les colonnes du menu burger
-	const columnVariants = {
-		closed: { opacity: 0, y: 10 },
-		open: (i: number) => ({
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.26,
-				delay: i * 0.05,
-				ease: [0.22, 1, 0.36, 1],
-			},
-		}),
-	};
-
 	return (
 		<>
 			<motion.div
