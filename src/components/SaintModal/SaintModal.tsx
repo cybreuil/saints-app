@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import "./SaintModal.css";
@@ -36,7 +37,7 @@ export function SaintModal({
 		};
 	}, []);
 
-	return (
+	return createPortal(
 		<>
 			<motion.div
 				className="saint-modal__backdrop"
@@ -66,6 +67,7 @@ export function SaintModal({
 					</button>
 				</div>
 			</motion.div>
-		</>
+		</>,
+		document.getElementById("modal-root")!,
 	);
 }

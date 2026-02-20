@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import saintsData from "../../data/saints.json";
 import "./SaintOfTheDay.css";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
@@ -15,6 +15,7 @@ const getTodayKey = () => {
 };
 
 const SaintOfTheDay: React.FC = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const { calendar } = useCalendar();
 
 	const saint = useMemo(() => {
