@@ -65,7 +65,7 @@
 }
 .header .header-nav__burger {
 	position: relative;
-	height: calc(300px - var(--header-height));
+	height: calc(var(--header-open-height) - var(--header-height));
 	/*border-top: 1px solid var(--color-border-dark);*/
 }
 

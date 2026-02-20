@@ -60,7 +60,7 @@ const Header = () => {
 							? "1440px"
 							: "90%",
 					borderRadius: isScrolled ? 0 : "1rem",
-					height: isMenuOpen ? "300px" : "",
+					height: isMenuOpen ? "var(--header-open-height)" : "",
 					top: isScrolled ? 0 : "1rem",
 					marginTop: isScrolled ? 0 : "1rem",
 					backgroundColor: isScrolled
@@ -118,7 +118,11 @@ const Header = () => {
 								y: isMenuOpen ? 0 : -50,
 								opacity: isMenuOpen ? 1 : 0,
 							}}
-							transition={TRANSITIONS.slower}
+							transition={
+								isMenuOpen
+									? TRANSITIONS.slower
+									: { duration: 0 }
+							}
 						>
 							<h3>Main</h3>
 							<ul>
@@ -147,7 +151,11 @@ const Header = () => {
 								opacity: isMenuOpen ? 1 : 0,
 								y: isMenuOpen ? 0 : -50,
 							}}
-							transition={{ ...TRANSITIONS.slower, delay: 0.1 }}
+							transition={
+								isMenuOpen
+									? { ...TRANSITIONS.slower, delay: 0.1 }
+									: { duration: 0 }
+							}
 						>
 							<h3>Saints</h3>
 							<ul>
@@ -184,7 +192,13 @@ const Header = () => {
 								opacity: isMenuOpen ? 1 : 0,
 								y: isMenuOpen ? 0 : -50,
 							}}
-							transition={{ ...TRANSITIONS.slower, delay: 0.2 }}
+							transition={
+								isMenuOpen
+									? { ...TRANSITIONS.slower, delay: 0.2 }
+									: {
+											duration: 0,
+										}
+							}
 						>
 							<h3>Contact</h3>
 							{/*Mail / github */}

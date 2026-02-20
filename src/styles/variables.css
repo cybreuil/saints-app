@@ -41,6 +41,7 @@
 
 	/* Interface */
 	--header-height: 80px;
+	--header-open-height: 400px;
 	--footer-height: 80px;
 
 	/*Header Tricks*/
