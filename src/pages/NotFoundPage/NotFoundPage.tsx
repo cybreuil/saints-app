@@ -48,13 +48,13 @@ const NotFoundPage = () => {
 			/>
 
 			{/* Logo avec animation */}
-			<motion.div
+			{/*<motion.div
 				initial={{ scale: 0.8, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
 				transition={{ ...TRANSITIONS.bounce, delay: 0.2 }}
 			>
 				<Logo color="var(--color-primary)" maxWidth={200} />
-			</motion.div>
+			</motion.div>*/}
 
 			{/* Grand 404 avec effet de flottement */}
 			<motion.div
@@ -126,7 +126,7 @@ const NotFoundPage = () => {
 			</motion.nav>
 
 			{/* Petite citation en bas */}
-			<motion.div
+			{/*<motion.div
 				className="not-found-quote"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -134,7 +134,7 @@ const NotFoundPage = () => {
 			>
 				<em>"Not all who wander are lost"</em>
 				<span className="not-found-quote-author">— J.R.R. Tolkien</span>
-			</motion.div>
+			</motion.div>*/}
 		</motion.div>
 	);
 };

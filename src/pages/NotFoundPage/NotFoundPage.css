@@ -161,8 +161,6 @@
 
 /* Citation en bas */
 .not-found-quote {
-	position: absolute;
-	bottom: 3rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
