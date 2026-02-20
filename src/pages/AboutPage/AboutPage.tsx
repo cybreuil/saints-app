@@ -1,4 +1,6 @@
 import "./AboutPage.css";
+import { Loader } from "../../components/Loader/Loader";
+import { h1 } from "framer-motion/m";
 
 const AboutPage = () => {
 	return (
@@ -21,6 +23,7 @@ const AboutPage = () => {
 					to us.
 				</p>
 			</div>
+			<Loader />
 		</div>
 	);
 };
