@@ -16,7 +16,7 @@ const SaintCardSmall = ({
 				loading="lazy"
 			/>
 			<div className="saint-card-small__overlay">
-				<motion.	h3 layoutId={`saint-name-${saint.id}`}>
+				<motion.h3 layoutId={`saint-name-${saint.id}`}>
 					{saint.name}
 				</motion.h3>
 				<p>{saint.feastDay}</p>

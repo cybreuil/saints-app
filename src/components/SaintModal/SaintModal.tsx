@@ -71,6 +71,32 @@ export function SaintModal({
 							{saint.description}
 						</p>
 					)}
+					<div className="saint-modal__content__columns">
+						{saint.attributes && (
+							<p className="saint-modal__content__attributes">
+								Attributs :{" "}
+								<ul>
+									{saint.attributes
+										.split(",")
+										.map((attr, index) => (
+											<li key={index}>{attr.trim()}</li>
+										))}
+								</ul>
+							</p>
+						)}
+						{saint.patronage && (
+							<p className="saint-modal__content__patronage">
+								Patronage :{" "}
+								<ul>
+									{saint.patronage
+										.split(",")
+										.map((pat, index) => (
+											<li key={index}>{pat.trim()}</li>
+										))}
+								</ul>
+							</p>
+						)}
+					</div>
 					<button className="saint-modal__close" onClick={onClose}>
 						Fermer
 					</button>
