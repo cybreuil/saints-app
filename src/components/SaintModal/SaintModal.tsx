@@ -1,7 +1,8 @@
 import { createPortal } from "react-dom";
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import { useEffect } from "react";
 import "./SaintModal.css";
+import { TRANSITIONS } from "../../styles/theme";
 
 export function SaintModal({
 	saint,
@@ -53,12 +54,44 @@ export function SaintModal({
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
 			>
-				<motion.img
-					layoutId={`saint-img-${saint.id}`}
-					src={saint.image || "/logoOptimized.svg"}
-					alt={saint.name}
-					className="saint-modal__img"
-				/>
+				<div className="saint-modal__left">
+					<motion.div
+						className="saint-modal__left__top"
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -20 }}
+						transition={{ ...TRANSITIONS.normal }}
+						whileHover={{ scale: 1.05 }}
+					>
+						<button
+							className="saint-modal__close"
+							onClick={onClose}
+						>
+							← Retour
+						</button>
+					</motion.div>
+					<motion.img
+						layoutId={`saint-img-${saint.id}`}
+						src={saint.image || "/logoOptimized.svg"}
+						alt={saint.name}
+						className="saint-modal__img"
+					/>
+					<motion.div
+						className="saint-modal__left__bottom"
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -20 }}
+						transition={TRANSITIONS.normal}
+					>
+						<button
+							className="link-button"
+							onClick={() => alert("Voir la fiche complète")}
+						>
+							Voir la fête de ce saint
+						</button>
+						<p className="saint-modal__id">ID : {saint.id}</p>
+					</motion.div>
+				</div>
 				<div className="saint-modal__content">
 					<motion.h2 layoutId={`saint-name-${saint.id}`}>
 						{saint.name}
@@ -97,9 +130,6 @@ export function SaintModal({
 							</p>
 						)}
 					</div>
-					<button className="saint-modal__close" onClick={onClose}>
-						Fermer
-					</button>
 				</div>
 			</motion.div>
 		</>,
