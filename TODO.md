@@ -17,6 +17,7 @@ Le `layoutId` du conteneur passe dans `SaintCardSmall`, le `onClick` aussi. La c
 
 ---
 
-flou bas et haut modale + padding bas
+flou bas et haut modale + padding bas // BLUR
 animation delayed apparition carte
 animation title carte
+scroll to top on route change

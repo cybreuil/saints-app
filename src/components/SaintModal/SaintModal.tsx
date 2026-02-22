@@ -3,6 +3,7 @@ import { motion, scale } from "framer-motion";
 import { useEffect } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
+import { RippleButton } from "../RippleButton/RippleButton";
 
 export function SaintModal({
 	saint,
@@ -60,14 +61,13 @@ export function SaintModal({
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ ...TRANSITIONS.slower }}
-						whileHover={{ scale: 1.05 }}
 					>
-						<button
+						<RippleButton
 							className="saint-modal__close"
 							onClick={onClose}
 						>
 							← Retour
-						</button>
+						</RippleButton>
 					</motion.div>
 					<motion.img
 						layoutId={`saint-img-${saint.id}`}
