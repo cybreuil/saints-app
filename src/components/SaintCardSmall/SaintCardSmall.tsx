@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import "./SaintCardSmall.css";
+import { TRANSITIONS } from "../../styles/theme";
 
 const SaintCardSmall = ({
 	saint,
@@ -16,7 +17,9 @@ const SaintCardSmall = ({
 				loading="lazy"
 			/>
 			<div className="saint-card-small__overlay">
-				<motion.h3 layoutId={`saint-name-${saint.id}`}>
+				<motion.h3
+				// layoutId={`saint-name-${saint.id}`}
+				>
 					{saint.name}
 				</motion.h3>
 				<p>{saint.feastDay}</p>

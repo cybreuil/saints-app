@@ -5,6 +5,7 @@ import { mockSaints } from "../../mocks/saints.mock.ts";
 import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall.tsx";
 import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
+import { TRANSITIONS } from "../../styles/theme.ts";
 
 export function SaintsPage() {
 	const [page, setPage] = useState(1);
@@ -28,6 +29,12 @@ export function SaintsPage() {
 						key={saint.id}
 						onClick={() => setSelectedSaint(saint)}
 						layoutId={`saint-${saint.id}`}
+						initial={{ opacity: 0, scale: 0.95 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{
+							...TRANSITIONS.normal,
+							delay: 0.1 * (saint.id % saintsPerPage),
+						}}
 					>
 						<SaintCardSmall key={saint.id} saint={saint} />
 					</motion.div>

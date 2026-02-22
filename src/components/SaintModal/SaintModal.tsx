@@ -59,8 +59,7 @@ export function SaintModal({
 						className="saint-modal__left__top"
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: -20 }}
-						transition={{ ...TRANSITIONS.normal }}
+						transition={{ ...TRANSITIONS.slower }}
 						whileHover={{ scale: 1.05 }}
 					>
 						<button
@@ -80,22 +79,26 @@ export function SaintModal({
 						className="saint-modal__left__bottom"
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: -20 }}
-						transition={TRANSITIONS.normal}
+						transition={TRANSITIONS.slower}
 					>
 						<button
 							className="link-button"
 							onClick={() => alert("Voir la fiche complète")}
 						>
-							Voir la fête de ce saint
+							{saint.sex === "female"
+								? "Voir la fête de cette sainte"
+								: "Voir la fête de ce saint"}
 						</button>
 						<p className="saint-modal__id">ID : {saint.id}</p>
 					</motion.div>
 				</div>
-				<div className="saint-modal__content">
-					<motion.h2 layoutId={`saint-name-${saint.id}`}>
-						{saint.name}
-					</motion.h2>
+				<motion.div
+					className="saint-modal__content"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={TRANSITIONS.slower}
+				>
+					<motion.h2>{saint.name}</motion.h2>
 					<p className="saint-modal__content__date">
 						{saint.feastDay}
 					</p>
@@ -130,7 +133,7 @@ export function SaintModal({
 							</p>
 						)}
 					</div>
-				</div>
+				</motion.div>
 			</motion.div>
 		</>,
 		document.getElementById("modal-root")!,

@@ -16,3 +16,7 @@ Passer toute la logique onclick et layout dans smallcard : Citation :
 Le `layoutId` du conteneur passe dans `SaintCardSmall`, le `onClick` aussi. La carte est un `motion.div` avec tout dedans. La page ne fait que rendre et passer un callback.)
 
 ---
+
+flou bas et haut modale + padding bas
+animation delayed apparition carte
+animation title carte
