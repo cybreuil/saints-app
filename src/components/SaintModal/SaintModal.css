@@ -94,10 +94,10 @@
 }
 
 .saint-modal__content {
+	align-self: flex-start;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	height: 100%;
 }
 
 .saint-modal__content__date {
