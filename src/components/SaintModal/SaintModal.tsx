@@ -81,14 +81,14 @@ export function SaintModal({
 						animate={{ opacity: 1, x: 0 }}
 						transition={TRANSITIONS.slower}
 					>
-						<button
+						<RippleButton
 							className="link-button"
 							onClick={() => alert("Voir la fiche complète")}
 						>
 							{saint.sex === "female"
 								? "Voir la fête de cette sainte"
 								: "Voir la fête de ce saint"}
-						</button>
+						</RippleButton>
 						<p className="saint-modal__id">ID : {saint.id}</p>
 					</motion.div>
 				</div>
