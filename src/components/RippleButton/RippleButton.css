@@ -1,0 +1,13 @@
+.ripple-button {
+	position: relative;
+	overflow: hidden;
+	/* Le reste du style vient de la classe passée en prop */
+}
+
+.ripple-effect {
+	position: absolute;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	will-change: width, height, opacity;
+}
