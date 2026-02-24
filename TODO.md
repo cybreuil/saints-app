@@ -21,3 +21,6 @@ flou bas et haut modale + padding bas // BLUR
 animation delayed apparition carte
 animation title carte
 scroll to top on route change
+
+---
+Might be a good idea to only use portal on body and not on dedicated div, to simplify the code.
