@@ -62,12 +62,12 @@ export function SaintModal({
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ ...TRANSITIONS.slower }}
 					>
-						<RippleButton
+						<button
 							className="saint-modal__close"
 							onClick={onClose}
 						>
 							← Retour
-						</RippleButton>
+						</button>
 					</motion.div>
 					<motion.img
 						layoutId={`saint-img-${saint.id}`}
