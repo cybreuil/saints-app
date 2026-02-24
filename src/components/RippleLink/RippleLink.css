@@ -1,0 +1,19 @@
+.ripple-link {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	text-decoration: none;
+	/* Ajoute ici tes styles de base pour le lien */
+	transition: background-color 0.3s;
+}
+
+.ripple-link__effect {
+	position: absolute;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	will-change: width, height, opacity;
+	z-index: 1;
+}
