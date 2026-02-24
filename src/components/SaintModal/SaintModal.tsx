@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { motion, scale } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
@@ -41,6 +41,7 @@ export function SaintModal({
 
 	return createPortal(
 		<>
+			{/*AnimatePresence is called in the page*/}
 			<motion.div
 				className="saint-modal__backdrop"
 				initial={{ opacity: 0 }}
@@ -136,6 +137,6 @@ export function SaintModal({
 				</motion.div>
 			</motion.div>
 		</>,
-		document.getElementById("modal-root")!,
+		document.body,
 	);
 }
