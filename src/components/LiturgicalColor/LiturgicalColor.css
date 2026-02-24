@@ -1,0 +1,21 @@
+.liturgical-color {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	padding: 1rem;
+	background-color: #f9f9f9;
+}
+.liturgical-color__infos {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+.liturgical-color__circle {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--color-primary);
+}

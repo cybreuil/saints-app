@@ -6,6 +6,8 @@ import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
 import { useCalendar } from "../../hooks/useCalendar";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
+import { LiturgicalColor } from "../../components/LiturgicalColor/LiturgicalColor";
+import { MiniCalendar } from "../../components/MiniCalendar/MiniCalendar";
 
 const getTodayKey = () => {
 	const today = new Date();
@@ -41,7 +43,27 @@ const SaintOfTheDay: React.FC = () => {
 
 	return (
 		<div className="saint-of-the-day-layout">
-			<div className="sidebar-left" />
+			<div className="sidebar-left">
+				<div className="sidebar-left-sticky">
+					{/*Logique de facultatif a ajouter si on a pas de couleur dans certains calendriers*/}
+					{/*{saint.liturgicalColor && (*/}
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
+						<LiturgicalColor color="#B22222" colorName="Rouge" />
+					</motion.div>
+
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
+					>
+						<MiniCalendar />
+					</motion.div>
+				</div>
+			</div>
 
 			<motion.div
 				className="saint-of-the-day-card"
