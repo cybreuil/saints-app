@@ -65,13 +65,10 @@
 	border: none;
 	border-radius: 8px;
 	text-decoration: none;
-	transition:
-		transform 220ms ease,
-		background-color 220ms ease,
-		box-shadow 220ms ease;
 	position: relative;
 	overflow: hidden;
 	background-color: var(--color-primary-dark);
+	transition: background-color 0.3s ease;
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 .saint-modal__left__bottom .link-button:hover {

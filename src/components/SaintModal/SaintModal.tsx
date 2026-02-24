@@ -48,13 +48,14 @@ export function SaintModal({
 				animate={{ opacity: 0.6 }}
 				exit={{ opacity: 0 }}
 				onClick={onClose}
+				transition={TRANSITIONS.normal}
 			/>
 			<motion.div
 				className="saint-modal"
 				layoutId={`saint-${saint.id}`}
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
+				transition={TRANSITIONS.normal}
 			>
 				<div className="saint-modal__left">
 					<motion.div
@@ -75,6 +76,7 @@ export function SaintModal({
 						src={saint.image || "/logoOptimized.svg"}
 						alt={saint.name}
 						className="saint-modal__img"
+						transition={TRANSITIONS.normal}
 					/>
 					<motion.div
 						className="saint-modal__left__bottom"
@@ -99,10 +101,19 @@ export function SaintModal({
 					animate={{ opacity: 1 }}
 					transition={TRANSITIONS.slower}
 				>
-					<motion.h2>{saint.name}</motion.h2>
-					<p className="saint-modal__content__date">
+					<motion.h2
+						layoutId={`saint-name-${saint.id}`}
+						transition={TRANSITIONS.normal}
+					>
+						{saint.name}
+					</motion.h2>
+					<motion.p
+						className="saint-modal__content__date"
+						layoutId={`saint-feastDay-${saint.id}`}
+						transition={TRANSITIONS.normal}
+					>
 						{saint.feastDay}
-					</p>
+					</motion.p>
 					{saint.description && (
 						<p className="saint-modal__content__description">
 							{saint.description}

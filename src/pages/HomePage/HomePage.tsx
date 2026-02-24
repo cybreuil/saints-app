@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./HomePage.css";
+import { RippleButton } from "../../components/RippleButton/RippleButton";
+import { RippleLink } from "../../components/RippleLink/RippleLink";
 
 const HomePage = () => {
 	return (
@@ -24,12 +26,12 @@ const HomePage = () => {
 				distinguique possit, augeri amplificarique.
 			</p>
 			<nav className="home-nav">
-				<Link
+				<RippleLink
 					to="/saint-of-the-day"
 					className="home-nav-link saint-of-the-day-link"
 				>
 					Saint of the Day
-				</Link>
+				</RippleLink>
 				<Link to="/about" className="home-nav-link">
 					About
 				</Link>

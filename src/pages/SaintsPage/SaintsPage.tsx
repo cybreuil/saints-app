@@ -24,20 +24,12 @@ export function SaintsPage() {
 
 			<div className="saints-page__grid">
 				{paginatedSaints.map((saint) => (
-					<motion.div
-						className="saint-card-wrapper"
+					<SaintCardSmall
 						key={saint.id}
+						saint={saint}
 						onClick={() => setSelectedSaint(saint)}
-						layoutId={`saint-${saint.id}`}
-						initial={{ opacity: 0, scale: 0.95 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{
-							...TRANSITIONS.normal,
-							delay: 0.1 * (saint.id % saintsPerPage),
-						}}
-					>
-						<SaintCardSmall key={saint.id} saint={saint} />
-					</motion.div>
+					/>
+					// </motion.div>
 				))}
 			</div>
 			<AnimatePresence>

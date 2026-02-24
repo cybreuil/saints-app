@@ -7,18 +7,10 @@
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 	padding: 1rem;
 	text-align: center;
-	transition:
-		transform 0.15s,
-		box-shadow 0.15s;
 	cursor: pointer;
 	gap: 0.5rem;
 	height: 100%;
 	user-select: none;
-}
-
-.saint-card-small:hover {
-	transform: translateY(-4px) scale(1.03);
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .saint-card-small img {
