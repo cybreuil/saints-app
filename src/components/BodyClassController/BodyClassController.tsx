@@ -1,29 +1,27 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const routeToClass = {
-	"/": "page-home",
-	"/saint-of-the-day": "saintoftheday",
-	"/about": "aboutpage",
-	"/saints": "saintslist",
-	// Routes a ajouter ici
-};
-
 const BodyClassController = () => {
 	const location = useLocation();
 
 	useEffect(() => {
-		const cls = routeToClass[location.pathname] || "";
-
 		// Supprime toutes les classes connues
-		Object.values(routeToClass).forEach((c) =>
-			document.body.classList.remove(c),
+		document.body.classList.remove(
+			"page-home",
+			"saintoftheday",
+			"aboutpage",
+			"saintslist",
 		);
 
-		// Ajoute la classe courante
+		let cls = "";
+		if (location.pathname === "/") cls = "page-home";
+		else if (location.pathname.startsWith("/saint-of-the-day"))
+			cls = "saintoftheday";
+		else if (location.pathname === "/about") cls = "aboutpage";
+		else if (location.pathname === "/saints") cls = "saintslist";
+
 		if (cls) document.body.classList.add(cls);
 
-		// Nettoyage optionnel à l'unmount
 		return () => {
 			if (cls) document.body.classList.remove(cls);
 		};

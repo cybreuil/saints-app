@@ -10,15 +10,21 @@ const LiturgicalColor = ({
 	return (
 		<div className="liturgical-color">
 			Couleur liturgique :
-			<div className="liturgical-color__infos">
-				<div
-					className="liturgical-color__circle"
-					style={{ backgroundColor: color }}
-					title={colorName}
-					aria-label={`Couleur liturgique : ${colorName}`}
-				/>
-				<p className="liturgical-color__name">{colorName}</p>
-			</div>
+			{!color ? (
+				<p>Inconnue</p>
+			) : (
+				<>
+					<div className="liturgical-color__infos">
+						<div
+							className="liturgical-color__circle"
+							style={{ backgroundColor: color }}
+							title={colorName}
+							aria-label={`Couleur liturgique : ${colorName}`}
+						/>
+						<p className="liturgical-color__name">{colorName}</p>
+					</div>
+				</>
+			)}
 		</div>
 	);
 };
