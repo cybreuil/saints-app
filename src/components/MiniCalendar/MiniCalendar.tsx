@@ -117,6 +117,8 @@ export function MiniCalendar() {
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: -10 }}
 							transition={TRANSITIONS.normal}
+							aria-label="Revenir à aujourd'hui"
+							title="Revenir à aujourd'hui"
 						>
 							🔄
 						</motion.button>
@@ -129,6 +131,7 @@ export function MiniCalendar() {
 						className="calendar-emoji-btn"
 						onClick={handleIconClick}
 						aria-label="Choisir une date"
+						title="Choisir une date"
 					>
 						🗓️
 					</button>
@@ -137,10 +140,6 @@ export function MiniCalendar() {
 						type="date"
 						style={{
 							display: "none",
-							position: "fixed",
-							top: "50%",
-							left: "50%",
-							transform: "translate(-50%, -50%)",
 						}}
 						onChange={(e) => {
 							if (e.target.value) {
