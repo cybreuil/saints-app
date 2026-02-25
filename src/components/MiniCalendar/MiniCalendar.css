@@ -51,7 +51,13 @@
 	width: 100%;
 	justify-content: space-between;
 }
-.calendar-emoji-btn {
+.mini-calendar-controls .calendar-reset-button {
+	background: none;
+	border: none;
+	font-size: 1.7rem;
+	cursor: pointer;
+}
+.mini-calendar-controls .calendar-emoji-btn {
 	background: none;
 	border: none;
 	font-size: 1.7rem;

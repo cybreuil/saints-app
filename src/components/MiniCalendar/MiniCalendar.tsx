@@ -1,7 +1,8 @@
 import { useMemo, useRef } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./MiniCalendar.css";
-import { DatePickerModal } from "../Calendar/DatePickerModal";
+import { AnimatePresence, motion } from "framer-motion";
+import { TRANSITIONS } from "../../styles/theme";
 
 // function getWeekDays(date = new Date()) {
 // 	const start = new Date(date);
@@ -42,6 +43,7 @@ export function MiniCalendar() {
 
 	// On recupere la date depuis le param finalement !
 	const { date } = useParams<{ date: string }>();
+	const todayDate = getTodayStr();
 	let selectedDate = "";
 	if (
 		date &&
@@ -52,9 +54,9 @@ export function MiniCalendar() {
 		console.warn(
 			"Date invalide dans l'URL, utilisation de la date du jour",
 		);
-		selectedDate = getTodayStr();
+		selectedDate = todayDate;
 	} else {
-		selectedDate = date || getTodayStr();
+		selectedDate = date || todayDate;
 	}
 
 	// const weekDays = useMemo(
@@ -104,14 +106,24 @@ export function MiniCalendar() {
 					);
 				})}
 			</div>
-			<div className="mini-calendar-controls">
-				<button
-					className="mini-calendar-today-button"
-					onClick={() => navigate("/saint-of-the-day")}
-				>
-					Aujourd'hui
-				</button>
-				<div className="mini-calendar-date-picker">
+			<motion.div className="mini-calendar-controls" layout>
+				<AnimatePresence mode="wait">
+					{selectedDate !== todayDate && (
+						<motion.button
+							layout
+							className="calendar-reset-button"
+							onClick={() => navigate("/saint-of-the-day")}
+							initial={{ opacity: 0, x: -10 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -10 }}
+							transition={TRANSITIONS.normal}
+						>
+							🔄
+						</motion.button>
+					)}
+				</AnimatePresence>
+
+				<motion.div className="mini-calendar-date-picker" layout>
 					<button
 						type="button"
 						className="calendar-emoji-btn"
@@ -123,15 +135,21 @@ export function MiniCalendar() {
 					<input
 						ref={inputRef}
 						type="date"
-						style={{ display: "none" }}
+						style={{
+							display: "none",
+							position: "fixed",
+							top: "50%",
+							left: "50%",
+							transform: "translate(-50%, -50%)",
+						}}
 						onChange={(e) => {
 							if (e.target.value) {
 								navigate(`/saint-of-the-day/${e.target.value}`);
 							}
 						}}
 					/>
-				</div>
-			</div>
+				</motion.div>
+			</motion.div>
 		</div>
 	);
 }
