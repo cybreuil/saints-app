@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./MiniCalendar.css";
+import { DatePickerModal } from "../Calendar/DatePickerModal";
 
 // function getWeekDays(date = new Date()) {
 // 	const start = new Date(date);
@@ -66,29 +67,71 @@ export function MiniCalendar() {
 		[selectedDate],
 	);
 
+	// On gere le calendrier date picker
+	const inputRef = useRef<HTMLInputElement>(null);
+	const handleIconClick = () => {
+		if (inputRef.current) {
+			inputRef.current.showPicker
+				? inputRef.current.showPicker()
+				: inputRef.current.focus();
+		}
+	};
+
 	return (
-		<div className="mini-calendar">
-			{weekDays.map((d) => {
-				const dateStr = formatDate(d);
-				const isSelected = dateStr === selectedDate;
-				return (
+		<div className="mini-calendar-container">
+			<div className="mini-calendar">
+				{weekDays.map((d) => {
+					const dateStr = formatDate(d);
+					const isSelected = dateStr === selectedDate;
+					return (
+						<button
+							key={dateStr}
+							className={`mini-calendar-day${isSelected ? " selected" : ""}`}
+							onClick={() =>
+								navigate(`/saint-of-the-day/${dateStr}`)
+							}
+							aria-current={isSelected ? "date" : undefined}
+						>
+							<span className="mini-calendar-day-label">
+								{d.toLocaleDateString("fr-FR", {
+									weekday: "short",
+								})}
+							</span>
+							<span className="mini-calendar-day-num">
+								{d.getDate()}
+							</span>
+						</button>
+					);
+				})}
+			</div>
+			<div className="mini-calendar-controls">
+				<button
+					className="mini-calendar-today-button"
+					onClick={() => navigate("/saint-of-the-day")}
+				>
+					Aujourd'hui
+				</button>
+				<div className="mini-calendar-date-picker">
 					<button
-						key={dateStr}
-						className={`mini-calendar-day${isSelected ? " selected" : ""}`}
-						onClick={() => navigate(`/saint-of-the-day/${dateStr}`)}
-						aria-current={isSelected ? "date" : undefined}
+						type="button"
+						className="calendar-emoji-btn"
+						onClick={handleIconClick}
+						aria-label="Choisir une date"
 					>
-						<span className="mini-calendar-day-label">
-							{d.toLocaleDateString("fr-FR", {
-								weekday: "short",
-							})}
-						</span>
-						<span className="mini-calendar-day-num">
-							{d.getDate()}
-						</span>
+						🗓️
 					</button>
-				);
-			})}
+					<input
+						ref={inputRef}
+						type="date"
+						style={{ display: "none" }}
+						onChange={(e) => {
+							if (e.target.value) {
+								navigate(`/saint-of-the-day/${e.target.value}`);
+							}
+						}}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }
