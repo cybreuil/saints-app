@@ -1,8 +1,9 @@
 import { useMemo, useRef, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./MiniCalendar.css";
+import FullCalendarModal from "../FullCalendarModal/FullCalendarModal";
 import { AnimatePresence, motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
+import "./MiniCalendar.css";
 
 // function getWeekDays(date = new Date()) {
 // 	const start = new Date(date);
@@ -36,6 +37,7 @@ function getTodayStr() {
 export function MiniCalendar() {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -72,11 +74,19 @@ export function MiniCalendar() {
 	// On gere le calendrier date picker
 	const inputRef = useRef<HTMLInputElement>(null);
 	const handleIconClick = () => {
-		if (inputRef.current) {
-			inputRef.current.showPicker
-				? inputRef.current.showPicker()
-				: inputRef.current.focus();
+		// prefer native picker on small screens
+		if (
+			window.matchMedia &&
+			window.matchMedia("(max-width: 720px)").matches
+		) {
+			if (inputRef.current) {
+				inputRef.current.showPicker
+					? inputRef.current.showPicker()
+					: inputRef.current.focus();
+			}
+			return;
 		}
+		setIsModalOpen(true);
 	};
 
 	//Definition de l'ordre de defilement
@@ -184,12 +194,18 @@ export function MiniCalendar() {
 						}}
 						onChange={(e) => {
 							if (e.target.value) {
-								navigate(`/saint-of-the-day/${e.target.value}`);
+								handleDayClick(e.target.value);
 							}
 						}}
 					/>
 				</motion.div>
 			</motion.div>
+			<FullCalendarModal
+				initialDate={selectedDate}
+				open={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				onSelect={(dateStr) => navigate(`/saint-of-the-day/${dateStr}`)}
+			/>
 		</div>
 	);
 }
