@@ -35,6 +35,7 @@ function getTodayStr() {
 
 export function MiniCalendar() {
 	const navigate = useNavigate();
+	const [isAnimating, setIsAnimating] = useState(false);
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -93,8 +94,15 @@ export function MiniCalendar() {
 	}, [selectedDate, prevDate]);
 
 	const handleDayClick = (dateStr: string) => {
+		if (isAnimating) return;
+
+		setIsAnimating(true);
 		setPrevDate(selectedDate);
 		navigate(`/saint-of-the-day/${dateStr}`);
+
+		setTimeout(() => {
+			setIsAnimating(false);
+		}, 1000); // Durée du délai pour éviter les clics rapides
 	};
 
 	// Previous weekDays
@@ -113,6 +121,7 @@ export function MiniCalendar() {
 					const isSelected = dateStr === selectedDate;
 					const isToday = dateStr === todayDate;
 					const slideX = direction > 0 ? 50 : direction < 0 ? -50 : 0;
+
 					return (
 						<motion.button
 							key={dateStr}
@@ -126,7 +135,7 @@ export function MiniCalendar() {
 									? { opacity: 0.5, x: 0 }
 									: { opacity: 1, x: 0 }
 							}
-							exit={{ opacity: 0, x: -slideX }}
+							// exit={{ opacity: 0, x: -slideX }}
 							transition={TRANSITIONS.normal}
 						>
 							<span className="mini-calendar-day-label">
@@ -141,28 +150,23 @@ export function MiniCalendar() {
 					);
 				})}
 			</motion.div>
-			<motion.div className="mini-calendar-controls" layout>
-				<AnimatePresence mode="wait">
-					{selectedDate !== todayDate && (
-						<motion.button
-							className="calendar-reset-button"
-							onClick={() => navigate("/saint-of-the-day")}
-							initial={{ opacity: 0, x: -10 }}
-							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: -10 }}
-							transition={TRANSITIONS.normal}
-							aria-label="Revenir à aujourd'hui"
-							title="Revenir à aujourd'hui"
-						>
-							🔄
-						</motion.button>
-					)}
-				</AnimatePresence>
+			<motion.div className="mini-calendar-controls">
+				{selectedDate !== todayDate && (
+					<motion.button
+						className="calendar-reset-button"
+						onClick={() => handleDayClick(todayDate)}
+						initial={{ opacity: 0, x: -10 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -10 }}
+						transition={TRANSITIONS.normal}
+						aria-label="Revenir à aujourd'hui"
+						title="Revenir à aujourd'hui"
+					>
+						🔄
+					</motion.button>
+				)}
 
-				<motion.div
-					className="mini-calendar-date-picker"
-					layout="preserve-aspect"
-				>
+				<motion.div className="mini-calendar-date-picker" layout>
 					<button
 						type="button"
 						className="calendar-emoji-btn"

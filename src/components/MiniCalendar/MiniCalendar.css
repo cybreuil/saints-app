@@ -34,7 +34,6 @@
 
 .mini-calendar-day.today:not(.selected) {
 	background: var(--color-accent);
-	opacity: 0.6;
 	color: #fff;
 }
 .mini-calendar-day.selected {
