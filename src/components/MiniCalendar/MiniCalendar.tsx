@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./MiniCalendar.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
@@ -35,7 +35,6 @@ function getTodayStr() {
 
 export function MiniCalendar() {
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -85,10 +84,11 @@ export function MiniCalendar() {
 				{weekDays.map((d) => {
 					const dateStr = formatDate(d);
 					const isSelected = dateStr === selectedDate;
+					const isToday = dateStr === todayDate;
 					return (
 						<button
 							key={dateStr}
-							className={`mini-calendar-day${isSelected ? " selected" : ""}`}
+							className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
 							onClick={() =>
 								navigate(`/saint-of-the-day/${dateStr}`)
 							}
@@ -110,7 +110,6 @@ export function MiniCalendar() {
 				<AnimatePresence mode="wait">
 					{selectedDate !== todayDate && (
 						<motion.button
-							layout
 							className="calendar-reset-button"
 							onClick={() => navigate("/saint-of-the-day")}
 							initial={{ opacity: 0, x: -10 }}
@@ -125,7 +124,10 @@ export function MiniCalendar() {
 					)}
 				</AnimatePresence>
 
-				<motion.div className="mini-calendar-date-picker" layout>
+				<motion.div
+					className="mini-calendar-date-picker"
+					layout="preserve-aspect"
+				>
 					<button
 						type="button"
 						className="calendar-emoji-btn"
