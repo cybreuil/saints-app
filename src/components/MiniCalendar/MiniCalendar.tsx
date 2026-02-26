@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./MiniCalendar.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -78,21 +78,56 @@ export function MiniCalendar() {
 		}
 	};
 
+	//Definition de l'ordre de defilement
+	const [prevDate, setPrevDate] = useState(selectedDate);
+
+	const direction = useMemo(() => {
+		if (!prevDate) return 0;
+		const prev = new Date(prevDate);
+		const curr = new Date(selectedDate);
+		const diffDays = Math.round(
+			(curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24),
+		);
+		// diffDays > 0 : glisse vers la droite, < 0 : vers la gauche
+		return diffDays;
+	}, [selectedDate, prevDate]);
+
+	const handleDayClick = (dateStr: string) => {
+		setPrevDate(selectedDate);
+		navigate(`/saint-of-the-day/${dateStr}`);
+	};
+
+	// Previous weekDays
+	// const [prevWeekDays, setPrevWeekDays] = useState<string[]>(
+	// 	weekDays.map((d) => formatDate(d)),
+	// );
+	// useEffect(() => {
+	// 	setPrevWeekDays(weekDays.map((d) => formatDate(d)));
+	// }, [selectedDate]);
+
 	return (
 		<div className="mini-calendar-container">
-			<div className="mini-calendar">
+			<motion.div className="mini-calendar" layout>
 				{weekDays.map((d) => {
 					const dateStr = formatDate(d);
 					const isSelected = dateStr === selectedDate;
 					const isToday = dateStr === todayDate;
+					const slideX = direction > 0 ? 50 : direction < 0 ? -50 : 0;
 					return (
-						<button
+						<motion.button
 							key={dateStr}
+							layoutId={`mini-calendar-day-${dateStr}`}
 							className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
-							onClick={() =>
-								navigate(`/saint-of-the-day/${dateStr}`)
-							}
+							onClick={() => handleDayClick(dateStr)}
 							aria-current={isSelected ? "date" : undefined}
+							initial={{ opacity: 0, x: slideX }}
+							animate={
+								isToday && !isSelected
+									? { opacity: 0.5, x: 0 }
+									: { opacity: 1, x: 0 }
+							}
+							exit={{ opacity: 0, x: -slideX }}
+							transition={TRANSITIONS.normal}
 						>
 							<span className="mini-calendar-day-label">
 								{d.toLocaleDateString("fr-FR", {
@@ -102,10 +137,10 @@ export function MiniCalendar() {
 							<span className="mini-calendar-day-num">
 								{d.getDate()}
 							</span>
-						</button>
+						</motion.button>
 					);
 				})}
-			</div>
+			</motion.div>
 			<motion.div className="mini-calendar-controls" layout>
 				<AnimatePresence mode="wait">
 					{selectedDate !== todayDate && (

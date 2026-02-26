@@ -105,7 +105,7 @@ const SaintOfTheDay: React.FC = () => {
 						Aucun saint trouvé pour cette date.
 					</p>
 				) : (
-					<>
+					<div>
 						<h2>Saint du jour</h2>
 						<h1>{saint.name}</h1>
 						<p className="feast-day">{saint.feastDay}</p>
@@ -148,7 +148,7 @@ const SaintOfTheDay: React.FC = () => {
 								</div>
 							)}
 						</div>
-					</>
+					</div>
 				)}
 			</motion.div>
 
