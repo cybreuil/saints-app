@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./FullCalendarModal.css";
+import { formatYMD, parseYMD, getToday, getTodayStr } from "../../utils/date";
 
 type Props = {
 	initialDate?: string; // YYYY-MM-DD
@@ -8,22 +9,6 @@ type Props = {
 	onSelect: (dateStr: string) => void;
 	open?: boolean;
 };
-
-// A ne pas utiliser ! Ca renvoie la date UTC, pas la date locale, ce qui peut causer des problèmes de décalage selon le fuseau horaire.
-// Mieux vaut construire les dates à partir de composants individuels pour éviter les soucis de timezone.
-// function formatDate(d: Date) {
-// 	return d.toISOString().slice(0, 10);
-// }
-
-function formatYMD(d: Date): string {
-	const pad = (n: number) => n.toString().padStart(2, "0");
-	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
-
-function parseYMD(s: string): Date {
-	const [y, m, day] = s.split("-").map(Number);
-	return new Date(y, m - 1, day);
-}
 
 function startOfMonth(d: Date) {
 	return new Date(d.getFullYear(), d.getMonth(), 1);
@@ -62,13 +47,13 @@ const FullCalendarModal: React.FC<Props> = ({
 	onSelect,
 	open = false,
 }) => {
-	const today = new Date();
-	// On normalise today en local pour éviter les problèmes de timezone (ex: si on est à GMT+2, new Date() à minuit donnera la date du jour précédent en UTC)
-	const todayStr = formatYMD(today);
-	const init = initialDate ? parseYMD(initialDate) : todayStr;
-	const [viewMonth, setViewMonth] = useState<Date>(startOfMonth(init));
+	const today = getToday();
+	const todayStr = getTodayStr();
+	const init = initialDate ? initialDate : todayStr;
+	const initDate = parseYMD(init);
+	const [viewMonth, setViewMonth] = useState<Date>(startOfMonth(initDate));
 	const [selectedDate, setSelectedDate] = useState<string>(
-		initialDate ? initialDate : formatYMD(today),
+		initialDate ? initialDate : todayStr,
 	);
 
 	useEffect(() => {
@@ -104,11 +89,6 @@ const FullCalendarModal: React.FC<Props> = ({
 		month: "long",
 		year: "numeric",
 	});
-
-	const isSameDay = (a: Date, b: Date) =>
-		a.getFullYear() === b.getFullYear() &&
-		a.getMonth() === b.getMonth() &&
-		a.getDate() === b.getDate();
 
 	return (
 		<motion.div
@@ -213,7 +193,7 @@ const FullCalendarModal: React.FC<Props> = ({
 						type="button"
 						className="fc-btn fc-btn-today"
 						onClick={() => {
-							setViewMonth(startOfMonth(parseYMD(todayStr)));
+							setViewMonth(startOfMonth(today));
 							setSelectedDate(todayStr);
 							onSelect(todayStr);
 							onClose();
