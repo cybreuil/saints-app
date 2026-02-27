@@ -84,6 +84,7 @@ const SaintOfTheDay: React.FC = () => {
 						initial={{ x: -50, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.4 }}
+						// layoutId="calendar-container"
 					>
 						<MiniCalendar />
 					</motion.div>

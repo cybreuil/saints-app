@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import "./FullCalendarModal.css";
 import { formatYMD, parseYMD, getToday, getTodayStr } from "../../utils/date";
+import { TRANSITIONS } from "../../styles/theme";
 
 type Props = {
 	initialDate?: string; // YYYY-MM-DD
@@ -92,119 +93,132 @@ const FullCalendarModal: React.FC<Props> = ({
 	});
 
 	return createPortal(
-		<motion.div
-			className="fc-overlay"
-			initial={{ opacity: 0 }}
-			animate={open ? { opacity: 1 } : { opacity: 0 }}
-			exit={{ opacity: 0 }}
-			style={{ pointerEvents: open ? "auto" : "none" }}
-			onClick={(e) => {
-				if (e.target === e.currentTarget) onClose();
-			}}
-		>
-			<motion.div
-				className="fc-modal"
-				role="dialog"
-				aria-modal="true"
-				aria-label="Sélectionner une date"
-				tabIndex={-1}
-				ref={modalRef}
-				onKeyDown={handleKeyDown}
-				initial={{ y: 20, opacity: 0, scale: 0.98 }}
-				animate={
-					open
-						? { y: 0, opacity: 1, scale: 1 }
-						: { y: 20, opacity: 0, scale: 0.98 }
-				}
-				transition={{ duration: 0.18 }}
-				onClick={(e) => e.stopPropagation()}
-			>
-				<header className="fc-header">
-					<button
-						type="button"
-						className="fc-nav-btn"
-						aria-label="Mois précédent"
-						onClick={() => setViewMonth((m) => addMonths(m, -1))}
+		<AnimatePresence>
+			{open && (
+				<motion.div
+					className="fc-overlay"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					style={{ pointerEvents: open ? "auto" : "none" }}
+					onClick={(e) => {
+						if (e.target === e.currentTarget) onClose();
+					}}
+				>
+					<motion.div
+						// layoutId="calendar-container"
+						className="fc-modal"
+						role="dialog"
+						aria-modal="true"
+						aria-label="Sélectionner une date"
+						tabIndex={-1}
+						ref={modalRef}
+						onKeyDown={handleKeyDown}
+						initial={{ y: 20, opacity: 0, scale: 0.98 }}
+						animate={{ y: 0, opacity: 1, scale: 1 }}
+						exit={{ y: 20, opacity: 0, scale: 0.98 }}
+						transition={TRANSITIONS.normal}
+						onClick={(e) => e.stopPropagation()}
 					>
-						‹
-					</button>
-					<div className="fc-title">{monthLabel}</div>
-					<button
-						type="button"
-						className="fc-nav-btn"
-						aria-label="Mois suivant"
-						onClick={() => setViewMonth((m) => addMonths(m, 1))}
-					>
-						›
-					</button>
-				</header>
-
-				<div className="fc-weekdays">
-					{["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"].map(
-						(w) => (
-							<div key={w} className="fc-weekday">
-								{w}
-							</div>
-						),
-					)}
-				</div>
-
-				<div className="fc-grid">
-					{cells.map((d) => {
-						const dateStr = formatYMD(d);
-						const inCurrentMonth =
-							d.getMonth() === viewMonth.getMonth();
-						const isToday = dateStr === todayStr;
-						const isSelected = dateStr === selectedDate;
-						console.log(isSelected, dateStr, selectedDate);
-						return (
+						<header className="fc-header">
 							<button
-								key={dateStr}
-								className={`mini-calendar-day fc-day ${inCurrentMonth ? "" : "fc-day-outside"}${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
+								type="button"
+								className="fc-nav-btn"
+								aria-label="Mois précédent"
+								onClick={() =>
+									setViewMonth((m) => addMonths(m, -1))
+								}
+							>
+								‹
+							</button>
+							<div className="fc-title">{monthLabel}</div>
+							<button
+								type="button"
+								className="fc-nav-btn"
+								aria-label="Mois suivant"
+								onClick={() =>
+									setViewMonth((m) => addMonths(m, 1))
+								}
+							>
+								›
+							</button>
+						</header>
+
+						<div className="fc-weekdays">
+							{[
+								"Lun",
+								"Mar",
+								"Mer",
+								"Jeu",
+								"Ven",
+								"Sam",
+								"Dim",
+							].map((w) => (
+								<div key={w} className="fc-weekday">
+									{w}
+								</div>
+							))}
+						</div>
+
+						<div className="fc-grid">
+							{cells.map((d) => {
+								const dateStr = formatYMD(d);
+								const inCurrentMonth =
+									d.getMonth() === viewMonth.getMonth();
+								const isToday = dateStr === todayStr;
+								const isSelected = dateStr === selectedDate;
+								return (
+									<button
+										key={dateStr}
+										className={`mini-calendar-day fc-day ${inCurrentMonth ? "" : "fc-day-outside"}${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
+										onClick={() => {
+											setSelectedDate(dateStr);
+											onSelect(dateStr);
+											onClose();
+										}}
+										aria-current={
+											isSelected ? "date" : undefined
+										}
+										tabIndex={open ? 0 : -1}
+									>
+										<span className="mini-calendar-day-label">
+											{d.toLocaleDateString("fr-FR", {
+												weekday: "short",
+											})}
+										</span>
+										<span className="mini-calendar-day-num">
+											{d.getDate()}
+										</span>
+									</button>
+								);
+							})}
+						</div>
+
+						<footer className="fc-footer">
+							<button
+								type="button"
+								className="fc-btn fc-btn-cancel"
+								onClick={onClose}
+							>
+								Annuler
+							</button>
+							<button
+								type="button"
+								className="fc-btn fc-btn-today"
 								onClick={() => {
-									setSelectedDate(dateStr);
-									onSelect(dateStr);
+									setViewMonth(startOfMonth(today));
+									setSelectedDate(todayStr);
+									onSelect(todayStr);
 									onClose();
 								}}
-								aria-current={isSelected ? "date" : undefined}
-								tabIndex={open ? 0 : -1}
 							>
-								<span className="mini-calendar-day-label">
-									{d.toLocaleDateString("fr-FR", {
-										weekday: "short",
-									})}
-								</span>
-								<span className="mini-calendar-day-num">
-									{d.getDate()}
-								</span>
+								Aujourd'hui
 							</button>
-						);
-					})}
-				</div>
-
-				<footer className="fc-footer">
-					<button
-						type="button"
-						className="fc-btn fc-btn-cancel"
-						onClick={onClose}
-					>
-						Annuler
-					</button>
-					<button
-						type="button"
-						className="fc-btn fc-btn-today"
-						onClick={() => {
-							setViewMonth(startOfMonth(today));
-							setSelectedDate(todayStr);
-							onSelect(todayStr);
-							onClose();
-						}}
-					>
-						Aujourd'hui
-					</button>
-				</footer>
-			</motion.div>
-		</motion.div>,
+						</footer>
+					</motion.div>
+				</motion.div>
+			)}
+		</AnimatePresence>,
 		document.body,
 	);
 };
