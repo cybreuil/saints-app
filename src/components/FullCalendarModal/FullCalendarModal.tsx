@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import "./FullCalendarModal.css";
 import { formatYMD, parseYMD, getToday, getTodayStr } from "../../utils/date";
@@ -90,7 +91,7 @@ const FullCalendarModal: React.FC<Props> = ({
 		year: "numeric",
 	});
 
-	return (
+	return createPortal(
 		<motion.div
 			className="fc-overlay"
 			initial={{ opacity: 0 }}
@@ -203,7 +204,8 @@ const FullCalendarModal: React.FC<Props> = ({
 					</button>
 				</footer>
 			</motion.div>
-		</motion.div>
+		</motion.div>,
+		document.body,
 	);
 };
 
