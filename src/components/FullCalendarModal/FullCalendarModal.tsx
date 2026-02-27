@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./FullCalendarModal.css";
-// Todo portal
 
 type Props = {
 	initialDate?: string; // YYYY-MM-DD
@@ -10,8 +9,20 @@ type Props = {
 	open?: boolean;
 };
 
-function formatDate(d: Date) {
-	return d.toISOString().slice(0, 10);
+// A ne pas utiliser ! Ca renvoie la date UTC, pas la date locale, ce qui peut causer des problèmes de décalage selon le fuseau horaire.
+// Mieux vaut construire les dates à partir de composants individuels pour éviter les soucis de timezone.
+// function formatDate(d: Date) {
+// 	return d.toISOString().slice(0, 10);
+// }
+
+function formatYMD(d: Date): string {
+	const pad = (n: number) => n.toString().padStart(2, "0");
+	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function parseYMD(s: string): Date {
+	const [y, m, day] = s.split("-").map(Number);
+	return new Date(y, m - 1, day);
 }
 
 function startOfMonth(d: Date) {
@@ -45,23 +56,25 @@ function getMonthGrid(forDate: Date) {
 	return cells;
 }
 
-export const FullCalendarModal: React.FC<Props> = ({
+const FullCalendarModal: React.FC<Props> = ({
 	initialDate,
 	onClose,
 	onSelect,
 	open = false,
 }) => {
 	const today = new Date();
-	const init = initialDate ? new Date(initialDate) : today;
+	// On normalise today en local pour éviter les problèmes de timezone (ex: si on est à GMT+2, new Date() à minuit donnera la date du jour précédent en UTC)
+	const todayStr = formatYMD(today);
+	const init = initialDate ? parseYMD(initialDate) : todayStr;
 	const [viewMonth, setViewMonth] = useState<Date>(startOfMonth(init));
 	const [selectedDate, setSelectedDate] = useState<string>(
-		initialDate ? initialDate : formatDate(today),
+		initialDate ? initialDate : formatYMD(today),
 	);
 
 	useEffect(() => {
 		// keep viewMonth in sync if initialDate prop changes
 		if (initialDate) {
-			const d = new Date(initialDate);
+			const d = parseYMD(initialDate);
 			setViewMonth(startOfMonth(d));
 			setSelectedDate(initialDate);
 		}
@@ -157,11 +170,12 @@ export const FullCalendarModal: React.FC<Props> = ({
 
 				<div className="fc-grid">
 					{cells.map((d) => {
-						const dateStr = formatDate(d);
+						const dateStr = formatYMD(d);
 						const inCurrentMonth =
 							d.getMonth() === viewMonth.getMonth();
-						const isToday = isSameDay(d, today);
+						const isToday = dateStr === todayStr;
 						const isSelected = dateStr === selectedDate;
+						console.log(isSelected, dateStr, selectedDate);
 						return (
 							<button
 								key={dateStr}
@@ -199,8 +213,7 @@ export const FullCalendarModal: React.FC<Props> = ({
 						type="button"
 						className="fc-btn fc-btn-today"
 						onClick={() => {
-							const todayStr = formatDate(today);
-							setViewMonth(startOfMonth(today));
+							setViewMonth(startOfMonth(parseYMD(todayStr)));
 							setSelectedDate(todayStr);
 							onSelect(todayStr);
 							onClose();
@@ -214,4 +227,4 @@ export const FullCalendarModal: React.FC<Props> = ({
 	);
 };
 
-export default FullCalendarModal;
+export { FullCalendarModal };

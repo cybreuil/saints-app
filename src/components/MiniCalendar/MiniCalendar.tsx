@@ -1,7 +1,7 @@
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import FullCalendarModal from "../FullCalendarModal/FullCalendarModal";
-import { AnimatePresence, motion } from "framer-motion";
+import { FullCalendarModal } from "../FullCalendarModal/FullCalendarModal";
+import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./MiniCalendar.css";
 
@@ -15,6 +15,22 @@ import "./MiniCalendar.css";
 // 	});
 // }
 
+// On Gere le calcul des dates en local !
+function pad(n: number) {
+	return n.toString().padStart(2, "0");
+}
+// Format Date -> nous donne "YYYY-MM-DD" en LOCAL
+function formatYMD(d: Date) {
+	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+// Parse "YYYY-MM-DD" as local date (midnight local)
+// Note: new Date("YYYY-MM-DD") is parsed as UTC, which can cause off-by-one-day issues depending on timezone. So we parse manually.
+function parseYMD(s: string) {
+	const [y, m, day] = s.split("-").map(Number);
+	return new Date(y, m - 1, day);
+}
+
 // Version 5 jours (autour de la date sélectionnée)
 const get5WeekDays = (date = new Date()) => {
 	const start = new Date(date);
@@ -26,15 +42,11 @@ const get5WeekDays = (date = new Date()) => {
 	});
 };
 
-function formatDate(d: Date) {
-	return d.toISOString().slice(0, 10); // YYYY-MM-DD
-}
-
 function getTodayStr() {
-	return formatDate(new Date());
+	return formatYMD(new Date());
 }
 
-export function MiniCalendar() {
+const MiniCalendar = () => {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +62,7 @@ export function MiniCalendar() {
 	if (
 		date &&
 		!/^\d{4}-\d{2}-\d{2}$/.test(date) &&
-		isNaN(new Date(date).getTime())
+		isNaN(parseYMD(date).getTime())
 	) {
 		// Si la date n'est pas au format YYYY-MM-DD ou n'est pas une date valide, on ignore et on utilise aujourd'hui
 		console.warn(
@@ -67,7 +79,7 @@ export function MiniCalendar() {
 	// );
 
 	const weekDays = useMemo(
-		() => get5WeekDays(new Date(selectedDate)),
+		() => get5WeekDays(parseYMD(selectedDate)),
 		[selectedDate],
 	);
 
@@ -94,8 +106,8 @@ export function MiniCalendar() {
 
 	const direction = useMemo(() => {
 		if (!prevDate) return 0;
-		const prev = new Date(prevDate);
-		const curr = new Date(selectedDate);
+		const prev = parseYMD(prevDate);
+		const curr = parseYMD(selectedDate);
 		const diffDays = Math.round(
 			(curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24),
 		);
@@ -115,6 +127,12 @@ export function MiniCalendar() {
 		}, 1000); // Durée du délai pour éviter les clics rapides
 	};
 
+	const handleCalendarModalDayClick = (dateStr: string) => {
+		setIsModalOpen(false);
+		setPrevDate(selectedDate);
+		navigate(`/saint-of-the-day/${dateStr}`);
+	};
+
 	// Previous weekDays
 	// const [prevWeekDays, setPrevWeekDays] = useState<string[]>(
 	// 	weekDays.map((d) => formatDate(d)),
@@ -127,7 +145,7 @@ export function MiniCalendar() {
 		<div className="mini-calendar-container">
 			<motion.div className="mini-calendar" layout>
 				{weekDays.map((d) => {
-					const dateStr = formatDate(d);
+					const dateStr = formatYMD(d);
 					const isSelected = dateStr === selectedDate;
 					const isToday = dateStr === todayDate;
 					const slideX = direction > 0 ? 50 : direction < 0 ? -50 : 0;
@@ -204,8 +222,10 @@ export function MiniCalendar() {
 				initialDate={selectedDate}
 				open={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				onSelect={(dateStr) => navigate(`/saint-of-the-day/${dateStr}`)}
+				onSelect={(dateStr) => handleCalendarModalDayClick(dateStr)}
 			/>
 		</div>
 	);
-}
+};
+
+export { MiniCalendar };
