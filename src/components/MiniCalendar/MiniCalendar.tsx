@@ -4,32 +4,7 @@ import { FullCalendarModal } from "../FullCalendarModal/FullCalendarModal";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./MiniCalendar.css";
-
-// function getWeekDays(date = new Date()) {
-// 	const start = new Date(date);
-// 	start.setDate(date.getDate() - date.getDay() + 1); // Lundi
-// 	return Array.from({ length: 7 }, (_, i) => {
-// 		const d = new Date(start);
-// 		d.setDate(start.getDate() + i);
-// 		return d;
-// 	});
-// }
-
-// On Gere le calcul des dates en local !
-function pad(n: number) {
-	return n.toString().padStart(2, "0");
-}
-// Format Date -> nous donne "YYYY-MM-DD" en LOCAL
-function formatYMD(d: Date) {
-	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
-
-// Parse "YYYY-MM-DD" as local date (midnight local)
-// Note: new Date("YYYY-MM-DD") is parsed as UTC, which can cause off-by-one-day issues depending on timezone. So we parse manually.
-function parseYMD(s: string) {
-	const [y, m, day] = s.split("-").map(Number);
-	return new Date(y, m - 1, day);
-}
+import { formatYMD, parseYMD, getToday, getTodayStr } from "../../utils/date";
 
 // Version 5 jours (autour de la date sélectionnée)
 const get5WeekDays = (date = new Date()) => {
@@ -42,10 +17,6 @@ const get5WeekDays = (date = new Date()) => {
 	});
 };
 
-function getTodayStr() {
-	return formatYMD(new Date());
-}
-
 const MiniCalendar = () => {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
@@ -57,7 +28,7 @@ const MiniCalendar = () => {
 
 	// On recupere la date depuis le param finalement !
 	const { date } = useParams<{ date: string }>();
-	const todayDate = getTodayStr();
+	const todayStr = getTodayStr();
 	let selectedDate = "";
 	if (
 		date &&
@@ -68,9 +39,9 @@ const MiniCalendar = () => {
 		console.warn(
 			"Date invalide dans l'URL, utilisation de la date du jour",
 		);
-		selectedDate = todayDate;
+		selectedDate = todayStr;
 	} else {
-		selectedDate = date || todayDate;
+		selectedDate = date || todayStr;
 	}
 
 	// const weekDays = useMemo(
@@ -147,7 +118,7 @@ const MiniCalendar = () => {
 				{weekDays.map((d) => {
 					const dateStr = formatYMD(d);
 					const isSelected = dateStr === selectedDate;
-					const isToday = dateStr === todayDate;
+					const isToday = dateStr === todayStr;
 					const slideX = direction > 0 ? 50 : direction < 0 ? -50 : 0;
 
 					return (
@@ -179,10 +150,10 @@ const MiniCalendar = () => {
 				})}
 			</motion.div>
 			<motion.div className="mini-calendar-controls">
-				{selectedDate !== todayDate && (
+				{selectedDate !== todayStr && (
 					<motion.button
 						className="calendar-reset-button"
-						onClick={() => handleDayClick(todayDate)}
+						onClick={() => handleDayClick(todayStr)}
 						initial={{ opacity: 0, x: -10 }}
 						animate={{ opacity: 1, x: 0 }}
 						exit={{ opacity: 0, x: -10 }}
