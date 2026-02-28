@@ -106,7 +106,7 @@ const FullCalendarModal: React.FC<Props> = ({
 					}}
 				>
 					<motion.div
-						// layoutId="calendar-container"
+						layoutId="calendar-container"
 						className="fc-modal"
 						role="dialog"
 						aria-modal="true"

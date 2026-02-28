@@ -53,8 +53,8 @@ export function SaintModal({
 			<motion.div
 				className="saint-modal"
 				layoutId={`saint-${saint.id}`}
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
+				// initial={{ opacity: 0 }}
+				// animate={{ opacity: 1 }}
 				transition={TRANSITIONS.normal}
 			>
 				<div className="saint-modal-layout">
@@ -63,6 +63,10 @@ export function SaintModal({
 							className="saint-modal__left__top"
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
+							exit={{
+								opacity: 0,
+								transition: TRANSITIONS.fast,
+							}}
 							transition={{ ...TRANSITIONS.slower }}
 						>
 							<button
@@ -83,6 +87,10 @@ export function SaintModal({
 							className="saint-modal__left__bottom"
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
+							exit={{
+								opacity: 0,
+								transition: TRANSITIONS.fast,
+							}}
 							transition={TRANSITIONS.slower}
 						>
 							<RippleButton
@@ -115,12 +123,22 @@ export function SaintModal({
 								className="saint-modal__content__description"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
+								exit={{
+									opacity: 0,
+									transition: TRANSITIONS.fast,
+								}}
 								transition={TRANSITIONS.slower}
 							>
 								{saint.description}
 							</motion.p>
 						)}
-						<div className="saint-modal__content__columns">
+						<motion.div
+							className="saint-modal__content__columns"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0, transition: TRANSITIONS.fast }}
+							transition={TRANSITIONS.slower}
+						>
 							{saint.attributes && (
 								<p className="saint-modal__content__attributes">
 									Attributs :{" "}
@@ -149,7 +167,7 @@ export function SaintModal({
 									</ul>
 								</p>
 							)}
-						</div>
+						</motion.div>
 					</div>
 				</div>
 			</motion.div>
