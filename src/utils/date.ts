@@ -25,3 +25,15 @@ export function getToday(): Date {
 	const today = parseYMD(formatYMD(new Date()));
 	return today;
 }
+
+//CALCUL DIFF 2 DATES
+// helper: compute a stable day index (UTC days since epoch) to avoid DST issues
+function dayIndexUTC(d: Date): number {
+	return Math.floor(
+		Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000,
+	);
+}
+// difference in whole days between two YYYY-MM-DD strings (b - a)
+export function daysBetweenYMD(a: string, b: string): number {
+	return dayIndexUTC(parseYMD(b)) - dayIndexUTC(parseYMD(a));
+}

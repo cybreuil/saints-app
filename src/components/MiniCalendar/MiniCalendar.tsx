@@ -1,10 +1,16 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FullCalendarModal } from "../FullCalendarModal/FullCalendarModal";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./MiniCalendar.css";
-import { formatYMD, parseYMD, getToday, getTodayStr } from "../../utils/date";
+import {
+	formatYMD,
+	parseYMD,
+	getToday,
+	getTodayStr,
+	daysBetweenYMD,
+} from "../../utils/date";
 
 // Version 5 jours (autour de la date sélectionnée)
 const get5WeekDays = (date = new Date()) => {
@@ -77,11 +83,7 @@ const MiniCalendar = () => {
 
 	const direction = useMemo(() => {
 		if (!prevDate) return 0;
-		const prev = parseYMD(prevDate);
-		const curr = parseYMD(selectedDate);
-		const diffDays = Math.round(
-			(curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24),
-		);
+		const diffDays = daysBetweenYMD(prevDate, selectedDate);
 		// diffDays > 0 : glisse vers la droite, < 0 : vers la gauche
 		return diffDays;
 	}, [selectedDate, prevDate]);
@@ -114,7 +116,11 @@ const MiniCalendar = () => {
 
 	return (
 		<div className="mini-calendar-container">
-			<motion.div className="mini-calendar" layout>
+			<motion.div
+				className="mini-calendar"
+				// J'ai l'impression qu'on peut s'en passer
+				// layout
+			>
 				{weekDays.map((d) => {
 					const dateStr = formatYMD(d);
 					const isSelected = dateStr === selectedDate;
@@ -134,7 +140,7 @@ const MiniCalendar = () => {
 									? { opacity: 0.5, x: 0 }
 									: { opacity: 1, x: 0 }
 							}
-							// exit={{ opacity: 0, x: -slideX }}
+							exit={{ opacity: 0, x: slideX }}
 							transition={TRANSITIONS.normal}
 						>
 							<span className="mini-calendar-day-label">
