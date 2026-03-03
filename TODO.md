@@ -24,3 +24,6 @@ scroll to top on route change
 
 ---
 Might be a good idea to only use portal on body and not on dedicated div, to simplify the code.
+
+----
+optimize delay on saintoftheday components

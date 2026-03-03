@@ -9,7 +9,7 @@ const LiturgicalColor = ({
 }) => {
 	return (
 		<div className="liturgical-color">
-			Couleur liturgique :
+			<h3>Couleur liturgique :</h3>
 			{!color ? (
 				<p>Inconnue</p>
 			) : (
