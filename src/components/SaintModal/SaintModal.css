@@ -35,6 +35,7 @@
 	flex-direction: column;
 	height: 100%;
 	justify-content: space-between;
+	gap: 1rem;
 }
 .saint-modal__close {
 	cursor: pointer;
@@ -51,7 +52,12 @@
 }
 .saint-modal img {
 	max-width: 300px;
-	height: min-content;
+	height: max-content;
+	max-height: 400px;
+	/*peut etre necessaire de rajouter un max height pour laisser respirer*/
+	/*Sinon mieux vaudrait gerer tout ca avec des flex et pas des tailles fixes*/
+	/*Du genre max-width: 100% et height: auto pour que ca s'adapte a la taille du conteneur*/
+	/*Ou flex 0 0 auto pour que ca prenne la taille de l'image sans forcer une taille max*/
 	border-radius: 8px;
 	object-fit: cover;
 }
