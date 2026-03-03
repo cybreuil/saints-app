@@ -5,6 +5,7 @@ import { TRANSITIONS } from "../../styles/theme";
 const SaintCardSmall = ({
 	saint,
 	onClick,
+	index,
 }: {
 	saint: {
 		id: string;
@@ -17,13 +18,19 @@ const SaintCardSmall = ({
 		patronage: string;
 	};
 	onClick: () => void;
+	index: number;
 }) => {
 	return (
 		<motion.div
 			className="saint-card-small"
 			layoutId={`saint-${saint.id}`}
 			initial={{ opacity: 0, scale: 0.95 }}
-			animate={{ opacity: 1, scale: 1 }}
+			animate={{
+				opacity: 1,
+				scale: 1,
+				// on ne met le délai que sur l'entrée
+				transition: { ...TRANSITIONS.normal, delay: index * 0.1 },
+			}}
 			whileHover={{
 				scale: 1.03,
 				translateY: -5,

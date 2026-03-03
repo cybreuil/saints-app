@@ -1,7 +1,10 @@
 .saints-page {
 	flex: 1;
 	padding: 2rem;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .saints-page__grid {
 	display: grid;

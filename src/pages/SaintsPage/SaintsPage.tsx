@@ -18,16 +18,23 @@ export function SaintsPage() {
 	const [selectedSaint, setSelectedSaint] = useState(null);
 
 	return (
-		<div className="saints-page">
+		<motion.div
+			className="saints-page"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={TRANSITIONS.slower}
+		>
 			<h2>Liste des Saints</h2>
 			{/* Filtres et options de tri ici */}
 
 			<div className="saints-page__grid">
-				{paginatedSaints.map((saint) => (
+				{paginatedSaints.map((saint, index) => (
 					<SaintCardSmall
 						key={saint.id}
 						saint={saint}
 						onClick={() => setSelectedSaint(saint)}
+						index={index}
 					/>
 					// </motion.div>
 				))}
@@ -41,6 +48,6 @@ export function SaintsPage() {
 				)}
 			</AnimatePresence>
 			{/* Pagination controls ici */}
-		</div>
+		</motion.div>
 	);
 }
