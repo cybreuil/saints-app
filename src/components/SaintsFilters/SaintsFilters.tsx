@@ -7,7 +7,7 @@ type SaintsFiltersProps = {
 	onQueryChange: (value: string) => void;
 	century: string;
 	onCenturyChange: (value: string) => void;
-	sortBy: SortValue;
+	sortKey: SortValue;
 	onSortByChange: (value: SortValue) => void;
 	centuries: string[];
 };

@@ -104,13 +104,6 @@ export function SaintsPage() {
 			transition={TRANSITIONS.slower}
 		>
 			<h2>Liste des Saints</h2>
-			<p className="saints-count">{mockSaints.length} saints trouvés</p>
-			<p className="saints-filters">
-				Filtres et options de tri (à implémenter)
-			</p>
-			<p className="pagination-info">
-				Page {page} sur {totalPages}
-			</p>
 
 			{/* Filtres et options de tri ici */}
 			<SaintsFilters
@@ -131,6 +124,10 @@ export function SaintsPage() {
 				}}
 				centuries={centuries}
 			/>
+			<p className="saints-count">{mockSaints.length} saints trouvés</p>
+			<p className="pagination-info">
+				Page {page} sur {totalPages}
+			</p>
 
 			<div className="saints-page__grid">
 				{paginatedSaints.map((saint, index) => (
