@@ -74,7 +74,7 @@ const SaintOfTheDay: React.FC = () => {
 					<motion.div
 						initial={{ x: -50, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
-						transition={{ duration: 0.5, delay: 0.4 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
 						// layoutId="calendar-container"
 					>
 						<MiniCalendar />
@@ -85,7 +85,7 @@ const SaintOfTheDay: React.FC = () => {
 					<motion.div
 						initial={{ x: -50, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
-						transition={{ duration: 0.5, delay: 0.2 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
 					>
 						<LiturgicalColor color="#B22222" colorName="Rouge" />
 					</motion.div>

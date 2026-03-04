@@ -1,4 +1,4 @@
-import saintsData from "../../data/saints.json";
+// import saintsData from "../../data/saints.json";
 import { useState } from "react";
 import "./SaintsPage.css";
 import { mockSaints } from "../../mocks/saints.mock.ts";
@@ -6,14 +6,16 @@ import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall.t
 import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme.ts";
+import { Pagination } from "../../components/Pagination/Pagination.tsx";
 
 export function SaintsPage() {
 	const [page, setPage] = useState(1);
-	const saintsPerPage = 20;
+	const saintsPerPage = 12; // 3 colonnes x 4 lignes = 12 saints par page -- par defaut
 	const paginatedSaints = mockSaints.slice(
 		(page - 1) * saintsPerPage,
 		page * saintsPerPage,
 	);
+	const totalPages = Math.ceil(mockSaints.length / saintsPerPage);
 
 	const [selectedSaint, setSelectedSaint] = useState(null);
 
@@ -48,6 +50,11 @@ export function SaintsPage() {
 				)}
 			</AnimatePresence>
 			{/* Pagination controls ici */}
+			<Pagination
+				currentPage={page}
+				totalPages={totalPages}
+				onPageChange={setPage}
+			/>
 		</motion.div>
 	);
 }
