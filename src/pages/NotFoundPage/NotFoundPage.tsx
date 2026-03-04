@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./NotFoundPage.css";
+import { RippleLink } from "../../components/RippleLink/RippleLink";
 
 const NotFoundPage = () => {
 	// Animation pour le halo qui pulse
@@ -59,9 +60,9 @@ const NotFoundPage = () => {
 			{/* Grand 404 avec effet de flottement */}
 			<motion.div
 				className="not-found-number"
-				variants={floatVariants}
-				initial="initial"
-				animate="animate"
+				// variants={floatVariants}
+				// initial="initial"
+				// animate="animate"
 			>
 				<motion.span
 					initial={{ x: -50, opacity: 0 }}
@@ -114,15 +115,15 @@ const NotFoundPage = () => {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ ...TRANSITIONS.slow, delay: 1.3 }}
 			>
-				<Link to="/" className="not-found-link primary">
+				<RippleLink to="/" className="not-found-link primary">
 					Return Home
-				</Link>
-				<Link
+				</RippleLink>
+				<RippleLink
 					to="/saint-of-the-day"
 					className="not-found-link secondary"
 				>
 					Saint of the Day
-				</Link>
+				</RippleLink>
 			</motion.nav>
 
 			{/* Petite citation en bas */}
