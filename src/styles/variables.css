@@ -53,4 +53,7 @@
 		var(--header-gradient-start),
 		var(--header-gradient-end)
 	);
+
+	/*Added variables*/
+	--color-bg-component: #f9f9f9;
 }

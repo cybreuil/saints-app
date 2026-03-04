@@ -6,7 +6,7 @@ const CalendarSelector = () => {
 
 	return (
 		<div className="calendar-selector">
-			Calendar Selector Component
+			<h3>Liturgical Calendar</h3>
 			<select
 				value={calendar}
 				onChange={(e) =>
