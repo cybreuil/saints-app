@@ -49,8 +49,6 @@ const SaintCardSmall = ({
 			/>
 			<div className="saint-card-small__overlay">
 				<motion.h3
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
 					transition={TRANSITIONS.normal}
 					layoutId={`saint-name-${saint.id}`}
 				>

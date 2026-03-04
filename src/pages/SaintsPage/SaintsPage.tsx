@@ -49,7 +49,7 @@ export function SaintsPage() {
 					/>
 				)}
 			</AnimatePresence>
-			{/* Pagination controls ici */}
+			{/* Pagination controls */}
 			<Pagination
 				currentPage={page}
 				totalPages={totalPages}

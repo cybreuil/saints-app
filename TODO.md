@@ -27,3 +27,6 @@ Might be a good idea to only use portal on body and not on dedicated div, to sim
 
 ----
 optimize delay on saintoftheday components
+---
+Pagination to motion.nav ?? Bottom of page so might not be needed
+Ripplebutton for pagination as well might be a good idea ?
