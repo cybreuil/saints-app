@@ -28,7 +28,3 @@
 	border-color: rgba(0, 0, 0, 0.42);
 	outline: none;
 }
-
-.calendar-selector select option {
-	padding: 5rem;
-}
