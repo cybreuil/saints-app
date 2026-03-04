@@ -7,6 +7,7 @@ import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
+import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
 
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
 type CenturyFilter = "all" | "unknown" | string;
@@ -110,63 +111,26 @@ export function SaintsPage() {
 			<p className="pagination-info">
 				Page {page} sur {totalPages}
 			</p>
-			<form
-				className="saints-filters"
-				onSubmit={(e) => e.preventDefault()}
-				aria-label="Filtres des saints"
-			>
-				<div className="filter-group">
-					<label htmlFor="saint-query">Recherche</label>
-					<input
-						id="saint-query"
-						type="search"
-						placeholder="Nom du saint..."
-						value={query}
-						onChange={(e) => {
-							setPage(1);
-							setQuery(e.target.value);
-						}}
-					/>
-				</div>
 
-				<div className="filter-group">
-					<label htmlFor="saint-century">Siècle</label>
-					<select
-						id="saint-century"
-						value={century}
-						onChange={(e) => {
-							setPage(1);
-							setCentury(e.target.value);
-						}}
-					>
-						<option value="all">Tous les siècles</option>
-						<option value="unknown">Inconnu</option>
-						{centuries.map((c) => (
-							<option key={c} value={c}>
-								{c}
-							</option>
-						))}
-					</select>
-				</div>
-
-				<div className="filter-group">
-					<label htmlFor="saint-sort">Trier par</label>
-					<select
-						id="saint-sort"
-						value={sortKey}
-						onChange={(e) => {
-							setPage(1);
-							setSortKey(e.target.value as SortKey);
-						}}
-					>
-						<option value="name_asc">Nom (A → Z)</option>
-						<option value="name_desc">Nom (Z → A)</option>
-						<option value="feast_asc">Fête (croissant)</option>
-						<option value="feast_desc">Fête (décroissant)</option>
-					</select>
-				</div>
-			</form>
 			{/* Filtres et options de tri ici */}
+			<SaintsFilters
+				query={query}
+				onQueryChange={(v) => {
+					setPage(1);
+					setQuery(v);
+				}}
+				century={century}
+				onCenturyChange={(v) => {
+					setPage(1);
+					setCentury(v);
+				}}
+				sortKey={sortKey}
+				onSortByChange={(v) => {
+					setPage(1);
+					setSortKey(v);
+				}}
+				centuries={centuries}
+			/>
 
 			<div className="saints-page__grid">
 				{paginatedSaints.map((saint, index) => (
