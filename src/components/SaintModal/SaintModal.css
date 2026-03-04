@@ -29,6 +29,9 @@
 	overflow-y: scroll;
 }
 .saint-modal__left {
+	flex: 0 0 30%;
+	min-width: 200px;
+	max-width: 320px;
 	position: sticky;
 	top: 0;
 	display: flex;
@@ -50,16 +53,16 @@
 .saint-modal__close:hover {
 	background-color: var(--color-primary-hover);
 }
-.saint-modal img {
-	max-width: 300px;
-	height: max-content;
-	max-height: 400px;
+.saint-modal__img {
 	/*peut etre necessaire de rajouter un max height pour laisser respirer*/
 	/*Sinon mieux vaudrait gerer tout ca avec des flex et pas des tailles fixes*/
 	/*Du genre max-width: 100% et height: auto pour que ca s'adapte a la taille du conteneur*/
 	/*Ou flex 0 0 auto pour que ca prenne la taille de l'image sans forcer une taille max*/
+
+	/*Errata : Ca a l'air mieux comme ca ! */
+
 	border-radius: 8px;
-	object-fit: cover;
+	width: 100%;
 }
 .saint-modal__left__bottom {
 	display: flex;
@@ -87,6 +90,7 @@
 }
 
 .saint-modal__content {
+	flex: 1 1 70%;
 	align-self: flex-start;
 	display: flex;
 	flex-direction: column;
