@@ -106,28 +106,38 @@ export function SaintsPage() {
 			<h2>Liste des Saints</h2>
 
 			{/* Filtres et options de tri ici */}
-			<SaintsFilters
-				query={query}
-				onQueryChange={(v) => {
-					setPage(1);
-					setQuery(v);
-				}}
-				century={century}
-				onCenturyChange={(v) => {
-					setPage(1);
-					setCentury(v);
-				}}
-				sortKey={sortKey}
-				onSortByChange={(v) => {
-					setPage(1);
-					setSortKey(v);
-				}}
-				centuries={centuries}
-			/>
-			<p className="saints-count">{mockSaints.length} saints trouvés</p>
-			<p className="pagination-info">
-				Page {page} sur {totalPages}
-			</p>
+
+			<motion.div
+				className="saints-page__toolbar"
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={TRANSITIONS.slower}
+			>
+				<SaintsFilters
+					query={query}
+					onQueryChange={(v) => {
+						setPage(1);
+						setQuery(v);
+					}}
+					century={century}
+					onCenturyChange={(v) => {
+						setPage(1);
+						setCentury(v);
+					}}
+					sortKey={sortKey}
+					onSortByChange={(v) => {
+						setPage(1);
+						setSortKey(v);
+					}}
+					centuries={centuries}
+				/>
+				<p className="saints-count">
+					{filteredAndSorted.length} saints trouvés
+				</p>
+				<p className="pagination-info">
+					Page {safePage} sur {totalPages}
+				</p>
+			</motion.div>
 
 			<div className="saints-page__grid">
 				{paginatedSaints.map((saint, index) => (
