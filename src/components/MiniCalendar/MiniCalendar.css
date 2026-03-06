@@ -12,18 +12,23 @@
 
 .mini-calendar-wrapper {
 	display: flex;
-	width: 100%;
 	overflow: hidden;
 	justify-content: center;
+	align-items: center;
+	width: calc(100% + 1.6rem);
+
+	/*--day-width: calc(((200% + 1.6rem) - (4 * 0.8rem)) / 5);*/
+	--day-width: 43px;
 }
 .mini-calendar-track {
+	width: calc(9 * var(--day-width) + (8 * 0.8rem));
 	display: flex;
-	width: max-content;
 	flex-direction: row;
 	gap: 0.8rem;
 }
 
 .mini-calendar-day {
+	width: var(--day-width);
 	background: var(--color-background-tertiary, #f5f5f5);
 	border: none;
 	border-radius: 8px;

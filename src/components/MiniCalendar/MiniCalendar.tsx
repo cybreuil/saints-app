@@ -148,12 +148,15 @@ const MiniCalendar = () => {
 								className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
 								onClick={() => handleDayClick(dateStr)}
 								aria-current={isSelected ? "date" : undefined}
-								// initial={{ opacity: 0, x: slideX }}
-								// animate={
-								// 	isToday && !isSelected
-								// 		? { opacity: 0.5, x: 0 }
-								// 		: { opacity: 1, x: 0 }
-								// }
+								initial={{
+									opacity: 0,
+									x: slideX,
+								}}
+								animate={
+									isToday && !isSelected
+										? { opacity: 0.5, x: 0 }
+										: { opacity: 1, x: 0 }
+								}
 								// exit={{ opacity: 0, x: slideX }}
 								transition={TRANSITIONS.normal}
 							>
