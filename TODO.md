@@ -30,3 +30,5 @@ optimize delay on saintoftheday components
 ---
 Pagination to motion.nav ?? Bottom of page so might not be needed
 Ripplebutton for pagination as well might be a good idea ?
+---
+clone bubble div on saints-app ?
