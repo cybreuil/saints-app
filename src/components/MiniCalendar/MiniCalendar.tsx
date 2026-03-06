@@ -128,45 +128,48 @@ const MiniCalendar = () => {
 
 	return (
 		<div className="mini-calendar-container">
-			<motion.div
-				className="mini-calendar"
-				// J'ai l'impression qu'on peut s'en passer
-				// layout
-			>
-				{bufferedDays.map((d) => {
-					const dateStr = formatYMD(d);
-					const isSelected = dateStr === selectedDate;
-					const isToday = dateStr === todayStr;
-					const slideX = direction > 0 ? 50 : direction < 0 ? -50 : 0;
+			<div className="mini-calendar-wrapper">
+				<motion.div
+					className="mini-calendar-track"
+					// J'ai l'impression qu'on peut s'en passer
+					// layout
+				>
+					{bufferedDays.map((d) => {
+						const dateStr = formatYMD(d);
+						const isSelected = dateStr === selectedDate;
+						const isToday = dateStr === todayStr;
+						const slideX =
+							direction > 0 ? 50 : direction < 0 ? -50 : 0;
 
-					return (
-						<motion.button
-							key={dateStr}
-							layoutId={`mini-calendar-day-${dateStr}`}
-							className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
-							onClick={() => handleDayClick(dateStr)}
-							aria-current={isSelected ? "date" : undefined}
-							// initial={{ opacity: 0, x: slideX }}
-							// animate={
-							// 	isToday && !isSelected
-							// 		? { opacity: 0.5, x: 0 }
-							// 		: { opacity: 1, x: 0 }
-							// }
-							// exit={{ opacity: 0, x: slideX }}
-							transition={TRANSITIONS.normal}
-						>
-							<span className="mini-calendar-day-label">
-								{d.toLocaleDateString("fr-FR", {
-									weekday: "short",
-								})}
-							</span>
-							<span className="mini-calendar-day-num">
-								{d.getDate()}
-							</span>
-						</motion.button>
-					);
-				})}
-			</motion.div>
+						return (
+							<motion.button
+								key={dateStr}
+								layoutId={`mini-calendar-day-${dateStr}`}
+								className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
+								onClick={() => handleDayClick(dateStr)}
+								aria-current={isSelected ? "date" : undefined}
+								// initial={{ opacity: 0, x: slideX }}
+								// animate={
+								// 	isToday && !isSelected
+								// 		? { opacity: 0.5, x: 0 }
+								// 		: { opacity: 1, x: 0 }
+								// }
+								// exit={{ opacity: 0, x: slideX }}
+								transition={TRANSITIONS.normal}
+							>
+								<span className="mini-calendar-day-label">
+									{d.toLocaleDateString("fr-FR", {
+										weekday: "short",
+									})}
+								</span>
+								<span className="mini-calendar-day-num">
+									{d.getDate()}
+								</span>
+							</motion.button>
+						);
+					})}
+				</motion.div>
+			</div>
 			<motion.div className="mini-calendar-controls">
 				{selectedDate !== todayStr && (
 					<motion.button
