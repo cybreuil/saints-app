@@ -1,22 +1,33 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FullCalendarModal } from "../FullCalendarModal/FullCalendarModal";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./MiniCalendar.css";
 import {
 	formatYMD,
 	parseYMD,
-	getToday,
 	getTodayStr,
 	daysBetweenYMD,
 } from "../../utils/date";
 
 // Version 5 jours (autour de la date sélectionnée)
-const get5WeekDays = (date = new Date()) => {
+// const get5WeekDays = (date = new Date()) => {
+// 	const start = new Date(date);
+// 	start.setDate(date.getDate() - 2); // 2 jours avant
+// 	return Array.from({ length: 5 }, (_, i) => {
+// 		const d = new Date(start);
+// 		d.setDate(start.getDate() + i);
+// 		return d;
+// 	});
+// };
+
+// On prend finalement 9 jours (5 +4 buffers - 2 de chaque coté pour garder une bonne visibilité du contexte)
+// Version 9 jours
+const get9DaysWithBuffer = (date = new Date()) => {
 	const start = new Date(date);
-	start.setDate(date.getDate() - 2); // 2 jours avant
-	return Array.from({ length: 5 }, (_, i) => {
+	start.setDate(date.getDate() - 4); // 4 jours avant
+	return Array.from({ length: 9 }, (_, i) => {
 		const d = new Date(start);
 		d.setDate(start.getDate() + i);
 		return d;
@@ -55,8 +66,9 @@ const MiniCalendar = () => {
 	// 	[selectedDate],
 	// );
 
-	const weekDays = useMemo(
-		() => get5WeekDays(parseYMD(selectedDate)),
+	// 9 jours avec buffer
+	const bufferedDays = useMemo(
+		() => get9DaysWithBuffer(parseYMD(selectedDate)),
 		[selectedDate],
 	);
 
@@ -121,7 +133,7 @@ const MiniCalendar = () => {
 				// J'ai l'impression qu'on peut s'en passer
 				// layout
 			>
-				{weekDays.map((d) => {
+				{bufferedDays.map((d) => {
 					const dateStr = formatYMD(d);
 					const isSelected = dateStr === selectedDate;
 					const isToday = dateStr === todayStr;
@@ -134,13 +146,13 @@ const MiniCalendar = () => {
 							className={`mini-calendar-day${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
 							onClick={() => handleDayClick(dateStr)}
 							aria-current={isSelected ? "date" : undefined}
-							initial={{ opacity: 0, x: slideX }}
-							animate={
-								isToday && !isSelected
-									? { opacity: 0.5, x: 0 }
-									: { opacity: 1, x: 0 }
-							}
-							exit={{ opacity: 0, x: slideX }}
+							// initial={{ opacity: 0, x: slideX }}
+							// animate={
+							// 	isToday && !isSelected
+							// 		? { opacity: 0.5, x: 0 }
+							// 		: { opacity: 1, x: 0 }
+							// }
+							// exit={{ opacity: 0, x: slideX }}
 							transition={TRANSITIONS.normal}
 						>
 							<span className="mini-calendar-day-label">
