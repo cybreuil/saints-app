@@ -35,3 +35,4 @@ clone bubble div on saints-app ?
 ---
 better width calculation for minicalendar & overflow
 ---
+MASK Image instead of wrapper etc
