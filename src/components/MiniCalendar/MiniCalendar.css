@@ -10,25 +10,31 @@
 	overflow: hidden;
 }
 
+.mini-calendar-viewport {
+	width: calc(100% + 1.2rem);
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
 .mini-calendar-wrapper {
 	display: flex;
-	overflow: hidden;
 	justify-content: center;
 	align-items: center;
-	width: calc(100% + 1.6rem);
+	width: calc(100% - 1.2rem);
 
-	/*--day-width: calc(((200% + 1.6rem) - (4 * 0.8rem)) / 5);*/
-	--day-width: 43px;
+	/*--day-width: calc((100% - (4 * 0.8rem)) / 5);*/
+	/*--day-width: 43px;*/
 }
 .mini-calendar-track {
-	width: calc(9 * var(--day-width) + (8 * 0.8rem));
-	display: flex;
-	flex-direction: row;
-	gap: 0.8rem;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: calc((100% - 4 * 0.6rem) / 5);
+	justify-content: center;
+	gap: 0.6rem;
+	width: 100%;
 }
 
 .mini-calendar-day {
-	width: var(--day-width);
 	background: var(--color-background-tertiary, #f5f5f5);
 	border: none;
 	border-radius: 8px;
