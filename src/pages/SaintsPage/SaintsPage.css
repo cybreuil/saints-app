@@ -5,12 +5,13 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	gap: 2rem;
 }
 .saints-page__grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 	gap: 1.5rem;
-	padding: 2rem;
+	padding: 0 2rem;
 	max-width: 1200px;
 	margin: 0 auto;
 	justify-content: center;
@@ -21,6 +22,6 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
+	gap: 2rem;
 	flex-wrap: wrap;
 }

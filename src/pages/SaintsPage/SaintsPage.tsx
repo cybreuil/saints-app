@@ -134,9 +134,9 @@ export function SaintsPage() {
 				<p className="saints-count">
 					{filteredAndSorted.length} saints trouvés
 				</p>
-				<p className="pagination-info">
+				{/*<p className="pagination-info">
 					Page {safePage} sur {totalPages}
-				</p>
+				</p>*/}
 			</motion.div>
 
 			<div className="saints-page__grid">
