@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import "./Header.css";
 import { BurgerIcon } from "../BurgerIcon/BurgerIcon";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -141,6 +142,9 @@ const Header = () => {
 									>
 										Feast of the Day
 									</Link>
+								</li>
+								<li>
+									<ThemeToggle />
 								</li>
 							</ul>
 						</motion.div>

@@ -1,0 +1,151 @@
+.theme-toggle-wrapper {
+	display: inline-block;
+	padding: 0.5rem;
+}
+
+.theme-switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+/* Cache la checkbox par défaut */
+.theme-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* Le slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	transition: 0.4s;
+	border-radius: 34px;
+	overflow: hidden;
+}
+
+/* Le cercle du slider */
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 3px;
+	background-color: #fff;
+	transition: 0.4s;
+	border-radius: 50%;
+	z-index: 2;
+}
+
+/* Les icônes */
+.slider-icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	/* font-size: 16px; */
+	transition:
+		opacity 0.4s ease,
+		transform 0.4s ease;
+	display: flex; /* Added to properly contain the SVG */
+	align-items: center; /* Center vertically */
+	justify-content: center; /* Center horizontally */
+	width: 16px; /* Fixed width for icon container */
+	height: 16px; /* Fixed height for icon container */
+}
+
+.sun {
+	left: 8px;
+}
+
+.moon {
+	right: 8px;
+}
+
+/* État actif de la checkbox */
+input:checked + .slider {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider:before {
+	transform: translateX(26px);
+}
+
+/* Effet de focus */
+input:focus + .slider {
+	box-shadow: 0 0 1px var(--color-accent);
+}
+
+/* Thème clair */
+[data-theme="light"] .slider {
+	background-color: #ffd700;
+	border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .slider:before {
+	background-color: #fff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations des icônes */
+.slider .slider-icon.sun {
+	opacity: 0;
+	transform: translateY(-50%) rotate(-45deg);
+	transition: all 0.4s ease;
+}
+
+.slider .slider-icon.moon {
+	opacity: 1;
+	transition: all 0.4s ease;
+}
+
+input:checked + .slider .slider-icon.sun {
+	opacity: 1;
+	transform: translateY(-50%) rotate(0);
+}
+
+input:checked + .slider .slider-icon.moon {
+	opacity: 0;
+	transform: translateY(-50%) rotate(45deg);
+}
+
+/* Hover effects */
+.slider:hover {
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="light"] .slider:hover {
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+	.theme-switch {
+		width: 50px;
+		height: 28px;
+	}
+
+	.slider:before {
+		height: 20px;
+		width: 20px;
+		left: 4px;
+		bottom: 3px;
+	}
+
+	input:checked + .slider:before {
+		transform: translateX(22px);
+	}
+
+	.slider-icon {
+		width: 14px; /* Adjusted width for smaller screens */
+		height: 14px; /* Adjusted height for smaller screens */
+	}
+}
