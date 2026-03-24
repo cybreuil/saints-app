@@ -211,6 +211,16 @@ const FullCalendarModal: React.FC<Props> = ({
 									onSelect(todayStr);
 									onClose();
 								}}
+								style={{
+									cursor:
+										selectedDate === todayStr
+											? "not-allowed"
+											: "pointer",
+									opacity:
+										selectedDate === todayStr ? 0.5 : 1,
+								}}
+								disabled={selectedDate === todayStr}
+								aria-disabled={selectedDate === todayStr}
 							>
 								Aujourd'hui
 							</button>
