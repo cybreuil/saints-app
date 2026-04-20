@@ -38,3 +38,5 @@ better width calculation for minicalendar & overflow
 MASK Image instead of wrapper etc
 ---
 add timer for ripple completion before navigate
+---
+name idea ; genuflexio ?
