@@ -13,9 +13,9 @@ import { useSaints } from "../../hooks/useSaints.ts";
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
 type CenturyFilter = "all" | "unknown" | string;
 
-const apiSaints = useSaints.getSaints();
-
 export function SaintsPage() {
+	const { getSaints } = useSaints();
+	const 
 	const [page, setPage] = useState(1);
 	const saintsPerPage = 12; // 3 colonnes x 4 lignes = 12 saints par page -- par defaut
 
