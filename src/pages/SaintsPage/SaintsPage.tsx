@@ -8,9 +8,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
+import { useSaints } from "../../hooks/useSaints.ts";
 
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
 type CenturyFilter = "all" | "unknown" | string;
+
+const apiSaints = useSaints.getSaints();
 
 export function SaintsPage() {
 	const [page, setPage] = useState(1);
