@@ -50,7 +50,7 @@ const SaintCardSmall = ({
 					layoutId={`saint-feastDay-${saint.id}`}
 					transition={TRANSITIONS.normal}
 				>
-					{saint.feastDay}
+					{saint.birth_year}
 				</motion.p>
 			</div>
 		</motion.div>
