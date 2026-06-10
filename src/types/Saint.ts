@@ -13,14 +13,14 @@ export interface Saint {
 export interface SaintApi {
 	id: string;
 	slug: string;
-	defaultName: string;
-	birthYear: number;
-	deathYear: number;
+	default_name: string;
+	birth_year: number;
+	death_year: number;
 }
 export interface SaintsApiResponse {
 	data: SaintApi[];
 	page: number;
-	perPage: number;
+	// perPage: number;
 	total: number;
-	totalPages: number;
+	total_pages: number;
 }

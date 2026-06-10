@@ -1,7 +1,7 @@
 // import saintsData from "../../data/saints.json";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./SaintsPage.css";
-import { mockSaints } from "../../mocks/saints.mock.ts";
+// import { mockSaints } from "../../mocks/saints.mock.ts";
 import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall.tsx";
 import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,15 +9,22 @@ import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
 import { useSaints } from "../../hooks/useSaints.ts";
+import type { SaintApi } from "../../types/Saint.ts";
 
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
 type CenturyFilter = "all" | "unknown" | string;
 
 export function SaintsPage() {
 	const { getSaints } = useSaints();
-	const 
+	const [loading, setLoading] = useState(false);
 	const [page, setPage] = useState(1);
 	const saintsPerPage = 12; // 3 colonnes x 4 lignes = 12 saints par page -- par defaut
+	const [selectedSaint, setSelectedSaint] = useState<SaintApi | null>(null);
+
+	// States des données
+	const [saintsList, setSaintsList] = useState<SaintApi[]>([]);
+	const [totalCount, setTotalCount] = useState(0);
+	const [totalPages, setTotalPages] = useState(0);
 
 	// const paginatedSaints = mockSaints.slice(
 	// 	(page - 1) * saintsPerPage,
@@ -25,78 +32,88 @@ export function SaintsPage() {
 	// );
 	// const totalPages = Math.ceil(mockSaints.length / saintsPerPage);
 
-	const [selectedSaint, setSelectedSaint] = useState(null);
-
 	// Gestion des filtres et tri
-	const [query, setQuery] = useState("");
-	const [century, setCentury] = useState<CenturyFilter>("all");
-	const [sortKey, setSortKey] = useState<SortKey>("name_asc");
+	// const [query, setQuery] = useState("");
+	// const [century, setCentury] = useState<CenturyFilter>("all");
+	// const [sortKey, setSortKey] = useState<SortKey>("name_asc");
 
-	const centuries = useMemo(() => {
-		const set = new Set<string>();
-		mockSaints.forEach((saint) => {
-			if (saint.century) {
-				set.add(saint.century);
-			} else {
-				set.add("unknown");
-			}
-		});
-		return Array.from(set).sort();
-	}, []);
+	useEffect(() => {
+		const fetchData = async () => {
+			setLoading(true);
+			await getSaints(page).then((response) => {
+				setSaintsList(response.data);
+				setTotalCount(response.total);
+				setTotalPages(response.total_pages);
+			});
+			setLoading(false);
+		};
+		fetchData();
+	}, [page]);
 
-	const filteredAndSorted = useMemo(() => {
-		let list = [...mockSaints];
+	// const centuries = useMemo(() => {
+	// 	const set = new Set<string>();
+	// 	saintsList.forEach((saint) => {
+	// 		if (saint.century) {
+	// 			set.add(saint.century);
+	// 		} else {
+	// 			set.add("unknown");
+	// 		}
+	// 	});
+	// 	return Array.from(set).sort();
+	// }, []);
 
-		// recherche nom
-		if (query.trim()) {
-			const q = query.trim().toLowerCase();
-			list = list.filter((s) => s.name?.toLowerCase().includes(q));
-		}
+	// const filteredAndSorted = useMemo(() => {
+	// 	let list = [...saintsList];
 
-		// filtre siècle
-		if (century !== "all") {
-			if (century === "unknown") {
-				list = list.filter((s) => !(s as any).century);
-			} else {
-				list = list.filter(
-					(s) => String((s as any).century) === century,
-				);
-			}
-		}
+	// 	// recherche nom
+	// 	if (query.trim()) {
+	// 		const q = query.trim().toLowerCase();
+	// 		list = list.filter((s) => s.name?.toLowerCase().includes(q));
+	// 	}
 
-		// tri
-		list.sort((a, b) => {
-			switch (sortKey) {
-				case "name_asc":
-					return a.name.localeCompare(b.name, "fr");
-				case "name_desc":
-					return b.name.localeCompare(a.name, "fr");
-				case "feast_asc":
-					return (a.feastDay || "").localeCompare(
-						b.feastDay || "",
-						"fr",
-					);
-				case "feast_desc":
-					return (b.feastDay || "").localeCompare(
-						a.feastDay || "",
-						"fr",
-					);
-				default:
-					return 0;
-			}
-		});
+	// 	// filtre siècle
+	// 	// if (century !== "all") {
+	// 	// 	if (century === "unknown") {
+	// 	// 		list = list.filter((s) => !(s as any).century);
+	// 	// 	} else {
+	// 	// 		list = list.filter(
+	// 	// 			(s) => String((s as any).century) === century,
+	// 	// 		);
+	// 	// 	}
+	// 	// }
 
-		return list;
-	}, [query, century, sortKey]);
+	// 	// tri
+	// 	list.sort((a, b) => {
+	// 		switch (sortKey) {
+	// 			case "name_asc":
+	// 				return a.name.localeCompare(b.name, "fr");
+	// 			case "name_desc":
+	// 				return b.name.localeCompare(a.name, "fr");
+	// 			case "feast_asc":
+	// 				return (a.feastDay || "").localeCompare(
+	// 					b.feastDay || "",
+	// 					"fr",
+	// 				);
+	// 			case "feast_desc":
+	// 				return (b.feastDay || "").localeCompare(
+	// 					a.feastDay || "",
+	// 					"fr",
+	// 				);
+	// 			default:
+	// 				return 0;
+	// 		}
+	// 	});
 
-	const totalPages = Math.ceil(filteredAndSorted.length / saintsPerPage);
-	const paginatedSaints = filteredAndSorted.slice(
-		(page - 1) * saintsPerPage,
-		page * saintsPerPage,
-	);
+	// 	return list;
+	// }, [query, century, sortKey]);
+
+	// const paginatedSaints = filteredAndSorted.slice(
+	// 	(page - 1) * saintsPerPage,
+	// 	page * saintsPerPage,
+	// );
 
 	// reset page si les filtres réduisent la liste
-	const safePage = Math.min(page, totalPages);
+	// const safePage = Math.min(page, totalPages);
 
 	return (
 		<motion.div
@@ -116,7 +133,7 @@ export function SaintsPage() {
 				animate={{ opacity: 1, y: 0 }}
 				transition={TRANSITIONS.slower}
 			>
-				<SaintsFilters
+				{/*<SaintsFilters
 					query={query}
 					onQueryChange={(v) => {
 						setPage(1);
@@ -133,17 +150,17 @@ export function SaintsPage() {
 						setSortKey(v);
 					}}
 					centuries={centuries}
-				/>
-				<p className="saints-count">
+				/>*/}
+				{/*<p className="saints-count">
 					{filteredAndSorted.length} saints trouvés
-				</p>
+				</p>*/}
 				{/*<p className="pagination-info">
 					Page {safePage} sur {totalPages}
 				</p>*/}
 			</motion.div>
 
 			<div className="saints-page__grid">
-				{paginatedSaints.map((saint, index) => (
+				{saintsList.map((saint, index) => (
 					<SaintCardSmall
 						key={saint.id}
 						saint={saint}

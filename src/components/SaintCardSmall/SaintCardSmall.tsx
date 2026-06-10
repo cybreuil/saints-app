@@ -1,22 +1,14 @@
 import { motion } from "framer-motion";
 import "./SaintCardSmall.css";
 import { TRANSITIONS } from "../../styles/theme";
+import type { SaintApi } from "../../types/Saint.ts";
 
 const SaintCardSmall = ({
 	saint,
 	onClick,
 	index,
 }: {
-	saint: {
-		id: string;
-		name: string;
-		sex: string;
-		feastDay: string;
-		description: string;
-		image: string;
-		attributes: string;
-		patronage: string;
-	};
+	saint: SaintApi;
 	onClick: () => void;
 	index: number;
 }) => {
@@ -52,7 +44,7 @@ const SaintCardSmall = ({
 					transition={TRANSITIONS.normal}
 					layoutId={`saint-name-${saint.id}`}
 				>
-					{saint.name}
+					{saint.default_name}
 				</motion.h3>
 				<motion.p
 					layoutId={`saint-feastDay-${saint.id}`}

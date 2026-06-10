@@ -4,18 +4,13 @@ import { useEffect } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
 import { RippleButton } from "../RippleButton/RippleButton";
+import type { SaintApi } from "../../types/Saint";
 
 export function SaintModal({
 	saint,
 	onClose,
 }: {
-	saint: {
-		id: number;
-		name: string;
-		feastDay: string;
-		image?: string;
-		description?: string;
-	};
+	saint: SaintApi;
 	onClose: () => void;
 }) {
 	// Close with Escape key
@@ -109,7 +104,7 @@ export function SaintModal({
 							layoutId={`saint-name-${saint.id}`}
 							transition={TRANSITIONS.normal}
 						>
-							{saint.name}
+							{saint.default_name}
 						</motion.h2>
 						<motion.p
 							className="saint-modal__content__date"
