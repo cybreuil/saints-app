@@ -73,7 +73,7 @@ export function SaintModal({
 						</motion.div>
 						<motion.img
 							layoutId={`saint-img-${saint.id}`}
-							src={saint.image || "/logoOptimized.svg"}
+							src={saint.image_url || "/logoOptimized.svg"}
 							alt={saint.name}
 							className="saint-modal__img"
 							transition={TRANSITIONS.normal}
