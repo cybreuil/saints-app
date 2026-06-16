@@ -126,6 +126,53 @@ export function SaintsPage() {
 			transition={TRANSITIONS.slower}
 		>
 			<h2>Liste des Saints</h2>
+			{/* Pagination Option*/}
+			<div
+				className="saints-page__pagination"
+				style={{
+					display: "flex",
+					gap: 8,
+					alignItems: "center",
+					marginBottom: 12,
+				}}
+			>
+				<button
+					onClick={() => {
+						if (!totalPages) return;
+						const input = window.prompt(
+							`Aller à quelle page ? (1 - ${totalPages})`,
+							String(page),
+						);
+						if (!input) return;
+						const n = Math.floor(Number(input));
+						if (Number.isNaN(n)) return;
+						setPage(Math.max(1, Math.min(totalPages, n)));
+					}}
+					style={{ padding: "6px 10px", borderRadius: 6 }}
+				>
+					Aller à la page
+				</button>
+
+				<button
+					onClick={() => {
+						const el = document.getElementById(
+							"saints-pagination-bottom",
+						);
+						if (el)
+							el.scrollIntoView({
+								behavior: "smooth",
+								block: "center",
+							});
+					}}
+					style={{ padding: "6px 10px", borderRadius: 6 }}
+				>
+					Aller à la pagination
+				</button>
+
+				<div style={{ marginLeft: "auto", color: "#666" }}>
+					Page {page} / {totalPages || "?"}
+				</div>
+			</div>
 
 			{/* Filtres et options de tri ici */}
 
