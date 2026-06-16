@@ -40,15 +40,17 @@ export function SaintsPage() {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			await getSaints(page).then((response) => {
-				setSaintsList(response.data);
-				setTotalCount(response.total);
-				setTotalPages(response.total_pages);
-			});
+			await getSaints({ page, perPage: saintsPerPage }).then(
+				(response) => {
+					setSaintsList(response.data);
+					setTotalCount(response.total);
+					setTotalPages(response.total_pages);
+				},
+			);
 			setLoading(false);
 		};
 		fetchData();
-	}, [page]);
+	}, [page, saintsPerPage]);
 
 	// const centuries = useMemo(() => {
 	// 	const set = new Set<string>();

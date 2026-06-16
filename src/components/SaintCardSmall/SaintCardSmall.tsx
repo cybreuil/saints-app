@@ -34,7 +34,7 @@ const SaintCardSmall = ({
 			<motion.img
 				// Super useful for animation between list and modal / need to remember
 				layoutId={`saint-img-${saint.id}`}
-				src={saint.image || "/logoOptimized.svg"}
+				src={saint.image_url || "/logoOptimized.svg"}
 				alt={saint.name}
 				loading="lazy"
 				transition={TRANSITIONS.normal}
@@ -44,14 +44,14 @@ const SaintCardSmall = ({
 					transition={TRANSITIONS.normal}
 					layoutId={`saint-name-${saint.id}`}
 				>
-					{saint.default_name}
+					{saint.name}
 				</motion.h3>
-				<motion.p
+				{/*<motion.p
 					layoutId={`saint-feastDay-${saint.id}`}
 					transition={TRANSITIONS.normal}
 				>
 					{saint.birth_year}
-				</motion.p>
+				</motion.p>*/}
 			</div>
 		</motion.div>
 	);
