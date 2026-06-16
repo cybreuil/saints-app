@@ -1,10 +1,12 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
 import { RippleButton } from "../RippleButton/RippleButton";
-import type { SaintApi } from "../../types/Saint";
+import type { SaintApi, SaintDetailedResponse } from "../../types/Saint";
+import { useSaints } from "../../hooks/useSaints";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export function SaintModal({
 	saint,
@@ -13,6 +15,34 @@ export function SaintModal({
 	saint: SaintApi;
 	onClose: () => void;
 }) {
+	const { getSaintBySlug } = useSaints();
+	const { languageCode } = useLanguage();
+	const [detail, setDetail] = useState<SaintDetailedResponse | null>(null);
+
+	// Fetch des détails au montage (= au clic sur la carte)
+	useEffect(() => {
+		let cancelled = false;
+
+		const fetchDetail = async () => {
+			// setLoadingDetail(true);
+			// setError(null);
+			try {
+				const data = await getSaintBySlug(saint.slug, languageCode);
+				if (!cancelled) setDetail(data);
+			} catch (e) {
+				// if (!cancelled) setError("Impossible de charger les détails.");
+				console.error(e);
+			} finally {
+				// if (!cancelled) setLoadingDetail(false);
+			}
+		};
+
+		fetchDetail();
+		return () => {
+			cancelled = true; // évite un setState après démontage / re-clic
+		};
+	}, [saint.slug]);
+
 	// Close with Escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -104,7 +134,7 @@ export function SaintModal({
 							layoutId={`saint-name-${saint.id}`}
 							transition={TRANSITIONS.normal}
 						>
-							{saint.default_name}
+							{saint.name}
 						</motion.h2>
 						<motion.p
 							className="saint-modal__content__date"
@@ -113,7 +143,7 @@ export function SaintModal({
 						>
 							{saint.feastDay}
 						</motion.p>
-						{saint.description && (
+						{detail && (
 							<motion.p
 								className="saint-modal__content__description"
 								initial={{ opacity: 0 }}
@@ -124,7 +154,7 @@ export function SaintModal({
 								}}
 								transition={TRANSITIONS.slower}
 							>
-								{saint.description}
+								{detail.full_biography}
 							</motion.p>
 						)}
 						<motion.div

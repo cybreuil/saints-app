@@ -7,6 +7,7 @@ import "./Header.css";
 import { BurgerIcon } from "../BurgerIcon/BurgerIcon";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { LanguageDropDown } from "../LanguageDropDown/LanguageDropDown";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -145,6 +146,9 @@ const Header = () => {
 								</li>
 								<li>
 									<ThemeToggle />
+								</li>
+								<li>
+									<LanguageDropDown />
 								</li>
 							</ul>
 						</motion.div>

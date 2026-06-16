@@ -1,8 +1,8 @@
-import type { SaintsApiResponse } from "../types/Saint";
+import type { SaintDetailedResponse, SaintsApiResponse } from "../types/Saint";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
-export type GetSaintsParams = {
+export type GetSaintListParams = {
 	page?: number;
 	perPage?: number;
 	languageCode?: string;
@@ -17,8 +17,8 @@ export type GetSaintsParams = {
 };
 
 const useSaints = () => {
-	const getSaints = async (
-		params: GetSaintsParams = {},
+	const getSaintList = async (
+		params: GetSaintListParams = {},
 	): Promise<SaintsApiResponse> => {
 		const { page, perPage, languageCode } = params;
 
@@ -59,7 +59,25 @@ const useSaints = () => {
 		return (await response.json()) as SaintsApiResponse;
 	};
 
-	return { getSaints };
+	const getSaintBySlug = async (
+		slug: string,
+		languageCode?: string,
+	): Promise<SaintDetailedResponse> => {
+		const url = new URL(
+			`${API_BASE_URL}/saints/${slug}${languageCode ? `?language_code=${languageCode}` : ""}`,
+		);
+		const response = await fetch(url.toString());
+		if (!response.ok) {
+			// Fournir un message utile pour le debug
+			const text = await response.text().catch(() => "");
+			throw new Error(
+				`Erreur API ${response.status} ${response.statusText} - ${text}`,
+			);
+		}
+		return (await response.json()) as SaintDetailedResponse;
+	};
+
+	return { getSaintList, getSaintBySlug };
 };
 
 export { useSaints };

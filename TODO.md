@@ -40,3 +40,4 @@ MASK Image instead of wrapper etc
 add timer for ripple completion before navigate
 ---
 name idea ; genuflexio ?
+TAN STACK QUERY TO AVOID RELOAD ???

@@ -9,13 +9,15 @@ import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
 import { useSaints } from "../../hooks/useSaints.ts";
+import { useLanguage } from "../../contexts/LanguageContext.ts";
 import type { SaintApi } from "../../types/Saint.ts";
 
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
 type CenturyFilter = "all" | "unknown" | string;
 
 export function SaintsPage() {
-	const { getSaints } = useSaints();
+	const { getSaintList } = useSaints();
+	const { languageCode } = useLanguage();
 	const [loading, setLoading] = useState(false);
 	const [page, setPage] = useState(1);
 	const saintsPerPage = 12; // 3 colonnes x 4 lignes = 12 saints par page -- par defaut
@@ -40,17 +42,19 @@ export function SaintsPage() {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			await getSaints({ page, perPage: saintsPerPage }).then(
-				(response) => {
-					setSaintsList(response.data);
-					setTotalCount(response.total);
-					setTotalPages(response.total_pages);
-				},
-			);
+			await getSaintList({
+				page,
+				perPage: saintsPerPage,
+				languageCode,
+			}).then((response) => {
+				setSaintsList(response.data);
+				setTotalCount(response.total);
+				setTotalPages(response.total_pages);
+			});
 			setLoading(false);
 		};
 		fetchData();
-	}, [page, saintsPerPage]);
+	}, [page, saintsPerPage, languageCode]);
 
 	// const centuries = useMemo(() => {
 	// 	const set = new Set<string>();
