@@ -10,8 +10,7 @@ import {
 	getTodayStr,
 	daysBetweenYMD,
 } from "../../utils/date";
-import { CalendarLogo } from "../icons/CalendarLogo";
-import { RefreshLogo } from "../icons/RefreshLogo";
+import { CalendarLogo, RefreshLogo } from "../../icons";
 
 // Version 5 jours (autour de la date sélectionnée)
 // const get5WeekDays = (date = new Date()) => {
