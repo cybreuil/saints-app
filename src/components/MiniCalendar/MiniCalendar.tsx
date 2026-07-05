@@ -10,6 +10,8 @@ import {
 	getTodayStr,
 	daysBetweenYMD,
 } from "../../utils/date";
+import { CalendarLogo } from "../icons/CalendarLogo";
+import { RefreshLogo } from "../icons/RefreshLogo";
 
 // Version 5 jours (autour de la date sélectionnée)
 // const get5WeekDays = (date = new Date()) => {
@@ -189,7 +191,7 @@ const MiniCalendar = () => {
 						aria-label="Revenir à aujourd'hui"
 						title="Revenir à aujourd'hui"
 					>
-						🔄
+						<RefreshLogo />
 					</motion.button>
 				)}
 
@@ -201,7 +203,7 @@ const MiniCalendar = () => {
 						aria-label="Choisir une date"
 						title="Choisir une date"
 					>
-						🗓️
+						<CalendarLogo />
 					</button>
 					<input
 						ref={inputRef}
