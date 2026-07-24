@@ -20,6 +20,9 @@
 		border-color 0.3s ease,
 		background-color 0.3s ease;
 }
+.calendar-selector select:disabled {
+	cursor: not-allowed;
+}
 .calendar-selector select:hover {
 	border-color: rgba(0, 0, 0, 0.28);
 	background-color: var(--color-bg-quaternary);

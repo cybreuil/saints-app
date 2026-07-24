@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../pages/HomePage/HomePage";
-import { SaintOfTheDay } from "../../pages/SaintOfTheDay/SaintOfTheDay";
+import { CelebrationOfTheDay } from "../../pages/CelebrationOfTheDay/CelebrationOfTheDay";
 import { SaintsPage } from "../../pages/SaintsPage/SaintsPage";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
 import { AboutPage } from "../../pages/AboutPage/AboutPage";
@@ -10,8 +10,8 @@ const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
-			<Route path="/saint-of-the-day" element={<SaintOfTheDay />} />
-			<Route path="/saint-of-the-day/:date" element={<SaintOfTheDay />} />
+			<Route path="/celebration" element={<CelebrationOfTheDay />} />
+			<Route path="/celebration/:date" element={<CelebrationOfTheDay />} />
 			<Route path="/saints" element={<SaintsPage />} />
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/about" element={<AboutPage />} />

@@ -1,22 +1,14 @@
 import { createContext } from "react";
+import type { Calendar } from "../types/Calendar";
 
-export type CalendarType =
-	| "tridentine_1960"
-	| "roman_1970"
-	| "orthodox"
-	| "bonus"
-	| "france"
-	| "italy"
-	| "spain"
-	| "poland"
-	| "ireland";
+interface CalendarContext {
+	calendar: Calendar | null;
+	setCalendar: (calendar: Calendar) => void;
+}
 
-type CalendarContextType = {
-	calendar: CalendarType;
-	setCalendar: (calendar: CalendarType) => void;
-};
 
-const CalendarContext = createContext<CalendarContextType | undefined>(
+
+const CalendarContext = createContext<CalendarContext | undefined>(
 	undefined,
 );
 

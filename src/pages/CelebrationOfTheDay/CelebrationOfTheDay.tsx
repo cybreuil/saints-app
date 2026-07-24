@@ -1,0 +1,170 @@
+import "./CelebrationOfTheDay.css";
+import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
+import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
+import { useCalendar } from "../../hooks/useCalendar";
+import { motion } from "framer-motion";
+import { TRANSITIONS } from "../../styles/theme";
+import { LiturgicalColor } from "../../components/LiturgicalColor/LiturgicalColor";
+import { MiniCalendar } from "../../components/MiniCalendar/MiniCalendar";
+import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
+import { useCelebration } from "../../hooks/useCelebration";
+import { useSearchParams } from "react-router-dom";
+
+
+const CelebrationOfTheDay: React.FC = () => {
+	const { calendar } = useCalendar();
+
+	const [searchParams] = useSearchParams();
+	const year = searchParams.get("year");
+	const month = searchParams.get("month");
+	const day = searchParams.get("day");
+
+	const date = year && month && day ? `${year}-${month}-${day}` : undefined;
+
+	//Maybe should put liturgical season as a context
+	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date);
+
+
+
+	return (
+		<div className="saint-of-the-day-layout">
+			<div className="sidebar-left">
+				<div className="sidebar-left-sticky">
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+						// layoutId="calendar-container"
+					>
+						<MiniCalendar />
+					</motion.div>
+
+					{/*Logique de facultatif a ajouter si on a pas de couleur dans certains calendriers*/}
+					{/*{saint.liturgicalColor && (*/}
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
+					>
+						<LiturgicalColor
+							color={celebration?.liturgical_color_hex || liturgicalSeason?.hex_color || "#000000"}
+							colorName={celebration?.liturgical_color_name || liturgicalSeason?.color_label || "Inconnu"}
+						/>
+					</motion.div>
+
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.6 }}
+					>
+						<LiturgicalRank />
+					</motion.div>
+				</div>
+			</div>
+
+			<motion.div
+				className="saint-of-the-day-card"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={TRANSITIONS.slower}
+			>
+				{invalidDate ? (
+					<p className="no-celebration-message">
+						Date invalide. Veuillez choisir une date correcte.
+					</p>
+				) : !celebration ? (
+					<p className="no-celebration-message">
+						Aucune célébration trouvée pour cette date.
+					</p>
+				) : isLoading ? (
+					<p className="loading-message">Chargement...</p>
+				) : error ? (
+					<p className="error-message">
+						Erreur lors du chargement des données : {error.message}
+					</p>
+				) : (
+					<div className="saint-of-the-day-content">
+						<h1>{celebration.feast_name}</h1>
+						<p className="feast-day">{context?.year}-{context?.month}-{context?.day}</p>
+						<div className="saint-details">
+							{saints && saints.length > 0 ? (
+								<>
+									{saints[0].saint_image_url && (
+										<img
+											src={saints[0].saint_image_url}
+											alt={saints[0].saint_name}
+										/>
+									)}
+								</>
+							) : (
+								<p>Aucun saint associé à cette célébration.</p>
+							)}
+
+							<p>{celebration.feast_description}</p>
+
+							{/*{saints[0].biography && saint[0].biography.length > 0 && (
+								<div>
+									<h3>Biography</h3>
+									<ul>
+										{saint.biography.map((line, idx) => (
+											<li key={idx}>{line}</li>
+										))}
+									</ul>
+								</div>
+							)}
+							{saint.attributes &&
+								saint.attributes.length > 0 && (
+									<div className="attributes-section">
+										<h3>Attributes</h3>
+										<ul>
+											{saint.attributes.map(
+												(attr, idx) => (
+													<li key={idx}>{attr}</li>
+												),
+											)}
+										</ul>
+									</div>
+								)}
+							{saint.patronage && saint.patronage.length > 0 && (
+								<div className="patronage-section">
+									<h3>Patronage</h3>
+									<ul>
+										{saint.patronage.map((pat, idx) => (
+											<li key={idx}>{pat}</li>
+										))}
+									</ul>
+								</div>
+							)}*/}
+						</div>
+					</div>
+				)}
+			</motion.div>
+
+
+			<div className="sidebar-right">
+				<div className="sidebar-right-sticky">
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
+						<CalendarSelector />
+					</motion.div>
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{
+							duration: 0.7,
+							delay: 0.4,
+							type: "spring",
+						}}
+					>
+						<RegionalSaint />
+					</motion.div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export { CelebrationOfTheDay };
