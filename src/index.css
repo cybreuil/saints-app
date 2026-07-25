@@ -16,6 +16,13 @@
 	font-display: swap;
 }
 
+@property --liturgical-color {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: transparent;
+}
+
+
 body {
 	font-family: "Source Serif", serif;
 	line-height: 1.4;
@@ -24,13 +31,26 @@ body {
 	background: var(--color-bg-primary);
 	color: var(--color-text-primary);
 	transition:
+		background 3s ease,
 		background-color 0.3s ease,
 		color 0.3s ease;
 }
 /*Body color variations for different pages*/
-body.saintoftheday {
-	background-color: var(--color-bg-quaternary);
+/*For celebration we use directly the liturgical color - we inject it with useeffect from page tsx*/
+body.celebrationoftheday {
+	background:
+		linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--liturgical-color) 40%, #eef2f5) 0%,
+			color-mix(in srgb, var(--liturgical-color) 18%, #f8fafc) 35%,
+			#f8fafc 60%,
+			#eef2f5 100%
+		);
+
+	transition: --liturgical-color 1.2s ease;
 }
+
+
 body.saintslist {
 	background-color: var(--color-bg-secondary);
 }

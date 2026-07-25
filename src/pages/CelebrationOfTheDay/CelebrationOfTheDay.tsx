@@ -1,4 +1,5 @@
 import "./CelebrationOfTheDay.css";
+import { useEffect } from "react";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
 import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
 import { useCalendar } from "../../hooks/useCalendar";
@@ -19,7 +20,20 @@ const CelebrationOfTheDay: React.FC = () => {
 	//Maybe should put liturgical season as a context
 	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date, "en");
 
+	const liturgicalColor = celebration?.liturgical_color_hex || liturgicalSeason?.hex_color || "#000000";
 
+	useEffect(() => {
+  		if (!liturgicalColor) return;
+
+    	document.body.style.setProperty(
+     	"--liturgical-color",
+      	liturgicalColor
+     	);
+
+     	return () => {
+      	document.body.style.removeProperty("--liturgical-color");
+      	};
+	}, [liturgicalColor]);
 
 	return (
 		<div className="saint-of-the-day-layout">
@@ -42,7 +56,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						transition={{ duration: 0.5, delay: 0.4 }}
 					>
 						<LiturgicalColor
-							color={celebration?.liturgical_color_hex || liturgicalSeason?.hex_color || "#000000"}
+							color={liturgicalColor}
 							colorName={celebration?.liturgical_color_name || liturgicalSeason?.color_label || "Inconnu"}
 						/>
 					</motion.div>

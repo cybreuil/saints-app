@@ -8,15 +8,15 @@ const BodyClassController = () => {
 		// Supprime toutes les classes connues
 		document.body.classList.remove(
 			"page-home",
-			"saintoftheday",
+			"celebrationoftheday",
 			"aboutpage",
 			"saintslist",
 		);
 
 		let cls = "";
 		if (location.pathname === "/") cls = "page-home";
-		else if (location.pathname.startsWith("/saint-of-the-day"))
-			cls = "saintoftheday";
+		else if (location.pathname.startsWith("/celebration"))
+			cls = "celebrationoftheday";
 		else if (location.pathname === "/about") cls = "aboutpage";
 		else if (location.pathname === "/saints") cls = "saintslist";
 
