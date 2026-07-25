@@ -22,7 +22,7 @@
 	initial-value: transparent;
 }
 
-
+/* NEED BASE GRADIENT EVERYWHERE FOR TRANSITIONNING BETWEEN PAGE*/
 body {
 	font-family: "Source Serif", serif;
 	line-height: 1.4;
@@ -32,8 +32,8 @@ body {
 	color: var(--color-text-primary);
 	transition:
 		background 3s ease,
-		background-color 0.3s ease,
-		color 0.3s ease;
+		background-color 3s ease,
+		color 3s ease;
 }
 /*Body color variations for different pages*/
 /*For celebration we use directly the liturgical color - we inject it with useeffect from page tsx*/
