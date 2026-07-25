@@ -27,10 +27,10 @@ const HomePage = () => {
 			</p>
 			<nav className="home-nav">
 				<RippleLink
-					to="/saint-of-the-day"
+					to="/celebration"
 					className="home-nav-link saint-of-the-day-link"
 				>
-					Saint of the Day
+					Celebration of the Day
 				</RippleLink>
 				<Link to="/about" className="home-nav-link">
 					About

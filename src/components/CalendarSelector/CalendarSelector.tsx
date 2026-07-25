@@ -5,8 +5,6 @@ import { useCalendars } from "../../hooks/useCalendars";
 const CalendarSelector = () => {
 	const { calendar, setCalendar } = useCalendar();
 	const {calendars} = useCalendars();
-	console.log("CalendarSelector render");
-	console.log("calendars:", calendars);
 
 	return (
 		<div className="calendar-selector">

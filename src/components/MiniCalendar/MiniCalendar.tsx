@@ -106,7 +106,7 @@ const MiniCalendar = () => {
 
 		setIsAnimating(true);
 		setPrevDate(selectedDate);
-		navigate(`/saint-of-the-day/${dateStr}`);
+		navigate(`/celebration/${dateStr}`);
 
 		setTimeout(() => {
 			setIsAnimating(false);
@@ -116,7 +116,7 @@ const MiniCalendar = () => {
 	const handleCalendarModalDayClick = (dateStr: string) => {
 		setIsModalOpen(false);
 		setPrevDate(selectedDate);
-		navigate(`/saint-of-the-day/${dateStr}`);
+		navigate(`/celebration/${dateStr}`);
 	};
 
 	// Previous weekDays

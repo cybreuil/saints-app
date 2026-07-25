@@ -8,21 +8,16 @@ import { LiturgicalColor } from "../../components/LiturgicalColor/LiturgicalColo
 import { MiniCalendar } from "../../components/MiniCalendar/MiniCalendar";
 import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
 import { useCelebration } from "../../hooks/useCelebration";
-import { useSearchParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
 
-	const [searchParams] = useSearchParams();
-	const year = searchParams.get("year");
-	const month = searchParams.get("month");
-	const day = searchParams.get("day");
-
-	const date = year && month && day ? `${year}-${month}-${day}` : undefined;
+	const { date: dateParam } = useParams();
+	const date = dateParam ?? new Date().toISOString().split("T")[0];
 
 	//Maybe should put liturgical season as a context
-	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date);
+	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date, "en");
 
 
 
@@ -57,7 +52,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.6 }}
 					>
-						<LiturgicalRank />
+						<LiturgicalRank rank={celebration?.rank_label || "Inconnu"} />
 					</motion.div>
 				</div>
 			</div>
@@ -72,15 +67,15 @@ const CelebrationOfTheDay: React.FC = () => {
 					<p className="no-celebration-message">
 						Date invalide. Veuillez choisir une date correcte.
 					</p>
-				) : !celebration ? (
-					<p className="no-celebration-message">
-						Aucune célébration trouvée pour cette date.
-					</p>
 				) : isLoading ? (
 					<p className="loading-message">Chargement...</p>
 				) : error ? (
 					<p className="error-message">
 						Erreur lors du chargement des données : {error.message}
+					</p>
+				) : !celebration ? (
+					<p className="no-celebration-message">
+						Aucune célébration trouvée pour cette date.
 					</p>
 				) : (
 					<div className="saint-of-the-day-content">
