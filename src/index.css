@@ -23,6 +23,8 @@
 }
 
 body {
+	--page-background: var(--color-bg-primary);
+
 	font-family: "Source Serif", serif;
 	line-height: 1.4;
 	font-size: 1rem;
@@ -43,10 +45,9 @@ body::before {
 	background:
 		linear-gradient(
 			135deg,
-			color-mix(in srgb, var(--liturgical-color) 40%, #eef2f5),
-			#f8fafc
+			var(--liturgical-color),
+			var(--color-bg-secondary)
 		);
-
 	opacity: 0;
 	transition: opacity 1.5s ease;
 	pointer-events: none;
