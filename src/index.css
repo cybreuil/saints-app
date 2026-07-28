@@ -35,6 +35,7 @@ body {
 			background 1.5s ease,
 			color 1.5s ease,
 			--liturgical-color 1.5s ease;
+			/*Maybe should add secondary for progressive gradient transition */
 }
 body::before {
 	content: "";
