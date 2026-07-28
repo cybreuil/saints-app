@@ -22,40 +22,50 @@
 	initial-value: transparent;
 }
 
-/* NEED BASE GRADIENT EVERYWHERE FOR TRANSITIONNING BETWEEN PAGE*/
 body {
 	font-family: "Source Serif", serif;
 	line-height: 1.4;
 	font-size: 1rem;
 	font-weight: 400;
-	background: var(--color-bg-primary);
+	background: var(--page-background);
 	color: var(--color-text-primary);
 	transition:
-		background 3s ease,
-		background-color 3s ease,
-		color 3s ease;
+			background 1.5s ease,
+			color 1.5s ease,
+			--liturgical-color 1.5s ease;
 }
-/*Body color variations for different pages*/
-/*For celebration we use directly the liturgical color - we inject it with useeffect from page tsx*/
-body.celebrationoftheday {
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+
 	background:
 		linear-gradient(
 			135deg,
-			color-mix(in srgb, var(--liturgical-color) 40%, #eef2f5) 0%,
-			color-mix(in srgb, var(--liturgical-color) 18%, #f8fafc) 35%,
-			#f8fafc 60%,
-			#eef2f5 100%
+			color-mix(in srgb, var(--liturgical-color) 40%, #eef2f5),
+			#f8fafc
 		);
 
-	transition: --liturgical-color 1.2s ease;
+	opacity: 0;
+	transition: opacity 1.5s ease;
+	pointer-events: none;
 }
 
+body.celebrationoftheday::before {
+	opacity: 1;
+}
 
+/*Body color variations for different pages*/
+/*For celebration we use directly the liturgical color - we inject it with useeffect from page tsx*/
+body.celebrationoftheday {
+	--page-background: transparent;
+}
 body.saintslist {
-	background-color: var(--color-bg-secondary);
+	--page-background: var(--color-bg-secondary);
 }
 body.about {
-	background-color: var(--color-bg-tertiary);
+	--page-background: var(--color-bg-tertiary);
 }
 
 #root {
