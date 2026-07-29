@@ -1,5 +1,5 @@
-import { useLanguage } from "../../contexts/LanguageContext";
 import type { LanguageCode } from "../../types/Language";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const LanguageDropDown = () => {
 	const { setLanguageCode } = useLanguage();

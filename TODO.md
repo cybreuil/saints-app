@@ -41,3 +41,6 @@ add timer for ripple completion before navigate
 ---
 name idea ; genuflexio ?
 TAN STACK QUERY TO AVOID RELOAD ???
+
+---
+should i keep languages on front hardcoded or api to fetch list ? might be better to keep on frontside for quick access loading before api request

@@ -6,17 +6,36 @@ import {
 } from "../types/Language";
 import { LanguageContext } from "./LanguageContext";
 
+const LANGUAGES: Record<LanguageCode, string> = {
+	en: "English",
+	fr: "Français",
+	la: "Latina",
+};
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-	// We read the saved preference if it exists, otherwise default to "en"
-	const [languageCode, setLanguageCode] = useState<LanguageCode>(
-		() => (localStorage.getItem("language_code") as LanguageCode) || "en",
-	);
+	// We read the saved preference if it exists, otherwise browser language, otherwise default to English
+	const [languageCode, setLanguageCode] = useState<LanguageCode>(() => {
+		const savedLanguage = localStorage.getItem("language_code");
+
+		if (savedLanguage && savedLanguage in LANGUAGES) {
+			return savedLanguage as LanguageCode;
+		}
+
+		const browserLanguages = navigator.languages.map(
+			(lang) => lang.split("-")[0]
+		);
+
+		const detectedLanguage = browserLanguages.find(
+			(lang) => lang in LANGUAGES
+		);
+
+		return (detectedLanguage as LanguageCode) ?? "en";
+	});
 
 	const value = useMemo<LanguageContextValue>(
 		() => ({
 			languageCode,
 			setLanguageCode: (lang) => {
-				localStorage.setItem("language_code", lang); // persistence
+				localStorage.setItem("language_code", lang);
 				setLanguageCode(lang);
 			},
 		}),

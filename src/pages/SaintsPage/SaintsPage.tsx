@@ -9,7 +9,7 @@ import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
 import { useSaints } from "../../hooks/useSaints.ts";
-import { useLanguage } from "../../contexts/LanguageContext.ts";
+import { useLanguage } from "../../hooks/useLanguage.ts";
 import type { SaintApi } from "../../types/Saint.ts";
 
 type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";

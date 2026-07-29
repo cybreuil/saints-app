@@ -6,7 +6,7 @@ import { TRANSITIONS } from "../../styles/theme";
 import { RippleButton } from "../RippleButton/RippleButton";
 import type { SaintApi, SaintDetailedResponse } from "../../types/Saint";
 import { useSaints } from "../../hooks/useSaints";
-import { useLanguage } from "../../contexts/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export function SaintModal({
 	saint,
