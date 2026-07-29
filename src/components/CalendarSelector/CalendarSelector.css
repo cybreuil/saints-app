@@ -6,6 +6,7 @@
 	border-radius: 1rem;
 	padding: 1rem;
 	background-color: var(--color-bg-component);
+	transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 .calendar-selector h3 {
 	font-weight: 600;

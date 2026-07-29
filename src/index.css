@@ -22,6 +22,12 @@
 	initial-value: transparent;
 }
 
+@property --color-bg-secondary {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: transparent;
+}
+
 body {
 	--page-background: var(--color-bg-primary);
 
@@ -32,10 +38,11 @@ body {
 	background: var(--page-background);
 	color: var(--color-text-primary);
 	transition:
-			background 1.5s ease,
-			color 1.5s ease,
-			--liturgical-color 1.5s ease;
+			background var(--transition-very-slow),
+			color var(--transition-very-slow),
+			--liturgical-color var(--transition-very-slow),
 			/*Maybe should add secondary for progressive gradient transition */
+			--color-bg-secondary var(--transition-very-slow);
 }
 body::before {
 	content: "";

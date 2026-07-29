@@ -56,6 +56,12 @@
 
 	/*Added variables*/
 	--color-bg-component: #f9f9f9;
+
+	/*Transitions*/
+	--transition-fast: 0.2s ease;
+	--transition-normal: 0.3s ease;
+	--transition-slow: 0.5s ease;
+	--transition-very-slow: 1s ease;
 }
 
 :root[data-theme="dark"] {

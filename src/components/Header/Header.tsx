@@ -33,7 +33,7 @@ const Header = () => {
 
 	return (
 		<>
-			<motion.div
+			{/*<motion.div
 				className={`header-gap-mask`}
 				initial={{ height: "var(--initial-blur-height)" }}
 				animate={{
@@ -42,7 +42,7 @@ const Header = () => {
 						: "var(--initial-blur-height)",
 				}}
 				transition={TRANSITIONS.normal}
-			/>
+			/>*/}
 			<motion.header
 				className={`header ${isMenuOpen ? "open" : ""}`}
 				initial={{
@@ -50,28 +50,31 @@ const Header = () => {
 					opacity: 0,
 					width: "90%",
 					borderRadius: "1rem",
-					top: "1rem",
-					marginTop: "1rem",
+					// top: "1rem",
+					// marginTop: "1rem",
 				}}
 				animate={{
 					y: 0,
 					opacity: 1,
 					width: isScrolled
-						? "100vw"
-						: windowWidth > 1600
+						? windowWidth > 1600
 							? "1440px"
-							: "90%",
-					borderRadius: isScrolled ? 0 : "1rem",
+							: "90%"
+						: "100vw",
+					borderRadius: isScrolled ?  "1rem" : 0,
 					height: isMenuOpen ? "var(--header-open-height)" : "",
-					top: isScrolled ? 0 : "1rem",
-					marginTop: isScrolled ? 0 : "1rem",
+					top: isScrolled ?  "1rem" : 0,
+					marginTop: isScrolled ? "1rem" : 0,
 					backgroundColor: isScrolled
 						? //Couleur mise au pif mais j'aime bien : a retenir !!
-							// "rgba(34, 42, 63, 0.6)"
-							"var(--color-primary-light)"
+							"rgba(34, 42, 63, 0.6)"
+							// "var(--color-primary-light)"
 						: isMenuOpen
 							? "var(--color-primary-light)"
 							: "rgba(34, 42, 63, 0)",
+					boxShadow: isScrolled
+						? "0 4px 12px rgba(0, 0, 0, 0.1)"
+						: "none",
 				}}
 				transition={TRANSITIONS.normal}
 			>
@@ -138,10 +141,10 @@ const Header = () => {
 								</li>
 								<li>
 									<Link
-										to="/saint-of-the-day"
+										to="/celebration"
 										onClick={() => setIsMenuOpen(false)}
 									>
-										Feast of the Day
+										Celebration of the Day
 									</Link>
 								</li>
 								<li>
