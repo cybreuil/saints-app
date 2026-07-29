@@ -57,3 +57,57 @@
 	/*Added variables*/
 	--color-bg-component: #f9f9f9;
 }
+
+:root[data-theme="dark"] {
+	/* Primary Colors - Warm brown */
+	--color-primary: #b9855c;
+	--color-primary-light: #d2a07a;
+	--color-primary-dark: #8b5e3c;
+	--color-primary-hover: #c79268;
+
+	/* Secondary Colors - Gold */
+	--color-secondary: #d4af37;
+	--color-secondary-light: #e6c768;
+	--color-secondary-dark: #b68b1d;
+
+	/* Accent Colors */
+	--color-accent: #5d8f69;
+	--color-accent-light: #78aa84;
+	--color-accent-dark: #3f6a4b;
+
+	/* Semantic Colors */
+	--color-success: #66bb6a;
+	--color-info: #42a5f5;
+	--color-warning: #ffb74d;
+	--color-error: #ef5350;
+
+	/* Background Colors */
+	--color-bg-primary: #1b1917;
+	--color-bg-secondary: #24211d;
+	--color-bg-tertiary: #2d2925;
+	--color-bg-quaternary: #36312d;
+	--color-bg-dark: #12100f;
+
+	/* Text Colors */
+	--color-text-primary: #f4f1eb;
+	--color-text-secondary: #d3cdc4;
+	--color-text-tertiary: #a69f96;
+	--color-text-inverse: #1b1917;
+
+	/* Border Colors */
+	--color-border-light: #46403b;
+	--color-border-medium: #5c5550;
+	--color-border-dark: #7b736d;
+
+	/* Header */
+	--header-gradient-start: #5d3d28;
+	--header-gradient-end: #3b2618;
+	--header-gradient: linear-gradient(
+		135deg,
+		var(--header-gradient-start),
+		var(--header-gradient-end)
+	);
+
+	/* Components */
+	--color-bg-component: #2a2723;
+}

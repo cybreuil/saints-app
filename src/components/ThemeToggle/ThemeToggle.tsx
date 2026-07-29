@@ -2,10 +2,11 @@
 // import { LightModeLogo } from "../../icons/mainMenu/LightModeIcon";
 //import { DarkModeLogo } from "../../icons/mainMenu/DarkModeIcon";
 import "./ThemeToggle.css";
-import { useState } from "react";
+import { useTheme } from "../../hooks/useTheme";
 
 export const ThemeToggle = () => {
-	const [theme, setTheme] = useState("light"); // "light" ou "dark"
+
+	const { theme, toggleTheme } = useTheme();
 
 	return (
 		<div className="theme-toggle-wrapper">
@@ -13,10 +14,7 @@ export const ThemeToggle = () => {
 				<input
 					type="checkbox"
 					checked={theme === "dark"}
-					onChange={setTheme.bind(
-						null,
-						theme === "light" ? "dark" : "light",
-					)}
+					onChange={toggleTheme}
 				/>
 				<span className="slider">
 					<span className="slider-icon sun">☀️</span>

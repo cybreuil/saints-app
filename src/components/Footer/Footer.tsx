@@ -34,7 +34,7 @@ const Footer = () => {
 				</p>
 				<p className="footer-credit">
 					<a
-						href="github.com/cybreuil"
+						href="https://github.com/cybreuil"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

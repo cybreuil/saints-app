@@ -7,15 +7,18 @@ import "./styles/variables.css";
 import "./index.css";
 import { CalendarProvider } from "./contexts/CalendarProvider.tsx";
 import { LanguageProvider } from "./contexts/LanguageProvider.tsx";
+import { ThemeProvider } from "./contexts/ThemeProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<BrowserRouter>
-			<LanguageProvider>
-				<CalendarProvider>
-					<App />
-				</CalendarProvider>
-			</LanguageProvider>
+			<ThemeProvider>
+				<LanguageProvider>
+					<CalendarProvider>
+						<App />
+					</CalendarProvider>
+				</LanguageProvider>
+			</ThemeProvider>
 		</BrowserRouter>
 	</StrictMode>,
 );
