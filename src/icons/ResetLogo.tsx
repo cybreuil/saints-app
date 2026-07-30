@@ -4,7 +4,7 @@ type Props = React.SVGProps<SVGSVGElement> & {
 	title?: string | null;
 };
 
-const RefreshLogo = React.forwardRef<SVGSVGElement, Props>(function RefreshLogo(
+const ResetLogo = React.forwardRef<SVGSVGElement, Props>(function ResetLogo(
 	{ title = null, width = 24, height = 24, fill = "currentColor", ...props },
 	ref,
 ) {
@@ -14,17 +14,16 @@ const RefreshLogo = React.forwardRef<SVGSVGElement, Props>(function RefreshLogo(
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 -960 960 960"
-			width={width}
 			height={height}
+			width={width}
 			fill={fill}
-			ref={ref}
 			{...aria}
 			{...props}
+			ref={ref}
 		>
 			{title ? <title>{title}</title> : null}
-			<path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32 56-87.5 88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
-		</svg>
+		<path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z" /></svg>
 	);
 });
 
-export { RefreshLogo };
+export { ResetLogo };
