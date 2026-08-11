@@ -18,7 +18,7 @@ export function useCelebration(
 	calendarCode?: string,
 	dateParam?: string,
 	// Need fix
-	languageCode: string ="en"
+	languageCode: string
 ) {
   	const [celebration, setCelebration] = useState<Celebration | null>(null);
    	const [liturgicalSeason, setLiturgicalSeason] =

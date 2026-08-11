@@ -10,6 +10,7 @@ import { MiniCalendar } from "../../components/MiniCalendar/MiniCalendar";
 import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
 import { useCelebration } from "../../hooks/useCelebration";
 import { useParams } from "react-router-dom";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
@@ -17,8 +18,10 @@ const CelebrationOfTheDay: React.FC = () => {
 	const { date: dateParam } = useParams();
 	const date = dateParam ?? new Date().toISOString().split("T")[0];
 
+	const { languageCode } = useLanguage();
+
 	//Maybe should put liturgical season as a context
-	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date, "en");
+	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date, languageCode);
 
 	const liturgicalColor = celebration?.liturgical_color_hex || liturgicalSeason?.hex_color || "#000000";
 
