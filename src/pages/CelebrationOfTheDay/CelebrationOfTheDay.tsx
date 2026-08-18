@@ -11,6 +11,7 @@ import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
 import { useCelebration } from "../../hooks/useCelebration";
 import { useParams } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
+import  ReactMarkdown from "react-markdown";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
@@ -112,7 +113,10 @@ const CelebrationOfTheDay: React.FC = () => {
 								<p>Aucun saint associé à cette célébration.</p>
 							)}
 
-							<p>{celebration.feast_description}</p>
+							{/*markdown description*/}
+											<ReactMarkdown>
+												{celebration.feast_description}
+							</ReactMarkdown>
 
 							{/*{saints[0].biography && saint[0].biography.length > 0 && (
 								<div>
