@@ -113,10 +113,13 @@ const CelebrationOfTheDay: React.FC = () => {
 								<p>Aucun saint associé à cette célébration.</p>
 							)}
 
-							{/*markdown description*/}
-											<ReactMarkdown>
-												{celebration.feast_description}
+											{/*markdown description*/}
+
+
+							<ReactMarkdown>
+								{celebration.feast_description}
 							</ReactMarkdown>
+
 
 							{/*{saints[0].biography && saint[0].biography.length > 0 && (
 								<div>

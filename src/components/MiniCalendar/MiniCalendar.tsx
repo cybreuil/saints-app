@@ -73,6 +73,18 @@ const MiniCalendar = () => {
 		[selectedDate],
 	);
 
+	// Month for minicalendar
+	const selectedMonthLabel = useMemo(() => {
+  	try {
+    const d = parseYMD(selectedDate); // parseYMD est déjà importé
+    const locale = navigator.language || "fr-FR";
+    return d.toLocaleDateString(locale, { month: "long", year: "numeric" });
+  } catch {
+	  return "";
+  }
+	}, [selectedDate]);
+
+
 	// On gere le calendrier date picker
 	const inputRef = useRef<HTMLInputElement>(null);
 	const handleIconClick = () => {
@@ -193,6 +205,12 @@ const MiniCalendar = () => {
 						<ResetLogo fill="var(--color-text-secondary)" />
 					</motion.button>
 				)}
+
+				<motion.p
+					className="mini-calendar-month-label"
+				>
+					{selectedMonthLabel}
+				</motion.p>
 
 				<motion.div className="mini-calendar-date-picker" layout>
 					<button

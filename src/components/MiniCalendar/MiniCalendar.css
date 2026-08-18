@@ -84,6 +84,14 @@
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-between;
+	align-items: center;
+}
+.mini-calendar-controls .mini-calendar-month-label{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: none;
+	text-align: center;
 }
 .mini-calendar-controls .calendar-reset-button {
 	background: none;

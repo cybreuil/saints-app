@@ -34,17 +34,22 @@ h2 {
 	align-self: flex-end;
 }
 
-.saint-of-the-day-card .saint-details {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
 
 .saint-of-the-day-card .saint-details img{
 
 	max-width: 30%;
 	height: auto;
 	border-radius: 0.5rem;
+	float: left;
+	display: block;
+	margin-right: 1rem;
+}
+
+.saint-of-the-day-card .saint-details p {
+  margin: 0;
+}
+.saint-of-the-day-card .saint-details p +p {
+	margin-top: 1rem;
 }
 
 .saint-of-the-day-card .no-celebration-message {
