@@ -86,7 +86,7 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.mini-calendar-controls .mini-calendar-month-label{
+.mini-calendar-controls .mini-calendar-month-label {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
@@ -95,27 +95,31 @@
 	z-index: 2;
 }
 /*On gere un flou pour le passage des svg*/
-.mini-calendar-controls .mini-calendar-month-label::before{
+.mini-calendar-controls .mini-calendar-month-label::before {
+	width: 150%;
+	height: 120%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -5px -50px;
-  backdrop-filter: blur(12px);
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 35%,
-    black 65%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 35%,
-    black 65%,
-    transparent
-  );
-  pointer-events: none;
+	position: absolute;
+	z-index: -1;
+	backdrop-filter: blur(50px);
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 35%,
+		black 65%,
+		transparent
+	);
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 35%,
+		black 65%,
+		transparent
+	);
+	pointer-events: none;
 }
 .mini-calendar-controls .calendar-reset-button {
 	background: none;

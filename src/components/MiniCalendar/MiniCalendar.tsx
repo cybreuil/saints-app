@@ -42,7 +42,7 @@ const MiniCalendar = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// On recupere la langue du context pour l'affichage des jours de la semaine et du mois
-	const {languageCode} = useLanguage();
+	const { languageCode } = useLanguage();
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -79,17 +79,17 @@ const MiniCalendar = () => {
 
 	// Month for minicalendar
 	const selectedMonthLabel = useMemo(() => {
-  		try {
-    		const d = parseYMD(selectedDate); // parseYMD est déjà importé
-     		const locale = languageCode || "en - US";
-			return d.toLocaleDateString(locale, { month: "long", year: "numeric" });
-    	} catch {
-     		return "";
-     	}
+		try {
+			const d = parseYMD(selectedDate); // parseYMD est déjà importé
+			const locale = languageCode || "en - US";
+			return d.toLocaleDateString(locale, {
+				month: "long",
+				year: "numeric",
+			});
+		} catch {
+			return "";
+		}
 	}, [selectedDate, languageCode]);
-
-
-
 
 	// On gere le calendrier date picker
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -183,9 +183,12 @@ const MiniCalendar = () => {
 									transition={TRANSITIONS.normal}
 								>
 									<span className="mini-calendar-day-label">
-										{d.toLocaleDateString(languageCode || "en-US", {
-											weekday: "short",
-										})}
+										{d.toLocaleDateString(
+											languageCode || "en-US",
+											{
+												weekday: "short",
+											},
+										)}
 									</span>
 									<span className="mini-calendar-day-num">
 										{d.getDate()}
@@ -212,9 +215,7 @@ const MiniCalendar = () => {
 					</motion.button>
 				)}
 
-				<motion.p
-					className="mini-calendar-month-label"
-				>
+				<motion.p className="mini-calendar-month-label">
 					{selectedMonthLabel}
 				</motion.p>
 
