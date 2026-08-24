@@ -11,7 +11,8 @@ import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
 import { useCelebration } from "../../hooks/useCelebration";
 import { useParams } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
-import  ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
+import { Loader } from "../../components/Loader/Loader";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
@@ -22,21 +23,29 @@ const CelebrationOfTheDay: React.FC = () => {
 	const { languageCode } = useLanguage();
 
 	//Maybe should put liturgical season as a context
-	const { celebration, saints, invalidDate, liturgicalSeason, isLoading, error, context } = useCelebration(calendar?.code, date, languageCode);
+	const {
+		celebration,
+		saints,
+		invalidDate,
+		liturgicalSeason,
+		isLoading,
+		error,
+		context,
+	} = useCelebration(calendar?.code, date, languageCode);
 
-	const liturgicalColor = celebration?.liturgical_color_hex || liturgicalSeason?.hex_color || "#000000";
+	const liturgicalColor =
+		celebration?.liturgical_color_hex ||
+		liturgicalSeason?.hex_color ||
+		"#000000";
 
 	useEffect(() => {
-  		if (!liturgicalColor) return;
+		if (!liturgicalColor) return;
 
-    	document.body.style.setProperty(
-     	"--liturgical-color",
-      	liturgicalColor
-     	);
+		document.body.style.setProperty("--liturgical-color", liturgicalColor);
 
-     	return () => {
-      	document.body.style.removeProperty("--liturgical-color");
-      	};
+		return () => {
+			document.body.style.removeProperty("--liturgical-color");
+		};
 	}, [liturgicalColor]);
 
 	return (
@@ -61,7 +70,11 @@ const CelebrationOfTheDay: React.FC = () => {
 					>
 						<LiturgicalColor
 							color={liturgicalColor}
-							colorName={celebration?.liturgical_color_name || liturgicalSeason?.color_label || "Inconnu"}
+							colorName={
+								celebration?.liturgical_color_name ||
+								liturgicalSeason?.color_label ||
+								"Inconnu"
+							}
 						/>
 					</motion.div>
 
@@ -70,7 +83,9 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.6 }}
 					>
-						<LiturgicalRank rank={celebration?.rank_label || "Inconnu"} />
+						<LiturgicalRank
+							rank={celebration?.rank_label || "Inconnu"}
+						/>
 					</motion.div>
 				</div>
 			</div>
@@ -82,23 +97,45 @@ const CelebrationOfTheDay: React.FC = () => {
 				transition={TRANSITIONS.slower}
 			>
 				{invalidDate ? (
-					<p className="no-celebration-message">
+					<motion.p
+						className="no-celebration-message"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.3 }}
+					>
 						Date invalide. Veuillez choisir une date correcte.
-					</p>
+					</motion.p>
 				) : isLoading ? (
-					<p className="loading-message">Chargement...</p>
+					<Loader />
 				) : error ? (
-					<p className="error-message">
+					<motion.p
+						className="error-message"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.3 }}
+					>
 						Erreur lors du chargement des données : {error.message}
-					</p>
+					</motion.p>
 				) : !celebration ? (
-					<p className="no-celebration-message">
+					<motion.p
+						className="no-celebration-message"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.3 }}
+					>
 						Aucune célébration trouvée pour cette date.
-					</p>
+					</motion.p>
 				) : (
-					<div className="saint-of-the-day-content">
+					<motion.div
+						className="saint-of-the-day-content"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.3 }}
+					>
 						<h1>{celebration.feast_name}</h1>
-						<p className="feast-day">{context?.year}-{context?.month}-{context?.day}</p>
+						<p className="feast-day">
+							{context?.year}-{context?.month}-{context?.day}
+						</p>
 						<div className="saint-details">
 							{saints && saints.length > 0 ? (
 								<>
@@ -113,13 +150,11 @@ const CelebrationOfTheDay: React.FC = () => {
 								<p>Aucun saint associé à cette célébration.</p>
 							)}
 
-											{/*markdown description*/}
-
+							{/*markdown description*/}
 
 							<ReactMarkdown>
 								{celebration.feast_description}
 							</ReactMarkdown>
-
 
 							{/*{saints[0].biography && saint[0].biography.length > 0 && (
 								<div>
@@ -155,10 +190,9 @@ const CelebrationOfTheDay: React.FC = () => {
 								</div>
 							)}*/}
 						</div>
-					</div>
+					</motion.div>
 				)}
 			</motion.div>
-
 
 			<div className="sidebar-right">
 				<div className="sidebar-right-sticky">
