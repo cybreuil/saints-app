@@ -92,6 +92,30 @@
 	transform: translateX(-50%);
 	pointer-events: none;
 	text-align: center;
+	z-index: 2;
+}
+/*On gere un flou pour le passage des svg*/
+.mini-calendar-controls .mini-calendar-month-label::before{
+	content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -5px -50px;
+  backdrop-filter: blur(12px);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 35%,
+    black 65%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 35%,
+    black 65%,
+    transparent
+  );
+  pointer-events: none;
 }
 .mini-calendar-controls .calendar-reset-button {
 	background: none;

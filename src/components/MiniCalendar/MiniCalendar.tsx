@@ -11,6 +11,7 @@ import {
 	daysBetweenYMD,
 } from "../../utils/date";
 import { CalendarLogo, ResetLogo } from "../../icons";
+import { useLanguage } from "../../hooks/useLanguage";
 
 // Version 5 jours (autour de la date sélectionnée)
 // const get5WeekDays = (date = new Date()) => {
@@ -39,6 +40,9 @@ const MiniCalendar = () => {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	// On recupere la langue du context pour l'affichage des jours de la semaine et du mois
+	const {languageCode} = useLanguage();
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -75,14 +79,16 @@ const MiniCalendar = () => {
 
 	// Month for minicalendar
 	const selectedMonthLabel = useMemo(() => {
-  	try {
-    const d = parseYMD(selectedDate); // parseYMD est déjà importé
-    const locale = navigator.language || "fr-FR";
-    return d.toLocaleDateString(locale, { month: "long", year: "numeric" });
-  } catch {
-	  return "";
-  }
-	}, [selectedDate]);
+  		try {
+    		const d = parseYMD(selectedDate); // parseYMD est déjà importé
+     		const locale = languageCode || "en - US";
+			return d.toLocaleDateString(locale, { month: "long", year: "numeric" });
+    	} catch {
+     		return "";
+     	}
+	}, [selectedDate, languageCode]);
+
+
 
 
 	// On gere le calendrier date picker
@@ -122,7 +128,7 @@ const MiniCalendar = () => {
 
 		setTimeout(() => {
 			setIsAnimating(false);
-		}, 1000); // Durée du délai pour éviter les clics rapides
+		}, 10); // Durée du délai pour éviter les clics rapides
 	};
 
 	const handleCalendarModalDayClick = (dateStr: string) => {
@@ -177,7 +183,7 @@ const MiniCalendar = () => {
 									transition={TRANSITIONS.normal}
 								>
 									<span className="mini-calendar-day-label">
-										{d.toLocaleDateString("fr-FR", {
+										{d.toLocaleDateString(languageCode || "en-US", {
 											weekday: "short",
 										})}
 									</span>
