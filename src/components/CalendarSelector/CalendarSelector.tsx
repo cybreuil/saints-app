@@ -8,7 +8,7 @@ import {
 
 const CalendarSelector = () => {
 	const { calendar, setCalendar } = useCalendar();
-	const { calendars } = useCalendars();
+	const { calendars, loading, error } = useCalendars();
 
 	const options = useMemo(
 		() => flattenCalendars(calendars),
@@ -20,7 +20,7 @@ const CalendarSelector = () => {
 			<h3>Liturgical Calendar</h3>
 
 			<select
-				disabled={!calendars.length}
+				disabled={!calendars.length || loading || !!error}
 				value={calendar?.code ?? ""}
 				onChange={(e) => {
 					const selectedCalendar = calendars.find(
@@ -32,10 +32,20 @@ const CalendarSelector = () => {
 					}
 				}}
 			>
-				{!calendars.length && (
+				{!calendars.length && !loading && !error &&(
 						<option value="">
 							No Calendar Available
 						</option>
+				)}
+				{loading && (
+					<option value="">
+						Loading Calendars...
+					</option>
+				)}
+				{error && (
+					<option value="">
+						Error Loading Calendars
+					</option>
 				)}
 				{options.map((c) => (
 					<option key={c.code} value={c.code}>
