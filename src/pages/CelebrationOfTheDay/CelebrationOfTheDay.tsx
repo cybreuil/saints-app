@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
 import ReactMarkdown from "react-markdown";
 import { Loader } from "../../components/Loader/Loader";
+import { AdditionalCelebrations } from "../../components/AdditionalCelebrations/AdditionalCelebrations";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
@@ -25,6 +26,7 @@ const CelebrationOfTheDay: React.FC = () => {
 	//Maybe should put liturgical season as a context
 	const {
 		celebration,
+		secondaryCelebrations,
 		saints,
 		invalidDate,
 		liturgicalSeason,
@@ -212,7 +214,11 @@ const CelebrationOfTheDay: React.FC = () => {
 							type: "spring",
 						}}
 					>
-						<RegionalSaint />
+						<AdditionalCelebrations
+							secondaryCelebrations
+							isLoading
+							error
+						/>
 					</motion.div>
 				</div>
 			</div>

@@ -18,14 +18,15 @@ export function useCelebration(
 	calendarCode?: string,
 	dateParam?: string,
 	// Need fix
-	languageCode: string
+	languageCode?: string
 ) {
   	const [celebration, setCelebration] = useState<Celebration | null>(null);
    	const [liturgicalSeason, setLiturgicalSeason] =
     useState<CelebrationApiResponse["liturgical_season"] | null>(null);
     const [saints, setSaints] = useState<Saint[] | null>(null);
     const [context, setContext] =
-    useState<CelebrationApiResponse["context"] | null>(null);
+		useState<CelebrationApiResponse["context"] | null>(null);
+    const [secondaryCelebrations, setSecondaryCelebrations] = useState<Celebration[] | null>(null);
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
@@ -34,7 +35,8 @@ export function useCelebration(
 
     useEffect(() => {
     	if (!calendarCode || invalidDate) {
-      		setCelebration(null);
+			setCelebration(null);
+			setSecondaryCelebrations(null);
         	setLiturgicalSeason(null);
          	setSaints(null);
           	setContext(null);
@@ -50,15 +52,16 @@ export function useCelebration(
          	setError(null);
 
 			try {
-
 				// If no date we use default time date actual
-	      		const date = dateParam ? new Date(dateParam) : new Date();
+				const date = dateParam ? new Date(dateParam) : new Date();
 
 				const body = await getCelebrationByDate(calendarCode, languageCode, date);
 
 	        	if (cancelled) return;
 
-	         	setCelebration(body.celebrations[0] ?? null);
+				setCelebration(body.celebrations[0] ?? null);
+				setSecondaryCelebrations(body.celebrations.slice(1));
+				console.log(secondaryCelebrations);
 	          	setLiturgicalSeason(body.liturgical_season ?? null);
 	           	setSaints(body.celebrations[0]?.saints ?? null);
 	           	setContext(body.context ?? null);
@@ -66,7 +69,8 @@ export function useCelebration(
 	        	if (cancelled) return;
 
 	         	setError(err as Error);
-	          	setCelebration(null);
+				setCelebration(null);
+				setSecondaryCelebrations(null);
 	           	setLiturgicalSeason(null);
 	            setSaints(null);
 	            setContext(null);
@@ -85,7 +89,8 @@ export function useCelebration(
     }, [calendarCode, dateParam, invalidDate, languageCode])
 
     return {
-	    celebration,
+		celebration,
+		secondaryCelebrations,
 	    liturgicalSeason,
 	    saints,
 	    context,
