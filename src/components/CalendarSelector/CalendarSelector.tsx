@@ -32,6 +32,11 @@ const CalendarSelector = () => {
 					}
 				}}
 			>
+				{!calendars.length && (
+						<option value="">
+							No Calendar Available
+						</option>
+				)}
 				{options.map((c) => (
 					<option key={c.code} value={c.code}>
 						{"\u00A0\u00A0".repeat(c.depth)}
