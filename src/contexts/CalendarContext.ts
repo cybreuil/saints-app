@@ -4,6 +4,8 @@ import type { Calendar } from "../types/Calendar";
 interface CalendarContext {
 	calendar: Calendar | null;
 	setCalendar: (calendar: Calendar) => void;
+	isLoading: boolean;
+	error: Error | null;
 }
 
 

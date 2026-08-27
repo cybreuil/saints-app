@@ -52,13 +52,6 @@ h2 {
 	margin-top: 1rem;
 }
 
-.saint-of-the-day-layout .saint-of-the-day-card .no-celebration-message {
-	font-size: 1.2rem;
-	color: #777;
-	text-align: center;
-	margin-top: 2rem;
-}
-
 .saint-of-the-day-layout .sidebar-left-sticky {
 	position: sticky;
 	top: calc(var(--header-height) + 1rem);
@@ -72,4 +65,19 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+}
+
+/*Error and no celebration messages*/
+.saint-of-the-day-layout .saint-of-the-day-card .error-message {
+	font-size: 1.2rem;
+	color: var(--color-error, #ff4d4f);
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.saint-of-the-day-layout .saint-of-the-day-card .no-celebration-message {
+	font-size: 1.2rem;
+	color: #777;
+	text-align: center;
+	margin-top: 2rem;
 }

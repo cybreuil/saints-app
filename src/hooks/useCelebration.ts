@@ -64,10 +64,11 @@ export function useCelebration(
 	          	setLiturgicalSeason(body.liturgical_season ?? null);
 	           	setSaints(body.celebrations[0]?.saints ?? null);
 	           	setContext(body.context ?? null);
-	      	} catch (err) {
-	        	if (cancelled) return;
+			} catch (err) {
+				if (cancelled) return;
 
-	         	setError(err as Error);
+				setError(err as Error);
+				console.log("Error fetching celebration data:", err);
 				setCelebration(null);
 				setSecondaryCelebrations(null);
 	           	setLiturgicalSeason(null);
@@ -75,7 +76,7 @@ export function useCelebration(
 	            setContext(null);
 	       	} finally {
 	        	if (!cancelled) {
-	          	setIsLoading(false);
+	          		setIsLoading(false);
 		        }
 			}
         };

@@ -7,17 +7,37 @@ const STORAGE_KEY = "liturgical_calendar_code";
 
 export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 	const [calendar, setCalendarState] = useState<Calendar | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState<Error | null>(null);
 
 	useEffect(() => {
 			async function loadCalendar() {
-				const calendars = await getCalendars();
+				setIsLoading(true);
+				setError(null);
+				try {
+					const calendars = await getCalendars();
 
 				const savedCode = localStorage.getItem(STORAGE_KEY);
 
 				const defaultCalendar = calendars.find((c: Calendar) => c.code === savedCode || c.code === "ROMAN_GENERAL");
 
-				if (defaultCalendar) {
+				if (!defaultCalendar) {
+									throw new Error(
+										"No default calendar found. Please check your configuration."
+									);
+								}
+
 					setCalendarState(defaultCalendar);
+
+			} catch (err) {
+					if (err instanceof Error) {
+						setError(err);
+					} else {
+						setError(new Error("An unknown error occurred."));
+					}
+					setCalendarState(null);
+				} finally {
+					setIsLoading(false);
 				}
 			}
 
@@ -31,7 +51,7 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 		};
 
 	return (
-		<CalendarContext.Provider value={{ calendar, setCalendar }}>
+		<CalendarContext.Provider value={{ calendar, setCalendar, isLoading, error }}>
 			{children}
 		</CalendarContext.Provider>
 	);

@@ -15,12 +15,19 @@ import { Loader } from "../../components/Loader/Loader";
 import { SecondaryCelebrations } from "../../components/SecondaryCelebrations/SecondaryCelebrations";
 
 const CelebrationOfTheDay: React.FC = () => {
-	const { calendar } = useCalendar();
 
 	const { date: dateParam } = useParams();
 	const date = dateParam ?? new Date().toISOString().split("T")[0];
 
+	// hooks
+
 	const { languageCode } = useLanguage();
+
+	const {
+		calendar,
+		isLoading: isCalendarLoading,
+		error: calendarError,
+	} = useCalendar();
 
 	//Maybe should put liturgical season as a context
 	const {
@@ -29,10 +36,11 @@ const CelebrationOfTheDay: React.FC = () => {
 		saints,
 		invalidDate,
 		liturgicalSeason,
-		isLoading,
-		error,
+		isLoading: isCelebrationLoading,
+		error: celebrationError,
 		context,
 	} = useCelebration(calendar?.code, date, languageCode);
+
 
 	const liturgicalColor =
 		celebration?.liturgical_color_hex ||
@@ -106,17 +114,28 @@ const CelebrationOfTheDay: React.FC = () => {
 					>
 						Date invalide. Veuillez choisir une date correcte.
 					</motion.p>
-				) : isLoading ? (
+				) : isCalendarLoading ? (
 					<Loader />
-				) : error ? (
+				) : calendarError ? (
 					<motion.p
 						className="error-message"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						Erreur lors du chargement des données : {error.message}
-					</motion.p>
+						Erreur lors du chargement du calendrier : {calendarError.message}
+							</motion.p>
+				) : isCelebrationLoading ? (
+					<Loader />
+				) : celebrationError ? (
+					<motion.p
+						className="error-message"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.3 }}
+					>
+						Erreur lors du chargement de la célébration : {celebrationError.message}
+									</motion.p>
 				) : !celebration ? (
 					<motion.p
 						className="no-celebration-message"
@@ -133,7 +152,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						<h1>{celebration.feast_name}</h1>
+						<h1>{celebration?.feast_name}</h1>
 						<p className="feast-day">
 							{context?.year}-{context?.month}-{context?.day}
 						</p>
@@ -154,7 +173,7 @@ const CelebrationOfTheDay: React.FC = () => {
 							{/*markdown description*/}
 
 							<ReactMarkdown>
-								{celebration.feast_description}
+								{celebration?.feast_description}
 							</ReactMarkdown>
 
 							{/*{saints[0].biography && saint[0].biography.length > 0 && (
@@ -215,8 +234,8 @@ const CelebrationOfTheDay: React.FC = () => {
 					>
 						<SecondaryCelebrations
 							secondaryCelebrations={secondaryCelebrations}
-							isLoading={isLoading}
-							error={error}
+							isLoading={isCelebrationLoading}
+							error={celebrationError}
 						/>
 					</motion.div>
 				</div>

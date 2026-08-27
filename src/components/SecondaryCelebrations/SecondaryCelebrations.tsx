@@ -20,7 +20,7 @@ const SecondaryCelebrations = ({
 			{isLoading ? (
 				<Loader/>
 			) : error ? (
-				<p>Error loading additional celebrations: {error.message}</p>
+				<p className="secondary-celebrations-error">Error loading additional celebrations: {error.message}</p>
 			) : secondaryCelebrations && secondaryCelebrations.length > 0 ? (
 				<div className="secondary-celebrations">
 					<h3>Other Celebrations</h3>
