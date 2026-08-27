@@ -1,7 +1,8 @@
-import "./AdditionalCelebrations.css";
+import "./SecondaryCelebrations.css";
 import type { Celebration } from "../../types/Celebration";
+import { Loader } from "../Loader/Loader";
 
-type AdditionalCelebrationsProps = {
+type SecondaryCelebrationsProps = {
 	secondaryCelebrations: Celebration[] | null;
 	isLoading: boolean;
 	error: Error | null;
@@ -9,20 +10,20 @@ type AdditionalCelebrationsProps = {
 
 
 // A renommer en celebrations empechées ?? secondary additional alternative etc; need to choose
-const AdditionalCelebrations = ({
+const SecondaryCelebrations = ({
 	secondaryCelebrations,
 	isLoading,
 	error,
-}: AdditionalCelebrationsProps) => {
+}: SecondaryCelebrationsProps) => {
 	return (
-		<div className="additional-celebrations-container">
+		<div className="secondary-celebrations-container">
 			{isLoading ? (
-				<p>Loading additional celebrations...</p>
+				<Loader/>
 			) : error ? (
 				<p>Error loading additional celebrations: {error.message}</p>
 			) : secondaryCelebrations && secondaryCelebrations.length > 0 ? (
-				<div className="additional-celebrations">
-					<h3>Additional Celebrations</h3>
+				<div className="secondary-celebrations">
+					<h3>Other Celebrations</h3>
 					<ul>
 						{secondaryCelebrations.map((celebration) => (
 							<li key={celebration.id}>
@@ -32,12 +33,12 @@ const AdditionalCelebrations = ({
 					</ul>
 				</div>
 			) : (
-				<div className="no-additional-celebrations">
-					<p>No additional celebrations for this date.</p>
+				<div className="no-secondary-celebrations">
+					<p>No other celebrations for this date.</p>
 				</div>
 			)}
 		</div>
 	);
 };
 
-export { AdditionalCelebrations };
+export { SecondaryCelebrations };

@@ -1,7 +1,6 @@
 import "./CelebrationOfTheDay.css";
 import { useEffect } from "react";
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
-import { RegionalSaint } from "../../components/RegionalSaint/RegionalSaint";
 import { useCalendar } from "../../hooks/useCalendar";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
@@ -13,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { useLanguage } from "../../hooks/useLanguage";
 import ReactMarkdown from "react-markdown";
 import { Loader } from "../../components/Loader/Loader";
-import { AdditionalCelebrations } from "../../components/AdditionalCelebrations/AdditionalCelebrations";
+import { SecondaryCelebrations } from "../../components/SecondaryCelebrations/SecondaryCelebrations";
 
 const CelebrationOfTheDay: React.FC = () => {
 	const { calendar } = useCalendar();
@@ -214,10 +213,10 @@ const CelebrationOfTheDay: React.FC = () => {
 							type: "spring",
 						}}
 					>
-						<AdditionalCelebrations
-							secondaryCelebrations
-							isLoading
-							error
+						<SecondaryCelebrations
+							secondaryCelebrations={secondaryCelebrations}
+							isLoading={isLoading}
+							error={error}
 						/>
 					</motion.div>
 				</div>

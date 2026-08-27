@@ -61,7 +61,6 @@ export function useCelebration(
 
 				setCelebration(body.celebrations[0] ?? null);
 				setSecondaryCelebrations(body.celebrations.slice(1));
-				console.log(secondaryCelebrations);
 	          	setLiturgicalSeason(body.liturgical_season ?? null);
 	           	setSaints(body.celebrations[0]?.saints ?? null);
 	           	setContext(body.context ?? null);
