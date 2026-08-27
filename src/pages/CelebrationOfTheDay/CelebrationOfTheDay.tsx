@@ -235,7 +235,9 @@ const CelebrationOfTheDay: React.FC = () => {
 						<SecondaryCelebrations
 							secondaryCelebrations={secondaryCelebrations}
 							isLoading={isCelebrationLoading}
-							error={celebrationError}
+							celebrationError={celebrationError}
+							calendarError={calendarError}
+							liturgicalSeasonColor={liturgicalSeason?.hex_color || "#777777"}
 						/>
 					</motion.div>
 				</div>
