@@ -1,3 +1,4 @@
+import { useLanguage } from "../../hooks/useLanguage";
 import "./LiturgicalColor.css";
 
 const LiturgicalColor = ({
@@ -6,12 +7,14 @@ const LiturgicalColor = ({
 }: {
 	color: string;
 	colorName: string;
-}) => {
+	}) => {
+	const { t } = useLanguage();
+
 	return (
 		<div className="liturgical-color">
-			<h3>Couleur liturgique :</h3>
+			<h3>{t("liturgical.color")} :</h3>
 			{!color ? (
-				<p>Inconnue</p>
+				<p>{t("common.unknown")}</p>
 			) : (
 				<>
 					<div className="liturgical-color__infos">

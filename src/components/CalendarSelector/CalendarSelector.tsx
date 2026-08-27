@@ -5,10 +5,12 @@ import { useCalendars } from "../../hooks/useCalendars";
 import {
 	flattenCalendars,
 } from "../../utils/flattenCalendars";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const CalendarSelector = () => {
 	const { calendar, setCalendar } = useCalendar();
 	const { calendars, loading, error } = useCalendars();
+	const { t } = useLanguage();
 
 	const options = useMemo(
 		() => flattenCalendars(calendars),
@@ -17,7 +19,7 @@ const CalendarSelector = () => {
 
 	return (
 		<div className="calendar-selector">
-			<h3>Liturgical Calendar</h3>
+			<h3>{t("calendars.genericName")}</h3>
 
 			<select
 				disabled={!calendars.length || loading || !!error}
@@ -34,17 +36,17 @@ const CalendarSelector = () => {
 			>
 				{!calendars.length && !loading && !error &&(
 						<option value="">
-							No Calendar Available
+							{t("calendars.noCalendar")}
 						</option>
 				)}
 				{loading && (
 					<option value="">
-						Loading Calendars...
+						{t("calendars.loadingCalendars")}
 					</option>
 				)}
 				{error && (
 					<option value="">
-						Error Loading Calendars
+						{t("calendars.loadingError")}
 					</option>
 				)}
 				{options.map((c) => (

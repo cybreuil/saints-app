@@ -1,0 +1,44 @@
+{
+  "common": {
+    "unknown": "Inconnu",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue"
+  },
+
+  "celebration": {
+    "invalidDate": "Date invalide. Veuillez choisir une date correcte.",
+    "noCelebration": "Aucune célébration trouvée pour cette date.",
+    "noSaint": "Aucun saint associé à cette célébration.",
+    "loadingError": "Erreur lors du chargement de la célébration."
+  },
+
+  "calendar": {
+    "loadingError": "Erreur lors du chargement du calendrier."
+  },
+
+  "calendars": {
+	"genericName": "Calendrier liturgique",
+	"noCalendar": "Aucun calendrier disponible",
+	"loadingCalendars": "Chargement des calendriers...",
+	"loadingError": "Erreur lors du chargement des calendriers"
+  },
+
+  "secondaryCelebrations": {
+    "title": "Autres célébrations",
+    "empty": "Aucune autre célébration pour cette date.",
+    "loadingError": "Erreur lors du chargement des autres célébrations."
+  },
+
+  "liturgical": {
+    "color": "Couleur liturgique",
+    "rank": "Rang liturgique"
+  },
+
+  "credits": {
+	"title": "Crédits",
+	"description": "Cette application a été développée par l'équipe de Saints App. Nous tenons à remercier tous les contributeurs et supporters.",
+	"contributors": "Contributeurs",
+	"supporters": "Supporters",
+	"copyright": "Tous droits réservés."
+}
+}

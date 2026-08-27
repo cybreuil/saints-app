@@ -1,0 +1,44 @@
+{
+  "common": {
+    "unknown": "Unknown",
+	"loading": "Loading...",
+	"error": "An error occurred"
+  },
+
+  "celebration": {
+	"invalidDate": "Invalid date. Please choose a correct date.",
+	"noCelebration": "No celebration found for this date.",
+	"noSaint": "No saint associated with this celebration.",
+	"loadingError": "Error loading the celebration."
+  },
+
+  "calendar": {
+	"loadingError": "Error loading the calendar."
+  },
+
+  "calendars":{
+  	"genericName": "Liturgical Calendar",
+   	"noCalendar": "No Calendar Avaialable",
+    "loadingCalendars": "Loading Calendars...",
+    "loadingError": "Error Loading Calendars"
+  },
+
+  "secondaryCelebrations": {
+	"title": "Other Celebrations",
+	"empty": "No other celebrations for this date.",
+	"loadingError": "Error loading other celebrations."
+  },
+
+  "liturgical": {
+	"color": "Liturgical Color",
+	"rank": "Liturgical Rank"
+  },
+
+  "credits": {
+	"title": "Credits",
+	"description": "This app was developed by the Saints App Team. We would like to thank all contributors and supporters.",
+	"contributors": "Contributors",
+	"supporters": "Supporters",
+	"copyright": "All rights reserved."
+  }
+}

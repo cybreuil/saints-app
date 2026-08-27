@@ -3,10 +3,14 @@ import { useIsBottom } from "../../hooks/useIsBottom";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { TRANSITIONS } from "../../styles/theme";
 import "./Footer.css";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const Footer = () => {
+	const {t} = useLanguage();
 	const isBottom = useIsBottom(10);
 	const windowWidth = useWindowWidth();
+
+
 	return (
 		<motion.footer
 			className="footer"
@@ -29,8 +33,7 @@ const Footer = () => {
 				transition={TRANSITIONS.slower}
 			>
 				<p>
-					© {new Date().getFullYear()} Saints-App. All rights
-					reserved.
+					© {new Date().getFullYear()} Saints-App. {t("credits.copyright")}
 				</p>
 				<p className="footer-credit">
 					<a

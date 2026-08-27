@@ -21,7 +21,7 @@ const CelebrationOfTheDay: React.FC = () => {
 
 	// hooks
 
-	const { languageCode } = useLanguage();
+	const { languageCode, t } = useLanguage();
 
 	const {
 		calendar,
@@ -82,7 +82,7 @@ const CelebrationOfTheDay: React.FC = () => {
 							colorName={
 								celebration?.liturgical_color_name ||
 								liturgicalSeason?.color_label ||
-								"Inconnu"
+								t("common.unknown")
 							}
 						/>
 					</motion.div>
@@ -93,7 +93,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						transition={{ duration: 0.5, delay: 0.6 }}
 					>
 						<LiturgicalRank
-							rank={celebration?.rank_label || "Inconnu"}
+							rank={celebration?.rank_label || t("common.unknown")}
 						/>
 					</motion.div>
 				</div>
@@ -112,7 +112,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						Date invalide. Veuillez choisir une date correcte.
+						{t("celebration.invalidDate")}
 					</motion.p>
 				) : isCalendarLoading ? (
 					<Loader />
@@ -123,7 +123,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						Erreur lors du chargement du calendrier : {calendarError.message}
+						{t("calendar.loadingError")} : {calendarError.message}
 							</motion.p>
 				) : isCelebrationLoading ? (
 					<Loader />
@@ -134,7 +134,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						Erreur lors du chargement de la célébration : {celebrationError.message}
+						{t("celebration.loadingError")} : {celebrationError.message}
 									</motion.p>
 				) : !celebration ? (
 					<motion.p
@@ -143,7 +143,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						Aucune célébration trouvée pour cette date.
+						{t("celebration.noCelebration")}
 					</motion.p>
 				) : (
 					<motion.div
@@ -167,7 +167,7 @@ const CelebrationOfTheDay: React.FC = () => {
 									)}
 								</>
 							) : (
-								<p>Aucun saint associé à cette célébration.</p>
+								<p>{t("celebration.noSaint")}</p>
 							)}
 
 							{/*markdown description*/}
