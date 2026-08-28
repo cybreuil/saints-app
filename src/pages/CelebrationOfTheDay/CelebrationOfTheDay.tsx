@@ -13,6 +13,7 @@ import { useLanguage } from "../../hooks/useLanguage";
 import ReactMarkdown from "react-markdown";
 import { Loader } from "../../components/Loader/Loader";
 import { SecondaryCelebrations } from "../../components/SecondaryCelebrations/SecondaryCelebrations";
+import { LiturgicalSeason } from "../../components/LiturgicalSeason/LiturgicalSeason";
 
 const CelebrationOfTheDay: React.FC = () => {
 
@@ -239,6 +240,17 @@ const CelebrationOfTheDay: React.FC = () => {
 							calendarError={calendarError}
 							liturgicalSeasonColor={liturgicalSeason?.hex_color || "#777777"}
 						/>
+					</motion.div>
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						animate={{ x: 0, opacity: 1 }}
+						transition={{
+							duration: 0.7,
+							delay: 0.4,
+							type: "spring",
+						}}
+					>
+						<LiturgicalSeason season={liturgicalSeason?.label || t("common.unknown")} />
 					</motion.div>
 				</div>
 			</div>

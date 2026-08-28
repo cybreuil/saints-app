@@ -31,7 +31,8 @@
 
   "liturgical": {
 	"color": "Liturgical Color",
-	"rank": "Liturgical Rank"
+	"rank": "Liturgical Rank",
+	"season": "Liturgical Season"
   },
 
   "credits": {

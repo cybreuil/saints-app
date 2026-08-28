@@ -31,7 +31,8 @@
 
   "liturgical": {
 	"color": "Color Liturgicus",
-	"rank": "Gradus Liturgicus"
+	"rank": "Gradus Liturgicus",
+	"season": "Tempus Liturgicum"
   },
 
   "credits": {
