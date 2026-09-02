@@ -17,9 +17,27 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 				try {
 					const calendars = await getCalendars();
 
-				const savedCode = localStorage.getItem(STORAGE_KEY);
+					const savedCode = localStorage.getItem(STORAGE_KEY);
 
-				const defaultCalendar = calendars.find((c: Calendar) => c.code === savedCode || c.code === "ROMAN_GENERAL");
+					// Minimal language -> calendar mapping
+					const navLang = (typeof navigator !== "undefined" && (navigator.language || (navigator.languages && navigator.languages[0]))) || "en";
+					const navPrefix = navLang.split("-")[0];
+
+					const langMap: Record<string, string> = {
+						fr: "ROMAN_FRANCE",
+						pt: "ROMAN_PORTUGAL", // ajuste si ton code est différent
+						pl: "ROMAN_POLAND",
+						es: "ROMAN_SPAIN",
+						en: "ROMAN_GENERAL",
+					};
+
+					const preferredCode = savedCode || langMap[navLang] || langMap[navPrefix] || "ROMAN_GENERAL";
+
+					// Try to pick a calendar that matches preferredCode, else ROMAN_GENERAL, else first returned
+					const defaultCalendar =
+            calendars.find((c: Calendar) => c.code === preferredCode) ??
+            calendars.find((c: Calendar) => c.code === "ROMAN_GENERAL") ??
+            calendars[0];
 
 				if (!defaultCalendar) {
 									throw new Error(
