@@ -5,6 +5,7 @@ import { TRANSITIONS } from "../../styles/theme";
 import "./HomePage.css";
 import { RippleButton } from "../../components/RippleButton/RippleButton";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
+import { ArtworkCarousel } from "../../components/ArtworkCarousel/ArtworkCarousel";
 
 const HomePage = () => {
 	return (
@@ -25,6 +26,7 @@ const HomePage = () => {
 				licet transferre in voluptatem, ut postea variari voluptas
 				distinguique possit, augeri amplificarique.
 			</p>
+			<ArtworkCarousel />
 			<nav className="home-nav">
 				<RippleLink
 					to="/celebration"
