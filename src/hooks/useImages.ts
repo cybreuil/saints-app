@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getRandomImages } from "../api/images";
-import type { Image } from "../types/Images";
+import type { Image } from "../types/Image";
 
 export function useRandomImages(count = 10) {
 	const [images, setImages] = useState<Image[]>([]);

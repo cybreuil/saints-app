@@ -1,5 +1,5 @@
 import { fetchApi } from "./client";
-import type { Image } from "../types/Images";
+import type { Image } from "../types/Image";
 
 export function getImages() {
 	return fetchApi<Image[]>("/images");
@@ -10,11 +10,6 @@ export function getRandomImages(count: number = 1): Promise<Image[]> {
 		count: String(count),
 	});
 
-	return fetchApi<Image[]>(`/images/random?${params.toString()}`);
+	return fetchApi<Image[]>(`/saints/random-images?${params.toString()}`);
 }
-
-export function getImagesBySaint(slug: string): Promise<Image[]> {
-	return fetchApi<Image[]>(`/images/${slug}`);
-}
-
 // WIP API ENDPOINTS - not done yet

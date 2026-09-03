@@ -5,16 +5,21 @@ import { SaintsPage } from "../../pages/SaintsPage/SaintsPage";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
 import { AboutPage } from "../../pages/AboutPage/AboutPage";
 import { NotFoundPage } from "../../pages/NotFoundPage/NotFoundPage";
+import { ArtworkHero } from "../ArtworkCarouselTest2/ArtworkHero";
 
 const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/celebration" element={<CelebrationOfTheDay />} />
-			<Route path="/celebration/:date" element={<CelebrationOfTheDay />} />
+			<Route
+				path="/celebration/:date"
+				element={<CelebrationOfTheDay />}
+			/>
 			<Route path="/saints" element={<SaintsPage />} />
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/about" element={<AboutPage />} />
+			<Route path="/hero" element={<ArtworkHero />} />
 			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
 	);

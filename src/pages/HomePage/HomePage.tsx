@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./HomePage.css";
-import { RippleButton } from "../../components/RippleButton/RippleButton";
+// import { RippleButton } from "../../components/RippleButton/RippleButton";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
-import { ArtworkCarousel } from "../../components/ArtworkCarousel/ArtworkCarousel";
+import { ArtworkHero } from "../../components/ArtworkCarouselTest2/ArtworkHero";
 
 const HomePage = () => {
 	return (
@@ -26,7 +26,7 @@ const HomePage = () => {
 				licet transferre in voluptatem, ut postea variari voluptas
 				distinguique possit, augeri amplificarique.
 			</p>
-			<ArtworkCarousel />
+			<ArtworkHero />
 			<nav className="home-nav">
 				<RippleLink
 					to="/celebration"
