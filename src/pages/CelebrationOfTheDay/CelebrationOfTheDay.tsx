@@ -16,7 +16,6 @@ import { SecondaryCelebrations } from "../../components/SecondaryCelebrations/Se
 import { LiturgicalSeason } from "../../components/LiturgicalSeason/LiturgicalSeason";
 
 const CelebrationOfTheDay: React.FC = () => {
-
 	const { date: dateParam } = useParams();
 	const date = dateParam ?? new Date().toISOString().split("T")[0];
 
@@ -41,7 +40,6 @@ const CelebrationOfTheDay: React.FC = () => {
 		error: celebrationError,
 		context,
 	} = useCelebration(calendar?.code, date, languageCode);
-
 
 	const liturgicalColor =
 		celebration?.liturgical_color_hex ||
@@ -94,7 +92,9 @@ const CelebrationOfTheDay: React.FC = () => {
 						transition={{ duration: 0.5, delay: 0.6 }}
 					>
 						<LiturgicalRank
-							rank={celebration?.rank_label || t("common.unknown")}
+							rank={
+								celebration?.rank_label || t("common.unknown")
+							}
 						/>
 					</motion.div>
 				</div>
@@ -125,7 +125,7 @@ const CelebrationOfTheDay: React.FC = () => {
 						transition={{ duration: 0.3 }}
 					>
 						{t("calendar.loadingError")} : {calendarError.message}
-							</motion.p>
+					</motion.p>
 				) : isCelebrationLoading ? (
 					<Loader />
 				) : celebrationError ? (
@@ -135,8 +135,9 @@ const CelebrationOfTheDay: React.FC = () => {
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.3 }}
 					>
-						{t("celebration.loadingError")} : {celebrationError.message}
-									</motion.p>
+						{t("celebration.loadingError")} :{" "}
+						{celebrationError.message}
+					</motion.p>
 				) : !celebration ? (
 					<motion.p
 						className="no-celebration-message"
@@ -170,13 +171,14 @@ const CelebrationOfTheDay: React.FC = () => {
 							) : (
 								<p>{t("celebration.noSaint")}</p>
 							)}
-
 							{/*markdown description*/}
-
-							<ReactMarkdown>
-								{celebration?.feast_description}
-							</ReactMarkdown>
-
+							{celebration?.feast_description ? (
+								<ReactMarkdown>
+									{celebration?.feast_description}
+								</ReactMarkdown>
+							) : (
+								<p>{t("celebration.noDescription")}</p>
+							)}
 							{/*{saints[0].biography && saint[0].biography.length > 0 && (
 								<div>
 									<h3>Biography</h3>
@@ -238,7 +240,9 @@ const CelebrationOfTheDay: React.FC = () => {
 							isLoading={isCelebrationLoading}
 							celebrationError={celebrationError}
 							calendarError={calendarError}
-							liturgicalSeasonColor={liturgicalSeason?.hex_color || "#777777"}
+							liturgicalSeasonColor={
+								liturgicalSeason?.hex_color || "#777777"
+							}
 						/>
 					</motion.div>
 					<motion.div
@@ -250,7 +254,11 @@ const CelebrationOfTheDay: React.FC = () => {
 							type: "spring",
 						}}
 					>
-						<LiturgicalSeason season={liturgicalSeason?.label || t("common.unknown")} />
+						<LiturgicalSeason
+							season={
+								liturgicalSeason?.label || t("common.unknown")
+							}
+						/>
 					</motion.div>
 				</div>
 			</div>

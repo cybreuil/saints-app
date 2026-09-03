@@ -1,45 +1,46 @@
 {
-  "common": {
-    "unknown": "Incertus",
-	"loading": "Onus...",
-	"error": "Error est"
-  },
+	"common": {
+		"unknown": "Incertus",
+		"loading": "Onus...",
+		"error": "Error est"
+	},
 
-  "celebration": {
-	"invalidDate": "Dies invalida. Eligere diem rectam.",
-	"noCelebration": "Nulla celebratio inventa est pro hac die.",
-	"noSaint": "Nullus sanctus cum hac celebratione associatus est.",
-	"loadingError": "Error in celebratione onerando."
-  },
+	"celebration": {
+		"invalidDate": "Dies invalida. Eligere diem rectam.",
+		"noCelebration": "Nulla celebratio inventa est pro hac die.",
+		"noSaint": "Nullus sanctus cum hac celebratione associatus est.",
+		"loadingError": "Error in celebratione onerando.",
+		"noDescription": "Nulla descriptio pro hac celebratione praesto est."
+	},
 
-  "calendar": {
-	"loadingError": "Error in calendario onerando."
-  },
+	"calendar": {
+		"loadingError": "Error in calendario onerando."
+	},
 
-  "calendars": {
-	"genericName": "Calendarium Liturgicum",
-	"noCalendar": "Nullum calendarium praesto",
-	"loadingCalendars": "Onus calendariorum...",
-	"loadingError": "Error in calendariis onerandis"
-  },
+	"calendars": {
+		"genericName": "Calendarium Liturgicum",
+		"noCalendar": "Nullum calendarium praesto",
+		"loadingCalendars": "Onus calendariorum...",
+		"loadingError": "Error in calendariis onerandis"
+	},
 
-  "secondaryCelebrations": {
-	"title": "Aliae Celebrationes",
-	"empty": "Nullae aliae celebrationes pro hac die.",
-	"loadingError": "Error in aliis celebrationibus onerandis."
-  },
+	"secondaryCelebrations": {
+		"title": "Aliae Celebrationes",
+		"empty": "Nullae aliae celebrationes pro hac die.",
+		"loadingError": "Error in aliis celebrationibus onerandis."
+	},
 
-  "liturgical": {
-	"color": "Color Liturgicus",
-	"rank": "Gradus Liturgicus",
-	"season": "Tempus Liturgicum"
-  },
+	"liturgical": {
+		"color": "Color Liturgicus",
+		"rank": "Gradus Liturgicus",
+		"season": "Tempus Liturgicum"
+	},
 
-  "credits": {
-	"title": "Credita",
-	"description": "Haec app a Sanctis App Team evoluta est. Gratias agimus omnibus contributoribus et fautoribus.",
-	"contributors": "Contributores",
-	"supporters": "Fautores",
-	"copyright": "Omnia iura reservata."
-  }
+	"credits": {
+		"title": "Credita",
+		"description": "Haec app a Sanctis App Team evoluta est. Gratias agimus omnibus contributoribus et fautoribus.",
+		"contributors": "Contributores",
+		"supporters": "Fautores",
+		"copyright": "Omnia iura reservata."
+	}
 }

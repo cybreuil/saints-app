@@ -6,7 +6,7 @@ export type CelebrationApiResponse = {
 		day: number;
 		language_code: string;
 		calendar_code: string;
-	}
+	};
 	liturgical_season: {
 		code: string;
 		"segment-index": number;
@@ -16,9 +16,9 @@ export type CelebrationApiResponse = {
 		color_code: string;
 		color_label: string;
 		hex_color: string;
-	}
+	};
 	celebrations: Celebration[];
-}
+};
 
 export type Celebration = {
 	id: number;
@@ -36,11 +36,11 @@ export type Celebration = {
 	rank_precedence: number;
 	rank_label: string;
 	saints: Saint[];
-}
+};
 export type Saint = {
 	saint_id: number;
 	saint_slug: string;
 	saint_name: string;
 	saint_century: string;
 	saint_image_url: string;
-}
+};
