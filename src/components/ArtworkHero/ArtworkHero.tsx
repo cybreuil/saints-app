@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { useRandomImages } from "../../hooks/useImages";
 import type { Image } from "../../types/Image";
 import "./ArtworkHero.css";
+import { motion } from "framer-motion";
 
 const ROWS = 2;
 const TILES_PER_ROW = 10;
@@ -23,7 +24,10 @@ function buildRows(images: Image[], rows: number, perRow: number): Image[][] {
 	if (images.length === 0) return [];
 
 	const total = Math.max(rows * perRow, images.length);
-	const pool = Array.from({ length: total }, (_, i) => images[i % images.length]);
+	const pool = Array.from(
+		{ length: total },
+		(_, i) => images[i % images.length],
+	);
 
 	return Array.from({ length: rows }, (_, row) =>
 		pool.filter((_, i) => i % rows === row),
@@ -48,12 +52,20 @@ function ArtworkTile({ image }: { image: Image }) {
 	);
 }
 
-function ArtworkHero({ title, eyebrow, description, children }: ArtworkHeroProps) {
+function ArtworkHero({
+	title,
+	eyebrow,
+	description,
+	children,
+}: ArtworkHeroProps) {
 	// The backdrop is purely decorative: loading and error states are ignored
 	// so the title and actions are always rendered immediately.
 	const { images } = useRandomImages(ROWS * TILES_PER_ROW);
 
-	const rows = useMemo(() => buildRows(images, ROWS, TILES_PER_ROW), [images]);
+	const rows = useMemo(
+		() => buildRows(images, ROWS, TILES_PER_ROW),
+		[images],
+	);
 
 	return (
 		<section className="artwork-hero">
@@ -64,7 +76,10 @@ function ArtworkHero({ title, eyebrow, description, children }: ArtworkHeroProps
 							{/* The row is rendered twice so the marquee loops seamlessly. */}
 							<div className="artwork-hero__track">
 								{[...row, ...row].map((image, index) => (
-									<ArtworkTile key={`${image.id}-${index}`} image={image} />
+									<ArtworkTile
+										key={`${image.id}-${index}`}
+										image={image}
+									/>
 								))}
 							</div>
 						</div>
@@ -75,12 +90,20 @@ function ArtworkHero({ title, eyebrow, description, children }: ArtworkHeroProps
 			<div className="artwork-hero__overlay" aria-hidden="true" />
 
 			<div className="artwork-hero__content">
-				{eyebrow && <span className="artwork-hero__eyebrow">{eyebrow}</span>}
+				{eyebrow && (
+					<motion.span className="artwork-hero__eyebrow"
+						initial={{ opacity: 0 }}
+
+					>
+					</motion.span>
+				)}
 				<h1 className="artwork-hero__title">{title}</h1>
 				{description && (
 					<p className="artwork-hero__description">{description}</p>
 				)}
-				{children && <div className="artwork-hero__actions">{children}</div>}
+				{children && (
+					<div className="artwork-hero__actions">{children}</div>
+				)}
 			</div>
 		</section>
 	);

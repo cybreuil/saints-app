@@ -1,13 +1,11 @@
-import { Logo } from "../../components/Logo/Logo";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { TRANSITIONS } from "../../styles/theme";
 import "./HomePage.css";
-// import { RippleButton } from "../../components/RippleButton/RippleButton";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
 import { ArtworkHero } from "../../components/ArtworkHero/ArtworkHero";
 
+
+
 const HomePage = () => {
+
 	return (
 		<div className="home-page">
 			<ArtworkHero
