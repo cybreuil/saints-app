@@ -33,6 +33,8 @@ const Header = () => {
 
 	return (
 		<>
+			{/*On utilisait ca quand on partait du reduit pour le plus large au scroll
+		Et qu'on avait donc besoin d'un mask intiallement*/}
 			{/*<motion.div
 				className={`header-gap-mask`}
 				initial={{ height: "var(--initial-blur-height)" }}
@@ -61,20 +63,20 @@ const Header = () => {
 							? "1440px"
 							: "90%"
 						: "100vw",
-					borderRadius: isScrolled ?  "1rem" : 0,
+					borderRadius: isScrolled ? "1rem" : 0,
 					height: isMenuOpen ? "var(--header-open-height)" : "",
-					top: isScrolled ?  "1rem" : 0,
-					marginTop: isScrolled ? "1rem" : 0,
+					top: isScrolled ? "1rem" : 0,
 					backgroundColor: isScrolled
 						? //Couleur mise au pif mais j'aime bien : a retenir !!
 							"rgba(34, 42, 63, 0.6)"
-							// "var(--color-primary-light)"
-						: isMenuOpen
+						: // "var(--color-primary-light)"
+							isMenuOpen
 							? "var(--color-primary-light)"
 							: "rgba(34, 42, 63, 0)",
 					boxShadow: isScrolled
 						? "0 4px 12px rgba(0, 0, 0, 0.1)"
 						: "none",
+					backdropFilter: isScrolled ? "blur(10px)" : "none",
 				}}
 				transition={TRANSITIONS.normal}
 			>

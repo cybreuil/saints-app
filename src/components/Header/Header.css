@@ -1,10 +1,11 @@
-.header-gap-mask {
+/*We are not using it right now*/
+/*.header-gap-mask {
 	position: fixed;
 	width: 100vw;
-	z-index: 6; /* between header and content*/
+	z-index: 6; between header and content
 	pointer-events: none;
 	backdrop-filter: blur(8px);
-}
+}*/
 
 /*Plus besoin au scroll, mais finalement je le garde a tout le temps*/
 /*.header-gap-mask.scrolled {
@@ -12,17 +13,21 @@
 }*/
 
 .header {
-	position: sticky;
-	top: 1rem;
+	position: fixed;
 	z-index: 8;
 	/*On utilise le motion*/
 	/*background-color: var(--color-primary-light);*/
+
+	/*Centrage*/
+	left: 0;
+	right: 0;
 	margin: auto;
+
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-	backdrop-filter: blur(8px);
+	/*backdrop-filter: blur(8px);*/
 }
 .header::before {
 	content: "";
