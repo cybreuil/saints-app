@@ -13,6 +13,7 @@ const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const windowWidth = useWindowWidth();
+	const isHomePage = window.location.pathname === "/";
 
 	// On ecoute le scroll pour ajouter une classe "scrolled" au header lorsque l'utilisateur a scrollé de plus de 50px
 	useEffect(() => {
@@ -87,7 +88,10 @@ const Header = () => {
 					transition={TRANSITIONS.slower}
 				>
 					<Logo />
-					<h1 className="header-title">Saints-App</h1>
+					{(!isHomePage || isScrolled) && (
+						<h1 className="header-title">GENUFLEXIO</h1>
+					)}
+
 					{isScrolled ? (
 						<nav className="header-nav">
 							<Link to="/">Home</Link>
@@ -171,6 +175,7 @@ const Header = () => {
 							}
 						>
 							<h3>Saints</h3>
+
 							<ul>
 								<li>
 									<Link
