@@ -1,0 +1,310 @@
+/* ===== Section ===== */
+
+.artwork-hero {
+	position: relative;
+	width: 100%;
+	/* The header is sticky (top: 1rem), so it takes up space above the hero. */
+	/*height: calc(100svh - var(--header-height) - 1rem);*/
+
+	/*We now consider header is fixed*/
+	height: 100svh;
+	min-height: 600px;
+	overflow: hidden;
+	isolation: isolate;
+	background: var(--hero-bg);
+	color: #fff;
+}
+
+/* ===== Backdrop ===== */
+
+.artwork-hero__backdrop {
+	position: absolute;
+	/* Oversized so the rotation never exposes the corners of the section. */
+	inset: -10%;
+	z-index: -2;
+	display: grid;
+	grid-auto-rows: minmax(0, 1fr);
+	gap: var(--hero-gap);
+	transform: rotate(var(--hero-tilt));
+	pointer-events: none;
+	animation: artwork-hero-reveal 1.6s ease-out both;
+}
+
+.artwork-hero__row {
+	min-height: 0;
+	overflow: hidden;
+}
+
+.artwork-hero__track {
+	display: flex;
+	gap: var(--hero-gap);
+	width: max-content;
+	height: 100%;
+	will-change: transform;
+	animation: artwork-hero-marquee var(--hero-speed) linear infinite;
+}
+
+/* Alternate rows scroll the opposite way at a different speed, with an
+   offset start so the two rows never line up. */
+.artwork-hero__row:nth-child(even) .artwork-hero__track {
+	animation-direction: reverse;
+	animation-duration: calc(var(--hero-speed) * 1.25);
+	animation-delay: calc(var(--hero-speed) * -0.4);
+}
+
+@keyframes artwork-hero-reveal {
+	from {
+		opacity: 0;
+		transform: rotate(var(--hero-tilt)) scale(1.04);
+	}
+
+	to {
+		opacity: 1;
+		transform: rotate(var(--hero-tilt)) scale(1);
+	}
+}
+
+/* The track holds two copies of the row separated by a single gap, so
+   travelling exactly half the track width plus half a gap lands on the
+   start of the second copy — one seamless period. */
+@keyframes artwork-hero-marquee {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		transform: translate3d(calc(-50% - var(--hero-gap) / 2), 0, 0);
+	}
+}
+
+/* ===== Tiles ===== */
+
+.artwork-hero__tile {
+	flex: none;
+	height: 100%;
+	aspect-ratio: 3 / 4;
+	margin: 0;
+	overflow: hidden;
+	border-radius: 6px;
+	background: #1a1613;
+	opacity: 0;
+	transform: scale(0.96);
+	transition:
+		opacity 1.2s ease,
+		transform 1.2s ease;
+}
+
+.artwork-hero__tile--loaded {
+	opacity: 1;
+	transform: none;
+}
+
+.artwork-hero__tile img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	filter: brightness(0.55) saturate(0.8);
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+/* ===== Overlay ===== */
+
+/* Darkens the centre so the text stays legible, then fades into the page
+   background so the hero merges with the content below it. */
+.artwork-hero__overlay {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background:
+		radial-gradient(
+			ellipse 60% 65% at 50% 48%,
+			rgb(13 11 9 / 0.78) 0%,
+			rgb(13 11 9 / 0.45) 50%,
+			transparent 100%
+		),
+		linear-gradient(
+			to bottom,
+			rgb(13 11 9 / 0.65) 0%,
+			transparent 28%,
+			transparent 62%,
+			var(--page-background, var(--color-bg-primary)) 100%
+		);
+}
+
+/* ===== Content ===== */
+
+.artwork-hero__content {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: min(780px, 100% - 2rem);
+	height: 100%;
+	margin: 0 auto;
+	padding-bottom: 6vh;
+	text-align: center;
+}
+
+.artwork-hero__eyebrow {
+	margin-bottom: 1.25rem;
+	color: var(--color-secondary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+}
+
+.artwork-hero__title {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(3.25rem, 9vw, 7.5rem);
+	font-weight: 300;
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	text-shadow:
+		0 4px 24px rgb(0 0 0 / 0.5),
+		0 12px 60px rgb(0 0 0 / 0.35);
+}
+
+.artwork-hero__description {
+	max-width: 52ch;
+	margin: 1.5rem 0 0;
+	color: rgb(255 255 255 / 0.72);
+	font-size: clamp(1rem, 1.2vw, 1.15rem);
+	line-height: 1.65;
+	text-wrap: balance;
+}
+
+/* ===== Actions ===== */
+
+.artwork-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem 1rem;
+	margin-top: 2.25rem;
+}
+
+.artwork-hero__action {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.8rem 1.6rem;
+	border: 1px solid rgb(255 255 255 / 0.22);
+	border-radius: 999px;
+	color: #fff;
+	background: rgb(255 255 255 / 0.08);
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	transition:
+		background 200ms ease,
+		border-color 200ms ease,
+		transform 200ms ease;
+}
+
+.artwork-hero__action:hover {
+	background: rgb(255 255 255 / 0.16);
+	border-color: rgb(255 255 255 / 0.45);
+	transform: translateY(-2px);
+}
+
+.artwork-hero__action--primary {
+	border-color: transparent;
+	background: var(--color-secondary);
+	color: #1b1510;
+}
+
+.artwork-hero__action--primary:hover {
+	background: var(--color-secondary-light);
+}
+
+.artwork-hero__action:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 3px;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+	.artwork-hero {
+		--hero-tilt: -3deg;
+	}
+
+	.artwork-hero__overlay {
+		background:
+			radial-gradient(
+				ellipse 75% 65% at 50% 48%,
+				rgb(13 11 9 / 0.78) 0%,
+				rgb(13 11 9 / 0.45) 50%,
+				transparent 100%
+			),
+			linear-gradient(
+				to bottom,
+				rgb(13 11 9 / 0.65) 0%,
+				transparent 28%,
+				transparent 62%,
+				var(--page-background, var(--color-bg-primary)) 100%
+			);
+	}
+}
+
+@media (max-width: 600px) {
+	.artwork-hero {
+		--hero-gap: 8px;
+		--hero-tilt: -2deg;
+
+		min-height: 560px;
+	}
+
+	.artwork-hero__backdrop {
+		inset: -14%;
+	}
+
+	.artwork-hero__tile img {
+		filter: brightness(0.45) saturate(0.7);
+	}
+
+	.artwork-hero__title {
+		font-size: clamp(2.75rem, 16vw, 5rem);
+	}
+
+	.artwork-hero__description {
+		font-size: 0.95rem;
+	}
+
+	.artwork-hero__content {
+		padding-bottom: 4vh;
+	}
+}
+
+/* ===== Reduced motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+	.artwork-hero__backdrop {
+		animation: none;
+	}
+
+	.artwork-hero__track {
+		animation-play-state: paused;
+	}
+
+	.artwork-hero__tile {
+		transform: none;
+		transition: opacity 300ms ease;
+	}
+
+	.artwork-hero__action:hover {
+		transform: none;
+	}
+}

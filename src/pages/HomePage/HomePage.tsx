@@ -5,40 +5,37 @@ import { TRANSITIONS } from "../../styles/theme";
 import "./HomePage.css";
 // import { RippleButton } from "../../components/RippleButton/RippleButton";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
-import { ArtworkHero } from "../../components/ArtworkCarouselTest2/ArtworkHero";
+import { ArtworkHero } from "../../components/ArtworkHero/ArtworkHero";
 
 const HomePage = () => {
 	return (
-		<motion.div
-			animate={{ opacity: 1 }}
-			initial={{ opacity: 0 }}
-			transition={TRANSITIONS.slower}
-			className="presentation"
-		>
-			<Logo color="var(--color-primary)" maxWidth={300} />
-			<h1>Welcome to Saints-App</h1>
-			<p>
+		<div className="home-page">
+			<ArtworkHero
+				eyebrow="Saints, célébrations et œuvres"
+				title="Genuflexio"
+				description="Explorez les vies, les histoires et les œuvres consacrées aux saints à travers les siècles."
+			>
+				<RippleLink
+					to="/celebration"
+					className="artwork-hero__action artwork-hero__action--primary"
+					rippleColor="rgba(0, 0, 0, 0.15)"
+				>
+					Célébration du jour
+				</RippleLink>
+				<RippleLink to="/saints" className="artwork-hero__action">
+					Découvrir les saints
+				</RippleLink>
+			</ArtworkHero>
+
+			<section className="presentation">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 				eiusmod tempor incididunt ut labore et dolore magnam aliquam
 				quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore
 				dolemus, fieri tamen permagna accessio potest, si aliquod
 				aeternum et infinitum impendere malum nobis opinemur. Quod idem
-				licet transferre in voluptatem, ut postea variari voluptas
-				distinguique possit, augeri amplificarique.
-			</p>
-			<ArtworkHero />
-			<nav className="home-nav">
-				<RippleLink
-					to="/celebration"
-					className="home-nav-link saint-of-the-day-link"
-				>
-					Celebration of the Day
-				</RippleLink>
-				<Link to="/about" className="home-nav-link">
-					About
-				</Link>
-			</nav>
-		</motion.div>
+				licet transferre in voluptatem, ut.
+			</section>
+		</div>
 	);
 };
 

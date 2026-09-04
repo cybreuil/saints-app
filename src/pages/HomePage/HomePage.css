@@ -1,4 +1,6 @@
-.presentation {
+/*Everything is replaced by hero Logic*/
+
+/*.presentation {
 	flex: 1;
 	max-width: 1200px;
 	align-self: center;
@@ -41,4 +43,4 @@
 }
 .home-nav .home-nav-link.saint-of-the-day-link:hover {
 	background-color: var(--color-accent);
-}
+}*/

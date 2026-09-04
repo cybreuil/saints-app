@@ -10,7 +10,7 @@ function App() {
 		<>
 			<ScrollToTopOnRouteChange />
 			<ScrollToTop />
-			<Header />
+			{/*<Header />*/}
 			<BodyClassController />
 			<AppRoutes />
 			<Footer />
