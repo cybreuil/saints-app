@@ -91,18 +91,46 @@ function ArtworkHero({
 
 			<div className="artwork-hero__content">
 				{eyebrow && (
-					<motion.span className="artwork-hero__eyebrow"
+					<motion.span
+						className="artwork-hero__eyebrow"
 						initial={{ opacity: 0 }}
-
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5 }}
 					>
+						{eyebrow}
 					</motion.span>
 				)}
-				<h1 className="artwork-hero__title">{title}</h1>
+				<motion.h1
+					className="artwork-hero__title"
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+				>
+					{title}
+				</motion.h1>
 				{description && (
-					<p className="artwork-hero__description">{description}</p>
+					<motion.p
+						className="artwork-hero__description"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
+					>
+						{description}
+					</motion.p>
 				)}
 				{children && (
-					<div className="artwork-hero__actions">{children}</div>
+					<motion.div
+						className="artwork-hero__actions"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{
+							duration: 0.5,
+							delay: 1,
+							delayChildren: 2,
+						}}
+					>
+						{children}
+					</motion.div>
 				)}
 			</div>
 		</section>
