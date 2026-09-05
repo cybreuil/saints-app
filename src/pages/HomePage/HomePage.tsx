@@ -1,7 +1,8 @@
 import "./HomePage.css";
+import { motion } from "framer-motion";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
 import { ArtworkHero } from "../../components/ArtworkHero/ArtworkHero";
-import { motion } from "framer-motion";
+import { useRandomImages } from "../../hooks/useImages";
 
 /* Reveal helpers: fade + slight rise when the section enters the viewport */
 const sectionReveal = {
@@ -43,6 +44,10 @@ const FEATURES = [
 ];
 
 const HomePage = () => {
+	// Une peinture aléatoire par carte ; purement décoratif, la page
+	// fonctionne aussi tant que les images ne sont pas arrivées.
+	const { images } = useRandomImages(FEATURES.length);
+
 	return (
 		<div className="home-page">
 			<ArtworkHero
@@ -85,33 +90,58 @@ const HomePage = () => {
 				</p>
 			</motion.section>
 
-			{/* ===== Fonctionnalités ===== */}
+			{/* ===== Fonctionnalités (avec œuvres) ===== */}
 			<motion.section
 				className="home-features"
 				variants={staggerGroup}
 				initial="hidden"
 				whileInView="show"
-				viewport={{ once: true, amount: 0.25 }}
+				viewport={{ once: true, amount: 0.2 }}
 			>
-				{FEATURES.map((feature) => (
-					<motion.article
-						key={feature.title}
-						className="home-feature"
-						variants={sectionReveal}
-					>
-						<span className="home-feature__accent">
-							{feature.accent}
-						</span>
-						<h3 className="home-feature__title">{feature.title}</h3>
-						<p className="home-feature__text">{feature.text}</p>
-						<RippleLink
-							to={feature.link}
-							className="home-feature__link"
+				{FEATURES.map((feature, index) => {
+					const image = images[index];
+
+					return (
+						<motion.article
+							key={feature.title}
+							className="home-feature"
+							variants={sectionReveal}
 						>
-							{feature.linkLabel} →
-						</RippleLink>
-					</motion.article>
-				))}
+							<div
+								className="home-feature__artwork"
+								aria-hidden="true"
+							>
+								{image && (
+									<img
+										src={image.image_url}
+										alt=""
+										loading="lazy"
+										decoding="async"
+										draggable={false}
+									/>
+								)}
+							</div>
+
+							<div className="home-feature__body">
+								<span className="home-feature__accent">
+									{feature.accent}
+								</span>
+								<h3 className="home-feature__title">
+									{feature.title}
+								</h3>
+								<p className="home-feature__text">
+									{feature.text}
+								</p>
+								<RippleLink
+									to={feature.link}
+									className="home-feature__link"
+								>
+									{feature.linkLabel} →
+								</RippleLink>
+							</div>
+						</motion.article>
+					);
+				})}
 			</motion.section>
 
 			{/* ===== CTA final ===== */}
