@@ -5,6 +5,11 @@
 		"error": "Une erreur est survenue"
 	},
 
+	"hero": {
+		"eyebrow": "Saints, célébrations et œuvres",
+		"description": "Explorez les vies, les histoires et les œuvres consacrées aux saints à travers les siècles."
+	},
+
 	"celebration": {
 		"invalidDate": "Date invalide. Veuillez choisir une date correcte.",
 		"noCelebration": "Aucune célébration trouvée pour cette date.",

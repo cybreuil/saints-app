@@ -5,6 +5,11 @@
 		"error": "Error est"
 	},
 
+	"hero": {
+		"eyebrow": "Sancti, Celebrationes et Opera",
+		"description": "Vitas, historias atque opera sanctis per saecula dedicata explora."
+	},
+
 	"celebration": {
 		"invalidDate": "Dies invalida. Eligere diem rectam.",
 		"noCelebration": "Nulla celebratio inventa est pro hac die.",

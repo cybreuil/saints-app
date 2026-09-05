@@ -5,6 +5,11 @@
 		"error": "An error occurred"
 	},
 
+	"hero": {
+		"eyebrow": "Saints, Celebrations and Works",
+		"description": "Explore the lives, stories, and works devoted to the saints throughout the centuries."
+	},
+
 	"celebration": {
 		"invalidDate": "Invalid date. Please choose a correct date.",
 		"noCelebration": "No celebration found for this date.",

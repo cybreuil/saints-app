@@ -128,16 +128,24 @@ function ArtworkHero({
 						{eyebrow}
 					</motion.span>
 				)}
-				<motion.h1
-					className="artwork-hero__title"
-					// initial={{ opacity: 0, y: -20 }}
-					// animate={{ opacity: 1, y: 0 }}
-					// transition={{ duration: 0.5, delay: 0.2 }}
-					layoutId="website-title"
-					layoutScroll
-				>
-					{title}
-				</motion.h1>
+				{!isScrolled ? (
+					<motion.h1
+						className="artwork-hero__title"
+						// initial={{ opacity: 0, y: -20 }}
+						// animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+						layoutId="website-title"
+					>
+						{title}
+					</motion.h1>
+				) : (
+					<h1
+						className="artwork-hero__title"
+						style={{ opacity: 0, pointerEvents: "none" }}
+					>
+						{title}
+					</h1>
+				)}
 				{description && (
 					<motion.p
 						className="artwork-hero__description"

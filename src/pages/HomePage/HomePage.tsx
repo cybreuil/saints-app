@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
 import { ArtworkHero } from "../../components/ArtworkHero/ArtworkHero";
 import { useRandomImages } from "../../hooks/useImages";
+import { useLanguage } from "../../hooks/useLanguage";
 
 /* Reveal helpers: fade + slight rise when the section enters the viewport */
 const sectionReveal = {
@@ -48,12 +49,14 @@ const HomePage = () => {
 	// fonctionne aussi tant que les images ne sont pas arrivées.
 	const { images } = useRandomImages(FEATURES.length);
 
+	const { t } = useLanguage();
+
 	return (
 		<div className="home-page">
 			<ArtworkHero
-				eyebrow="Saints, célébrations et œuvres"
+				eyebrow={t("hero.eyebrow")}
 				title="Genuflexio"
-				description="Explorez les vies, les histoires et les œuvres consacrées aux saints à travers les siècles."
+				description={t("hero.description")}
 			>
 				<RippleLink
 					to="/celebration"
