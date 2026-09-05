@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { useRandomImages } from "../../hooks/useImages";
 import type { Image } from "../../types/Image";
 import "./ArtworkHero.css";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const ROWS = 2;
 const TILES_PER_ROW = 10;
@@ -67,8 +67,33 @@ function ArtworkHero({
 		[images],
 	);
 
+	// Using useScroll to fade
+	const containerRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ["start start", "end start"],
+	});
+	// const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
+	const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+	const filter = useTransform(
+		scrollYProgress,
+		[0, 0.3],
+		["blur(0px)", "blur(2px)"],
+	);
+
+	// isScrolled for title cancel
+	const [isScrolled, setIsScrolled] = useState(false);
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<section className="artwork-hero">
+		<section className="artwork-hero" ref={containerRef}>
 			{rows.length > 0 && (
 				<div className="artwork-hero__backdrop" aria-hidden="true">
 					{rows.map((row, rowIndex) => (
@@ -89,7 +114,10 @@ function ArtworkHero({
 
 			<div className="artwork-hero__overlay" aria-hidden="true" />
 
-			<div className="artwork-hero__content">
+			<motion.div
+				className="artwork-hero__content"
+				style={{ opacity, filter }}
+			>
 				{eyebrow && (
 					<motion.span
 						className="artwork-hero__eyebrow"
@@ -102,9 +130,11 @@ function ArtworkHero({
 				)}
 				<motion.h1
 					className="artwork-hero__title"
-					initial={{ opacity: 0, y: -20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
+					// initial={{ opacity: 0, y: -20 }}
+					// animate={{ opacity: 1, y: 0 }}
+					// transition={{ duration: 0.5, delay: 0.2 }}
+					layoutId="website-title"
+					layoutScroll
 				>
 					{title}
 				</motion.h1>
@@ -124,15 +154,14 @@ function ArtworkHero({
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{
-							duration: 0.5,
+							duration: 1,
 							delay: 1,
-							delayChildren: 2,
 						}}
 					>
 						{children}
 					</motion.div>
 				)}
-			</div>
+			</motion.div>
 		</section>
 	);
 }

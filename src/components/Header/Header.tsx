@@ -1,5 +1,5 @@
 import { Logo } from "../Logo/Logo";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import { useState, useEffect } from "react";
@@ -13,7 +13,16 @@ const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const windowWidth = useWindowWidth();
-	const isHomePage = window.location.pathname === "/";
+	const location = useLocation();
+	const isHomePage = location.pathname === "/";
+
+	// burger wave
+	const [showBurgerWave, setShowBurgerWave] = useState(false);
+	useEffect(() => {
+		// petit délai pour laisser l'animation d'apparition du header se terminer
+		const t = setTimeout(() => setShowBurgerWave(true), 1000);
+		return () => clearTimeout(t);
+	}, []);
 
 	// On ecoute le scroll pour ajouter une classe "scrolled" au header lorsque l'utilisateur a scrollé de plus de 50px
 	useEffect(() => {
@@ -47,11 +56,10 @@ const Header = () => {
 				transition={TRANSITIONS.normal}
 			/>*/}
 			<motion.header
-				className={`header ${isMenuOpen ? "open" : ""}`}
+				className={`header ${isMenuOpen ? "open" : ""} ${showBurgerWave ? "mounted" : ""}`}
 				initial={{
 					y: -50,
 					opacity: 0,
-					width: "90%",
 					borderRadius: "1rem",
 					// top: "1rem",
 					// marginTop: "1rem",
@@ -88,8 +96,12 @@ const Header = () => {
 					transition={TRANSITIONS.slower}
 				>
 					<Logo />
-					{(!isHomePage || isScrolled) && (
-						<h1 className="header-title">GENUFLEXIO</h1>
+					{!isHomePage || isScrolled ? (
+						<motion.h1 layoutId="website-title" layoutScroll>
+							Genuflexio
+						</motion.h1>
+					) : (
+						<h1></h1>
 					)}
 
 					{isScrolled ? (
