@@ -54,3 +54,5 @@ should i keep languages on front hardcoded or api to fetch list ? might be bette
 ## Need to translate the aria label
 
 add switch on secondary celebration on click with just a state change + fix days left season
+
+- fix sticky
