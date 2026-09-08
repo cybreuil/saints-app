@@ -13,9 +13,12 @@
 	"celebration": {
 		"invalidDate": "Dies invalida. Eligere diem rectam.",
 		"noCelebration": "Nulla celebratio inventa est pro hac die.",
+		"saints": "Sancti die",
 		"noSaint": "Nullus sanctus cum hac celebratione associatus est.",
 		"loadingError": "Error in celebratione onerando.",
-		"noDescription": "Nulla descriptio pro hac celebratione praesto est."
+		"noDescription": "Nulla descriptio pro hac celebratione praesto est.",
+		"otherCelebrations": "Aliae celebrationes diei",
+		"noOtherCelebrations": "Nullae aliae celebrationes"
 	},
 
 	"calendar": {
@@ -38,7 +41,8 @@
 	"liturgical": {
 		"color": "Color Liturgicus",
 		"rank": "Gradus Liturgicus",
-		"season": "Tempus Liturgicum"
+		"season": "Tempus Liturgicum",
+		"daysLeft": "dies reliqui"
 	},
 
 	"credits": {

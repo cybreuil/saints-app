@@ -1,84 +1,471 @@
-.saint-of-the-day-layout {
+/* =========================================================
+   CELEBRATION OF THE DAY
+   Grille 3 colonnes, latérales sticky, article éditorial au centre.
+   --celebration-accent est injectée depuis le TSX (couleur liturgique).
+   ========================================================= */
+
+.celebration-page {
+	--celebration-accent: #8b8b8b;
+	--aside-width: 300px;
+	--sticky-top: calc(var(--header-height) + 2rem);
+
 	flex: 1;
-	padding: calc(var(--header-height) + 2rem) 2rem 2rem 2rem;
 	display: grid;
-	grid-template-columns: minmax(0, 300px) minmax(auto, 800px) minmax(0, 300px);
+	grid-template-columns:
+		minmax(0, var(--aside-width))
+		minmax(0, 820px)
+		minmax(0, var(--aside-width));
 	gap: 2rem;
-	max-width: 1440px;
+	align-items: start;
+	width: min(1440px, 100%);
 	margin: 0 auto;
+	padding: calc(var(--header-height) + 2rem) 2rem 4rem;
 }
 
-.saint-of-the-day-card {
-	margin-top: calc(var(--header-height) +1rem);
-	padding: 2rem;
-	border-radius: 1rem;
-	background: var(--color-bg-component, #f9f9f9);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* ===== Sidebars ===== */
+
+.celebration-page__sticky {
+	position: sticky;
+	top: var(--sticky-top);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* ===== Article shell ===== */
+
+.celebration-article {
+	min-width: 0;
+}
+
+.celebration-article__inner {
+	overflow: hidden;
+	border-radius: 1.25rem;
+	background: var(--color-bg-component);
+	border: 1px solid var(--color-border-light);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
 	transition:
 		background var(--transition-normal),
-		color var(--transition-normal);
+		border-color var(--transition-normal);
 }
-.saint-of-the-day-content {
+
+/* ===== Cover ===== */
+
+.celebration-cover {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: clamp(320px, 48vh, 520px);
+	color: #fff;
+	background: #14110e;
+	isolation: isolate;
+}
+
+.celebration-cover__image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 20%;
+	z-index: -2;
+	filter: saturate(0.9);
+}
+
+/* Voile : sombre en bas pour le texte, teinté par la couleur liturgique en haut */
+.celebration-cover__shade {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		linear-gradient(
+			to top,
+			rgb(10 8 6 / 0.92) 0%,
+			rgb(10 8 6 / 0.55) 45%,
+			rgb(10 8 6 / 0.1) 100%
+		),
+		linear-gradient(
+			160deg,
+			color-mix(in srgb, var(--celebration-accent) 55%, transparent) 0%,
+			transparent 55%
+		);
+}
+
+/* Sans image : fond plein dégradé à partir de la couleur liturgique */
+.celebration-cover--no-image {
+	min-height: clamp(220px, 32vh, 340px);
+	background: radial-gradient(
+		ellipse at 20% 0%,
+		color-mix(in srgb, var(--celebration-accent) 65%, #14110e),
+		#14110e 70%
+	);
+}
+
+.celebration-cover__text {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	text-align: justify;
-}
-.saint-of-the-day-card h1,
-h2 {
-	align-self: center;
+	gap: 0.9rem;
+	width: 100%;
+	padding: clamp(1.5rem, 4vw, 2.75rem);
 }
 
-.saint-of-the-day-card .feast-day {
-	font-size: 1.2rem;
-	color: #555;
-	margin-bottom: 0.5rem;
-	font-style: italic;
-	align-self: flex-end;
+.celebration-cover__eyebrow {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem;
+	color: rgb(255 255 255 / 0.78);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
 }
 
-.saint-of-the-day-card .saint-details img {
-	max-width: 30%;
-	height: auto;
-	border-radius: 0.5rem;
-	float: left;
-	display: block;
-	margin-right: 1rem;
+.celebration-cover__eyebrow time::first-letter {
+	text-transform: uppercase;
 }
 
-.saint-of-the-day-card .saint-details p {
+.celebration-cover__dot {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--celebration-accent);
+	box-shadow: 0 0 0 3px
+		color-mix(in srgb, var(--celebration-accent) 30%, transparent);
+}
+
+.celebration-cover__title {
 	margin: 0;
-}
-.saint-of-the-day-card .saint-details p + p {
-	margin-top: 1rem;
+	font-size: clamp(2rem, 4.5vw, 3.5rem);
+	font-weight: 400;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	text-shadow: 0 4px 28px rgb(0 0 0 / 0.45);
 }
 
-.saint-of-the-day-layout .sidebar-left-sticky {
-	position: sticky;
-	top: calc(var(--header-height) + 2rem);
+/* ===== Fact bar ===== */
+
+.celebration-facts {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	margin: 0;
+	border-bottom: 1px solid var(--color-border-light);
+}
+
+.celebration-fact {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 0.3rem;
+	padding: 1.1rem clamp(1rem, 2.5vw, 1.75rem);
 }
-.saint-of-the-day-layout .sidebar-right-sticky {
-	position: sticky;
-	top: calc(var(--header-height) + 2rem);
+
+.celebration-fact + .celebration-fact {
+	border-left: 1px solid var(--color-border-light);
+}
+
+.celebration-fact dt {
+	color: var(--color-text-tertiary);
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.celebration-fact dd {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	font-weight: 500;
+	color: var(--color-text-primary);
+}
+
+.celebration-fact__swatch {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+
+.celebration-fact__note {
+	color: var(--color-text-tertiary);
+	font-size: 0.8rem;
+	font-weight: 400;
+}
+
+@media (max-width: 600px) {
+	.celebration-facts {
+		grid-template-columns: 1fr;
+	}
+
+	.celebration-fact + .celebration-fact {
+		border-left: 0;
+		border-top: 1px solid var(--color-border-light);
+	}
+}
+
+/* ===== Prose (markdown) ===== */
+
+.celebration-prose {
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem) 0;
+	color: var(--color-text-primary);
+	font-size: clamp(1rem, 1.1vw, 1.1rem);
+	line-height: 1.8;
+	text-wrap: pretty;
+}
+
+.celebration-prose > :first-child {
+	margin-top: 0;
+}
+
+/* Lettrine sur le premier paragraphe */
+.celebration-prose > p:first-of-type::first-letter {
+	float: left;
+	margin: 0.1em 0.12em 0 0;
+	color: var(--celebration-accent);
+	font-size: 3.4em;
+	font-weight: 500;
+	line-height: 0.8;
+}
+
+.celebration-prose p {
+	margin: 0 0 1.1em;
+}
+
+.celebration-prose h2,
+.celebration-prose h3 {
+	margin: 2em 0 0.6em;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+}
+
+.celebration-prose h2 {
+	font-size: 1.5rem;
+}
+
+.celebration-prose h3 {
+	font-size: 1.2rem;
+}
+
+.celebration-prose blockquote {
+	margin: 1.5em 0;
+	padding: 0.25em 0 0.25em 1.25em;
+	border-left: 3px solid var(--celebration-accent);
+	color: var(--color-text-secondary);
+	font-style: italic;
+}
+
+.celebration-prose ul,
+.celebration-prose ol {
+	padding-left: 1.4em;
+}
+
+.celebration-prose li + li {
+	margin-top: 0.35em;
+}
+
+.celebration-prose a {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-decoration-color: color-mix(
+		in srgb,
+		var(--color-primary) 40%,
+		transparent
+	);
+	text-underline-offset: 0.15em;
+}
+
+.celebration-prose__empty {
+	color: var(--color-text-tertiary);
+	font-style: italic;
+}
+
+/* ===== Linked saints ===== */
+
+.celebration-saints {
+	margin-top: 2.5rem;
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem) 2.25rem;
+	border-top: 1px solid var(--color-border-light);
+	background: var(--color-bg-secondary);
+}
+
+.celebration-saints__title {
+	margin: 0 0 1.1rem;
+	color: var(--color-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.celebration-saints__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 0.85rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.saint-chip {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	padding: 0.6rem;
+	border: 1px solid var(--color-border-light);
+	border-radius: 0.9rem;
+	background: var(--color-bg-component);
+	transition:
+		transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+		border-color 220ms ease;
+}
+
+.saint-chip:hover {
+	transform: translateY(-2px);
+	border-color: var(--celebration-accent);
+}
+
+.saint-chip__thumb {
+	flex: none;
+	width: 52px;
+	height: 52px;
+	overflow: hidden;
+	border-radius: 0.6rem;
+	background: linear-gradient(
+		160deg,
+		var(--color-bg-tertiary),
+		var(--color-bg-quaternary)
+	);
+}
+
+.saint-chip__thumb img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 15%;
+}
+
+.saint-chip__body {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	min-width: 0;
 }
 
-/*Error and no celebration messages*/
-.saint-of-the-day-layout .saint-of-the-day-card .error-message {
-	font-size: 1.2rem;
-	color: var(--color-error, #ff4d4f);
-	text-align: center;
-	margin-top: 2rem;
+.saint-chip__name {
+	overflow: hidden;
+	font-weight: 500;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--color-text-primary);
 }
 
-.saint-of-the-day-layout .saint-of-the-day-card .no-celebration-message {
-	font-size: 1.2rem;
-	color: #777;
+.saint-chip__century {
+	color: var(--color-text-tertiary);
+	font-size: 0.82rem;
+}
+
+.celebration-saints__empty {
+	margin: 0;
+	color: var(--color-text-tertiary);
+	font-style: italic;
+}
+
+/* ===== States (loading / error / empty) ===== */
+
+.celebration-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	min-height: 360px;
+	padding: 3rem 2rem;
+	border: 1px dashed var(--color-border-medium);
+	border-radius: 1.25rem;
+	color: var(--color-text-secondary);
+	font-size: 1.1rem;
 	text-align: center;
-	margin-top: 2rem;
+	text-wrap: balance;
+}
+
+.celebration-state--error {
+	color: var(--color-error);
+	border-color: color-mix(in srgb, var(--color-error) 40%, transparent);
+}
+
+.celebration-state__detail {
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+}
+
+.celebration-state__date {
+	color: var(--color-text-tertiary);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.celebration-state__date::first-letter {
+	text-transform: uppercase;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 1100px) {
+	.celebration-page {
+		--aside-width: 260px;
+		gap: 1.5rem;
+	}
+}
+
+/* Tablette : on garde l'article large, les latérales passent en dessous en 2 colonnes */
+@media (max-width: 900px) {
+	.celebration-page {
+		grid-template-columns: 1fr 1fr;
+		padding-inline: 1.25rem;
+	}
+
+	.celebration-article {
+		grid-column: 1 / -1;
+		order: -1;
+	}
+
+	.celebration-page__sticky {
+		position: static;
+	}
+}
+
+/* Mobile : tout en une colonne */
+@media (max-width: 600px) {
+	.celebration-page {
+		grid-template-columns: 1fr;
+		padding: calc(var(--header-height) + 1rem) 1rem 3rem;
+		gap: 1.25rem;
+	}
+
+	.celebration-cover {
+		min-height: 60svw;
+	}
+
+	.celebration-prose > p:first-of-type::first-letter {
+		font-size: 2.8em;
+	}
+}
+
+/* ===== Reduced motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+	.saint-chip {
+		transition: none;
+	}
+
+	.saint-chip:hover {
+		transform: none;
+	}
 }

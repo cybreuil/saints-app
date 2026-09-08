@@ -146,7 +146,7 @@ const MiniCalendar = () => {
 	// }, [selectedDate]);
 
 	return (
-		<div className="mini-calendar-container">
+		<div className="panel mini-calendar-container">
 			<div className="mini-calendar-viewport">
 				<div className="mini-calendar-wrapper">
 					<motion.div

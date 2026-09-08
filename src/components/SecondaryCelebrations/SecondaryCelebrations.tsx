@@ -1,65 +1,63 @@
 import "./SecondaryCelebrations.css";
 import type { Celebration } from "../../types/Celebration";
 import { Loader } from "../Loader/Loader";
+import { useLanguage } from "../../hooks/useLanguage";
 
 type SecondaryCelebrationsProps = {
 	secondaryCelebrations: Celebration[] | null;
 	isLoading: boolean;
-	celebrationError: Error | null;
-	calendarError: Error | null;
-	liturgicalSeasonColor: string | null;
+	error: Error | null;
+	fallbackColor: string;
 };
 
-
-// A renommer en celebrations empechées ?? secondary additional alternative etc; need to choose
 const SecondaryCelebrations = ({
 	secondaryCelebrations,
 	isLoading,
-	celebrationError,
-	calendarError,
-	liturgicalSeasonColor,
+	error,
+	fallbackColor,
 }: SecondaryCelebrationsProps) => {
+	const { t } = useLanguage();
 
 	return (
-		<div className="secondary-celebrations-container">
-			{isLoading ? (
-				<Loader />
-			): calendarError ? (
-				<p className="secondary-celebrations-error">Error loading calendar: {calendarError.message}</p>
-			) : celebrationError ? (
-				<p className="secondary-celebrations-error">Error loading additional celebrations: {celebrationError.message}</p>
-			) : secondaryCelebrations && secondaryCelebrations.length > 0 ? (
-				<div className="secondary-celebrations">
-					<h3>Other Celebrations</h3>
-					<ul>
-					{secondaryCelebrations.map((celebration) => (
+		<section className="panel secondary-celebrations">
+			<h3 className="panel__title">
+				{t("celebration.otherCelebrations")}
+			</h3>
 
-							<li key={celebration.id}>
-								<span
-									style={{
-										display: "inline-block",
-										width: "8px",
-										height: "8px",
-										borderRadius: "50%",
-										backgroundColor:
-													celebration.liturgical_color_hex ||
-													liturgicalSeasonColor ||
-													"#111111",
-										border: "1px solid #111111",
-										marginRight: "8px",
-									}}
-								/>
-								{celebration.feast_name}
-							</li>
-						))}
-					</ul>
-				</div>
+			{isLoading ? (
+				<Loader size={32} />
+			) : error ? (
+				<p className="panel__error">{t("celebration.loadingError")}</p>
+			) : !secondaryCelebrations?.length ? (
+				<p className="panel__empty">
+					{t("celebration.noOtherCelebrations")}
+				</p>
 			) : (
-				<div className="no-secondary-celebrations">
-					<p>No other celebrations for this date.</p>
-				</div>
+				<ul className="secondary-celebrations__list">
+					{secondaryCelebrations.map((c) => (
+						<li key={c.id} className="secondary-celebrations__item">
+							<span
+								className="secondary-celebrations__dot"
+								style={{
+									background:
+										c.liturgical_color_hex || fallbackColor,
+								}}
+							/>
+							<span className="secondary-celebrations__body">
+								<span className="secondary-celebrations__name">
+									{c.feast_name}
+								</span>
+								{c.rank_label && (
+									<span className="secondary-celebrations__rank">
+										{c.rank_label}
+									</span>
+								)}
+							</span>
+						</li>
+					))}
+				</ul>
 			)}
-		</div>
+		</section>
 	);
 };
 

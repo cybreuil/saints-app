@@ -13,9 +13,12 @@
 	"celebration": {
 		"invalidDate": "Date invalide. Veuillez choisir une date correcte.",
 		"noCelebration": "Aucune célébration trouvée pour cette date.",
+		"saints": "Saints du jour",
 		"noSaint": "Aucun saint associé à cette célébration.",
 		"loadingError": "Erreur lors du chargement de la célébration.",
-		"noDescription": "Aucune description disponible pour cette célébration."
+		"noDescription": "Aucune description disponible pour cette célébration.",
+		"otherCelebrations": "Autres célébrations du jour",
+		"noOtherCelebrations": "Aucune autre célébration"
 	},
 
 	"calendar": {
@@ -38,7 +41,8 @@
 	"liturgical": {
 		"color": "Couleur liturgique",
 		"rank": "Rang liturgique",
-		"season": "Saison liturgique"
+		"season": "Saison liturgique",
+		"daysLeft": "jours restants"
 	},
 
 	"credits": {

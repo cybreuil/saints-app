@@ -1,0 +1,37 @@
+/* Carte latérale standard : bordure fine, titre en petites capitales.
+   Utilisée par MiniCalendar, CalendarSelector, LiturgicalSeason, SecondaryCelebrations. */
+
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+	padding: 1.1rem 1.25rem 1.25rem;
+	border: 1px solid var(--color-border-light);
+	border-radius: 1.25rem;
+	background: var(--color-bg-component);
+	transition:
+		background var(--transition-normal),
+		border-color var(--transition-normal);
+}
+
+.panel__title {
+	margin: 0;
+	color: var(--color-text-tertiary);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.panel__empty {
+	margin: 0;
+	color: var(--color-text-tertiary);
+	font-size: 0.9rem;
+	font-style: italic;
+}
+
+.panel__error {
+	margin: 0;
+	color: var(--color-error);
+	font-size: 0.9rem;
+}

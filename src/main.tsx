@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
 import "./styles/reset.css";
 import "./styles/variables.css";
+import "./styles/panel.css";
 import "./index.css";
 import { CalendarProvider } from "./contexts/CalendarProvider.tsx";
 import { LanguageProvider } from "./contexts/LanguageProvider.tsx";
