@@ -25,12 +25,23 @@ const Header = () => {
 	}, []);
 
 	// On ecoute le scroll pour ajouter une classe "scrolled" au header lorsque l'utilisateur a scrollé de plus de 50px
+	// Update : better scroll performance with requestAnimationFrame and ticking
 	useEffect(() => {
+		let ticking = false;
+
 		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 50);
+			if (ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				const newScrolled = window.scrollY > 50;
+				setIsScrolled((prev) =>
+					prev === newScrolled ? prev : newScrolled,
+				);
+				ticking = false;
+			});
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
