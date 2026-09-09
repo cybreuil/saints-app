@@ -40,6 +40,13 @@ const rise = {
 	show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
+// Inverse de `rise` : annule le déplacement du parent pour que l'image
+// reste fixe pendant que le cadre glisse par-dessus
+// const counterRise = {
+// 	hidden: { y: -18 },
+// 	show: { y: 0, transition: { duration: 0.6, ease: EASE } },
+// };
+
 /* ===== Small presentational pieces ===== */
 
 function StateBlock({
