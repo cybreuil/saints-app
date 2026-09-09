@@ -42,7 +42,8 @@
 		"color": "Couleur liturgique",
 		"rank": "Rang liturgique",
 		"season": "Saison liturgique",
-		"daysLeft": "jours restants"
+		"daysLeft_one": "{count} jour restant",
+		"daysLeft_other": "{count} jours restants"
 	},
 
 	"credits": {

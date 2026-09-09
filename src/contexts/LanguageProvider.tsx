@@ -3,6 +3,7 @@ import {
 	type LanguageCode,
 	type LanguageContextValue,
 	type LanguageProviderProps,
+	type TranslationVars,
 } from "../types/Language";
 import { LanguageContext } from "./LanguageContext";
 
@@ -18,10 +19,7 @@ const TRANSLATIONS = {
 };
 
 // Function to get the translation for a given key and language code
-const getTranslation = (
-	translations: object,
-	key: string,
-): string => {
+const getTranslation = (translations: object, key: string): string => {
 	const keys = key.split(".");
 	let value: unknown = translations;
 
@@ -40,6 +38,35 @@ const getTranslation = (
 	return typeof value === "string" ? value : key;
 };
 
+// Le latin n'est pas dans CLDR : Intl.PluralRules renverrait "other" pour tout
+const pluralCategory = (languageCode: LanguageCode, count: number): string => {
+	if (Intl.PluralRules.supportedLocalesOf(languageCode).length === 0) {
+		return count === 1 ? "one" : "other";
+	}
+	return new Intl.PluralRules(languageCode).select(count);
+};
+
+const translate = (
+	languageCode: LanguageCode,
+	key: string,
+	vars?: TranslationVars,
+): string => {
+	const translations = TRANSLATIONS[languageCode];
+
+	// Si `count` est fourni, on cherche d'abord la clé pluralisée (key_one, key_other…)
+	let str: string | undefined;
+	if (typeof vars?.count === "number") {
+		const pluralKey = `${key}_${pluralCategory(languageCode, vars.count)}`;
+		const found = getTranslation(translations, pluralKey);
+		if (found !== pluralKey) str = found;
+	}
+	str ??= getTranslation(translations, key);
+
+	if (!vars) return str;
+	return str.replace(/\{(\w+)\}/g, (match, name) =>
+		name in vars ? String(vars[name]) : match,
+	);
+};
 
 const LANGUAGES: Record<LanguageCode, string> = {
 	en: "English",
@@ -56,11 +83,11 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
 		}
 
 		const browserLanguages = navigator.languages.map(
-			(lang) => lang.split("-")[0]
+			(lang) => lang.split("-")[0],
 		);
 
 		const detectedLanguage = browserLanguages.find(
-			(lang) => lang in LANGUAGES
+			(lang) => lang in LANGUAGES,
 		);
 
 		return (detectedLanguage as LanguageCode) ?? "en";
@@ -73,7 +100,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
 				localStorage.setItem("language_code", lang);
 				setLanguageCode(lang);
 			},
-			t: (key: string) => getTranslation(TRANSLATIONS[languageCode], key),
+			t: (key, vars) => translate(languageCode, key, vars),
 		}),
 		[languageCode],
 	);

@@ -75,7 +75,9 @@ const LiturgicalSeason = ({ season, date }: LiturgicalSeasonProps) => {
 							<div className="liturgical-season__range">
 								<span>{range.startLabel}</span>
 								<span className="liturgical-season__left">
-									{range.daysLeft} {t("liturgical.daysLeft")}
+									{t("liturgical.daysLeft", {
+										count: range.daysLeft,
+									})}
 								</span>
 								<span>{range.endLabel}</span>
 							</div>

@@ -42,7 +42,8 @@
 		"color": "Color Liturgicus",
 		"rank": "Gradus Liturgicus",
 		"season": "Tempus Liturgicum",
-		"daysLeft": "dies reliqui"
+		"daysLeft_one": "{count} dies reliquus",
+		"daysLeft_other": "{count} dies reliqui"
 	},
 
 	"credits": {
