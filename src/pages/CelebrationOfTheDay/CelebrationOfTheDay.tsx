@@ -325,17 +325,13 @@ const CelebrationOfTheDay: React.FC = () => {
 													<span className="saint-chip__name">
 														{saint.saint_name}
 													</span>
-													{saint.saint_century && (
-														<span className="saint-chip__century">
+													{saint.saint_life_label && (
+														<span className="saint-chip__life-label">
 															{
-																saint.saint_century
+																saint.saint_life_label
 															}
 														</span>
 													)}
-													{/* WIP century*/}
-													<span className="saint-chip__name">
-														{saint.saint_name}
-													</span>
 												</span>
 											</li>
 										))}

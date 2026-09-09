@@ -17,6 +17,7 @@ export interface SaintApi {
 	// Name traduit depuis saint_translations
 	name: string;
 	century?: number;
+	life_label?: string;
 	image_url: string;
 }
 export interface SaintsApiResponse {

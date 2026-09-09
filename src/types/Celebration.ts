@@ -1,23 +1,27 @@
 // Full API response type for celebrations, including context and liturgical season information
 export type CelebrationApiResponse = {
-	context: {
-		year: number;
-		month: number;
-		day: number;
-		language_code: string;
-		calendar_code: string;
-	};
-	liturgical_season: {
-		code: string;
-		"segment-index": number;
-		label: string;
-		start: string;
-		end: string;
-		color_code: string;
-		color_label: string;
-		hex_color: string;
-	};
+	context: CelebrationContext;
+	liturgical_season: LiturgicalSeasonFromCelebration;
 	celebrations: Celebration[];
+};
+
+export type CelebrationContext = {
+	year: number;
+	month: number;
+	day: number;
+	language_code: string;
+	calendar_code: string;
+};
+
+export type LiturgicalSeasonFromCelebration = {
+	code: string;
+	segment_index: number;
+	label: string;
+	start: string;
+	end: string;
+	color_code: string;
+	color_label: string;
+	hex_color: string;
 };
 
 export type Celebration = {
@@ -41,6 +45,7 @@ export type Saint = {
 	saint_id: number;
 	saint_slug: string;
 	saint_name: string;
-	saint_century: string;
+	saint_century?: string;
+	saint_life_label?: string;
 	saint_image_url: string;
 };

@@ -1,12 +1,10 @@
 import { useMemo } from "react";
-import type { CelebrationApiResponse } from "../../types/Celebration";
+import type { LiturgicalSeasonFromCelebration } from "../../types/Celebration";
 import { useLanguage } from "../../hooks/useLanguage";
 import "./LiturgicalSeason.css";
 
-type Season = CelebrationApiResponse["liturgical_season"];
-
 interface LiturgicalSeasonProps {
-	season: Season | null;
+	season: LiturgicalSeasonFromCelebration | null;
 	/** Date affichée (YYYY-MM-DD), pour situer la progression dans le temps liturgique */
 	date: string;
 }
@@ -77,9 +75,7 @@ const LiturgicalSeason = ({ season, date }: LiturgicalSeasonProps) => {
 							<div className="liturgical-season__range">
 								<span>{range.startLabel}</span>
 								<span className="liturgical-season__left">
-									{t("liturgical.daysLeft", {
-										count: range.daysLeft,
-									})}
+									{range.daysLeft} {t("liturgical.daysLeft")}
 								</span>
 								<span>{range.endLabel}</span>
 							</div>

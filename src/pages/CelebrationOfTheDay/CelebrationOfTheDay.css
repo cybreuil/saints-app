@@ -366,7 +366,7 @@
 	color: var(--color-text-primary);
 }
 
-.saint-chip__century {
+.saint-chip__life-label {
 	color: var(--color-text-tertiary);
 	font-size: 0.82rem;
 }
