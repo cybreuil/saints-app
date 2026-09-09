@@ -2,3 +2,4 @@
 
 export * from "./CalendarLogo";
 export * from "./ResetLogo";
+export * from "./GithubLogo";

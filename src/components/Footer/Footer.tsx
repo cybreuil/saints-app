@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
-import { useIsBottom } from "../../hooks/useIsBottom";
-import { useWindowWidth } from "../../hooks/useWindowWidth";
+// import { useIsBottom } from "../../hooks/useIsBottom";
 import { TRANSITIONS } from "../../styles/theme";
 import "./Footer.css";
 import { useLanguage } from "../../hooks/useLanguage";
+import { GithubLogo } from "../../icons";
 
 const Footer = () => {
-	const {t} = useLanguage();
-	const isBottom = useIsBottom(10);
-	const windowWidth = useWindowWidth();
-
+	const { t } = useLanguage();
+	// const isBottom = useIsBottom(10);
 
 	return (
 		<motion.footer
@@ -17,12 +15,10 @@ const Footer = () => {
 			initial={{
 				y: 50,
 				opacity: 0,
-				width: "90%",
 			}}
 			animate={{
 				y: 0,
 				opacity: 1,
-				width: windowWidth > 1600 ? "1440px" : "90%",
 			}}
 			transition={TRANSITIONS.normal}
 		>
@@ -33,7 +29,8 @@ const Footer = () => {
 				transition={TRANSITIONS.slower}
 			>
 				<p>
-					© {new Date().getFullYear()} Saints-App. {t("credits.copyright")}
+					© {new Date().getFullYear()} Saints-App.{" "}
+					{t("credits.copyright")}
 				</p>
 				<p className="footer-credit">
 					<a
@@ -41,6 +38,7 @@ const Footer = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
+						<GithubLogo fill="currentColor" />
 						Github
 					</a>
 				</p>

@@ -1,5 +1,6 @@
 .footer {
 	height: var(--footer-height);
+	width: min(90%, 1440px);
 	background-color: #f8f9fa;
 	font-size: 0.9rem;
 	color: #6c757d;
@@ -18,4 +19,8 @@
 }
 .footer a {
 	color: #6c757d;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
 }
