@@ -56,3 +56,4 @@ should i keep languages on front hardcoded or api to fetch list ? might be bette
 add switch on secondary celebration on click with just a state change + fix days left season
 
 - fix sticky
+-   - fix image sliding (overflow ?) on celebration card
