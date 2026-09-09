@@ -332,6 +332,10 @@ const CelebrationOfTheDay: React.FC = () => {
 															}
 														</span>
 													)}
+													{/* WIP century*/}
+													<span className="saint-chip__name">
+														{saint.saint_name}
+													</span>
 												</span>
 											</li>
 										))}
