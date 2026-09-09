@@ -23,7 +23,9 @@
 }
 
 /* ===== Sidebars ===== */
-
+.celebration-page__aside {
+	height: 100%;
+}
 .celebration-page__sticky {
 	position: sticky;
 	top: var(--sticky-top);

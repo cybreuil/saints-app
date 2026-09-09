@@ -261,11 +261,11 @@ const CelebrationOfTheDay: React.FC = () => {
 									<dd>
 										{celebration.rank_label ||
 											t("common.unknown")}
-										{celebration.is_optional && (
+										{/*{celebration.is_optional && (
 											<span className="celebration-fact__note">
 												{t("celebration.optional")}
 											</span>
-										)}
+										)}*/}
 									</dd>
 								</div>
 								<div className="celebration-fact">
