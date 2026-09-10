@@ -187,16 +187,34 @@ const Header = () => {
 					</Link>
 
 					<nav className="header__nav" aria-label={t("nav.main")}>
-						{NAV_ITEMS.map(({ to, labelKey, end }) => (
-							<NavLink
-								key={to}
-								to={to}
-								end={end}
-								className="header__link"
-							>
-								{t(labelKey)}
-							</NavLink>
-						))}
+						<nav className="header__nav" aria-label={t("nav.main")}>
+							{NAV_ITEMS.map(({ to, labelKey, end }) => (
+								<NavLink
+									key={to}
+									to={to}
+									end={end}
+									className="header__link"
+								>
+									{({ isActive }) => (
+										<>
+											{t(labelKey)}
+
+											{isActive && (
+												<motion.span
+													className="header__active-dot"
+													layoutId="header-active-dot"
+													transition={{
+														type: "spring",
+														stiffness: 500,
+														damping: 35,
+													}}
+												/>
+											)}
+										</>
+									)}
+								</NavLink>
+							))}
+						</nav>
 					</nav>
 					<div className="header__tools">
 						<div className="header__tools-desktop">

@@ -165,9 +165,7 @@
 	opacity: 1;
 }
 
-/* Point doré sous l'entrée active */
-.header__link::after {
-	content: "";
+.header__active-dot {
 	position: absolute;
 	left: 50%;
 	bottom: -4px;
@@ -175,16 +173,7 @@
 	height: 4px;
 	border-radius: 50%;
 	background: var(--color-secondary);
-	opacity: 0;
-	transform: translate(-50%, 6px) scale(0);
-	transition:
-		transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-		opacity 260ms ease;
-}
-
-.header__link.active::after {
-	opacity: 1;
-	transform: translate(-50%, 0) scale(1);
+	transform: translateX(-50%);
 }
 
 /* ===== Tools (language, theme, burger) ===== */
