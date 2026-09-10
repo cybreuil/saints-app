@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
 import { CalendarSelector } from "../../components/CalendarSelector/CalendarSelector";
-import { LiturgicalColor } from "../../components/LiturgicalColor/LiturgicalColor";
+// import { LiturgicalColor } from "../../components/LiturgicalColor/LiturgicalColor";
 import { MiniCalendar } from "../../components/MiniCalendar/MiniCalendar";
-import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
+// import { LiturgicalRank } from "../../components/LiturgicalRank/LiturgicalRank";
 import { LiturgicalSeason } from "../../components/LiturgicalSeason/LiturgicalSeason";
 import { SecondaryCelebrations } from "../../components/SecondaryCelebrations/SecondaryCelebrations";
 import { Loader } from "../../components/Loader/Loader";

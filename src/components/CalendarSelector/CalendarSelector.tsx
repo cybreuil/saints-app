@@ -6,9 +6,10 @@ import { flattenCalendars } from "../../utils/flattenCalendars";
 import { useLanguage } from "../../hooks/useLanguage";
 
 const CalendarSelector = () => {
+	const { languageCode, t } = useLanguage();
+
 	const { calendar, setCalendar } = useCalendar();
-	const { calendars, loading, error } = useCalendars();
-	const { t } = useLanguage();
+	const { calendars, loading, error } = useCalendars(languageCode);
 
 	const options = useMemo(() => flattenCalendars(calendars), [calendars]);
 

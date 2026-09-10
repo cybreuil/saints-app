@@ -66,8 +66,8 @@
 
 .celebration-cover__image {
 	position: absolute;
-	/*Value of rise in tsx motion : 18px*/
 	width: 100%;
+	/*Value of rise in tsx motion : 18px*/
 	top: -18px;
 	height: calc(100% + 18px);
 	object-fit: cover;
