@@ -36,8 +36,15 @@ const articleGroup = {
 };
 
 const rise = {
+	// We use inset of 18px in css to avoid clipping the text when it moves up
+	// So if we change this value, we must also change the inset in CelebrationOfTheDay.css
 	hidden: { opacity: 0, y: 18 },
 	show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+};
+
+const coverText = {
+	hidden: {},
+	show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 // Inverse de `rise` : annule le déplacement du parent pour que l'image
@@ -205,20 +212,20 @@ const CelebrationOfTheDay: React.FC = () => {
 							exit={{ opacity: 0, transition: { duration: 0.2 } }}
 						>
 							{/* --- Cover --- */}
-							<motion.header
+							<header
 								className={`celebration-cover${
 									coverSaint?.saint_image_url
 										? ""
 										: " celebration-cover--no-image"
 								}`}
-								variants={rise}
 							>
 								{coverSaint?.saint_image_url && (
-									<img
+									<motion.img
 										className="celebration-cover__image"
 										src={coverSaint.saint_image_url}
 										alt={coverSaint.saint_name}
 										decoding="async"
+										variants={rise}
 									/>
 								)}
 								<div
@@ -226,8 +233,14 @@ const CelebrationOfTheDay: React.FC = () => {
 									aria-hidden="true"
 								/>
 
-								<div className="celebration-cover__text">
-									<span className="celebration-cover__eyebrow">
+								<motion.div
+									className="celebration-cover__text"
+									variants={coverText}
+								>
+									<motion.span
+										className="celebration-cover__eyebrow"
+										variants={rise}
+									>
 										<time dateTime={date}>
 											{formattedDate}
 										</time>
@@ -237,12 +250,15 @@ const CelebrationOfTheDay: React.FC = () => {
 												{celebration.rank_label}
 											</>
 										)}*/}
-									</span>
-									<h1 className="celebration-cover__title">
+									</motion.span>
+									<motion.h1
+										className="celebration-cover__title"
+										variants={rise}
+									>
 										{celebration.feast_name}
-									</h1>
-								</div>
-							</motion.header>
+									</motion.h1>
+								</motion.div>
+							</header>
 
 							{/* --- Meta chips --- */}
 							<motion.dl
