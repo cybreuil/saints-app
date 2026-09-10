@@ -5,6 +5,16 @@
 		"error": "Error est"
 	},
 
+	"nav": {
+		"main": "Navigatio Principalis",
+		"home": "Domus",
+		"celebration": "Celebratio Diei",
+		"saints": "Sancti",
+		"search": "Quaerere",
+		"about": "De nobis",
+		"contact": "Contactus"
+	},
+
 	"hero": {
 		"eyebrow": "Sancti, Celebrationes et Opera",
 		"description": "Vitas, historias atque opera sanctis per saecula dedicata explora."

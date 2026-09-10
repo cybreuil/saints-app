@@ -5,6 +5,16 @@
 		"error": "An error occurred"
 	},
 
+	"nav": {
+		"main": "Main navigation",
+		"home": "Home",
+		"celebration": "Celebration of the Day",
+		"saints": "Saints",
+		"search": "Search",
+		"about": "About",
+		"contact": "Contact"
+	},
+
 	"hero": {
 		"eyebrow": "Saints, Celebrations and Works",
 		"description": "Explore the lives, stories, and works devoted to the saints throughout the centuries."

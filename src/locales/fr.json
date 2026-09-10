@@ -5,6 +5,16 @@
 		"error": "Une erreur est survenue"
 	},
 
+	"nav": {
+		"main": "Navigation principale",
+		"home": "Accueil",
+		"celebration": "Célébration du jour",
+		"saints": "Saints",
+		"search": "Recherche",
+		"about": "À propos",
+		"contact": "Contact"
+	},
+
 	"hero": {
 		"eyebrow": "Saints, célébrations et œuvres",
 		"description": "Explorez les vies, les histoires et les œuvres consacrées aux saints à travers les siècles."

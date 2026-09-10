@@ -1,74 +1,26 @@
-/*We are not using it right now*/
-/*.header-gap-mask {
-	position: fixed;
-	width: 100vw;
-	z-index: 6; between header and content
-	pointer-events: none;
-	backdrop-filter: blur(8px);
-}*/
-
-/*Plus besoin au scroll, mais finalement je le garde a tout le temps*/
-/*.header-gap-mask.scrolled {
-	backdrop-filter: none;
-}*/
+/* =========================================================
+   HEADER
+   Barre fixe pleine largeur. Transparente sur le hero, elle devient une
+   surface translucide et compacte au scroll, et s'escamote pendant la
+   lecture (scroll vers le bas) pour réapparaître dès qu'on remonte.
+   Le contenu est aligné sur le conteneur global (--container-width).
+   ========================================================= */
 
 .header {
 	--header-fg: var(--color-text-primary);
+	--header-current-height: var(--header-height);
+
 	position: fixed;
-	z-index: 8;
-	/*On utilise le motion*/
-	/*background-color: var(--color-primary-light);*/
-
-	/*Centrage*/
-	left: 0;
-	right: 0;
-	margin: auto;
-
-	height: var(--header-height);
+	inset: 0 0 auto;
+	z-index: 20;
 	color: var(--header-fg);
-
-	width: 100%;
-	border: none;
-
-	border: 1px solid transparent;
-
-	overflow: hidden;
-	/*display: flex;
-	flex-direction: column;*/
-
+	border-bottom: 1px solid transparent;
 	transition:
 		transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-		border-radius 320ms ease,
 		border-color 320ms ease,
 		color 320ms ease,
-		box-shadow 320ms ease,
-		width 320ms ease;
+		box-shadow 320ms ease;
 }
-
-/*Old style menu Opening*/
-/*.header::before {
-	content: "";
-	position: absolute;
-	top: var(--header-height);
-	height: 1px;
-	left: 10%;
-	right: 10%;
-	background: var(--color-text-primary);
-	opacity: 0;
-	transform: translateX(-50%);
-	Plus Rapide a la disparition
-	transition:
-		opacity 220ms ease,
-		transform 220ms ease;
-}
-.header.open::before {
-	opacity: 0.6;
-	transform: translateX(0);
-	transition:
-		Apparition lente à l'ouverture
-		opacity 2220ms ease,
-		transform 1520ms ease;
-}*/
 
 /* Surface translucide : un pseudo-élément dont on anime l'opacité */
 .header::before {
@@ -84,11 +36,9 @@
 }
 
 .header--scrolled {
-	border-radius: 1rem;
-	border-color: var(--color-border-light);
+	--header-current-height: var(--header-height-compact);
+	border-bottom-color: var(--color-border-light);
 	box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
-	transform: translateY(1rem);
-	width: min(90%, 1440px);
 }
 
 .header--scrolled::before {
@@ -103,15 +53,22 @@
 	transform: translateY(calc(-100% - 1px));
 }
 
-.header__main {
-	height: 100%;
+/* ===== Inner layout ===== */
+
+.header__inner {
 	display: grid;
-	padding: 0.5rem 1rem;
-	grid-template-columns: 1fr auto 1fr;
+	grid-template-columns: auto 1fr auto;
 	align-items: center;
+	gap: 1.5rem;
+	width: var(--container-width);
+	height: var(--header-current-height);
+	margin: 0 auto;
+	transition: height 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* ===== Brand ===== */
+
 .header__brand {
-	height: 100%;
 	display: inline-flex;
 	align-items: center;
 	gap: 0.75rem;
@@ -119,14 +76,19 @@
 	text-decoration: none;
 }
 
+.header__brand:hover {
+	color: inherit;
+}
+
 .header__logo {
 	display: block;
-	height: 100%;
+	height: 2.5rem;
 	aspect-ratio: 1;
 	transition: height 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .header--scrolled .header__logo {
-	height: 3rem;
+	height: 2rem;
 }
 
 .header__wordmark {
