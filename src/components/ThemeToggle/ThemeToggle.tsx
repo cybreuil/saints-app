@@ -1,11 +1,8 @@
-// import { useTheme } from "../../context/ThemeContext";
-// import { LightModeLogo } from "../../icons/mainMenu/LightModeIcon";
-//import { DarkModeLogo } from "../../icons/mainMenu/DarkModeIcon";
 import "./ThemeToggle.css";
 import { useTheme } from "../../hooks/useTheme";
+import { LightModeIcon, DarkModeIcon } from "../../icons";
 
 export const ThemeToggle = () => {
-
 	const { theme, toggleTheme } = useTheme();
 
 	return (
@@ -17,8 +14,12 @@ export const ThemeToggle = () => {
 					onChange={toggleTheme}
 				/>
 				<span className="slider">
-					<span className="slider-icon sun">☀️</span>
-					<span className="slider-icon moon">🌙</span>
+					<span className="slider-icon sun">
+						<LightModeIcon />
+					</span>
+					<span className="slider-icon moon">
+						<DarkModeIcon />
+					</span>
 				</span>
 			</label>
 		</div>

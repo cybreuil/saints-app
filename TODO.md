@@ -57,3 +57,5 @@ add switch on secondary celebration on click with just a state change + fix days
 
 - fix sticky
 -   - fix image sliding (overflow ?) on celebration card
+
+- should fix dot layout since changing page means scrolling to top and dot animation bugs

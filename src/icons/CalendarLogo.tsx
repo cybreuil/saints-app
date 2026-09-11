@@ -1,12 +1,15 @@
 import React from "react";
+import type { IconProps } from "../types/IconProps";
 
-type Props = React.SVGProps<SVGSVGElement> & {
-	title?: string | null;
-};
-
-const CalendarLogo = React.forwardRef<SVGSVGElement, Props>(
+const CalendarLogo = React.forwardRef<SVGSVGElement, IconProps>(
 	function CalendarIcon(
-		{ title = null, width = 24, height = 24, fill = "#e3e3e3", ...props },
+		{
+			title = null,
+			width = 24,
+			height = 24,
+			fill = "currentColor",
+			...props
+		},
 		ref,
 	) {
 		const ariaProps = title ? { role: "img" } : { "aria-hidden": true };
