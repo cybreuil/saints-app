@@ -1,7 +1,7 @@
 import "./Header.css";
 import { Logo } from "../Logo/Logo";
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link, useLocation, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { TRANSITIONS, EASINGS } from "../../styles/theme";
 import { useState, useEffect } from "react";
 import { BurgerIcon } from "../BurgerIcon/BurgerIcon";
@@ -9,8 +9,6 @@ import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { LanguageDropDown } from "../LanguageDropDown/LanguageDropDown";
 import type { NavItem } from "../../types/NavItem";
 import { useLanguage } from "../../hooks/useLanguage";
-import { NavLink } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS: NavItem[] = [
 	{ to: "/", labelKey: "nav.home", end: true },
@@ -116,20 +114,20 @@ const Header = () => {
 
 	// Not used right now
 	// While the menu is open: lock the page scroll and close on Escape
-	// useEffect(() => {
-	// 	if (!isMenuOpen) return;
+	useEffect(() => {
+		if (!isMenuOpen) return;
 
-	// 	document.body.classList.add("no-scroll");
-	// 	const onKeyDown = (e: KeyboardEvent) => {
-	// 		if (e.key === "Escape") setIsMenuOpen(false);
-	// 	};
-	// 	window.addEventListener("keydown", onKeyDown);
+		document.body.classList.add("no-scroll");
+		const onKeyDown = (e: KeyboardEvent) => {
+			if (e.key === "Escape") setIsMenuOpen(false);
+		};
+		window.addEventListener("keydown", onKeyDown);
 
-	// 	return () => {
-	// 		document.body.classList.remove("no-scroll");
-	// 		window.removeEventListener("keydown", onKeyDown);
-	// 	};
-	// }, [isMenuOpen]);
+		return () => {
+			document.body.classList.remove("no-scroll");
+			window.removeEventListener("keydown", onKeyDown);
+		};
+	}, [isMenuOpen]);
 
 	// At the top of the home page the bar sits on the dark hero: light text, no surface
 	const isOnHero = isHomePage && !isScrolled && !isMenuOpen;
@@ -187,34 +185,32 @@ const Header = () => {
 					</Link>
 
 					<nav className="header__nav" aria-label={t("nav.main")}>
-						<nav className="header__nav" aria-label={t("nav.main")}>
-							{NAV_ITEMS.map(({ to, labelKey, end }) => (
-								<NavLink
-									key={to}
-									to={to}
-									end={end}
-									className="header__link"
-								>
-									{({ isActive }) => (
-										<>
-											{t(labelKey)}
+						{NAV_ITEMS.map(({ to, labelKey, end }) => (
+							<NavLink
+								key={to}
+								to={to}
+								end={end}
+								className="header__link"
+							>
+								{({ isActive }) => (
+									<>
+										{t(labelKey)}
 
-											{isActive && (
-												<motion.span
-													className="header__active-dot"
-													layoutId="header-active-dot"
-													transition={{
-														type: "spring",
-														stiffness: 500,
-														damping: 35,
-													}}
-												/>
-											)}
-										</>
-									)}
-								</NavLink>
-							))}
-						</nav>
+										{isActive && (
+											<motion.span
+												className="header__active-dot"
+												layoutId="header-active-dot"
+												transition={{
+													type: "spring",
+													stiffness: 500,
+													damping: 35,
+												}}
+											/>
+										)}
+									</>
+								)}
+							</NavLink>
+						))}
 					</nav>
 					<div className="header__tools">
 						<div className="header__tools-desktop">
