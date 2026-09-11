@@ -1,48 +1,95 @@
 import { motion } from "framer-motion";
-// import { useIsBottom } from "../../hooks/useIsBottom";
-import { TRANSITIONS } from "../../styles/theme";
-import "./Footer.css";
-import { useLanguage } from "../../hooks/useLanguage";
+import { Link } from "react-router-dom";
+import { Logo } from "../Logo/Logo";
 import { GithubLogo } from "../../icons";
+import { useLanguage } from "../../hooks/useLanguage";
+import { EASINGS } from "../../styles/theme";
+import "./Footer.css";
+
+const reveal = {
+	hidden: { opacity: 0, y: 24 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.7, ease: EASINGS.out },
+	},
+};
 
 const Footer = () => {
 	const { t } = useLanguage();
-	// const isBottom = useIsBottom(10);
+	const year = new Date().getFullYear();
 
 	return (
 		<motion.footer
 			className="footer"
-			initial={{
-				y: 50,
-				opacity: 0,
-			}}
-			animate={{
-				y: 0,
-				opacity: 1,
-			}}
-			transition={TRANSITIONS.normal}
+			variants={reveal}
+			initial="hidden"
+			whileInView="show"
+			viewport={{ once: true, amount: 0.3 }}
 		>
-			<motion.div
-				className="footer__content"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={TRANSITIONS.slower}
-			>
-				<p>
-					© {new Date().getFullYear()} Saints-App.{" "}
-					{t("credits.copyright")}
-				</p>
-				<p className="footer-credit">
-					<a
-						href="https://github.com/cybreuil"
-						target="_blank"
-						rel="noopener noreferrer"
+			<div className="footer__top">
+				<div className="footer__brand">
+					<Link
+						to="/"
+						className="footer__wordmark"
+						aria-label="Genuflexio"
 					>
-						<GithubLogo fill="currentColor" />
-						Github
-					</a>
+						<span className="footer__logo" aria-hidden="true">
+							<Logo color="currentColor" />
+						</span>
+						Genuflexio
+					</Link>
+					<p className="footer__tagline">{t("footer.tagline")}</p>
+				</div>
+
+				<nav className="footer__nav" aria-label={t("footer.explore")}>
+					<h3 className="footer__heading">{t("footer.explore")}</h3>
+					<ul>
+						<li>
+							<Link to="/celebration">
+								{t("nav.celebration")}
+							</Link>
+						</li>
+						<li>
+							<Link to="/saints">{t("nav.saints")}</Link>
+						</li>
+						<li>
+							<Link to="/search">{t("nav.search")}</Link>
+						</li>
+					</ul>
+				</nav>
+
+				<nav className="footer__nav" aria-label={t("footer.project")}>
+					<h3 className="footer__heading">{t("footer.project")}</h3>
+					<ul>
+						<li>
+							<Link to="/about">{t("nav.about")}</Link>
+						</li>
+						<li>
+							<a
+								href="https://github.com/cybreuil"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<GithubLogo fill="currentColor" />
+								GitHub
+							</a>
+						</li>
+						<li>
+							<a href="mailto:cybreuil@gmail.com">
+								{t("nav.contact")}
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div className="footer__bottom">
+				<p>
+					© {year} Genuflexio. {t("credits.copyright")}
 				</p>
-			</motion.div>
+				<p className="footer__artworks">{t("footer.artworks")}</p>
+			</div>
 		</motion.footer>
 	);
 };

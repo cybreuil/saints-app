@@ -62,5 +62,12 @@
 		"contributors": "Contributors",
 		"supporters": "Supporters",
 		"copyright": "All rights reserved."
+	},
+
+	"footer": {
+		"tagline": "The liturgical calendar and the artistic heritage it inspired, day after day.",
+		"explore": "Explore",
+		"project": "The project",
+		"artworks": "The artworks reproduced are in the public domain."
 	}
 }

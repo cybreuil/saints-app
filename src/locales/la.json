@@ -62,5 +62,12 @@
 		"contributors": "Contributores",
 		"supporters": "Fautores",
 		"copyright": "Omnia iura reservata."
+	},
+
+	"footer": {
+		"tagline": "Calendarium liturgicum et patrimonium artis quod inspiravit, die post diem.",
+		"explore": "Explorare",
+		"project": "Opus",
+		"artworks": "Opera hic reproducta in publico dominio sunt."
 	}
 }

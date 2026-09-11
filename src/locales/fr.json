@@ -62,5 +62,12 @@
 		"contributors": "Contributeurs",
 		"supporters": "Supporters",
 		"copyright": "Tous droits réservés."
+	},
+
+	"footer": {
+		"tagline": "Le calendrier liturgique et le patrimoine artistique qu'il a inspiré, jour après jour.",
+		"explore": "Explorer",
+		"project": "Le projet",
+		"artworks": "Les œuvres reproduites appartiennent au domaine public."
 	}
 }
