@@ -19,7 +19,7 @@
 	align-items: start;
 	width: min(90%, 1440px);
 	margin: 0 auto;
-	padding: calc(var(--header-height) + 2rem) 0rem 4rem;
+	padding: calc(var(--header-height) + 2rem) 0rem 2rem;
 }
 
 /* ===== Sidebars ===== */
@@ -59,7 +59,7 @@
 	align-items: flex-end;
 	min-height: clamp(320px, 48vh, 520px);
 	color: #fff;
-	background: #14110e;
+	background: var(--color-bg-dark);
 	isolation: isolate;
 	overflow: hidden;
 }
@@ -100,8 +100,8 @@
 	min-height: clamp(220px, 32vh, 340px);
 	background: radial-gradient(
 		ellipse at 20% 0%,
-		color-mix(in srgb, var(--celebration-accent) 65%, #14110e),
-		#14110e 70%
+		color-mix(in srgb, var(--celebration-accent) 65%, var(--color-bg-dark)),
+		var(--color-bg-dark) 70%
 	);
 }
 

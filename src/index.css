@@ -16,16 +16,12 @@
 	font-display: swap;
 }
 
+/* Enregistrée pour que la couleur liturgique puisse être interpolée
+   quand on passe d'une fête à l'autre */
 @property --liturgical-color {
 	syntax: "<color>";
 	inherits: true;
 	initial-value: transparent;
-}
-
-@property --color-bg-secondary {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
 }
 
 body {
@@ -38,24 +34,22 @@ body {
 	background: var(--page-background);
 	color: var(--color-text-primary);
 	transition:
-			background var(--transition-very-slow),
-			color var(--transition-very-slow),
-			--liturgical-color var(--transition-very-slow),
-			/*Maybe should add secondary for progressive gradient transition */
-			--color-bg-secondary var(--transition-very-slow);
+		background var(--transition-very-slow),
+		color var(--transition-very-slow),
+		--liturgical-color var(--transition-very-slow);
 }
+
+/* Halo liturgique : visible sans crier, s'estompe vers le bas */
 body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
 	z-index: -1;
-
-	background:
-		linear-gradient(
-			135deg,
-			var(--liturgical-color),
-			var(--color-bg-secondary)
-		);
+	background: radial-gradient(
+		ellipse 80% 60% at 50% 0%,
+		color-mix(in srgb, var(--liturgical-color) 14%, transparent),
+		transparent 70%
+	);
 	opacity: 0;
 	transition: opacity 1.5s ease;
 	pointer-events: none;
@@ -66,10 +60,7 @@ body.celebrationoftheday::before {
 }
 
 /*Body color variations for different pages*/
-/*For celebration we use directly the liturgical color - we inject it with useeffect from page tsx*/
-body.celebrationoftheday {
-	--page-background: transparent;
-}
+
 body.saintslist {
 	--page-background: var(--color-bg-secondary);
 }

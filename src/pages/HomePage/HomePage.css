@@ -241,7 +241,7 @@
 	padding: 0.9rem 2rem;
 	border-radius: 999px;
 	background: var(--color-secondary);
-	color: #1b1510;
+	color: var(--color-on-secondary);
 	font-weight: 600;
 	font-size: 1rem;
 	transition:

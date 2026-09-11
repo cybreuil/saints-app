@@ -222,7 +222,7 @@
 .artwork-hero__action--primary {
 	border-color: transparent;
 	background: var(--color-secondary);
-	color: #1b1510;
+	color: var(--color-on-secondary);
 }
 
 .artwork-hero__action--primary:hover {

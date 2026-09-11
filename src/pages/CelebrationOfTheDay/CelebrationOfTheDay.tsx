@@ -100,7 +100,7 @@ const CelebrationOfTheDay: React.FC = () => {
 	const liturgicalColor =
 		celebration?.liturgical_color_hex ||
 		liturgicalSeason?.hex_color ||
-		"#8b8b8b";
+		"#8b7f73";
 
 	// Expose the liturgical colour to the whole page (body::before gradient, etc.)
 	useEffect(() => {
@@ -387,7 +387,7 @@ const CelebrationOfTheDay: React.FC = () => {
 							isLoading={isCelebrationLoading}
 							error={calendarError ?? celebrationError}
 							fallbackColor={
-								liturgicalSeason?.hex_color || "#777777"
+								liturgicalSeason?.hex_color || "#8b7f73"
 							}
 						/>
 					</motion.div>
