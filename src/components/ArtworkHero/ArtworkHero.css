@@ -9,7 +9,11 @@
 	/*We now consider header is fixed*/
 	height: 100svh;
 	min-height: 600px;
+
+	/*We let overflow on top for phone rebund*/
+	/*WIP*/
 	overflow: hidden;
+
 	isolation: isolate;
 	background: var(--hero-bg);
 	color: #fff;
@@ -205,8 +209,10 @@
 	font-weight: 500;
 	text-decoration: none;
 	cursor: pointer;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+	/*Bug here conflict with scroll filter*/
+	/*WIP DEBUG*/
+	/*backdrop-filter: blur(12px);*/
+	/*-webkit-backdrop-filter: blur(12px);*/
 	transition:
 		background 200ms ease,
 		border-color 200ms ease,
