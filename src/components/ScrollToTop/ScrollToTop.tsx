@@ -1,50 +1,75 @@
 import { useEffect, useState } from "react";
-import { motion, scale } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLanguage } from "../../hooks/useLanguage";
 import "./ScrollToTop.css";
 
+/** Same offset past which the header hides itself: the button takes over */
+const SHOW_THRESHOLD = 500;
+
 const ScrollToTop = () => {
+	const { t } = useLanguage();
+	const reduceMotion = useReducedMotion();
 	const [isVisible, setIsVisible] = useState(false);
 
-	// Fonction pour remonter en haut de page
-	const scrollToTop = () => {
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
-	};
-
-	const toggleVisibility = () => {
-		if (window.pageYOffset > 300) {
-			setIsVisible(true);
-		} else {
-			setIsVisible(false);
-		}
-	};
-
-	// Gestion des événements de défilement
+	// One check per frame at most, and no re-render when the value doesn't change
 	useEffect(() => {
-		window.addEventListener("scroll", toggleVisibility);
-		return () => window.removeEventListener("scroll", toggleVisibility);
+		let ticking = false;
+
+		const update = () => {
+			const next = window.scrollY > SHOW_THRESHOLD;
+			setIsVisible((prev) => (prev === next ? prev : next));
+			ticking = false;
+		};
+
+		const onScroll = () => {
+			if (ticking) return;
+			ticking = true;
+			requestAnimationFrame(update);
+		};
+
+		update();
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+	};
+
 	return (
-		<motion.button
-			className="scroll-button"
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-			transition={{
-				opacity: { duration: 0.3 },
-				y: { duration: 0.3 },
-				scale: { duration: 0.1 },
-			}}
-			whileHover={{ scale: 1.1 }}
-			whileTap={{ scale: 0.9 }}
-			style={{ pointerEvents: isVisible ? "auto" : "none" }}
-			onClick={scrollToTop}
-			aria-label="Retour en haut de page"
-		>
-			<div className="chevron-up"></div>
-		</motion.button>
+		<AnimatePresence>
+			{isVisible && (
+				<motion.button
+					type="button"
+					className="scroll-top"
+					onClick={scrollToTop}
+					aria-label={t("nav.backToTop")}
+					initial={{ opacity: 0, y: 16, scale: 0.9 }}
+					animate={{ opacity: 1, y: 0, scale: 1 }}
+					exit={{ opacity: 0, y: 16, scale: 0.9 }}
+					transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+					whileHover={{ y: -2 }}
+					whileTap={{ scale: 0.94 }}
+				>
+					<svg
+						className="scroll-top__icon"
+						viewBox="0 0 24 24"
+						width="20"
+						height="20"
+						aria-hidden="true"
+					>
+						<path
+							d="M6 14l6-6 6 6"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="1.75"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+				</motion.button>
+			)}
+		</AnimatePresence>
 	);
 };
 

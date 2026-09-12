@@ -1,41 +1,56 @@
-.scroll-button {
+/* =========================================================
+   SCROLL TO TOP — même surface translucide que le header scrollé
+   ========================================================= */
+
+.scroll-top {
 	position: fixed;
-	bottom: 40px;
-	right: 40px;
-	/*Same z-index as header*/
-	z-index: 6;
-	width: 50px;
-	height: 50px;
+	right: clamp(1rem, 3vw, 2.5rem);
+	bottom: clamp(1rem, 3vw, 2.5rem);
+	/* Sous le header (8) et le menu mobile (6) : jamais par-dessus la nav */
+	z-index: 5;
+	display: grid;
+	place-items: center;
+	width: 3rem;
+	height: 3rem;
+	padding: 0;
+	border: 1px solid var(--color-border-light);
 	border-radius: 50%;
-	background: var(--color-primary-light);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	border: var(--color-border-light) 1px solid;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background: color-mix(in srgb, var(--color-bg-primary) 78%, transparent);
+	-webkit-backdrop-filter: blur(16px) saturate(1.4);
+	backdrop-filter: blur(16px) saturate(1.4);
+	color: var(--color-text-primary);
+	box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
 	cursor: pointer;
-	overflow: hidden;
+	transition:
+		border-color 200ms ease,
+		color 200ms ease,
+		box-shadow 200ms ease;
 }
 
-/* Créer une flèche avec des bordures CSS */
-/* Chevron vers le haut */
-.chevron-up {
-	width: 16px;
-	height: 16px;
-	border-style: solid;
-	border-width: 3px 3px 0 0;
-	border-color: var(--color-text-primary);
-	transform: rotate(-45deg) translateZ(0);
-	margin-top: 5px; /* Ajustement pour centrer visuellement */
-	border-radius: 2px;
+.scroll-top:hover,
+.scroll-top:focus-visible {
+	border-color: var(--color-secondary);
+	color: var(--color-secondary);
+	box-shadow: 0 10px 34px rgb(0 0 0 / 0.12);
 }
 
-/* Adaptation pour les petits écrans */
-@media (max-width: 768px) {
-	.scroll-to-top {
-		bottom: 90px;
-		right: 20px;
+.scroll-top:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 3px;
+}
+
+.scroll-top__icon {
+	display: block;
+	transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-top:hover .scroll-top__icon {
+	transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scroll-top,
+	.scroll-top__icon {
+		transition: none;
 	}
 }
