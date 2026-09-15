@@ -5,6 +5,11 @@
 	overflow: hidden;
 }
 
+.mini-calendar-container__disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
 /* Le viewport déborde du padding du panel (1.25rem de chaque côté)
    pour que le masque de fondu latéral aille jusqu'au bord de la carte. */
 .mini-calendar-viewport {

@@ -36,7 +36,7 @@ const get9DaysWithBuffer = (date = new Date()) => {
 	});
 };
 
-const MiniCalendar = () => {
+const MiniCalendar = (disabled?: boolean) => {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -146,7 +146,9 @@ const MiniCalendar = () => {
 	// }, [selectedDate]);
 
 	return (
-		<div className="panel mini-calendar-container">
+		<div
+			className={`panel mini-calendar-container ${disabled ? "panel__error mini-calendar-container__disabled" : ""}`}
+		>
 			<div className="mini-calendar-viewport">
 				<div className="mini-calendar-wrapper">
 					<motion.div
