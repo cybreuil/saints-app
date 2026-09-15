@@ -1,27 +1,151 @@
+/* =========================================================
+   SAINTS PAGE — galerie éditoriale des vies des saints
+   ========================================================= */
+
 .saints-page {
 	flex: 1;
-	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
+	padding: calc(var(--header-height) + 2rem) 0 4rem;
 }
-.saints-page__grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	gap: 1.5rem;
-	padding: 0 2rem;
-	max-width: 1200px;
+
+/* ===== En-tête ===== */
+
+.saints-header {
+	width: min(760px, 100% - 3rem);
 	margin: 0 auto;
-	justify-content: center;
+	padding: clamp(1.5rem, 5vh, 3.5rem) 0 clamp(1rem, 3vh, 2rem);
+	text-align: center;
+}
+
+.saints-header__eyebrow {
+	display: block;
+	margin-bottom: 1.25rem;
+	color: var(--color-secondary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+}
+
+.saints-header__title {
+	margin: 0;
+	font-size: clamp(1.75rem, 4vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-wrap: balance;
+	color: var(--color-text-primary);
+}
+
+.saints-header__text {
+	max-width: 58ch;
+	margin: 1.5rem auto 0;
+	font-size: clamp(1rem, 1.2vw, 1.15rem);
+	line-height: 1.75;
+	color: var(--color-text-secondary);
+	text-wrap: pretty;
+}
+
+.saints-header__meta {
+	margin: 1.75rem 0 0;
+	color: var(--color-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+/* ===== Toolbar (filtres à venir) ===== */
+
+.saints-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: min(1200px, 100% - 3rem);
+	margin: 0 auto;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--color-border-light);
+}
+
+.saints-toolbar__filters {
+	flex: 1;
+	min-height: 1.5rem;
+}
+
+.saints-toolbar__count {
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+	white-space: nowrap;
+}
+
+/* ===== Grille ===== */
+
+.saints-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 1.5rem;
+	width: min(1200px, 100% - 3rem);
+	margin: 0 auto;
 	align-items: stretch;
 }
-.saints-page__toolbar {
+
+/* ===== States ===== */
+
+.saints-state {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
-	gap: 2rem;
-	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem;
+	width: min(1200px, 100% - 3rem);
+	min-height: 360px;
+	margin: 0 auto;
+	padding: 3rem 2rem;
+	border: 1px dashed var(--color-border-medium);
+	border-radius: 1.25rem;
+	color: var(--color-text-secondary);
+	font-size: 1.1rem;
+	text-align: center;
+	text-wrap: balance;
+}
+
+.saints-state--error {
+	color: var(--color-error);
+	border-color: color-mix(in srgb, var(--color-error) 40%, transparent);
+}
+
+.saints-state__detail {
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 600px) {
+	.saints-page {
+		gap: 1.25rem;
+		padding: calc(var(--header-height) + 1rem) 0 3rem;
+	}
+
+	.saints-header,
+	.saints-toolbar,
+	.saints-grid,
+	.saints-state {
+		width: calc(100% - 2rem);
+	}
+
+	.saints-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.9rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.saints-grid {
+		grid-template-columns: 1fr;
+	}
 }

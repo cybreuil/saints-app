@@ -1,228 +1,178 @@
-// import saintsData from "../../data/saints.json";
-import { useEffect, useMemo, useState } from "react";
 import "./SaintsPage.css";
-// import { mockSaints } from "../../mocks/saints.mock.ts";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall.tsx";
 import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
-import { motion, AnimatePresence } from "framer-motion";
-import { TRANSITIONS } from "../../styles/theme.ts";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
-import { SaintsFilters } from "../../components/SaintsFilters/SaintsFilters.tsx";
+import { Loader } from "../../components/Loader/Loader.tsx";
+
 import { useSaints } from "../../hooks/useSaints.ts";
 import { useLanguage } from "../../hooks/useLanguage.ts";
 import type { SaintApi } from "../../types/Saint.ts";
 
-type SortKey = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
-type CenturyFilter = "all" | "unknown" | string;
+/* ===== Animation presets ===== */
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const headerReveal = {
+	hidden: { opacity: 0, y: 24 },
+	show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+};
+
+const gridGroup = {
+	hidden: {},
+	show: { transition: { staggerChildren: 0.06 } },
+	exit: { opacity: 0, transition: { duration: 0.2 } },
+};
+
+const SAINTS_PER_PAGE = 12;
+
+function StateBlock({
+	tone = "neutral",
+	children,
+}: {
+	tone?: "neutral" | "error";
+	children: React.ReactNode;
+}) {
+	return (
+		<motion.div
+			className={`saints-state saints-state--${tone}`}
+			initial={{ opacity: 0, y: 10 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.3 }}
+		>
+			{children}
+		</motion.div>
+	);
+}
 
 export function SaintsPage() {
 	const { getSaintList } = useSaints();
 	const { languageCode } = useLanguage();
-	const [loading, setLoading] = useState(false);
+
 	const [page, setPage] = useState(1);
-	const saintsPerPage = 12; // 3 colonnes x 4 lignes = 12 saints par page -- par defaut
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error | null>(null);
 	const [selectedSaint, setSelectedSaint] = useState<SaintApi | null>(null);
 
-	// States des données
 	const [saintsList, setSaintsList] = useState<SaintApi[]>([]);
 	const [totalCount, setTotalCount] = useState(0);
 	const [totalPages, setTotalPages] = useState(0);
 
-	// const paginatedSaints = mockSaints.slice(
-	// 	(page - 1) * saintsPerPage,
-	// 	page * saintsPerPage,
-	// );
-	// const totalPages = Math.ceil(mockSaints.length / saintsPerPage);
-
-	// Gestion des filtres et tri
-	// const [query, setQuery] = useState("");
-	// const [century, setCentury] = useState<CenturyFilter>("all");
-	// const [sortKey, setSortKey] = useState<SortKey>("name_asc");
-
 	useEffect(() => {
+		let cancelled = false;
+
 		const fetchData = async () => {
 			setLoading(true);
-			await getSaintList({
-				page,
-				perPage: saintsPerPage,
-				languageCode,
-			}).then((response) => {
+			setError(null);
+			try {
+				const response = await getSaintList({
+					page,
+					perPage: SAINTS_PER_PAGE,
+					languageCode,
+				});
+				if (cancelled) return;
 				setSaintsList(response.data);
 				setTotalCount(response.total);
 				setTotalPages(response.total_pages);
-			});
-			setLoading(false);
+			} catch (err) {
+				if (cancelled) return;
+				setError(
+					err instanceof Error
+						? err
+						: new Error("Impossible de charger les saints."),
+				);
+			} finally {
+				if (!cancelled) setLoading(false);
+			}
 		};
+
 		fetchData();
-	}, [page, saintsPerPage, languageCode]);
+		return () => {
+			cancelled = true;
+		};
+		// getSaintList n'est pas mémoïsé dans useSaints → boucle si mis en deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [page, languageCode]);
 
-	// const centuries = useMemo(() => {
-	// 	const set = new Set<string>();
-	// 	saintsList.forEach((saint) => {
-	// 		if (saint.century) {
-	// 			set.add(saint.century);
-	// 		} else {
-	// 			set.add("unknown");
-	// 		}
-	// 	});
-	// 	return Array.from(set).sort();
-	// }, []);
-
-	// const filteredAndSorted = useMemo(() => {
-	// 	let list = [...saintsList];
-
-	// 	// recherche nom
-	// 	if (query.trim()) {
-	// 		const q = query.trim().toLowerCase();
-	// 		list = list.filter((s) => s.name?.toLowerCase().includes(q));
-	// 	}
-
-	// 	// filtre siècle
-	// 	// if (century !== "all") {
-	// 	// 	if (century === "unknown") {
-	// 	// 		list = list.filter((s) => !(s as any).century);
-	// 	// 	} else {
-	// 	// 		list = list.filter(
-	// 	// 			(s) => String((s as any).century) === century,
-	// 	// 		);
-	// 	// 	}
-	// 	// }
-
-	// 	// tri
-	// 	list.sort((a, b) => {
-	// 		switch (sortKey) {
-	// 			case "name_asc":
-	// 				return a.name.localeCompare(b.name, "fr");
-	// 			case "name_desc":
-	// 				return b.name.localeCompare(a.name, "fr");
-	// 			case "feast_asc":
-	// 				return (a.feastDay || "").localeCompare(
-	// 					b.feastDay || "",
-	// 					"fr",
-	// 				);
-	// 			case "feast_desc":
-	// 				return (b.feastDay || "").localeCompare(
-	// 					a.feastDay || "",
-	// 					"fr",
-	// 				);
-	// 			default:
-	// 				return 0;
-	// 		}
-	// 	});
-
-	// 	return list;
-	// }, [query, century, sortKey]);
-
-	// const paginatedSaints = filteredAndSorted.slice(
-	// 	(page - 1) * saintsPerPage,
-	// 	page * saintsPerPage,
-	// );
-
-	// reset page si les filtres réduisent la liste
-	// const safePage = Math.min(page, totalPages);
+	const handlePageChange = (nextPage: number) => {
+		setPage(nextPage);
+		const reduceMotion = window.matchMedia?.(
+			"(prefers-reduced-motion: reduce)",
+		).matches;
+		window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+	};
 
 	return (
-		<motion.div
-			className="saints-page"
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			transition={TRANSITIONS.slower}
-		>
-			<h2>Liste des Saints</h2>
-			{/* Pagination Option*/}
-			<div
-				className="saints-page__pagination"
-				style={{
-					display: "flex",
-					gap: 8,
-					alignItems: "center",
-					marginBottom: 12,
-				}}
+		<div className="saints-page">
+			<motion.header
+				className="saints-header"
+				variants={headerReveal}
+				initial="hidden"
+				animate="show"
 			>
-				<button
-					onClick={() => {
-						if (!totalPages) return;
-						const input = window.prompt(
-							`Aller à quelle page ? (1 - ${totalPages})`,
-							String(page),
-						);
-						if (!input) return;
-						const n = Math.floor(Number(input));
-						if (Number.isNaN(n)) return;
-						setPage(Math.max(1, Math.min(totalPages, n)));
-					}}
-					style={{ padding: "6px 10px", borderRadius: 6 }}
-				>
-					Aller à la page
-				</button>
+				<span className="saints-header__eyebrow">─ Art & mémoire</span>
+				<h1 className="saints-header__title">Les vies des saints</h1>
+				<p className="saints-header__text">
+					Des centaines de figures, leurs histoires et les
+					chefs-d'œuvre qu'elles ont inspirés. Parcourez la galerie,
+					siècle après siècle.
+				</p>
+				{totalCount > 0 && (
+					<p className="saints-header__meta">
+						{totalCount} saints · Page {page} / {totalPages}
+					</p>
+				)}
+			</motion.header>
 
-				<button
-					onClick={() => {
-						const el = document.getElementById(
-							"saints-pagination-bottom",
-						);
-						if (el)
-							el.scrollIntoView({
-								behavior: "smooth",
-								block: "center",
-							});
-					}}
-					style={{ padding: "6px 10px", borderRadius: 6 }}
-				>
-					Aller à la pagination
-				</button>
-
-				<div style={{ marginLeft: "auto", color: "#666" }}>
-					Page {page} / {totalPages || "?"}
-				</div>
+			{/* Toolbar : filtres à venir (recherche, siècle, tri) */}
+			<div className="saints-toolbar">
+				<div className="saints-toolbar__filters" />
+				{totalCount > 0 && (
+					<span className="saints-toolbar__count">
+						{totalCount} saints
+					</span>
+				)}
 			</div>
 
-			{/* Filtres et options de tri ici */}
+			<AnimatePresence mode="wait">
+				{loading ? (
+					<StateBlock key="loading">
+						<Loader size={56} />
+					</StateBlock>
+				) : error ? (
+					<StateBlock key="error" tone="error">
+						Impossible de charger les saints.
+						<span className="saints-state__detail">
+							{error.message}
+						</span>
+					</StateBlock>
+				) : saintsList.length === 0 ? (
+					<StateBlock key="empty">Aucun saint à afficher.</StateBlock>
+				) : (
+					<motion.section
+						key={page}
+						className="saints-grid"
+						variants={gridGroup}
+						initial="hidden"
+						animate="show"
+						exit="exit"
+						aria-label="Liste des saints"
+					>
+						{saintsList.map((saint, index) => (
+							<SaintCardSmall
+								key={saint.id}
+								saint={saint}
+								onClick={() => setSelectedSaint(saint)}
+								index={index}
+							/>
+						))}
+					</motion.section>
+				)}
+			</AnimatePresence>
 
-			<motion.div
-				className="saints-page__toolbar"
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={TRANSITIONS.slower}
-			>
-				{/*<SaintsFilters
-					query={query}
-					onQueryChange={(v) => {
-						setPage(1);
-						setQuery(v);
-					}}
-					century={century}
-					onCenturyChange={(v) => {
-						setPage(1);
-						setCentury(v);
-					}}
-					sortKey={sortKey}
-					onSortByChange={(v) => {
-						setPage(1);
-						setSortKey(v);
-					}}
-					centuries={centuries}
-				/>*/}
-				{/*<p className="saints-count">
-					{filteredAndSorted.length} saints trouvés
-				</p>*/}
-				{/*<p className="pagination-info">
-					Page {safePage} sur {totalPages}
-				</p>*/}
-			</motion.div>
-
-			<div className="saints-page__grid">
-				{saintsList.map((saint, index) => (
-					<SaintCardSmall
-						key={saint.id}
-						saint={saint}
-						onClick={() => setSelectedSaint(saint)}
-						index={index}
-					/>
-					// </motion.div>
-				))}
-			</div>
 			<AnimatePresence>
 				{selectedSaint && (
 					<SaintModal
@@ -231,12 +181,12 @@ export function SaintsPage() {
 					/>
 				)}
 			</AnimatePresence>
-			{/* Pagination controls */}
+
 			<Pagination
 				currentPage={page}
 				totalPages={totalPages}
-				onPageChange={setPage}
+				onPageChange={handlePageChange}
 			/>
-		</motion.div>
+		</div>
 	);
 }
