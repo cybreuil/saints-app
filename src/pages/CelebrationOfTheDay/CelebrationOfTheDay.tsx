@@ -147,7 +147,7 @@ const CelebrationOfTheDay: React.FC = () => {
 					animate="show"
 				>
 					<motion.div variants={sidebarItem(-32)}>
-						<MiniCalendar disabled={!!error || isLoading} />
+						<MiniCalendar />
 					</motion.div>
 					{/*<motion.div variants={sidebarItem(-32)}>
 						<LiturgicalColor

@@ -12,6 +12,7 @@ import {
 } from "../../utils/date";
 import { CalendarLogo, ResetLogo } from "../../icons";
 import { useLanguage } from "../../hooks/useLanguage";
+import { useCalendar } from "../../hooks/useCalendar";
 
 // Version 5 jours (autour de la date sélectionnée)
 // const get5WeekDays = (date = new Date()) => {
@@ -36,13 +37,15 @@ const get9DaysWithBuffer = (date = new Date()) => {
 	});
 };
 
-const MiniCalendar = (disabled?: boolean) => {
+const MiniCalendar = () => {
 	const navigate = useNavigate();
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// On recupere la langue du context pour l'affichage des jours de la semaine et du mois
 	const { languageCode } = useLanguage();
+
+	const { error } = useCalendar();
 
 	// Récupère la date sélectionnée depuis la query string (?date=YYYY-MM-DD)
 	// const params = new URLSearchParams(location.search);
@@ -147,7 +150,7 @@ const MiniCalendar = (disabled?: boolean) => {
 
 	return (
 		<div
-			className={`panel mini-calendar-container ${disabled ? "panel__error mini-calendar-container__disabled" : ""}`}
+			className={`panel mini-calendar-container ${error ? "panel__error mini-calendar-container__disabled" : ""}`}
 		>
 			<div className="mini-calendar-viewport">
 				<div className="mini-calendar-wrapper">
