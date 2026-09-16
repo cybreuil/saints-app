@@ -6,6 +6,11 @@ import { SaintCardSmall } from "../../components/SaintCardSmall/SaintCardSmall.t
 import { SaintModal } from "../../components/SaintModal/SaintModal.tsx";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { Loader } from "../../components/Loader/Loader.tsx";
+import {
+	SaintsFilters,
+	DEFAULT_FILTERS,
+	type SaintsFiltersValue,
+} from "../../components/SaintsFilters/SaintsFilters.tsx";
 
 import { useSaints } from "../../hooks/useSaints.ts";
 import { useLanguage } from "../../hooks/useLanguage.ts";
@@ -27,6 +32,7 @@ const gridGroup = {
 };
 
 const SAINTS_PER_PAGE = 12;
+const SEARCH_DEBOUNCE_MS = 350;
 
 function StateBlock({
 	tone = "neutral",
@@ -48,9 +54,21 @@ function StateBlock({
 	);
 }
 
+function useDebounced<T>(value: T, delay: number): T {
+	const [debounced, setDebounced] = useState(value);
+	useEffect(() => {
+		const id = setTimeout(() => setDebounced(value), delay);
+		return () => clearTimeout(id);
+	}, [value, delay]);
+	return debounced;
+}
+
 export function SaintsPage() {
 	const { getSaintList } = useSaints();
 	const { languageCode } = useLanguage();
+
+	const [filters, setFilters] = useState<SaintsFiltersValue>(DEFAULT_FILTERS);
+	const debouncedQuery = useDebounced(filters.query, SEARCH_DEBOUNCE_MS);
 
 	const [page, setPage] = useState(1);
 	const [loading, setLoading] = useState(true);
@@ -61,8 +79,10 @@ export function SaintsPage() {
 	const [totalCount, setTotalCount] = useState(0);
 	const [totalPages, setTotalPages] = useState(0);
 
+	const { century, sort } = filters;
+
 	useEffect(() => {
-		let cancelled = false;
+		const controller = new AbortController();
 
 		const fetchData = async () => {
 			setLoading(true);
@@ -72,30 +92,36 @@ export function SaintsPage() {
 					page,
 					perPage: SAINTS_PER_PAGE,
 					languageCode,
+					q: debouncedQuery,
+					century,
+					sort,
+					signal: controller.signal,
 				});
-				if (cancelled) return;
 				setSaintsList(response.data);
 				setTotalCount(response.total);
 				setTotalPages(response.total_pages);
 			} catch (err) {
-				if (cancelled) return;
+				if (controller.signal.aborted) return;
 				setError(
 					err instanceof Error
 						? err
 						: new Error("Impossible de charger les saints."),
 				);
 			} finally {
-				if (!cancelled) setLoading(false);
+				if (!controller.signal.aborted) setLoading(false);
 			}
 		};
 
 		fetchData();
-		return () => {
-			cancelled = true;
-		};
+		return () => controller.abort();
 		// getSaintList n'est pas mémoïsé dans useSaints → boucle si mis en deps
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, languageCode]);
+	}, [page, languageCode, debouncedQuery, century, sort]);
+
+	const handleFiltersChange = (next: SaintsFiltersValue) => {
+		setFilters(next);
+		setPage(1);
+	};
 
 	const handlePageChange = (nextPage: number) => {
 		setPage(nextPage);
@@ -104,6 +130,8 @@ export function SaintsPage() {
 		).matches;
 		window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 	};
+
+	const gridKey = `${page}-${debouncedQuery}-${century}-${sort}`;
 
 	return (
 		<div className="saints-page">
@@ -120,22 +148,26 @@ export function SaintsPage() {
 					chefs-d'œuvre qu'elles ont inspirés. Parcourez la galerie,
 					siècle après siècle.
 				</p>
-				{totalCount > 0 && (
+				{totalPages > 1 && (
 					<p className="saints-header__meta">
-						{totalCount} saints · Page {page} / {totalPages}
+						Page {page} / {totalPages}
 					</p>
 				)}
 			</motion.header>
 
-			{/* Toolbar : filtres à venir (recherche, siècle, tri) */}
-			<div className="saints-toolbar">
-				<div className="saints-toolbar__filters" />
-				{totalCount > 0 && (
-					<span className="saints-toolbar__count">
-						{totalCount} saints
-					</span>
-				)}
-			</div>
+			<motion.div
+				className="saints-toolbar"
+				variants={headerReveal}
+				initial="hidden"
+				animate="show"
+				transition={{ delay: 0.1 }}
+			>
+				<SaintsFilters
+					value={filters}
+					onChange={handleFiltersChange}
+					resultCount={loading ? undefined : totalCount}
+				/>
+			</motion.div>
 
 			<AnimatePresence mode="wait">
 				{loading ? (
@@ -150,10 +182,12 @@ export function SaintsPage() {
 						</span>
 					</StateBlock>
 				) : saintsList.length === 0 ? (
-					<StateBlock key="empty">Aucun saint à afficher.</StateBlock>
+					<StateBlock key="empty">
+						Aucun saint ne correspond à cette recherche.
+					</StateBlock>
 				) : (
 					<motion.section
-						key={page}
+						key={gridKey}
 						className="saints-grid"
 						variants={gridGroup}
 						initial="hidden"

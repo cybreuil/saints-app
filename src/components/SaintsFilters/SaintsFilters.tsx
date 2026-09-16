@@ -1,74 +1,113 @@
 import "./SaintsFilters.css";
+import type { SaintSort } from "../../hooks/useSaints";
+import { toRoman } from "../../utils/saintFormat";
 
-type SortValue = "name_asc" | "name_desc" | "feast_asc" | "feast_desc";
-
-type SaintsFiltersProps = {
+export type SaintsFiltersValue = {
 	query: string;
-	onQueryChange: (value: string) => void;
-	century: string;
-	onCenturyChange: (value: string) => void;
-	sortKey: SortValue;
-	onSortByChange: (value: SortValue) => void;
-	centuries: string[];
+	century: string; // "all" | "unknown" | "1".."21"
+	sort: SaintSort;
 };
 
-const SaintsFilters = ({
-	query,
-	onQueryChange,
-	century,
-	onCenturyChange,
-	sortKey,
-	onSortByChange,
-	centuries,
-}: SaintsFiltersProps) => {
+export const DEFAULT_FILTERS: SaintsFiltersValue = {
+	query: "",
+	century: "all",
+	sort: "name_asc",
+};
+
+const CENTURIES = Array.from({ length: 21 }, (_, i) => i + 1);
+
+const SORT_OPTIONS: { value: SaintSort; label: string }[] = [
+	{ value: "name_asc", label: "Nom, A → Z" },
+	{ value: "name_desc", label: "Nom, Z → A" },
+	{ value: "century_asc", label: "Siècle, du plus ancien" },
+	{ value: "century_desc", label: "Siècle, du plus récent" },
+];
+
+type Props = {
+	value: SaintsFiltersValue;
+	onChange: (next: SaintsFiltersValue) => void;
+	resultCount?: number;
+};
+
+const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
+	const isDirty =
+		value.query !== DEFAULT_FILTERS.query ||
+		value.century !== DEFAULT_FILTERS.century ||
+		value.sort !== DEFAULT_FILTERS.sort;
+
 	return (
 		<form
 			className="saints-filters"
+			role="search"
+			aria-label="Filtrer les saints"
 			onSubmit={(e) => e.preventDefault()}
-			aria-label="Filtres des saints"
 		>
-			<div className="saints-filters__group">
-				<label htmlFor="saints-query">Recherche</label>
+			<label className="saints-filters__field saints-filters__field--grow">
+				<span className="saints-filters__label">Recherche</span>
 				<input
-					id="saints-query"
 					type="search"
-					placeholder="Nom du saint..."
-					value={query}
-					onChange={(e) => onQueryChange(e.target.value)}
+					placeholder="Nom d'un saint…"
+					value={value.query}
+					onChange={(e) =>
+						onChange({ ...value, query: e.target.value })
+					}
+					autoComplete="off"
 				/>
-			</div>
+			</label>
 
-			<div className="saints-filters__group">
-				<label htmlFor="saints-century">Siècle</label>
+			<label className="saints-filters__field">
+				<span className="saints-filters__label">Siècle</span>
 				<select
-					id="saints-century"
-					value={century}
-					onChange={(e) => onCenturyChange(e.target.value)}
+					value={value.century}
+					onChange={(e) =>
+						onChange({ ...value, century: e.target.value })
+					}
 				>
-					<option value="all">Tous les siècles</option>
-					<option value="unknown">Inconnu</option>
-					{centuries.map((c) => (
+					<option value="all">Tous</option>
+					{CENTURIES.map((c) => (
 						<option key={c} value={c}>
-							{c}
+							{toRoman(c)}
+							{c === 1 ? "er" : "e"}
+						</option>
+					))}
+					<option value="unknown">Inconnu</option>
+				</select>
+			</label>
+
+			<label className="saints-filters__field">
+				<span className="saints-filters__label">Tri</span>
+				<select
+					value={value.sort}
+					onChange={(e) =>
+						onChange({
+							...value,
+							sort: e.target.value as SaintSort,
+						})
+					}
+				>
+					{SORT_OPTIONS.map((o) => (
+						<option key={o.value} value={o.value}>
+							{o.label}
 						</option>
 					))}
 				</select>
-			</div>
+			</label>
 
-			<div className="saints-filters__group">
-				<label htmlFor="saints-sort">Trier par</label>
-				<select
-					id="saints-sort"
-					value={sortKey}
-					onChange={(e) =>
-						onSortByChange(e.target.value as SortValue)
-					}
-				>
-					<option value="name_asc">Nom (A → Z)</option>
-					<option value="name_desc">Nom (Z → A)</option>
-					<option value="feast_asc">Fête (croissant)</option>
-					<option value="feast_desc">Fête (décroissant)</option>
-				</select>
+			<div className="saints-filters__end">
+				{typeof resultCount === "number" && (
+					<span className="saints-filters__count" aria-live="polite">
+						{resultCount} {resultCount > 1 ? "saints" : "saint"}
+					</span>
+				)}
+				{isDirty && (
+					<button
+						type="button"
+						className="saints-filters__reset"
+						onClick={() => onChange(DEFAULT_FILTERS)}
+					>
+						Réinitialiser
+					</button>
+				)}
 			</div>
 		</form>
 	);

@@ -1,33 +1,99 @@
+/* =========================================================
+   PAGINATION — pastilles rondes, page courante en or
+   ========================================================= */
+
 .pagination {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 0.5rem;
 }
 
-.pagination__btn {
-	border: none;
-	border-radius: 8px;
-	padding: 0.5rem 0.9rem;
+.pagination__list {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.pagination__arrow,
+.pagination__page {
+	display: grid;
+	place-items: center;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	padding: 0 0.6rem;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--color-text-secondary);
+	font: inherit;
+	font-size: 0.92rem;
+	font-weight: 500;
 	cursor: pointer;
-	background: var(--color-primary-dark);
-	color: #fff;
 	transition:
-		opacity 0.2s ease,
-		transform 0.1s ease;
+		background 180ms ease,
+		color 180ms ease,
+		border-color 180ms ease,
+		transform 180ms ease;
 }
 
-.pagination__btn:hover:not(:disabled) {
-	opacity: 0.9;
+.pagination__arrow {
+	border-color: var(--color-border-light);
+	background: var(--color-bg-component);
 }
 
-.pagination__btn:disabled {
-	opacity: 0.45;
+.pagination__arrow:hover:not(:disabled),
+.pagination__page:hover:not(.pagination__page--current) {
+	color: var(--color-text-primary);
+	border-color: var(--color-secondary);
+	background: var(--color-bg-component);
+	transform: translateY(-1px);
+}
+
+.pagination__arrow:disabled {
+	opacity: 0.35;
 	cursor: not-allowed;
 }
-.pagination__btn:active:not(:disabled) {
-	transform: scale(0.95);
+
+.pagination__page--current {
+	background: var(--color-secondary);
+	border-color: var(--color-secondary);
+	color: var(--color-on-secondary);
+	font-weight: 600;
+	cursor: default;
 }
 
-.pagination__info {
-	font-weight: 600;
+.pagination__arrow:focus-visible,
+.pagination__page:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 2px;
+}
+
+.pagination__gap {
+	min-width: 1.5rem;
+	color: var(--color-text-tertiary);
+	text-align: center;
+	user-select: none;
+}
+
+@media (max-width: 480px) {
+	.pagination__arrow,
+	.pagination__page {
+		min-width: 2.2rem;
+		height: 2.2rem;
+		font-size: 0.85rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pagination__arrow,
+	.pagination__page {
+		transition: none;
+	}
+	.pagination__arrow:hover:not(:disabled),
+	.pagination__page:hover {
+		transform: none;
+	}
 }

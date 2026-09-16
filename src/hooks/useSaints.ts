@@ -1,4 +1,7 @@
-import type { SaintDetailedResponse, SaintsApiResponse } from "../types/Saint";
+import type {
+	SaintDetailedResponse,
+	SaintsListApiResponse,
+} from "../types/Saint";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
@@ -6,11 +9,11 @@ export type GetSaintListParams = {
 	page?: number;
 	perPage?: number;
 	languageCode?: string;
-	// q?: string;
+	q?: string;
 	// recherche texte, si besoin
-	// century?: string;
+	century?: string;
 	// filtre siècle, si besoin
-	// sort?: string;
+	sort?: string;
 	// clé de tri, si besoin
 	// signal?: AbortSignal;
 	// optionnel pour annulation
@@ -19,34 +22,23 @@ export type GetSaintListParams = {
 const useSaints = () => {
 	const getSaintList = async (
 		params: GetSaintListParams = {},
-	): Promise<SaintsApiResponse> => {
-		const { page, perPage, languageCode } = params;
+	): Promise<SaintsListApiResponse> => {
+		const { page, perPage, languageCode, q, century, sort } = params;
 
 		const url = new URL(`${API_BASE_URL}/saints`);
 		const qp = new URLSearchParams();
 
-		qp.set("page", String(page));
-		qp.set("per_page", String(perPage));
-
 		if (languageCode && languageCode.trim() !== "") {
 			qp.set("language_code", languageCode);
 		}
-		// if (q && q.trim() !== "") {
-		// 	qp.set("q", q);
-		// }
-		// if (century && century.trim() !== "") {
-		// 	qp.set("century", century);
-		// }
-		// if (sort && sort.trim() !== "") {
-		// 	qp.set("sort", sort);
-		// }
+		if (q?.trim()) qp.set("q", q.trim());
+		if (century && century !== "all") qp.set("century", century);
+		if (sort) qp.set("sort", sort);
+		qp.set("page", String(page));
+		qp.set("per_page", String(perPage));
 
 		url.search = qp.toString();
-
-		const response = await fetch(
-			url.toString(),
-			// signal ? { signal } : undefined,
-		);
+		const response = await fetch(url.toString());
 
 		if (!response.ok) {
 			// Fournir un message utile pour le debug
@@ -56,7 +48,7 @@ const useSaints = () => {
 			);
 		}
 
-		return (await response.json()) as SaintsApiResponse;
+		return (await response.json()) as SaintsListApiResponse;
 	};
 
 	const getSaintBySlug = async (
