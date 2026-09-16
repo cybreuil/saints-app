@@ -1,6 +1,7 @@
 import "./SaintCardSmall.css";
 import { motion } from "framer-motion";
 import type { SaintApi } from "../../types/Saint.ts";
+import { centuryLabel } from "../../utils/saintFormat";
 
 const cardReveal = {
 	hidden: { opacity: 0, y: 24 },
@@ -11,41 +12,8 @@ const cardReveal = {
 	},
 };
 
-const ROMAN: [number, string][] = [
-	[1000, "M"],
-	[900, "CM"],
-	[500, "D"],
-	[400, "CD"],
-	[100, "C"],
-	[90, "XC"],
-	[50, "L"],
-	[40, "XL"],
-	[10, "X"],
-	[9, "IX"],
-	[5, "V"],
-	[4, "IV"],
-	[1, "I"],
-];
-
-export function toRoman(value: number): string {
-	let n = Math.floor(value);
-	if (n <= 0) return String(value);
-	let out = "";
-	for (const [num, glyph] of ROMAN) {
-		while (n >= num) {
-			out += glyph;
-			n -= num;
-		}
-	}
-	return out;
-}
-
 function accentLabel(saint: SaintApi): string {
-	if (saint.life_label) return saint.life_label;
-	if (saint.century) {
-		return `${toRoman(saint.century)}${saint.century === 1 ? "er" : "e"} siècle`;
-	}
-	return "\u00a0";
+	return saint.life_label || centuryLabel(saint.century) || "\u00a0";
 }
 
 const SaintCardSmall = ({

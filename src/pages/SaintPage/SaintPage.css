@@ -1,0 +1,483 @@
+/* =========================================================
+   SAINT PAGE — fiche complète d'un saint
+   ========================================================= */
+
+.saint-page {
+	flex: 1;
+	width: min(90%, 900px);
+	margin: 0 auto;
+	padding: calc(var(--header-height) + 1.5rem) 0 4rem;
+}
+
+.saint-page__breadcrumb {
+	margin-bottom: 1.25rem;
+}
+
+.saint-page__back {
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	transition: color 180ms ease;
+}
+
+.saint-page__back:hover {
+	color: var(--color-secondary-dark);
+}
+
+/* ===== Article shell ===== */
+
+.saint-article {
+	overflow: hidden;
+	border-radius: 1.25rem;
+	background: var(--color-bg-component);
+	border: 1px solid var(--color-border-light);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Cover ===== */
+
+.saint-cover {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: clamp(340px, 52vh, 560px);
+	color: #fff;
+	background: var(--color-bg-dark);
+	isolation: isolate;
+	overflow: hidden;
+}
+
+.saint-cover__image {
+	position: absolute;
+	inset: 0;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 20%;
+	filter: saturate(0.9);
+}
+
+.saint-cover__shade {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		linear-gradient(
+			to top,
+			rgb(10 8 6 / 0.92) 0%,
+			rgb(10 8 6 / 0.55) 45%,
+			rgb(10 8 6 / 0.1) 100%
+		),
+		linear-gradient(
+			160deg,
+			color-mix(in srgb, var(--color-secondary) 35%, transparent) 0%,
+			transparent 55%
+		);
+}
+
+.saint-cover--no-image {
+	min-height: clamp(220px, 32vh, 340px);
+	background: radial-gradient(
+		ellipse at 20% 0%,
+		color-mix(in srgb, var(--color-secondary) 55%, var(--color-bg-dark)),
+		var(--color-bg-dark) 70%
+	);
+}
+
+.saint-cover__text {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+	width: 100%;
+	padding: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.saint-cover__eyebrow {
+	color: rgb(255 255 255 / 0.78);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.saint-cover__title {
+	margin: 0;
+	font-size: clamp(2rem, 4.5vw, 3.5rem);
+	font-weight: 400;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	text-shadow: 0 4px 28px rgb(0 0 0 / 0.45);
+}
+
+.saint-cover__credit {
+	color: rgb(255 255 255 / 0.6);
+	font-size: 0.8rem;
+	font-style: italic;
+}
+
+/* ===== Facts ===== */
+
+.saint-facts {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	margin: 0;
+	border-bottom: 1px solid var(--color-border-light);
+}
+
+.saint-fact {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	padding: 1.1rem clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.saint-fact + .saint-fact {
+	border-left: 1px solid var(--color-border-light);
+}
+
+.saint-fact dt {
+	color: var(--color-text-tertiary);
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.saint-fact dd {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem;
+	margin: 0;
+	font-weight: 500;
+	color: var(--color-text-primary);
+}
+
+.saint-fact__note {
+	color: var(--color-text-tertiary);
+	font-size: 0.8rem;
+	font-weight: 400;
+}
+
+/* ===== Prose ===== */
+
+.saint-prose {
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem) 0.5rem;
+	color: var(--color-text-primary);
+	font-size: clamp(1rem, 1.1vw, 1.1rem);
+	line-height: 1.8;
+	text-wrap: pretty;
+}
+
+.saint-prose__lead {
+	margin: 0 0 1.5em;
+	color: var(--color-text-secondary);
+	font-size: 1.15rem;
+	font-style: italic;
+	line-height: 1.6;
+}
+
+.saint-prose__markdown > :first-child {
+	margin-top: 0;
+}
+
+.saint-prose__markdown > p:first-of-type::first-letter {
+	float: left;
+	margin: 0.1em 0.12em 0 0;
+	color: var(--color-secondary);
+	font-size: 3.4em;
+	font-weight: 500;
+	line-height: 0.8;
+}
+
+.saint-prose__markdown p {
+	margin: 0 0 1.1em;
+}
+
+.saint-prose__markdown h2,
+.saint-prose__markdown h3 {
+	margin: 2em 0 0.6em;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+}
+
+.saint-prose__markdown h2 {
+	font-size: 1.5rem;
+}
+
+.saint-prose__markdown h3 {
+	font-size: 1.2rem;
+}
+
+.saint-prose__markdown blockquote {
+	margin: 1.5em 0;
+	padding: 0.25em 0 0.25em 1.25em;
+	border-left: 3px solid var(--color-secondary);
+	color: var(--color-text-secondary);
+	font-style: italic;
+}
+
+.saint-prose__markdown a {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-decoration-color: color-mix(
+		in srgb,
+		var(--color-primary) 40%,
+		transparent
+	);
+	text-underline-offset: 0.15em;
+}
+
+.saint-prose__empty,
+.saint-meta__empty {
+	margin: 0;
+	color: var(--color-text-tertiary);
+	font-style: italic;
+}
+
+/* ===== Section titles ===== */
+
+.saint-section__title,
+.saint-meta__title {
+	margin: 0 0 1.1rem;
+	color: var(--color-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+/* ===== Patronages & attributs ===== */
+
+.saint-meta {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.5rem clamp(1.5rem, 4vw, 2.75rem);
+	margin-top: 1.5rem;
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem);
+	border-top: 1px solid var(--color-border-light);
+	background: var(--color-bg-secondary);
+}
+
+.saint-meta__block {
+	min-width: 0;
+}
+
+.saint-meta__group + .saint-meta__group {
+	margin-top: 1rem;
+}
+
+.saint-meta__category {
+	display: block;
+	margin-bottom: 0.5rem;
+	color: var(--color-secondary-dark);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.saint-meta__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.saint-tag {
+	padding: 0.3rem 0.75rem;
+	border: 1px solid var(--color-border-light);
+	border-radius: 999px;
+	background: var(--color-bg-component);
+	color: var(--color-text-primary);
+	font-size: 0.85rem;
+}
+
+/* ===== Lieux ===== */
+
+.saint-places {
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem);
+	border-top: 1px solid var(--color-border-light);
+}
+
+.saint-places__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 0.75rem;
+	margin: 0 0 1.25rem;
+	padding: 0;
+	list-style: none;
+}
+
+.saint-place {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	padding: 0.85rem 1rem;
+	border: 1px solid var(--color-border-light);
+	border-radius: 0.9rem;
+	background: var(--color-bg-component);
+}
+
+.saint-place__role {
+	color: var(--color-secondary-dark);
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+}
+
+.saint-place__name {
+	font-weight: 500;
+}
+
+.saint-place__country {
+	color: var(--color-text-tertiary);
+	font-size: 0.8rem;
+}
+
+.saint-places__map-teaser {
+	display: grid;
+	place-items: center;
+	height: 160px;
+	border: 1px dashed var(--color-border-medium);
+	border-radius: 1rem;
+	background: linear-gradient(
+		160deg,
+		var(--color-bg-secondary),
+		var(--color-bg-tertiary)
+	);
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+	font-style: italic;
+}
+
+/* ===== Galerie ===== */
+
+.saint-gallery {
+	padding: 1.75rem clamp(1.5rem, 4vw, 2.75rem) 2.25rem;
+	border-top: 1px solid var(--color-border-light);
+	background: var(--color-bg-secondary);
+}
+
+.saint-gallery__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.saint-artwork figure {
+	margin: 0;
+}
+
+.saint-artwork__frame {
+	aspect-ratio: 4 / 5;
+	overflow: hidden;
+	border-radius: 0.9rem;
+	background: var(--color-bg-tertiary);
+}
+
+.saint-artwork__frame img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: saturate(0.9);
+	transform: scale(1.02);
+	transition:
+		transform 600ms cubic-bezier(0.2, 0.9, 0.3, 1),
+		filter 600ms ease;
+}
+
+.saint-artwork:hover .saint-artwork__frame img {
+	transform: scale(1.07);
+	filter: saturate(1);
+}
+
+.saint-artwork__caption {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	margin-top: 0.6rem;
+}
+
+.saint-artwork__title {
+	font-size: 0.92rem;
+	font-weight: 500;
+}
+
+.saint-artwork__meta {
+	color: var(--color-text-tertiary);
+	font-size: 0.78rem;
+}
+
+/* ===== States ===== */
+
+.saint-page__state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	min-height: 360px;
+	padding: 3rem 2rem;
+	border: 1px dashed var(--color-border-medium);
+	border-radius: 1.25rem;
+	color: var(--color-text-secondary);
+	font-size: 1.1rem;
+	text-align: center;
+}
+
+.saint-page__state--error {
+	color: var(--color-error);
+	border-color: color-mix(in srgb, var(--color-error) 40%, transparent);
+}
+
+.saint-page__state-detail {
+	color: var(--color-text-tertiary);
+	font-size: 0.85rem;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 600px) {
+	.saint-page {
+		width: calc(100% - 2rem);
+		padding-top: calc(var(--header-height) + 1rem);
+	}
+
+	.saint-cover {
+		min-height: 60svw;
+	}
+
+	.saint-facts,
+	.saint-meta {
+		grid-template-columns: 1fr;
+	}
+
+	.saint-fact + .saint-fact {
+		border-left: 0;
+		border-top: 1px solid var(--color-border-light);
+	}
+
+	.saint-prose__markdown > p:first-of-type::first-letter {
+		font-size: 2.8em;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.saint-artwork__frame img {
+		transition: none;
+	}
+}

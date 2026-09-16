@@ -1,3 +1,8 @@
+import type { Attribute } from "./Attribute";
+import type { Image } from "./Image";
+import type { Place } from "./Place";
+import type { Patronage } from "./Patronage";
+
 export interface Saint {
 	id: string;
 	name: string;
@@ -20,7 +25,7 @@ export interface SaintApi {
 	life_label?: string;
 	image_url: string;
 }
-export interface SaintsApiResponse {
+export interface SaintsListApiResponse {
 	data: SaintApi[];
 	page: number;
 	// perPage: number;
@@ -44,4 +49,10 @@ export interface SaintDetailedResponse {
 	name: string | null;
 	short_description: string | null;
 	full_biography: string | null;
+
+	// life_label?: string | null;
+	images?: Image[] | null;
+	patronages?: Patronage[] | null; // ex. « des voyageurs », « de la France »
+	attributes?: Attribute[] | null; // attributs iconographiques : « clés », « palme »
+	places?: Place[] | null; // ex. « Rome », « Paris »
 }

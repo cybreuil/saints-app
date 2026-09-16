@@ -203,63 +203,6 @@
 	line-height: 1.6;
 }
 
-.saint-modal__markdown > :first-child {
-	margin-top: 0;
-}
-
-.saint-modal__markdown > p:first-of-type::first-letter {
-	float: left;
-	margin: 0.1em 0.12em 0 0;
-	color: var(--color-secondary);
-	font-size: 3.4em;
-	font-weight: 500;
-	line-height: 0.8;
-}
-
-.saint-modal__markdown p {
-	margin: 0 0 1.1em;
-}
-
-.saint-modal__markdown h2,
-.saint-modal__markdown h3 {
-	margin: 2em 0 0.6em;
-	font-weight: 500;
-	letter-spacing: -0.01em;
-	line-height: 1.25;
-}
-
-.saint-modal__markdown h2 {
-	font-size: 1.5rem;
-}
-
-.saint-modal__markdown h3 {
-	font-size: 1.2rem;
-}
-
-.saint-modal__markdown blockquote {
-	margin: 1.5em 0;
-	padding: 0.25em 0 0.25em 1.25em;
-	border-left: 3px solid var(--color-secondary);
-	color: var(--color-text-secondary);
-	font-style: italic;
-}
-
-.saint-modal__markdown ul,
-.saint-modal__markdown ol {
-	padding-left: 1.4em;
-}
-
-.saint-modal__markdown a {
-	color: var(--color-primary);
-	text-decoration: underline;
-	text-decoration-color: color-mix(
-		in srgb,
-		var(--color-primary) 40%,
-		transparent
-	);
-	text-underline-offset: 0.15em;
-}
-
 .saint-modal__empty,
 .saint-modal__placeholder {
 	margin: 0;
@@ -313,19 +256,6 @@
 
 /* ===== Patronages & attributs ===== */
 
-.saint-modal__aside-grid {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1.5rem clamp(1.5rem, 4vw, 2.5rem);
-	padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem);
-	border-top: 1px solid var(--color-border-light);
-	background: var(--color-bg-secondary);
-}
-
-.saint-modal__list {
-	min-width: 0;
-}
-
 .saint-modal__eyebrow-title {
 	margin: 0 0 0.9rem;
 	color: var(--color-text-tertiary);
@@ -352,77 +282,43 @@
 	font-size: 0.85rem;
 }
 
-/* ===== Explorer (teasers carte / galerie) ===== */
+/* ===== Patronages (aperçu) ===== */
 
-.saint-modal__explore {
-	padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem) 2.25rem;
-	border-top: 1px solid var(--color-border-light);
+.saint-modal__patronages {
+	padding: 0 clamp(1.5rem, 4vw, 2.5rem) 1.75rem;
 }
 
-.saint-modal__explore-grid {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1rem;
-}
-
-.explore-tile {
-	position: relative;
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	padding: 1rem 1.1rem;
-	border: 1px solid var(--color-border-light);
-	border-radius: 1rem;
-	background: var(--color-bg-component);
-	color: var(--color-text-primary);
-	font: inherit;
-	text-align: left;
-	opacity: 0.75;
-	cursor: not-allowed;
-}
-
-.explore-tile__icon {
-	flex: none;
-	display: grid;
-	place-items: center;
-	width: 44px;
-	height: 44px;
-	border-radius: 0.75rem;
-	background: var(--color-bg-tertiary);
-	color: var(--color-secondary);
-	font-size: 1.3rem;
-}
-
-.explore-tile__body {
-	display: flex;
-	flex-direction: column;
-	gap: 0.15rem;
-	min-width: 0;
-	padding-right: 3.5rem;
-}
-
-.explore-tile__title {
-	font-weight: 500;
-}
-
-.explore-tile__desc {
+.saint-tag--more {
 	color: var(--color-text-tertiary);
-	font-size: 0.85rem;
-	line-height: 1.4;
+	border-style: dashed;
 }
 
-.explore-tile__soon {
-	position: absolute;
-	top: 0.75rem;
-	right: 0.75rem;
-	padding: 0.2rem 0.55rem;
+/* ===== Footer CTA ===== */
+
+.saint-modal__footer {
+	display: flex;
+	justify-content: flex-end;
+	padding: 1.25rem clamp(1.5rem, 4vw, 2.5rem);
+	border-top: 1px solid var(--color-border-light);
+	background: var(--color-bg-secondary);
+}
+
+.saint-modal__cta {
+	padding: 0.75rem 1.5rem;
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--color-secondary) 18%, transparent);
-	color: var(--color-secondary-dark);
-	font-size: 0.65rem;
+	background: var(--color-secondary);
+	color: var(--color-on-secondary);
 	font-weight: 600;
-	letter-spacing: 0.15em;
-	text-transform: uppercase;
+	font-size: 0.95rem;
+	transition:
+		background 200ms ease,
+		transform 200ms ease;
+}
+
+.saint-modal__cta:hover {
+	background: var(--color-secondary-light);
+	color: var(--color-on-secondary);
+	transform: translateY(-2px);
 }
 
 /* ===== Responsive : bottom-sheet ===== */
@@ -448,15 +344,6 @@
 	.saint-fact + .saint-fact {
 		border-left: 0;
 		border-top: 1px solid var(--color-border-light);
-	}
-
-	.saint-modal__aside-grid,
-	.saint-modal__explore-grid {
-		grid-template-columns: 1fr;
-	}
-
-	.saint-modal__markdown > p:first-of-type::first-letter {
-		font-size: 2.8em;
 	}
 }
 

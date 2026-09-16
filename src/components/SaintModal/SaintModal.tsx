@@ -1,15 +1,18 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
+import { RippleLink } from "../RippleLink/RippleLink";
 import type { SaintApi, SaintDetailedResponse } from "../../types/Saint";
 import { useSaints } from "../../hooks/useSaints";
 import { useLanguage } from "../../hooks/useLanguage";
-import { toRoman } from "../SaintCardSmall/SaintCardSmall";
-
-/* ===== Animation presets ===== */
+import {
+	centuryLabel,
+	formatPartialDate,
+	primaryImage,
+	toRoman,
+} from "../../utils/saintFormat";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -25,71 +28,7 @@ const rise = {
 
 const exitFade = { opacity: 0, transition: { duration: 0.15 } };
 
-/* ===== Helpers ===== */
-
-function centuryLabel(century: number | null | undefined): string | null {
-	if (century == null) return null;
-	return `${toRoman(century)}${century === 1 ? "er" : "e"} siècle`;
-}
-
-type PartialDate = {
-	year: number | null | undefined;
-	month?: number | null;
-	day?: number | null;
-	approximate?: boolean | null;
-};
-
-function formatPartialDate(
-	{ year, month, day, approximate }: PartialDate,
-	languageCode: string,
-): string {
-	if (year == null) return "—";
-	const prefix = approximate ? "v. " : "";
-	if (year < 0) return `${prefix}${Math.abs(year)} av. J.-C.`;
-	if (month == null) return `${prefix}${year}`;
-
-	try {
-		const date = new Date(year, month - 1, day ?? 1);
-		date.setFullYear(year); // années < 100
-		const options: Intl.DateTimeFormatOptions =
-			day == null
-				? { month: "long", year: "numeric" }
-				: { day: "numeric", month: "long", year: "numeric" };
-		return (
-			prefix + new Intl.DateTimeFormat(languageCode, options).format(date)
-		);
-	} catch {
-		return `${prefix}${year}`;
-	}
-}
-
-function TagList({
-	title,
-	items,
-}: {
-	title: string;
-	items: string[] | null | undefined;
-}) {
-	const hasItems = Array.isArray(items) && items.length > 0;
-	return (
-		<div className="saint-modal__list">
-			<h3 className="saint-modal__eyebrow-title">{title}</h3>
-			{hasItems ? (
-				<ul className="saint-modal__tags">
-					{items.map((item) => (
-						<li key={item} className="saint-tag">
-							{item}
-						</li>
-					))}
-				</ul>
-			) : (
-				<p className="saint-modal__placeholder">À venir</p>
-			)}
-		</div>
-	);
-}
-
-/* ===== Component ===== */
+const MAX_PATRONAGES = 6;
 
 export function SaintModal({
 	saint,
@@ -105,8 +44,7 @@ export function SaintModal({
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
-	// getSaintBySlug est recréé à chaque render : on passe par une ref
-	// pour garder des deps propres sans relancer le fetch en boucle.
+	// getSaintBySlug est recréé à chaque render : ref pour des deps propres.
 	const getSaintBySlugRef = useRef(getSaintBySlug);
 	useEffect(() => {
 		getSaintBySlugRef.current = getSaintBySlug;
@@ -150,12 +88,16 @@ export function SaintModal({
 		};
 	}, []);
 
-	const imageUrl = saint.image_url || detail?.image_url || null;
+	const imageUrl =
+		saint.image_url || primaryImage(detail?.images)?.image_url || null;
 	const name = detail?.name || saint.name || saint.default_name;
 	const century = detail?.century ?? saint.century ?? null;
-	const eyebrow =
-		saint.life_label || detail?.life_label || centuryLabel(century);
+	const eyebrow = saint.life_label || centuryLabel(century);
 	const titleId = `saint-modal-title-${saint.id}`;
+
+	const patronages = detail?.patronages ?? [];
+	const shownPatronages = patronages.slice(0, MAX_PATRONAGES);
+	const hiddenPatronages = patronages.length - shownPatronages.length;
 
 	return createPortal(
 		<>
@@ -235,7 +177,7 @@ export function SaintModal({
 					</div>
 				</header>
 
-				{/* --- Corps --- */}
+				{/* --- Corps (aperçu) --- */}
 				<motion.div
 					className="saint-modal__body"
 					variants={bodyGroup}
@@ -257,11 +199,6 @@ export function SaintModal({
 									},
 									languageCode,
 								)}
-								{detail?.birth_place && (
-									<span className="saint-fact__note">
-										{detail.birth_place}
-									</span>
-								)}
 							</dd>
 						</div>
 						<div className="saint-fact">
@@ -276,11 +213,6 @@ export function SaintModal({
 											detail?.death_is_approximate,
 									},
 									languageCode,
-								)}
-								{detail?.death_place && (
-									<span className="saint-fact__note">
-										{detail.death_place}
-									</span>
 								)}
 							</dd>
 						</div>
@@ -302,95 +234,56 @@ export function SaintModal({
 							</div>
 						) : error ? (
 							<p className="saint-modal__error">{error}</p>
+						) : detail?.short_description ? (
+							<p className="saint-modal__lead">
+								{detail.short_description}
+							</p>
 						) : (
-							<>
-								{detail?.short_description && (
-									<p className="saint-modal__lead">
-										{detail.short_description}
-									</p>
-								)}
-								{detail?.full_biography ? (
-									<div className="saint-modal__markdown">
-										<ReactMarkdown>
-											{detail.full_biography}
-										</ReactMarkdown>
-									</div>
-								) : (
-									<p className="saint-modal__empty">
-										Aucune biographie disponible pour le
-										moment.
-									</p>
-								)}
-							</>
+							<p className="saint-modal__empty">
+								Aucune description disponible pour le moment.
+							</p>
 						)}
 					</motion.div>
 
-					<motion.section
-						className="saint-modal__aside-grid"
-						variants={rise}
-					>
-						<TagList
-							title="Patronages"
-							items={detail?.patronages}
-						/>
-						<TagList title="Attributs" items={detail?.attributes} />
-					</motion.section>
+					{shownPatronages.length > 0 && (
+						<motion.section
+							className="saint-modal__patronages"
+							variants={rise}
+						>
+							<h3 className="saint-modal__eyebrow-title">
+								Patronages
+							</h3>
+							<ul className="saint-modal__tags">
+								{shownPatronages.map((p) => (
+									<li
+										key={p.code}
+										className="saint-tag"
+										title={p.description}
+									>
+										{p.label}
+									</li>
+								))}
+								{hiddenPatronages > 0 && (
+									<li className="saint-tag saint-tag--more">
+										+{hiddenPatronages}
+									</li>
+								)}
+							</ul>
+						</motion.section>
+					)}
 
-					<motion.section
-						className="saint-modal__explore"
+					<motion.footer
+						className="saint-modal__footer"
 						variants={rise}
 					>
-						<h3 className="saint-modal__eyebrow-title">Explorer</h3>
-						<div className="saint-modal__explore-grid">
-							<button
-								type="button"
-								className="explore-tile"
-								disabled
-							>
-								<span
-									className="explore-tile__icon"
-									aria-hidden="true"
-								>
-									◍
-								</span>
-								<span className="explore-tile__body">
-									<span className="explore-tile__title">
-										Carte
-									</span>
-									<span className="explore-tile__desc">
-										Lieux de naissance, de mort et
-										d'activité
-									</span>
-								</span>
-								<span className="explore-tile__soon">
-									Bientôt
-								</span>
-							</button>
-							<button
-								type="button"
-								className="explore-tile"
-								disabled
-							>
-								<span
-									className="explore-tile__icon"
-									aria-hidden="true"
-								>
-									▣
-								</span>
-								<span className="explore-tile__body">
-									<span className="explore-tile__title">
-										Galerie
-									</span>
-									<span className="explore-tile__desc">
-										Peintures et œuvres connues
-									</span>
-								</span>
-								<span className="explore-tile__soon">
-									Bientôt
-								</span>
-							</button>
-						</div>
-					</motion.section>
+						<RippleLink
+							to={`/saints/${saint.slug}`}
+							className="saint-modal__cta"
+							rippleColor="rgba(0, 0, 0, 0.15)"
+						>
+							Voir la fiche complète →
+						</RippleLink>
+					</motion.footer>
 				</motion.div>
 			</motion.div>
 		</>,

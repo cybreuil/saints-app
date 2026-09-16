@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../pages/HomePage/HomePage";
 import { CelebrationOfTheDay } from "../../pages/CelebrationOfTheDay/CelebrationOfTheDay";
 import { SaintsPage } from "../../pages/SaintsPage/SaintsPage";
+import { SaintPage } from "../../pages/SaintPage/SaintPage";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
 import { AboutPage } from "../../pages/AboutPage/AboutPage";
 import { NotFoundPage } from "../../pages/NotFoundPage/NotFoundPage";
@@ -16,6 +17,7 @@ const AppRoutes = () => {
 				element={<CelebrationOfTheDay />}
 			/>
 			<Route path="/saints" element={<SaintsPage />} />
+			<Route path="/saints/:slug" element={<SaintPage />} />
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/about" element={<AboutPage />} />
 			<Route path="*" element={<NotFoundPage />} />
