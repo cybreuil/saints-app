@@ -1,6 +1,6 @@
 import "./CelebrationOfTheDay.css";
 import { useEffect, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 

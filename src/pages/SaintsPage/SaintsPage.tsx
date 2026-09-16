@@ -32,7 +32,7 @@ const gridGroup = {
 };
 
 const SAINTS_PER_PAGE = 12;
-const SEARCH_DEBOUNCE_MS = 350;
+const SEARCH_DEBOUNCE_MS = 600;
 
 function StateBlock({
 	tone = "neutral",
@@ -95,20 +95,21 @@ export function SaintsPage() {
 					q: debouncedQuery,
 					century,
 					sort,
-					signal: controller.signal,
+					// signal: controller.signal,
 				});
 				setSaintsList(response.data);
 				setTotalCount(response.total);
 				setTotalPages(response.total_pages);
 			} catch (err) {
-				if (controller.signal.aborted) return;
+				// if (controller.signal.aborted) return;
 				setError(
 					err instanceof Error
 						? err
 						: new Error("Impossible de charger les saints."),
 				);
 			} finally {
-				if (!controller.signal.aborted) setLoading(false);
+				// if (!controller.signal.aborted)
+				setLoading(false);
 			}
 		};
 
