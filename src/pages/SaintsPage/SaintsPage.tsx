@@ -167,6 +167,8 @@ export function SaintsPage() {
 					value={filters}
 					debouncedQuery={debouncedQuery}
 					onChange={handleFiltersChange}
+					// Let's not use loading: to avoid glitching
+					// resultCount={loading ? undefined : totalCount}
 					resultCount={totalCount}
 				/>
 			</motion.div>
