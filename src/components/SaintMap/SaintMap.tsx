@@ -33,22 +33,58 @@ type SaintMapProps = {
 	places: Place[];
 };
 
+type PlaceGroup = {
+	key: string;
+	latitude: number;
+	longitude: number;
+	places: Place[];
+};
+
+function getGroupKey(place: Place): string {
+	/*
+	 * On arrondit légèrement les coordonnées pour éviter qu'une minuscule
+	 * différence flottante empêche deux lieux identiques d'être regroupés.
+	 */
+	return `${place.latitude.toFixed(5)},${place.longitude.toFixed(5)}`;
+}
+
 export function SaintMap({ places }: SaintMapProps) {
 	const mapRef = useRef<MapRef>(null);
-	const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
+	const [selectedGroup, setSelectedGroup] = useState<PlaceGroup | null>(null);
 
-	const validPlaces = useMemo(
-		() =>
-			places.filter(
-				(place) =>
-					Number.isFinite(place.latitude) &&
-					Number.isFinite(place.longitude),
-			),
-		[places],
-	);
+	const validPlaces = useMemo(() => {
+		return places.filter(
+			(place) =>
+				Number.isFinite(place.latitude) &&
+				Number.isFinite(place.longitude),
+		);
+	}, [places]);
+
+	const groupedPlaces = useMemo<PlaceGroup[]>(() => {
+		const groups: Record<string, PlaceGroup> = {};
+
+		for (const place of validPlaces) {
+			const key = getGroupKey(place);
+
+			if (!groups[key]) {
+				groups[key] = {
+					key,
+					latitude: place.latitude,
+					longitude: place.longitude,
+					places: [],
+				};
+			}
+
+			groups[key].places.push(place);
+		}
+
+		return Object.values(groups);
+	}, [validPlaces]);
 
 	useEffect(() => {
-		if (!mapRef.current || validPlaces.length === 0) return;
+		if (!mapRef.current || validPlaces.length === 0) {
+			return;
+		}
 
 		if (validPlaces.length === 1) {
 			mapRef.current.flyTo({
@@ -113,58 +149,117 @@ export function SaintMap({ places }: SaintMapProps) {
 					showCompass={false}
 				/>
 
-				{validPlaces.map((place) => {
-					const color = ROLE_COLORS[place.role] ?? "#8b6f47";
+				{groupedPlaces.map((group) => {
+					const isGrouped = group.places.length > 1;
 
 					return (
 						<Marker
-							key={`${place.role}-${place.code}`}
-							longitude={place.longitude}
-							latitude={place.latitude}
+							key={group.key}
+							longitude={group.longitude}
+							latitude={group.latitude}
 							anchor="center"
 							onClick={(event) => {
 								event.originalEvent.stopPropagation();
-								setSelectedPlace(place);
+								setSelectedGroup(group);
 							}}
 						>
 							<button
 								type="button"
-								className={`saint-map__marker saint-map__marker--${place.role}`}
-								style={
-									{
-										"--marker-color": color,
-									} as React.CSSProperties
+								className={`saint-map__marker ${
+									isGrouped
+										? "saint-map__marker--group"
+										: `saint-map__marker--${group.places[0].role}`
+								}`}
+								aria-label={
+									isGrouped
+										? `${group.places.length} localisations : ${group.places
+												.map(
+													(place) =>
+														ROLE_LABELS[
+															place.role
+														] ?? place.role,
+												)
+												.join(", ")}`
+										: `${
+												ROLE_LABELS[
+													group.places[0].role
+												] ?? group.places[0].role
+											} : ${group.places[0].name}`
 								}
-								aria-label={`${ROLE_LABELS[place.role] ?? place.role} : ${place.name}`}
 							>
-								<span />
+								{isGrouped ? (
+									<span className="saint-map__marker-group">
+										{group.places.map((place) => (
+											<i
+												key={`${place.role}-${place.code}`}
+												style={{
+													background:
+														ROLE_COLORS[
+															place.role
+														] ?? "#8b6f47",
+												}}
+											/>
+										))}
+									</span>
+								) : (
+									<span
+										className="saint-map__marker-dot"
+										style={
+											{
+												"--marker-color":
+													ROLE_COLORS[
+														group.places[0].role
+													] ?? "#8b6f47",
+											} as React.CSSProperties
+										}
+									/>
+								)}
 							</button>
 						</Marker>
 					);
 				})}
 
-				{selectedPlace && (
+				{selectedGroup && (
 					<Popup
-						longitude={selectedPlace.longitude}
-						latitude={selectedPlace.latitude}
+						longitude={selectedGroup.longitude}
+						latitude={selectedGroup.latitude}
 						anchor="bottom"
 						offset={18}
 						closeButton
 						closeOnClick={false}
-						onClose={() => setSelectedPlace(null)}
+						onClose={() => setSelectedGroup(null)}
 					>
 						<div className="saint-map__popup">
-							<span className="saint-map__popup-role">
-								{ROLE_LABELS[selectedPlace.role] ??
-									selectedPlace.role}
-							</span>
+							<div className="saint-map__popup-roles">
+								{selectedGroup.places.map((place, index) => {
+									const color =
+										ROLE_COLORS[place.role] ?? "#8b6f47";
+
+									return (
+										<span
+											key={`${place.role}-${place.code}`}
+											className="saint-map__popup-role"
+											style={{ color }}
+										>
+											{index > 0 && (
+												<span className="saint-map__popup-separator">
+													·
+												</span>
+											)}
+
+											{ROLE_LABELS[place.role] ??
+												place.role}
+										</span>
+									);
+								})}
+							</div>
 
 							<strong className="saint-map__popup-name">
-								{selectedPlace.name}
+								{selectedGroup.places[0].name}
 							</strong>
 
 							<span className="saint-map__popup-country">
-								{selectedPlace.country_code}
+								{selectedGroup.places[0].country_code}
 							</span>
 						</div>
 					</Popup>
