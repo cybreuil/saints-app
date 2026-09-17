@@ -11,10 +11,11 @@ import type { NavItem } from "../../types/NavItem";
 import { useLanguage } from "../../hooks/useLanguage";
 
 const NAV_ITEMS: NavItem[] = [
-	{ to: "/", labelKey: "nav.home", end: true },
+	// { to: "/", labelKey: "nav.home", end: true },
 	{ to: "/celebration", labelKey: "nav.celebration" },
 	{ to: "/saints", labelKey: "nav.saints" },
-	{ to: "/search", labelKey: "nav.search" },
+	{ to: "/gallery", labelKey: "nav.gallery" },
+	// { to: "/search", labelKey: "nav.search" },
 	{ to: "/about", labelKey: "nav.about" },
 ];
 

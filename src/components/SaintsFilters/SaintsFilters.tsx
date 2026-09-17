@@ -1,6 +1,7 @@
 import "./SaintsFilters.css";
 import type { SaintSort } from "../../hooks/useSaints";
 import { toRoman } from "../../utils/saintFormat";
+import { motion } from "framer-motion";
 
 export type SaintsFiltersValue = {
 	query: string;
@@ -11,7 +12,7 @@ export type SaintsFiltersValue = {
 export const DEFAULT_FILTERS: SaintsFiltersValue = {
 	query: "",
 	century: "all",
-	sort: "name_asc",
+	sort: "century_asc",
 };
 
 const CENTURIES = Array.from({ length: 21 }, (_, i) => i + 1);
@@ -27,11 +28,17 @@ type Props = {
 	value: SaintsFiltersValue;
 	onChange: (next: SaintsFiltersValue) => void;
 	resultCount?: number;
+	debouncedQuery?: string;
 };
 
-const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
+const SaintsFilters = ({
+	value,
+	onChange,
+	resultCount,
+	debouncedQuery,
+}: Props) => {
 	const isDirty =
-		value.query !== DEFAULT_FILTERS.query ||
+		debouncedQuery !== DEFAULT_FILTERS.query ||
 		value.century !== DEFAULT_FILTERS.century ||
 		value.sort !== DEFAULT_FILTERS.sort;
 
@@ -42,7 +49,10 @@ const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
 			aria-label="Filtrer les saints"
 			onSubmit={(e) => e.preventDefault()}
 		>
-			<label className="saints-filters__field saints-filters__field--grow">
+			<motion.label
+				className="saints-filters__field saints-filters__field--grow"
+				layout
+			>
 				<span className="saints-filters__label">Recherche</span>
 				<input
 					type="search"
@@ -53,9 +63,9 @@ const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
 					}
 					autoComplete="off"
 				/>
-			</label>
+			</motion.label>
 
-			<label className="saints-filters__field">
+			<motion.label className="saints-filters__field" layout>
 				<span className="saints-filters__label">Siècle</span>
 				<select
 					value={value.century}
@@ -72,9 +82,9 @@ const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
 					))}
 					<option value="unknown">Inconnu</option>
 				</select>
-			</label>
+			</motion.label>
 
-			<label className="saints-filters__field">
+			<motion.label className="saints-filters__field" layout>
 				<span className="saints-filters__label">Tri</span>
 				<select
 					value={value.sort}
@@ -91,9 +101,9 @@ const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
 						</option>
 					))}
 				</select>
-			</label>
+			</motion.label>
 
-			<div className="saints-filters__end">
+			<motion.div className="saints-filters__end" layout="position">
 				{typeof resultCount === "number" && (
 					<span className="saints-filters__count" aria-live="polite">
 						{resultCount} {resultCount > 1 ? "saints" : "saint"}
@@ -108,7 +118,7 @@ const SaintsFilters = ({ value, onChange, resultCount }: Props) => {
 						Réinitialiser
 					</button>
 				)}
-			</div>
+			</motion.div>
 		</form>
 	);
 };

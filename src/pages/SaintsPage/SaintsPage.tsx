@@ -165,8 +165,9 @@ export function SaintsPage() {
 			>
 				<SaintsFilters
 					value={filters}
+					debouncedQuery={debouncedQuery}
 					onChange={handleFiltersChange}
-					resultCount={loading ? undefined : totalCount}
+					resultCount={totalCount}
 				/>
 			</motion.div>
 
