@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import Map, {
-	Layer,
-	Marker,
-	NavigationControl,
-	Popup,
-	Source,
-} from "react-map-gl/maplibre";
+import Map, { Marker, NavigationControl, Popup } from "react-map-gl/maplibre";
 import type { MapRef } from "react-map-gl/maplibre";
+
+import { setWorkerUrl } from "maplibre-gl";
+import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
+
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { Place } from "../../types/Place";
 import "./SaintMap.css";
+
+setWorkerUrl(workerUrl);
 
 const ROLE_LABELS: Record<string, string> = {
 	birth: "Naissance",
@@ -46,22 +46,6 @@ export function SaintMap({ places }: SaintMapProps) {
 			),
 		[places],
 	);
-
-	const routeGeoJson = useMemo(() => {
-		if (validPlaces.length < 2) return null;
-
-		return {
-			type: "Feature" as const,
-			properties: {},
-			geometry: {
-				type: "LineString" as const,
-				coordinates: validPlaces.map((place) => [
-					place.longitude,
-					place.latitude,
-				]),
-			},
-		};
-	}, [validPlaces]);
 
 	useEffect(() => {
 		if (!mapRef.current || validPlaces.length === 0) return;
@@ -128,21 +112,6 @@ export function SaintMap({ places }: SaintMapProps) {
 					position="bottom-right"
 					showCompass={false}
 				/>
-
-				{routeGeoJson && (
-					<Source id="saint-route" type="geojson" data={routeGeoJson}>
-						<Layer
-							id="saint-route-line"
-							type="line"
-							paint={{
-								"line-color": "#8b6f47",
-								"line-width": 2,
-								"line-opacity": 0.55,
-								"line-dasharray": [2, 2],
-							}}
-						/>
-					</Source>
-				)}
 
 				{validPlaces.map((place) => {
 					const color = ROLE_COLORS[place.role] ?? "#8b6f47";
