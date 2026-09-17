@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 
 import { Loader } from "../../components/Loader/Loader";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
+import { SaintMap } from "../../components/SaintMap/SaintMap";
 import { useSaints } from "../../hooks/useSaints";
 import { useLanguage } from "../../hooks/useLanguage";
 import type { SaintDetailedResponse } from "../../types/Saint";
@@ -360,13 +361,8 @@ const SaintPage = () => {
 									Aucun lieu renseigné.
 								</p>
 							)}
-							{/* Carte interactive : branchée ici quand la page carte existera */}
-							<div
-								className="saint-places__map-teaser"
-								aria-hidden="true"
-							>
-								<span>Carte interactive — bientôt</span>
-							</div>
+							{/* Carte interactive */}
+							<SaintMap places={places} />
 						</motion.section>
 
 						{/* ===== Galerie ===== */}
