@@ -14,7 +14,7 @@ export interface Saint {
 	image: string;
 }
 
-//API dto
+//API dto for lists
 export interface SaintApi {
 	id: string;
 	slug: string;
@@ -50,6 +50,7 @@ export interface SaintDetailedResponse {
 	short_description: string | null;
 	full_biography: string | null;
 
+	// No life_label on detailed, maybe should fix this
 	// life_label?: string | null;
 	images?: Image[] | null;
 	patronages?: Patronage[] | null; // ex. « des voyageurs », « de la France »

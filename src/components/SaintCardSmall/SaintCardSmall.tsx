@@ -2,6 +2,7 @@ import "./SaintCardSmall.css";
 import { motion } from "framer-motion";
 import type { SaintApi } from "../../types/Saint.ts";
 import { centuryLabel } from "../../utils/saintFormat";
+import { TRANSITIONS } from "../../styles/theme.ts";
 
 const cardReveal = {
 	hidden: { opacity: 0, y: 24 },
@@ -13,7 +14,7 @@ const cardReveal = {
 };
 
 function accentLabel(saint: SaintApi): string {
-	return saint.life_label || centuryLabel(saint.century) || "\u00a0";
+	return centuryLabel(saint.century) || "\u00a0";
 }
 
 const SaintCardSmall = ({
@@ -44,6 +45,7 @@ const SaintCardSmall = ({
 			aria-label={saint.name}
 			onClick={onClick}
 			onKeyDown={handleKeyDown}
+			transition={TRANSITIONS.normal}
 		>
 			<div className="saint-card__artwork" aria-hidden="true">
 				{saint.image_url ? (

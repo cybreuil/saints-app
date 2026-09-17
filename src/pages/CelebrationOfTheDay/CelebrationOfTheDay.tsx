@@ -15,6 +15,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { useCalendar } from "../../hooks/useCalendar";
 import { useCelebration } from "../../hooks/useCelebration";
 import { useLanguage } from "../../hooks/useLanguage";
+import { RippleLink } from "../../components/RippleLink/RippleLink";
 
 /* ===== Animation presets ===== */
 
@@ -328,9 +329,10 @@ const CelebrationOfTheDay: React.FC = () => {
 								{saints && saints.length > 0 ? (
 									<ul className="celebration-saints__list">
 										{saints.map((saint) => (
-											<li
-												key={saint.saint_id}
+											<RippleLink
 												className="saint-chip"
+												key={saint.saint_id}
+												to={`/saints/${saint.saint_slug}`}
 											>
 												<span className="saint-chip__thumb">
 													{saint.saint_image_url && (
@@ -356,7 +358,7 @@ const CelebrationOfTheDay: React.FC = () => {
 														</span>
 													)}
 												</span>
-											</li>
+											</RippleLink>
 										))}
 									</ul>
 								) : (

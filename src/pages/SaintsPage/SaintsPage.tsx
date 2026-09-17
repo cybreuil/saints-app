@@ -208,14 +208,17 @@ export function SaintsPage() {
 				)}
 			</AnimatePresence>
 
-			<AnimatePresence>
-				{selectedSaint && (
-					<SaintModal
-						saint={selectedSaint}
-						onClose={() => setSelectedSaint(null)}
-					/>
-				)}
-			</AnimatePresence>
+			{/*We use layoutId on the modal and the card, so AnimatePresence is not needed here.
+				It would cause a flicker when opening/closing the modal.*/}
+
+			{/*<AnimatePresence>*/}
+			{selectedSaint && (
+				<SaintModal
+					saint={selectedSaint}
+					onClose={() => setSelectedSaint(null)}
+				/>
+			)}
+			{/*</AnimatePresence>*/}
 
 			<Pagination
 				currentPage={page}
