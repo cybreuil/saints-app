@@ -1,10 +1,34 @@
 import "./AboutPage.css";
-import { Loader } from "../../components/Loader/Loader";
+import { useLanguage } from "../../hooks/useLanguage";
+import { motion } from "framer-motion";
+
+// Animation preset
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const headerReveal = {
+	hidden: { opacity: 0, y: 24 },
+	show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+};
 
 const AboutPage = () => {
+	const { t } = useLanguage();
+
 	return (
 		<div className="about-page">
-			<h1>About Saints-App</h1>
+			<motion.header
+				className="about-page__header"
+				variants={headerReveal}
+				initial="hidden"
+				animate="show"
+			>
+				<span className="about-page__header__eyebrow">
+					{t("about.eyebrow")}
+				</span>
+				<h1 className="about-page__header__title">
+					{t("about.title")}
+				</h1>
+				<p className="about-page__header__text">{t("about.text")}</p>
+			</motion.header>
 			<div className="about-page__info">
 				<p>
 					Saints-App is dedicated to providing users with daily
@@ -22,7 +46,6 @@ const AboutPage = () => {
 					to us.
 				</p>
 			</div>
-			<Loader />
 		</div>
 	);
 };

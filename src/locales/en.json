@@ -71,5 +71,14 @@
 		"explore": "Explore",
 		"project": "The project",
 		"artworks": "The artworks reproduced are in the public domain."
+	},
+
+	"about": {
+		"eyebrow": "─ About",
+		"title": "About the Project",
+		"text": "The Saints App is a project that aims to provide a comprehensive and accessible resource for the lives of saints, their celebrations, and the artistic works they inspired. Our goal is to make this information available to everyone, regardless of their background or location.",
+		"description": "The Saints App is a project that aims to provide a comprehensive and accessible resource for the lives of saints, their celebrations, and the artistic works they inspired. Our goal is to make this information available to everyone, regardless of their background or location.",
+		"team": "The Team",
+		"contact": "Contact Us"
 	}
 }

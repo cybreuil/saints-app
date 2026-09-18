@@ -63,7 +63,7 @@ function useDebounced<T>(value: T, delay: number): T {
 	return debounced;
 }
 
-export function SaintsPage() {
+export const SaintsPage = () => {
 	const { getSaintList } = useSaints();
 	const { languageCode } = useLanguage();
 
@@ -230,4 +230,4 @@ export function SaintsPage() {
 			/>
 		</div>
 	);
-}
+};

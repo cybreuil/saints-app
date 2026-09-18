@@ -71,5 +71,14 @@
 		"explore": "Explorer",
 		"project": "Le projet",
 		"artworks": "Les œuvres reproduites appartiennent au domaine public."
+	},
+	"about": {
+		"eyebrow": "─ À propos",
+		"title": "À propos du projet",
+		"text": "L'application Saints App est un projet qui vise à fournir une ressource complète et accessible sur la vie des saints, leurs célébrations et les œuvres artistiques qu'ils ont inspirées. Notre objectif est de rendre ces informations disponibles à tous, quel que soit leur parcours ou leur localisation.",
+		"subtitle": "Une ressource complète sur les saints et leurs célébrations",
+		"description": "L'application Saints App est un projet qui vise à fournir une ressource complète et accessible sur la vie des saints, leurs célébrations et les œuvres artistiques qu'ils ont inspirées. Notre objectif est de rendre ces informations disponibles à tous, quel que soit leur parcours ou leur localisation.",
+		"team": "L'équipe",
+		"contact": "Contactez-nous"
 	}
 }
