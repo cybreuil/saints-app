@@ -1,7 +1,7 @@
 import "./SaintsFilters.css";
 import type { SaintSort } from "../../hooks/useSaints";
 import { toRoman } from "../../utils/saintFormat";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export type SaintsFiltersValue = {
 	query: string;

@@ -63,7 +63,12 @@ const SaintCardSmall = ({
 			</div>
 
 			<div className="saint-card__body">
-				<span className="saint-card__accent">{accentLabel(saint)}</span>
+				<motion.span
+					className="saint-card__accent"
+					layoutId={`saint-eyebrow-${saint.id}`}
+				>
+					{accentLabel(saint)}
+				</motion.span>
 				<motion.h3
 					className="saint-card__name"
 					layoutId={`saint-name-${saint.id}`}

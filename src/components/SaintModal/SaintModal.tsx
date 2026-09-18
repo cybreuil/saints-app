@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
@@ -101,7 +101,8 @@ export function SaintModal({
 
 	return createPortal(
 		<>
-			{/* AnimatePresence est géré par la page parente */}
+			{/* AnimatePresence est géré ici, on laisse la modale avec layoutid */}
+
 			<motion.div
 				className="saint-modal__backdrop"
 				initial={{ opacity: 0 }}
@@ -128,7 +129,6 @@ export function SaintModal({
 					{imageUrl && (
 						<motion.img
 							className="saint-modal__cover-image"
-							layoutId={`saint-img-${saint.id}`}
 							src={imageUrl}
 							alt={name}
 							decoding="async"
@@ -154,14 +154,15 @@ export function SaintModal({
 						{eyebrow && (
 							<motion.span
 								className="saint-modal__eyebrow"
-								initial={{ opacity: 0, y: 10 }}
-								animate={{ opacity: 1, y: 0 }}
-								exit={exitFade}
-								transition={{
-									duration: 0.5,
-									ease: EASE,
-									delay: 0.15,
-								}}
+								// initial={{ opacity: 0, y: 10 }}
+								// animate={{ opacity: 1, y: 0 }}
+								// exit={exitFade}
+								// transition={{
+								// 	duration: 0.5,
+								// 	ease: EASE,
+								// 	delay: 0.15,
+								// }}
+								layoutId={`saint-eyebrow-${saint.id}`}
 							>
 								{eyebrow}
 							</motion.span>

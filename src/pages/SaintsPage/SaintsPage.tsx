@@ -25,6 +25,11 @@ const headerReveal = {
 	show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
 };
 
+const filtersReveal = {
+	hidden: { opacity: 0 },
+	show: { opacity: 1, transition: { duration: 3.8, ease: EASE } },
+};
+
 const gridGroup = {
 	hidden: {},
 	show: { transition: { staggerChildren: 0.06 } },
@@ -158,10 +163,9 @@ export const SaintsPage = () => {
 
 			<motion.div
 				className="saints-toolbar"
-				variants={headerReveal}
+				variants={filtersReveal}
 				initial="hidden"
 				animate="show"
-				transition={{ delay: 0.1 }}
 			>
 				<SaintsFilters
 					value={filters}
