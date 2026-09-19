@@ -2,38 +2,38 @@ import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./NotFoundPage.css";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
-import { Logo } from "../../components/Logo/Logo";
+// import { Logo } from "../../components/Logo/Logo";
 import { useLanguage } from "../../hooks/useLanguage";
 
 const NotFoundPage = () => {
 	const { t } = useLanguage();
 
 	// Animation pour le halo qui pulse
-	const haloVariants = {
-		initial: { scale: 1, opacity: 0.3 },
-		animate: {
-			scale: [1, 1.2, 1],
-			opacity: [0.3, 0.6, 0.3],
-			transition: {
-				duration: 3,
-				repeat: Infinity,
-				ease: "easeInOut",
-			},
-		},
-	};
+	// const haloVariants = {
+	// 	initial: { scale: 1, opacity: 0.3 },
+	// 	animate: {
+	// 		scale: [1, 1.2, 1],
+	// 		opacity: [0.3, 0.6, 0.3],
+	// 		transition: {
+	// 			duration: 3,
+	// 			repeat: Infinity,
+	// 			ease: "easeInOut",
+	// 		},
+	// 	},
+	// };
 
 	// Animation pour les chiffres qui flottent
-	const floatVariants = {
-		initial: { y: 0 },
-		animate: {
-			y: [-10, 10, -10],
-			transition: {
-				duration: 4,
-				repeat: Infinity,
-				ease: "easeInOut",
-			},
-		},
-	};
+	// const floatVariants = {
+	// 	initial: { y: 0 },
+	// 	animate: {
+	// 		y: [-10, 10, -10],
+	// 		transition: {
+	// 			duration: 4,
+	// 			repeat: Infinity,
+	// 			ease: "easeInOut",
+	// 		},
+	// 	},
+	// };
 
 	return (
 		<motion.div
