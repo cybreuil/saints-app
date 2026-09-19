@@ -49,8 +49,8 @@ const SaintCardSmall = ({
 		>
 			<div className="saint-card__artwork" aria-hidden="true">
 				{saint.image_url ? (
-					<motion.img
-						layoutId={`saint-img-${saint.id}`}
+					<img
+						// layoutId={`saint-img-${saint.id}`}
 						src={saint.image_url}
 						alt=""
 						loading={index < 3 ? "eager" : "lazy"}

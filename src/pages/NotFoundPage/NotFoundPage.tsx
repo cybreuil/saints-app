@@ -1,11 +1,13 @@
-import { Logo } from "../../components/Logo/Logo";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TRANSITIONS } from "../../styles/theme";
 import "./NotFoundPage.css";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
+import { Logo } from "../../components/Logo/Logo";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const NotFoundPage = () => {
+	const { t } = useLanguage();
+
 	// Animation pour le halo qui pulse
 	const haloVariants = {
 		initial: { scale: 1, opacity: 0.3 },
@@ -40,19 +42,28 @@ const NotFoundPage = () => {
 			animate={{ opacity: 1 }}
 			transition={TRANSITIONS.slower}
 		>
+			{/* Texte principal */}
+			<motion.h1
+				className="not-found-title"
+				initial={{ y: -20, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ ...TRANSITIONS.slow, delay: 0.9 }}
+			>
+				{t("404.text")}
+			</motion.h1>
 			{/* Halo de fond animé */}
-			<motion.div
+			{/*<motion.div
 				className="not-found-halo"
 				variants={haloVariants}
 				initial="initial"
 				animate="animate"
-			/>
+			/>*/}
 
 			{/* Logo avec animation */}
 			{/*<motion.div
 				initial={{ scale: 0.8, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
-				transition={{ ...TRANSITIONS.bounce, delay: 0.2 }}
+				transition={{ ...TRANSITIONS.normal, delay: 0.2 }}
 			>
 				<Logo color="var(--color-primary)" maxWidth={200} />
 			</motion.div>*/}
@@ -67,14 +78,14 @@ const NotFoundPage = () => {
 				<motion.span
 					initial={{ x: -50, opacity: 0 }}
 					animate={{ x: 0, opacity: 1 }}
-					transition={{ ...TRANSITIONS.bounce, delay: 0.3 }}
+					transition={{ ...TRANSITIONS.normal, delay: 0.3 }}
 				>
 					4
 				</motion.span>
 				<motion.span
 					initial={{ scale: 0, opacity: 0 }}
 					animate={{ scale: 1, opacity: 1 }}
-					transition={{ ...TRANSITIONS.bouncySpring, delay: 0.5 }}
+					transition={{ ...TRANSITIONS.normal, delay: 0.5 }}
 					className="not-found-zero"
 				>
 					0
@@ -82,21 +93,11 @@ const NotFoundPage = () => {
 				<motion.span
 					initial={{ x: 50, opacity: 0 }}
 					animate={{ x: 0, opacity: 1 }}
-					transition={{ ...TRANSITIONS.bounce, delay: 0.7 }}
+					transition={{ ...TRANSITIONS.normal, delay: 0.7 }}
 				>
 					4
 				</motion.span>
 			</motion.div>
-
-			{/* Texte principal */}
-			<motion.h1
-				className="not-found-title"
-				initial={{ y: 20, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ ...TRANSITIONS.slow, delay: 0.9 }}
-			>
-				Saint Not Found
-			</motion.h1>
 
 			<motion.p
 				className="not-found-description"
@@ -113,16 +114,16 @@ const NotFoundPage = () => {
 				className="not-found-nav"
 				initial={{ y: 30, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
-				transition={{ ...TRANSITIONS.slow, delay: 1.3 }}
+				transition={{ ...TRANSITIONS.slower, delay: 1.5 }}
 			>
 				<RippleLink to="/" className="not-found-link primary">
-					Return Home
+					{t("nav.home")}
 				</RippleLink>
 				<RippleLink
-					to="/saint-of-the-day"
+					to="/celebration"
 					className="not-found-link secondary"
 				>
-					Saint of the Day
+					{t("nav.celebration")}
 				</RippleLink>
 			</motion.nav>
 

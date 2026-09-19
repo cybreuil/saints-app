@@ -127,12 +127,11 @@ export function SaintModal({
 					}`}
 				>
 					{imageUrl && (
-						<motion.img
+						<img
 							className="saint-modal__cover-image"
 							src={imageUrl}
 							alt={name}
 							decoding="async"
-							transition={TRANSITIONS.normal}
 						/>
 					)}
 					<div className="saint-modal__shade" aria-hidden="true" />

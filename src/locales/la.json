@@ -80,5 +80,8 @@
 		"description": "Sancti App est applicatio quae celebrat vitam et opera sanctorum per saecula. Propositum nostrum est educare et inspirare per historias et imagines quae sanctos commemorant.",
 		"team": "Turma",
 		"contact": "Contactus"
+	},
+	"404": {
+		"text": "Pagina non inventa"
 	}
 }

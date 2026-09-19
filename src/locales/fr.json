@@ -80,5 +80,8 @@
 		"description": "L'application Saints App est un projet qui vise à fournir une ressource complète et accessible sur la vie des saints, leurs célébrations et les œuvres artistiques qu'ils ont inspirées. Notre objectif est de rendre ces informations disponibles à tous, quel que soit leur parcours ou leur localisation.",
 		"team": "L'équipe",
 		"contact": "Contactez-nous"
+	},
+	"404": {
+		"text": "Page introuvable"
 	}
 }
