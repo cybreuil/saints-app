@@ -178,7 +178,12 @@ const Header = () => {
 						{showWordmark && (
 							<motion.span
 								className="header__wordmark"
-								layoutId="website-title"
+								// Not using layout Animation anymore
+								// layoutId="website-title"
+								initial={{ opacity: 0, x: -10 }}
+								animate={{ opacity: 1, x: 0 }}
+								// WIP
+								// transition={{TRANSITIONS.normal}}
 							>
 								Genuflexio
 							</motion.span>
