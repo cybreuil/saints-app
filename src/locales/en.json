@@ -75,11 +75,82 @@
 
 	"about": {
 		"eyebrow": "─ About",
-		"title": "About the Project",
-		"text": "The Saints App is a project that aims to provide a comprehensive and accessible resource for the lives of saints, their celebrations, and the artistic works they inspired. Our goal is to make this information available to everyone, regardless of their background or location.",
-		"description": "The Saints App is a project that aims to provide a comprehensive and accessible resource for the lives of saints, their celebrations, and the artistic works they inspired. Our goal is to make this information available to everyone, regardless of their background or location.",
-		"team": "The Team",
-		"contact": "Contact Us"
+		"title": "A calendar, a memory, a gallery.",
+		"lead": "Genuflexio brings together the liturgical calendar and the artistic heritage it has inspired: the feast of the day, the lives of the saints, and the masterpieces devoted to them.",
+
+		"manifesto": {
+			"eyebrow": "Why this project",
+			"title": "Giving the calendar back its faces",
+			"p1": "Every day of the year carries a name, a story, a colour. For centuries, painters, sculptors and illuminators have given these names a face. Genuflexio sets out to reconnect them.",
+			"p2": "Neither a devotional app nor an art catalogue, it sits at the crossroads: a quiet place to consult the celebration of the day, follow the thread of the saints through the centuries, and contemplate the works they inspired.",
+			"quote": "Not all who wander are lost.",
+			"quoteAuthor": "J.R.R. Tolkien"
+		},
+
+		"values": {
+			"eyebrow": "Our principles",
+			"title": "Three commitments",
+			"0": {
+				"title": "Rigour",
+				"text": "Dates, ranks and liturgical colours follow the official calendars. Each calendar is documented and sourced."
+			},
+			"1": {
+				"title": "Openness",
+				"text": "The works reproduced are in the public domain. The data is shared freely, and everyone is welcome to contribute."
+			},
+			"2": {
+				"title": "Restraint",
+				"text": "No ads, no tracking, no noise. Just a page that does what it says, on every screen."
+			}
+		},
+
+		"numbers": {
+			"eyebrow": "In figures",
+			"0": { "value": "365", "label": "days, each with its celebration" },
+			"1": { "value": "500+", "label": "saints documented" },
+			"2": { "value": "1 000+", "label": "public-domain artworks" },
+			"3": { "value": "3", "label": "liturgical calendars" }
+		},
+
+		"timeline": {
+			"eyebrow": "Roadmap",
+			"title": "Where we are going",
+			"0": {
+				"status": "done",
+				"title": "Celebration of the day",
+				"text": "Liturgical calendar with rank, colour and season, day after day."
+			},
+			"1": {
+				"status": "done",
+				"title": "Lives of the saints",
+				"text": "Browsable gallery, detailed pages, patronages and attributes."
+			},
+			"2": {
+				"status": "current",
+				"title": "Map of the saints",
+				"text": "Birthplaces, places of death and activity on an interactive map."
+			},
+			"3": {
+				"status": "next",
+				"title": "Art gallery",
+				"text": "Browse the artworks by saint, painter, period or museum."
+			}
+		},
+
+		"credits": {
+			"eyebrow": "Credits",
+			"title": "Built with care",
+			"text": "Genuflexio is an independent project. Images come from museums and institutions that release their collections into the public domain. Liturgical data is compiled from official calendars.",
+			"sources": "Sources & licences",
+			"github": "Source code"
+		},
+
+		"cta": {
+			"title": "Ready to explore?",
+			"primary": "Celebration of the day",
+			"secondary": "Discover the saints",
+			"contact": "A question, a correction? Write to us at"
+		}
 	},
 
 	"404": {

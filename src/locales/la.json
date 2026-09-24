@@ -74,12 +74,85 @@
 	},
 	"about": {
 		"eyebrow": "─ De nobis",
-		"title": "De nobis",
-		"text": "Sancti App est applicatio quae celebrat vitam et opera sanctorum per saecula. Propositum nostrum est educare et inspirare per historias et imagines quae sanctos commemorant.",
-		"subtitle": "Sancti App est applicatio quae celebrat vitam et opera sanctorum per saecula.",
-		"description": "Sancti App est applicatio quae celebrat vitam et opera sanctorum per saecula. Propositum nostrum est educare et inspirare per historias et imagines quae sanctos commemorant.",
-		"team": "Turma",
-		"contact": "Contactus"
+		"title": "Calendarium, memoria, pinacotheca.",
+		"lead": "Genuflexio coniungit calendarium liturgicum cum hereditate artis quam inspiravit: celebrationem diei, vitas sanctorum et opera eximia eis dicata.",
+
+		"manifesto": {
+			"eyebrow": "Cur hoc propositum",
+			"title": "Calendario vultus reddere",
+			"p1": "Quisque dies anni nomen, historiam, colorem habet. Per saecula pictores, sculptores atque illuminatores his nominibus vultum dederunt. Genuflexio ea denuo coniungere studet.",
+			"p2": "Neque applicatio devotionis neque catalogus artis, Genuflexio in bivio consistit: locus quietus ad celebrationem diei consulendam, vestigia sanctorum per saecula sequenda et opera ab eis inspirata contemplanda.",
+			"quote": "Non omnes qui vagantur amissi sunt.",
+			"quoteAuthor": "J.R.R. Tolkien"
+		},
+
+		"values": {
+			"eyebrow": "Principia nostra",
+			"title": "Tria proposita",
+			"0": {
+				"title": "Diligentia",
+				"text": "Dies, gradus et colores liturgici secundum calendaria officialia statuuntur. Unumquodque calendarium documentis et fontibus comprobatur."
+			},
+			"1": {
+				"title": "Apertura",
+				"text": "Opera hic reproducta in dominio publico sunt. Data libere communicantur, et omnes ad contribuendum invitantur."
+			},
+			"2": {
+				"title": "Sobrietas",
+				"text": "Nullae nuntiationes publicitariae, nulla vestigatio, nullus strepitus. Tantum pagina quae id praestat quod promittit, in omni velamento."
+			}
+		},
+
+		"numbers": {
+			"eyebrow": "In numeris",
+			"0": {
+				"value": "365",
+				"label": "dies, singuli cum sua celebratione"
+			},
+			"1": { "value": "500+", "label": "sancti descripti" },
+			"2": { "value": "1 000+", "label": "opera in dominio publico" },
+			"3": { "value": "3", "label": "calendaria liturgica" }
+		},
+
+		"timeline": {
+			"eyebrow": "Iter propositum",
+			"title": "Quo pergimus",
+			"0": {
+				"status": "done",
+				"title": "Celebratio diei",
+				"text": "Calendarium liturgicum cum gradu, colore et tempore liturgico, die post diem."
+			},
+			"1": {
+				"status": "done",
+				"title": "Vitae sanctorum",
+				"text": "Pinacotheca percurrenda, paginae singulis sanctis dicatae, patrocinia et attributa."
+			},
+			"2": {
+				"status": "current",
+				"title": "Mappa sanctorum",
+				"text": "Loci nativitatis, mortis atque operae in mappa interactiva."
+			},
+			"3": {
+				"status": "next",
+				"title": "Pinacotheca artis",
+				"text": "Opera per sanctum, pictorem, aetatem vel museum percurrere."
+			}
+		},
+
+		"credits": {
+			"eyebrow": "Auctores et fontes",
+			"title": "Studiose exstructum",
+			"text": "Genuflexio propositum independens est. Imagines ex museis et institutis proveniunt quae collectiones suas in dominio publico praebent. Data liturgica ex calendariis officialibus compilata sunt.",
+			"sources": "Fontes et licentiae",
+			"github": "Codex fontis"
+		},
+
+		"cta": {
+			"title": "Paratus es explorare?",
+			"primary": "Celebratio diei",
+			"secondary": "Sanctos cognosce",
+			"contact": "Quaestio aut correctio? Scribe nobis ad"
+		}
 	},
 	"404": {
 		"text": "Pagina non inventa"

@@ -235,6 +235,8 @@
 }
 
 .artwork-hero__action--primary:hover {
+	color: var(--color-on-secondary);
+	border-color: transparent;
 	background: var(--color-secondary-light);
 }
 
