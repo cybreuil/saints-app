@@ -14,4 +14,11 @@ export type Image = {
 	source_url?: string;
 	sort_order: number;
 	is_primary: boolean;
+
+	// Enrichissement galerie — à exposer côté API sur GET /images
+	saint_name?: string | null;
+	saint_slug?: string | null;
+	year?: number | null; // année (approx.) pour le tri / filtre période
+	width?: number | null; // dimensions natives pour la masonry sans reflow
+	height?: number | null;
 };

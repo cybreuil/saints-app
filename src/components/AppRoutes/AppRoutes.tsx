@@ -3,7 +3,7 @@ import { HomePage } from "../../pages/HomePage/HomePage";
 import { CelebrationOfTheDay } from "../../pages/CelebrationOfTheDay/CelebrationOfTheDay";
 import { SaintsPage } from "../../pages/SaintsPage/SaintsPage";
 import { SaintPage } from "../../pages/SaintPage/SaintPage";
-import { SearchPage } from "../../pages/SearchPage/SearchPage";
+import { GalleryPage } from "../../pages/GalleryPage/GalleryPage";
 import { AboutPage } from "../../pages/AboutPage/AboutPage";
 import { NotFoundPage } from "../../pages/NotFoundPage/NotFoundPage";
 
@@ -18,7 +18,7 @@ const AppRoutes = () => {
 			/>
 			<Route path="/saints" element={<SaintsPage />} />
 			<Route path="/saints/:slug" element={<SaintPage />} />
-			<Route path="/search" element={<SearchPage />} />
+			<Route path="/gallery" element={<GalleryPage />} />
 			<Route path="/about" element={<AboutPage />} />
 			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
