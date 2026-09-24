@@ -73,82 +73,85 @@
 		"artworks": "Les œuvres reproduites appartiennent au domaine public."
 	},
 	"about": {
-		"eyebrow": "─ About",
-		"title": "A calendar, a memory, a gallery.",
-		"lead": "Genuflexio brings together the liturgical calendar and the artistic heritage it has inspired: the feast of the day, the lives of the saints, and the masterpieces devoted to them.",
+		"eyebrow": "─ À propos",
+		"title": "Un calendrier, une mémoire, une galerie.",
+		"lead": "Genuflexio réunit le calendrier liturgique et le patrimoine artistique qu’il a inspiré : la fête du jour, la vie des saints et les chefs-d’œuvre qui leur sont consacrés.",
 
 		"manifesto": {
-			"eyebrow": "Why this project",
-			"title": "Giving the calendar back its faces",
-			"p1": "Every day of the year carries a name, a story, a colour. For centuries, painters, sculptors and illuminators have given these names a face. Genuflexio sets out to reconnect them.",
-			"p2": "Neither a devotional app nor an art catalogue, it sits at the crossroads: a quiet place to consult the celebration of the day, follow the thread of the saints through the centuries, and contemplate the works they inspired.",
-			"quote": "Not all who wander are lost.",
+			"eyebrow": "Pourquoi ce projet",
+			"title": "Redonner des visages au calendrier",
+			"p1": "Chaque jour de l’année porte un nom, une histoire, une couleur. Depuis des siècles, peintres, sculpteurs et enlumineurs ont donné un visage à ces noms. Genuflexio cherche à renouer ces liens.",
+			"p2": "Ni application dévotionnelle ni catalogue d’art, Genuflexio se situe à la croisée des chemins : un lieu paisible pour consulter la célébration du jour, suivre la trace des saints à travers les siècles et contempler les œuvres qu’ils ont inspirées.",
+			"quote": "Ce ne sont pas tous ceux qui errent qui sont perdus.",
 			"quoteAuthor": "J.R.R. Tolkien"
 		},
 
 		"values": {
-			"eyebrow": "Our principles",
-			"title": "Three commitments",
+			"eyebrow": "Nos principes",
+			"title": "Trois engagements",
 			"0": {
-				"title": "Rigour",
-				"text": "Dates, ranks and liturgical colours follow the official calendars. Each calendar is documented and sourced."
+				"title": "Rigueur",
+				"text": "Les dates, rangs et couleurs liturgiques suivent les calendriers officiels. Chaque calendrier est documenté et sourcé."
 			},
 			"1": {
-				"title": "Openness",
-				"text": "The works reproduced are in the public domain. The data is shared freely, and everyone is welcome to contribute."
+				"title": "Ouverture",
+				"text": "Les œuvres reproduites appartiennent au domaine public. Les données sont librement partagées et chacun est invité à contribuer."
 			},
 			"2": {
-				"title": "Restraint",
-				"text": "No ads, no tracking, no noise. Just a page that does what it says, on every screen."
+				"title": "Sobriété",
+				"text": "Pas de publicité, pas de traçage, pas de bruit. Simplement une page qui fait ce qu’elle promet, sur chaque écran."
 			}
 		},
 
 		"numbers": {
-			"eyebrow": "In figures",
-			"0": { "value": "365", "label": "days, each with its celebration" },
-			"1": { "value": "500+", "label": "saints documented" },
-			"2": { "value": "1 000+", "label": "public-domain artworks" },
-			"3": { "value": "3", "label": "liturgical calendars" }
+			"eyebrow": "En chiffres",
+			"0": {
+				"value": "365",
+				"label": "jours, chacun avec sa célébration"
+			},
+			"1": { "value": "500+", "label": "saints documentés" },
+			"2": { "value": "1 000+", "label": "œuvres du domaine public" },
+			"3": { "value": "3", "label": "calendriers liturgiques" }
 		},
 
 		"timeline": {
-			"eyebrow": "Roadmap",
-			"title": "Where we are going",
+			"eyebrow": "Feuille de route",
+			"title": "Où nous allons",
 			"0": {
 				"status": "done",
-				"title": "Celebration of the day",
-				"text": "Liturgical calendar with rank, colour and season, day after day."
+				"title": "Célébration du jour",
+				"text": "Calendrier liturgique avec rang, couleur et temps liturgique, jour après jour."
 			},
 			"1": {
 				"status": "done",
-				"title": "Lives of the saints",
-				"text": "Browsable gallery, detailed pages, patronages and attributes."
+				"title": "Vie des saints",
+				"text": "Galerie consultable, pages détaillées, patronages et attributs."
 			},
 			"2": {
 				"status": "current",
-				"title": "Map of the saints",
-				"text": "Birthplaces, places of death and activity on an interactive map."
+				"title": "Carte des saints",
+				"text": "Lieux de naissance, lieux de décès et lieux d’activité sur une carte interactive."
 			},
 			"3": {
 				"status": "next",
-				"title": "Art gallery",
-				"text": "Browse the artworks by saint, painter, period or museum."
+				"title": "Galerie d’art",
+				"text": "Parcourir les œuvres par saint, peintre, période ou musée."
 			}
 		},
 
 		"credits": {
-			"eyebrow": "Credits",
-			"title": "Built with care",
-			"text": "Genuflexio is an independent project. Images come from museums and institutions that release their collections into the public domain. Liturgical data is compiled from official calendars.",
+			"eyebrow": "Crédits",
+			"title": "Conçu avec soin",
+			"text": "Genuflexio est un projet indépendant. Les images proviennent de musées et d’institutions qui mettent leurs collections à disposition dans le domaine public. Les données liturgiques sont compilées à partir de calendriers officiels.",
 			"sources": "Sources & licences",
-			"github": "Source code"
+			"github": "Code source"
 		},
 
 		"cta": {
-			"title": "Ready to explore?",
-			"primary": "Celebration of the day",
-			"secondary": "Discover the saints",
-			"contact": "A question, a correction? Write to us at"
+			"title": "Prêt à explorer ?",
+			"primary": "Célébration du jour",
+			"secondary": "Découvrir les saints",
+			"contact": "Une question, une correction ? Écrivez-nous à"
 		}
 	},
 	"404": {
