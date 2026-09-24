@@ -183,6 +183,11 @@ const Header = () => {
 								// layoutId="website-title"
 								initial={{ opacity: 0, x: -10 }}
 								animate={{ opacity: 1, x: 0 }}
+								transition={{
+									duration: 0.5,
+									delay: 0.2,
+									ease: EASINGS.out,
+								}}
 								// WIP
 								// transition={{TRANSITIONS.normal}}
 							>

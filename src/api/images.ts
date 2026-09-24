@@ -2,7 +2,7 @@ import { fetchApi } from "./client";
 import type { Image } from "../types/Image";
 
 export function getImages() {
-	return fetchApi<Image[]>("/images");
+	return fetchApi<Image[]>("/images/full-list");
 }
 
 export function getRandomImages(count: number = 1): Promise<Image[]> {
