@@ -212,6 +212,8 @@ const Header = () => {
 											<motion.span
 												className="header__active-dot"
 												layoutId="header-active-dot"
+												// 2 heures a trouver "layout = x" jpp c'est parfait
+												layout="x"
 												transition={{
 													type: "spring",
 													stiffness: 500,
