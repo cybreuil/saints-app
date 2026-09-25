@@ -1,75 +1,147 @@
-import type {
-	SaintDetailedResponse,
-	SaintsListApiResponse,
-} from "../types/Saint";
+import { useEffect, useState } from "react";
+import { getSaints, getSaintBySlug } from "../api/saints";
+import type { SaintApi, SaintDetailedResponse } from "../types/Saint";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+const SEARCH_DEBOUNCE_MS = 600;
 
-export type GetSaintListParams = {
+function useDebounced<T>(value: T, delay: number): T {
+	const [debounced, setDebounced] = useState(value);
+
+	useEffect(() => {
+		const id = setTimeout(() => {
+			setDebounced(value);
+		}, delay);
+
+		return () => clearTimeout(id);
+	}, [value, delay]);
+
+	return debounced;
+}
+
+type UseSaintsParams = {
 	page?: number;
 	perPage?: number;
 	languageCode?: string;
 	q?: string;
-	// recherche texte, si besoin
 	century?: string;
-	// filtre siècle, si besoin
 	sort?: string;
-	// clé de tri, si besoin
-	// signal?: AbortSignal;
-	// optionnel pour annulation
 };
 
-const useSaints = () => {
-	const getSaintList = async (
-		params: GetSaintListParams = {},
-	): Promise<SaintsListApiResponse> => {
-		const { page, perPage, languageCode, q, century, sort } = params;
+const useSaints = ({
+	page = 1,
+	perPage = 20,
+	languageCode = "en",
+	q,
+	century,
+	sort,
+}: UseSaintsParams = {}) => {
+	const [saints, setSaints] = useState<SaintApi[] | []>([]);
+	const [totalCount, setTotalCount] = useState(0);
+	const [totalPages, setTotalPages] = useState(0);
 
-		const url = new URL(`${API_BASE_URL}/saints`);
-		const qp = new URLSearchParams();
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error | null>(null);
 
-		if (languageCode && languageCode.trim() !== "") {
-			qp.set("language_code", languageCode);
-		}
-		if (q?.trim()) qp.set("q", q.trim());
-		if (century && century !== "all") qp.set("century", century);
-		if (sort) qp.set("sort", sort);
-		qp.set("page", String(page));
-		qp.set("per_page", String(perPage));
+	const debouncedQuery = useDebounced(q, SEARCH_DEBOUNCE_MS);
 
-		url.search = qp.toString();
-		const response = await fetch(url.toString());
+	useEffect(() => {
+		const controller = new AbortController();
 
-		if (!response.ok) {
-			// Fournir un message utile pour le debug
-			const text = await response.text().catch(() => "");
-			throw new Error(
-				`Erreur API ${response.status} ${response.statusText} - ${text}`,
-			);
-		}
+		setLoading(true);
+		setError(null);
 
-		return (await response.json()) as SaintsListApiResponse;
+		getSaints({
+			page,
+			perPage,
+			languageCode,
+			q: debouncedQuery,
+			century,
+			sort,
+			signal: controller.signal,
+		})
+			.then((response) => {
+				setSaints(response.data);
+				setTotalCount(response.total);
+				setTotalPages(response.total_pages);
+			})
+			.catch((error) => {
+				if (error.name === "AbortError") {
+					return;
+				}
+
+				setError(
+					error instanceof Error
+						? error
+						: new Error(
+								"Impossible to fetch saints data. Please try again later.",
+							),
+				);
+			})
+			.finally(() => {
+				if (!controller.signal.aborted) {
+					setLoading(false);
+				}
+			});
+
+		return () => {
+			controller.abort();
+		};
+	}, [page, perPage, languageCode, debouncedQuery, century, sort]);
+
+	return {
+		saints,
+		loading,
+		error,
+		totalCount,
+		totalPages,
+		debouncedQuery,
 	};
-
-	const getSaintBySlug = async (
-		slug: string,
-		languageCode?: string,
-	): Promise<SaintDetailedResponse> => {
-		const url = new URL(
-			`${API_BASE_URL}/saints/${slug}${languageCode ? `?language_code=${languageCode}` : ""}`,
-		);
-		const response = await fetch(url.toString());
-		if (!response.ok) {
-			// Fournir un message utile pour le debug
-			const text = await response.text().catch(() => "");
-			throw new Error(
-				`Erreur API ${response.status} ${response.statusText} - ${text}`,
-			);
-		}
-		return (await response.json()) as SaintDetailedResponse;
-	};
-
-	return { getSaintList, getSaintBySlug };
 };
 
-export { useSaints };
+const useSaintBySlug = (slug: string, languageCode: string) => {
+	const [detail, setDetail] = useState<SaintDetailedResponse | null>(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error | null>(null);
+
+	useEffect(() => {
+		const controller = new AbortController();
+
+		setLoading(true);
+		setError(null);
+
+		getSaintBySlug(slug, languageCode, controller.signal)
+			.then((data) => {
+				setDetail(data);
+			})
+			.catch((error) => {
+				if (error.name === "AbortError") {
+					return;
+				}
+
+				setError(
+					error instanceof Error
+						? error
+						: new Error(
+								"Impossible to fetch saint data. Please try again later.",
+							),
+				);
+			})
+			.finally(() => {
+				if (!controller.signal.aborted) {
+					setLoading(false);
+				}
+			});
+
+		return () => {
+			controller.abort();
+		};
+	}, [slug, languageCode]);
+
+	return {
+		detail,
+		loading,
+		error,
+	};
+};
+
+export { useSaints, useSaintBySlug };

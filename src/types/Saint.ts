@@ -57,3 +57,19 @@ export interface SaintDetailedResponse {
 	attributes?: Attribute[] | null; // attributs iconographiques : « clés », « palme »
 	places?: Place[] | null; // ex. « Rome », « Paris »
 }
+
+export type GetSaintsParams = {
+	page?: number;
+	perPage?: number;
+	languageCode?: string;
+	q?: string;
+	century?: string;
+	sort?: string;
+	signal?: AbortSignal;
+};
+
+export type GetSaintBySlugParams = {
+	slug: string;
+	languageCode?: string;
+	signal?: AbortSignal;
+};

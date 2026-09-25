@@ -37,7 +37,6 @@ const gridGroup = {
 };
 
 const SAINTS_PER_PAGE = 12;
-const SEARCH_DEBOUNCE_MS = 600;
 
 function StateBlock({
 	tone = "neutral",
@@ -59,70 +58,30 @@ function StateBlock({
 	);
 }
 
-function useDebounced<T>(value: T, delay: number): T {
-	const [debounced, setDebounced] = useState(value);
-	useEffect(() => {
-		const id = setTimeout(() => setDebounced(value), delay);
-		return () => clearTimeout(id);
-	}, [value, delay]);
-	return debounced;
-}
-
 export const SaintsPage = () => {
-	const { getSaintList } = useSaints();
 	const { languageCode } = useLanguage();
 
 	const [filters, setFilters] = useState<SaintsFiltersValue>(DEFAULT_FILTERS);
-	const debouncedQuery = useDebounced(filters.query, SEARCH_DEBOUNCE_MS);
 
 	const [page, setPage] = useState(1);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<Error | null>(null);
 	const [selectedSaint, setSelectedSaint] = useState<SaintApi | null>(null);
 
-	const [saintsList, setSaintsList] = useState<SaintApi[]>([]);
-	const [totalCount, setTotalCount] = useState(0);
-	const [totalPages, setTotalPages] = useState(0);
-
 	const { century, sort } = filters;
-
-	useEffect(() => {
-		const controller = new AbortController();
-
-		const fetchData = async () => {
-			setLoading(true);
-			setError(null);
-			try {
-				const response = await getSaintList({
-					page,
-					perPage: SAINTS_PER_PAGE,
-					languageCode,
-					q: debouncedQuery,
-					century,
-					sort,
-					// signal: controller.signal,
-				});
-				setSaintsList(response.data);
-				setTotalCount(response.total);
-				setTotalPages(response.total_pages);
-			} catch (err) {
-				// if (controller.signal.aborted) return;
-				setError(
-					err instanceof Error
-						? err
-						: new Error("Impossible de charger les saints."),
-				);
-			} finally {
-				// if (!controller.signal.aborted)
-				setLoading(false);
-			}
-		};
-
-		fetchData();
-		return () => controller.abort();
-		// getSaintList n'est pas mémoïsé dans useSaints → boucle si mis en deps
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, languageCode, debouncedQuery, century, sort]);
+	const {
+		saints: saintsList,
+		loading,
+		error,
+		totalCount,
+		totalPages,
+		debouncedQuery,
+	} = useSaints({
+		page,
+		perPage: SAINTS_PER_PAGE,
+		languageCode,
+		q: filters.query,
+		century,
+		sort,
+	});
 
 	const handleFiltersChange = (next: SaintsFiltersValue) => {
 		setFilters(next);

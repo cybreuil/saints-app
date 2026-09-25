@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import "./SaintModal.css";
 import { TRANSITIONS } from "../../styles/theme";
 import { RippleLink } from "../RippleLink/RippleLink";
-import type { SaintApi, SaintDetailedResponse } from "../../types/Saint";
-import { useSaints } from "../../hooks/useSaints";
+import type { SaintApi } from "../../types/Saint";
+import { useSaintBySlug } from "../../hooks/useSaints";
 import { useLanguage } from "../../hooks/useLanguage";
 import {
 	centuryLabel,
@@ -37,41 +37,9 @@ export function SaintModal({
 	saint: SaintApi;
 	onClose: () => void;
 }) {
-	const { getSaintBySlug } = useSaints();
 	const { languageCode } = useLanguage();
 
-	const [detail, setDetail] = useState<SaintDetailedResponse | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
-
-	// getSaintBySlug est recréé à chaque render : ref pour des deps propres.
-	const getSaintBySlugRef = useRef(getSaintBySlug);
-	useEffect(() => {
-		getSaintBySlugRef.current = getSaintBySlug;
-	});
-
-	useEffect(() => {
-		let cancelled = false;
-		setLoading(true);
-		setError(null);
-
-		getSaintBySlugRef
-			.current(saint.slug, languageCode)
-			.then((data) => {
-				if (!cancelled) setDetail(data);
-			})
-			.catch((e: unknown) => {
-				console.error(e);
-				if (!cancelled) setError("Impossible de charger la fiche.");
-			})
-			.finally(() => {
-				if (!cancelled) setLoading(false);
-			});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [saint.slug, languageCode]);
+	const { detail, loading, error } = useSaintBySlug(saint.slug, languageCode);
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {

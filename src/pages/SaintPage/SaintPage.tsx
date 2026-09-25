@@ -1,5 +1,5 @@
 import "./SaintPage.css";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
@@ -7,9 +7,8 @@ import ReactMarkdown from "react-markdown";
 import { Loader } from "../../components/Loader/Loader";
 import { RippleLink } from "../../components/RippleLink/RippleLink";
 import { SaintMap } from "../../components/SaintMap/SaintMap";
-import { useSaints } from "../../hooks/useSaints";
+import { useSaintBySlug } from "../../hooks/useSaints";
 import { useLanguage } from "../../hooks/useLanguage";
-import type { SaintDetailedResponse } from "../../types/Saint";
 import type { Attribute } from "../../types/Attribute";
 import {
 	centuryLabel,
@@ -68,46 +67,12 @@ function groupAttributes(attributes: Attribute[]) {
 
 const SaintPage = () => {
 	const { slug = "" } = useParams();
-	const { getSaintBySlug } = useSaints();
 	const { languageCode } = useLanguage();
-
-	const [saint, setSaint] = useState<SaintDetailedResponse | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<Error | null>(null);
-
-	const getSaintBySlugRef = useRef(getSaintBySlug);
-	useEffect(() => {
-		getSaintBySlugRef.current = getSaintBySlug;
-	});
-
-	useEffect(() => {
-		let cancelled = false;
-		setLoading(true);
-		setError(null);
-
-		getSaintBySlugRef
-			.current(slug, languageCode)
-			.then((data) => {
-				if (!cancelled) setSaint(data);
-			})
-			.catch((e: unknown) => {
-				if (!cancelled)
-					setError(
-						e instanceof Error ? e : new Error("Erreur inconnue"),
-					);
-			})
-			.finally(() => {
-				if (!cancelled) setLoading(false);
-			});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [slug, languageCode]);
-
-	useEffect(() => {
-		window.scrollTo({ top: 0 });
-	}, [slug]);
+	const {
+		detail: saint,
+		loading,
+		error,
+	} = useSaintBySlug(slug, languageCode);
 
 	const cover = primaryImage(saint?.images);
 	const name = saint?.name || saint?.default_name || "";
