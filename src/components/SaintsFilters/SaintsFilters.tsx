@@ -51,7 +51,7 @@ const SaintsFilters = ({
 		>
 			<motion.label
 				className="saints-filters__field saints-filters__field--grow"
-				layout
+				layout="x"
 			>
 				<span className="saints-filters__label">Recherche</span>
 				<input
@@ -65,7 +65,7 @@ const SaintsFilters = ({
 				/>
 			</motion.label>
 
-			<motion.label className="saints-filters__field" layout>
+			<motion.label className="saints-filters__field" layout="x">
 				<span className="saints-filters__label">Siècle</span>
 				<select
 					value={value.century}
@@ -84,7 +84,7 @@ const SaintsFilters = ({
 				</select>
 			</motion.label>
 
-			<motion.label className="saints-filters__field" layout>
+			<motion.label className="saints-filters__field" layout="x">
 				<span className="saints-filters__label">Tri</span>
 				<select
 					value={value.sort}
@@ -103,7 +103,7 @@ const SaintsFilters = ({
 				</select>
 			</motion.label>
 
-			<motion.div className="saints-filters__end" layout="position">
+			<motion.div className="saints-filters__end" layout>
 				{typeof resultCount === "number" && (
 					<span className="saints-filters__count" aria-live="polite">
 						{resultCount} {resultCount > 1 ? "saints" : "saint"}
