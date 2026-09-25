@@ -72,7 +72,7 @@ const GalleryPage = () => {
 	useEffect(() => {
 		let cancelled = false;
 		getImages()
-			.then((data) => !cancelled && setImages(data))
+			.then((data) => !cancelled && setImages(data.data))
 			.catch(
 				(e) =>
 					!cancelled &&

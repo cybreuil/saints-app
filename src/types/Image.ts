@@ -22,3 +22,10 @@ export type Image = {
 	width?: number | null; // dimensions natives pour la masonry sans reflow
 	height?: number | null;
 };
+
+export type ImagesListApiResponse = {
+	page: number;
+	total: number;
+	total_pages: number;
+	data: Image[];
+};
