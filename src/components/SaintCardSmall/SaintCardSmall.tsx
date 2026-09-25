@@ -40,7 +40,7 @@ const SaintCardSmall = ({
 	return (
 		<motion.article
 			className="saint-card"
-			layoutId={`saint-card-${saint.id}`}
+			// layoutId={`saint-card-${saint.id}`}
 			variants={cardReveal}
 			role="button"
 			tabIndex={0}
