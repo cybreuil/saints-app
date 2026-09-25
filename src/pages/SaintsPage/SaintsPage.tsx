@@ -98,6 +98,10 @@ export const SaintsPage = () => {
 
 	const gridKey = `${page}-${debouncedQuery}-${century}-${sort}`;
 
+	// For layout disabling during grid rearrangement
+	// const [layoutGridKey, setLayoutGridKey] = useState(gridKey);
+	// const isNewGrid = layoutGridKey !== gridKey;
+
 	return (
 		<div className="saints-page">
 			<motion.header
@@ -161,10 +165,12 @@ export const SaintsPage = () => {
 						animate="show"
 						exit="exit"
 						aria-label="Liste des saints"
+						// onAnimationComplete={() => setLayoutGridKey(gridKey)}
 					>
 						{saintsList.map((saint, index) => (
 							<SaintCardSmall
 								key={saint.id}
+								// enableLayoutId={!isNewGrid}
 								saint={saint}
 								onClick={() => setSelectedSaint(saint)}
 								index={index}

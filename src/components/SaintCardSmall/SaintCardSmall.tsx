@@ -21,10 +21,12 @@ const SaintCardSmall = ({
 	saint,
 	onClick,
 	index,
+	// enableLayoutId = true,
 }: {
 	saint: SaintApi;
 	onClick: () => void;
 	index: number;
+	// enableLayoutId?: boolean;
 }) => {
 	const initial = saint.name?.trim().charAt(0).toUpperCase() ?? "";
 
@@ -38,7 +40,7 @@ const SaintCardSmall = ({
 	return (
 		<motion.article
 			className="saint-card"
-			layoutId={`saint-${saint.id}`}
+			layoutId={`saint-card-${saint.id}`}
 			variants={cardReveal}
 			role="button"
 			tabIndex={0}
